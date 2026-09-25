@@ -1,0 +1,9 @@
+# Keep the repository LF-clean. Windows checkouts otherwise rewrite every text file to CRLF,
+# which shows up as a whole-tree diff for anyone on macOS or Linux.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary

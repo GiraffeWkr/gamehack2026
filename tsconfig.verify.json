@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist-verify",
+    "rootDir": "src",
+    "noEmit": false,
+    "declaration": false,
+    "sourceMap": false,
+    "types": []
+  },
+  "include": ["src/dev/verify.ts", "src/dev/diag.ts", "src/dev/diag-fire.ts", "src/game/**/*.ts", "src/core/**/*.ts", "src/content/**/*.ts"]
+}

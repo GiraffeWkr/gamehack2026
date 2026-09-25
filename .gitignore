@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-verify/
+
+# Dev screenshots. The CDP harnesses (tools/cdp-*.mjs) drop their captures in the project
+# root. They are verification artefacts, not part of the game - and they are 13 MB of the
+# tree. Real game art lives in public/art/ and must NOT be ignored, hence the leading slash.
+/*.png
+
+npm-debug.log*
+.vite/
+*.tsbuildinfo

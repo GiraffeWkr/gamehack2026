@@ -1,0 +1,2800 @@
+/*
+ * Mobile-first landscape HUD.
+ *
+ * Key constraints this file solves:
+ *  - Notches / dynamic islands: everything inside the top and bottom bars is
+ *    inset by env(safe-area-inset-*), which the original handled in
+ *    `SafeAreaManager` with hardcoded iPhone insets.
+ *  - Thumb reach: skills and magazine live in the bottom corners, nothing
+ *    interactive sits in the middle of the screen.
+ *  - Touch feel: controls respond on pointerdown and suppress tap highlight,
+ *    text selection and iOS callouts.
+ */
+
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  --ink: #eef4ff;
+  --ink-dim: #9fb0c6;
+  --panel: rgba(12, 18, 28, 0.72);
+  --panel-line: rgba(150, 190, 255, 0.22);
+  --accent: #4fd2ff;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #05080c;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+#game {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+/* ---------------------------------------------------------------- HUD shell */
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud-top {
+  position: absolute;
+  top: calc(var(--safe-top) + 8px);
+  left: calc(var(--safe-left) + 12px);
+  right: calc(var(--safe-right) + 12px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.hud-left {
+  flex: 0 0 min(40vw, 400px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Resource counters, matching the shipping HUD's icon+number row. */
+.hud-res {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.res {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px 2px 4px;
+  border-radius: 9px;
+  background: rgba(10, 16, 26, 0.62);
+  border: 1px solid rgba(150, 190, 255, 0.18);
+}
+
+.res-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+/*
+ * Family currency counters stay hidden until that purse is first filled, matching the
+ * original's `playerData.WasCurrencyShownBefore` gate. `display` must be set here because
+ * `.res` is `inline-flex`, which overrides the `hidden` attribute's default.
+ */
+.res[hidden] {
+  display: none;
+}
+
+/*
+ * A collected drop's icon flying to its counter (`LootDropManager.PlayCollectAnimation`).
+ * The position, scale, spin and fade are all driven from JS along the original's
+ * quadratic Bezier, so only the static bits live here.
+ */
+.loot-fly {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 30;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+}
+
+.res-val {
+  font-size: 13px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #eef4ff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.res-val.gold-text { color: #ffd166; }
+.res-val.gem-text { color: #7fe0a0; }
+
+.hud-center {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-right {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* HP */
+.hp {
+  position: relative;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  overflow: hidden;
+}
+
+.hp-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform: scaleX(1);
+  background: #5bd97a;
+  transition: background 160ms linear;
+}
+
+.hp-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+/* Level + pack progress */
+.level-text {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.progress {
+  position: relative;
+  width: min(38vw, 340px);
+  height: 15px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  overflow: hidden;
+}
+
+/*
+ * Experience fill. Red, matching the shipping HUD's centre bar.
+ */
+.exp-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #a01818, #e8452f 60%, #ff7a4a);
+  box-shadow: inset 0 0 8px rgba(255, 140, 80, 0.5);
+  transition: transform 140ms linear;
+}
+
+/* ------------------------------------------------------------ portal banner */
+
+.hud-portal {
+  position: absolute;
+  top: calc(var(--safe-top) + 52px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(52vw, 420px);
+  padding: 6px 12px 8px;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid rgba(79, 210, 255, 0.4);
+  text-align: center;
+}
+
+.hud-portal.hidden,
+.hud-toast.hidden {
+  display: none;
+}
+
+.portal-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.portal-bar {
+  position: relative;
+  height: 14px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.portal-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform: scaleX(1);
+  background: linear-gradient(90deg, #1d6f8c, var(--accent));
+}
+
+.portal-fill.summoning {
+  background: linear-gradient(90deg, #6a4fa3, #b07bff);
+  animation: summon-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes summon-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.portal-text {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------- toast */
+
+.hud-toast {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  padding: 10px 22px;
+  border-radius: 14px;
+  background: rgba(8, 14, 22, 0.85);
+  border: 1px solid var(--panel-line);
+  font-size: clamp(15px, 3.4vw, 22px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.hud-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hud-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 60, 40, 0.35), rgba(120, 0, 0, 0.75));
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+/* ------------------------------------------------------- bottom control bar */
+
+.hud-bottom {
+  position: absolute;
+  left: calc(var(--safe-left) + 12px);
+  right: calc(var(--safe-right) + 12px);
+  bottom: calc(var(--safe-bottom) + 10px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Magazine */
+.mag {
+  padding: 5px 10px 7px;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.mag-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--ink-dim);
+}
+
+/*
+ * Circular arrow dial with a radial cooldown ring.
+ *
+ * The ring is the important part: it shows how far the NEXT arrow is from
+ * regenerating, which the original draws as `CooldownImage.fillAmount`. A row of
+ * pips only shows how many are left, not when the next one lands.
+ */
+.mag-dial {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+}
+
+.mag-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* start the sweep at 12 o'clock */
+}
+
+.mag-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-width: 4;
+}
+
+.mag-progress {
+  fill: none;
+  stroke: #4fd2ff;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 60ms linear, stroke 160ms linear;
+}
+
+.mag-count {
+  position: relative;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: #eef4ff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
+  transition: color 140ms linear;
+}
+
+/* Colour states, matching the original's thresholds. */
+.mag-count.full { color: #d8f4ff; }
+.mag-count.low { color: #ffb35a; }
+.mag-count.empty { color: #ff6a5a; }
+
+/* Skill wheel — right thumb */
+.skills {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.skill {
+  position: relative;
+  width: clamp(58px, 13vh, 76px);
+  height: clamp(58px, 13vh, 76px);
+  border-radius: 50%;
+  border: 2px solid rgba(150, 190, 255, 0.3);
+  background: radial-gradient(circle at 35% 30%, rgba(60, 100, 150, 0.9), rgba(12, 20, 32, 0.95));
+  color: var(--ink);
+  font-family: inherit;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: auto;
+  touch-action: none;
+  transition: transform 90ms ease, border-color 120ms linear, box-shadow 120ms linear;
+}
+
+.skill:active {
+  transform: scale(0.94);
+}
+
+.skill.ready {
+  border-color: rgba(79, 210, 255, 0.85);
+  box-shadow: 0 0 14px rgba(79, 210, 255, 0.4), inset 0 0 12px rgba(79, 210, 255, 0.18);
+}
+
+.skill.buff {
+  border-color: #ffd166;
+  box-shadow: 0 0 16px rgba(255, 209, 102, 0.55);
+}
+
+.skill.cooling {
+  border-color: rgba(120, 140, 170, 0.35);
+}
+
+/* Cooldown sweep: scales down from the top as the skill recharges. */
+.skill-cd {
+  position: absolute;
+  inset: 0;
+  transform-origin: bottom center;
+  transform: scaleY(0);
+  background: rgba(6, 10, 16, 0.72);
+}
+
+.skill-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(16px, 3.6vh, 22px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.skill-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+
+.skill-time {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 12%;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffd166;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------- cast & landing feedback */
+
+/*
+ * Skill banners and landing rings exist because a skill whose target is
+ * off-screen previously produced no visible change at all, which made the
+ * buttons read as broken. Both are cheap DOM nodes removed on a timer.
+ */
+
+.skill-banner {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + 24%);
+  transform: translateX(-50%);
+  padding: 6px 18px;
+  border-radius: 10px;
+  background: rgba(8, 20, 32, 0.78);
+  border: 1px solid rgba(79, 210, 255, 0.65);
+  color: #d8f4ff;
+  font-size: clamp(13px, 2.8vh, 19px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  animation: banner-pop 900ms ease-out forwards;
+}
+
+.skill-banner.buff {
+  border-color: rgba(255, 209, 102, 0.8);
+  color: #ffe9b0;
+}
+
+@keyframes banner-pop {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.82); }
+  18% { opacity: 1; transform: translateX(-50%) scale(1.06); }
+  32% { transform: translateX(-50%) scale(1); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-14px); }
+}
+
+.skill.fired {
+  animation: skill-fired 320ms ease-out;
+}
+
+@keyframes skill-fired {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.85); }
+  60% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.impact-ring {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 2px solid rgba(190, 240, 255, 0.9);
+  box-shadow: 0 0 10px rgba(120, 220, 255, 0.6);
+  pointer-events: none;
+  animation: ring-out 410ms ease-out forwards;
+}
+
+.impact-ring.miss {
+  border-color: rgba(150, 165, 185, 0.7);
+  box-shadow: none;
+}
+
+@keyframes ring-out {
+  0% { opacity: 0.95; transform: scale(0.4); }
+  100% { opacity: 0; transform: scale(3.1); }
+}
+
+/* ------------------------------------------------------- talent graph */
+/*
+ * The talent tree, rebuilt from the shipping build's own assets.
+ *
+ * The panel is a full-screen overlay rather than a band under the artwork, because the
+ * original's tree is its own screen and the graph is 3684 x 480 UI units — it needs the
+ * height. `TreeCreator.centerTree` is false, so the graph is never re-centred; the player
+ * pans it, which is the original's `TreeHorizontalPan`.
+ *
+ * Every size below is the original's: node shapes are 50x50 (base template) or 75x75
+ * (portal template), icons 32 or 38, highlighters 71 or 100. The sprites are the game's
+ * own PNGs in `public/art/tree/`.
+ */
+.talent {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  overflow: hidden;
+  /* The tree screen sits on the game's dark UI plate. */
+  background:
+    radial-gradient(140% 90% at 50% 0%, rgba(46, 36, 28, 0.94), rgba(9, 8, 10, 0.985) 70%),
+    #09080a;
+  z-index: 8;
+}
+
+.talent.hidden {
+  display: none;
+}
+
+.talent-head {
+  position: absolute;
+  top: calc(var(--safe-top) + 8px);
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  z-index: 3;
+}
+
+.talent-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #f0e2cd;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.talent-progress {
+  font-weight: 700;
+  color: #c9995f;
+  font-variant-numeric: tabular-nums;
+}
+
+.talent-hint {
+  margin-left: auto;
+  color: rgba(226, 210, 188, 0.5);
+}
+
+.talent-close {
+  pointer-events: auto;
+  margin-left: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 153, 95, 0.5);
+  background: rgba(201, 153, 95, 0.14);
+  color: #f0e2cd;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.talent-viewport {
+  position: absolute;
+  inset: calc(var(--safe-top) + 30px) 0 calc(var(--safe-bottom) + 8px) 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+}
+
+.talent-viewport:active {
+  cursor: grabbing;
+}
+
+.talent-world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.talent-links {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.talent-nodes {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/*
+ * One node = the prefab's three stacked Images: Highlighter over NodeShape over NodeIcon.
+ * Sprites are white-with-alpha, so a tint is applied the way Unity's `Image.color` does it
+ * — multiply the sprite by the colour — using a coloured backdrop and `mix-blend-mode`.
+ */
+.tn {
+  position: absolute;
+  /* The graphs' coordinates are centres; the box is placed by its middle. */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  touch-action: none;
+  /* A 50-unit node is well under a fingertip, so the hit area is padded invisibly
+     rather than by scaling the art — this is what `TreeCreator.NodeSizeScale` is for,
+     but keeping the art at its authored size is what makes it match. */
+  isolation: isolate;
+}
+
+.tn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  transform: translate(-50%, -50%);
+}
+
+.tn > * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.tn-shape {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: auto;
+}
+
+.tn-hi {
+  display: block;
+  /* `highlighterOffset` is (0.3, 0) in the assets. */
+  margin-left: 0.3px;
+  opacity: 0;
+  transition: opacity 140ms linear;
+}
+
+.tn-hi[data-on='1'] {
+  opacity: 1;
+}
+
+.tn-hi img,
+.tn-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+/* `TreeNodeInfo.GetCurrentIconColor` tints the glyph: locked nodes go dark brown. */
+.tn-icon {
+  display: block;
+}
+
+.tn:active {
+  filter: brightness(1.08);
+}
+
+/*
+ * `TreeNode.OnPointerEnter`: `DOScale(original * 1.08, 0.2s).SetEase(OutBack, 1.5)`.
+ * `OutBack` overshoots, which is most of the tree's feel.
+ */
+.tn:hover {
+  z-index: 2;
+  animation: tn-hover-in 200ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes tn-hover-in {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/*
+ * `TreeNode.PlayLevelUpAnimation`: 0.88 (0.07s InQuad) -> 1.25 (0.12s OutBack 2.5)
+ * -> 1 (0.24s OutElastic), with the icon punched and spun 15 degrees.
+ */
+.tn.lv {
+  animation: tn-pop 430ms cubic-bezier(0.22, 1.4, 0.36, 1) forwards;
+}
+
+@keyframes tn-pop {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  16% { transform: translate(-50%, -50%) scale(0.88); }
+  44% { transform: translate(-50%, -50%) scale(1.25); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.tn-icon.lv {
+  animation: tn-icon-pop 300ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes tn-icon-pop {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  40% { transform: translate(-50%, -50%) scale(1.3) rotate(15deg); }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+.tn.lv-max.tn-icon.lv,
+.tn.lv-max .tn-icon.lv {
+  animation: tn-icon-max 550ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes tn-icon-max {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  40% { transform: translate(-50%, -50%) scale(1.3) rotate(15deg); }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+/* Inaccessible nodes are dimmed the way the original's locked icon colour is. */
+.tn.locked .tn-shape {
+  filter: brightness(0.82) saturate(0.9);
+}
+
+.talent-tip {
+  position: absolute;
+  width: min(280px, 84vw);
+  transform: translateX(-50%);
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: rgba(12, 10, 10, 0.97);
+  border: 1px solid rgba(201, 153, 95, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  font-size: 11px;
+  line-height: 1.55;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.talent-tip.hidden {
+  display: none;
+}
+
+.tt-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: #f3e6d2;
+}
+
+.tt-lv {
+  color: #9fe6ff;
+  font-weight: 700;
+}
+
+.tt-next {
+  margin-top: 3px;
+}
+
+.tt-grant {
+  color: #8fe0a4;
+  font-weight: 600;
+}
+
+.tt-cost {
+  margin-top: 3px;
+  color: rgba(240, 226, 205, 0.8);
+}
+
+.tt-cost .ok { color: #ffd166; }
+.tt-cost .no { color: #ff7a66; }
+
+.tt-locked {
+  margin-top: 3px;
+  color: #ff9a86;
+  font-weight: 700;
+}
+
+/* Toggle in the top bar. */
+.hud-talent {
+  pointer-events: auto;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(79, 210, 255, 0.5);
+  background: rgba(79, 210, 255, 0.14);
+  color: #d8f4ff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hud-talent:active {
+  transform: scale(0.95);
+}
+
+/* ------------------------------------------------------- shop / upgrades UI */
+
+.shop {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.shop.hidden {
+  display: none;
+}
+
+.shop-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 8, 14, 0.78);
+  backdrop-filter: blur(3px);
+}
+
+.shop-panel {
+  position: relative;
+  width: min(92vw, 880px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(18, 28, 42, 0.98), rgba(10, 16, 26, 0.98));
+  border: 1px solid rgba(150, 190, 255, 0.28);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.shop-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(150, 190, 255, 0.18);
+}
+
+.shop-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.shop-gold {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #ffd166;
+}
+
+.shop-gold .coin {
+  font-size: 12px;
+}
+
+.shop-close {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(150, 190, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.shop-close:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.shop-rows {
+  overflow-y: auto;
+  padding: 8px 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.shop-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.shop-row:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.shop-row.bought {
+  animation: shop-bought 420ms ease-out;
+}
+
+.shop-row.denied {
+  animation: shop-denied 380ms ease-out;
+}
+
+@keyframes shop-bought {
+  0% { background: rgba(120, 240, 160, 0.35); border-color: rgba(120, 240, 160, 0.8); }
+  100% { background: transparent; border-color: transparent; }
+}
+
+@keyframes shop-denied {
+  0%, 100% { translate: 0; }
+  25% { translate: -5px; }
+  75% { translate: 5px; }
+}
+
+.shop-row-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.shop-row-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.shop-row-desc {
+  font-size: 11px;
+  color: var(--ink-dim);
+  margin-top: 1px;
+}
+
+.shop-row-value {
+  flex: 0 0 auto;
+  min-width: 62px;
+  text-align: right;
+  font-weight: 800;
+  color: #7fe0a0;
+  font-variant-numeric: tabular-nums;
+}
+
+.shop-buy {
+  flex: 0 0 auto;
+  min-width: 96px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  border: 1px solid rgba(150, 190, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.shop-buy.can-afford {
+  border-color: rgba(255, 209, 102, 0.8);
+  background: rgba(255, 209, 102, 0.16);
+}
+
+.shop-buy:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.shop-buy-cost {
+  font-variant-numeric: tabular-nums;
+  color: #ffd166;
+}
+
+.shop-buy-level {
+  font-size: 10px;
+  color: var(--ink-dim);
+}
+
+.shop-row.maxed .shop-buy-level {
+  color: #7fe0a0;
+}
+
+.shop-hint {
+  padding: 8px 16px 12px;
+  font-size: 11px;
+  color: var(--ink-dim);
+  border-top: 1px solid rgba(150, 190, 255, 0.14);
+}
+
+/* Shop button in the top bar. */
+.hud-shop {
+  pointer-events: auto;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 209, 102, 0.5);
+  background: rgba(255, 209, 102, 0.14);
+  color: #ffe9b0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hud-shop:active {
+  transform: scale(0.95);
+}
+
+/* Magazine pip flash when a tap is refused for lack of arrows. */
+.mag.empty {
+  animation: mag-empty 360ms ease-out;
+}
+
+@keyframes mag-empty {
+  0% { border-color: rgba(255, 90, 70, 0.95); background: rgba(255, 90, 70, 0.28); }
+  100% { border-color: var(--panel-line); background: var(--panel); }
+}
+
+.no-arrows {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + 18%);
+  transform: translateX(-50%);
+  padding: 4px 14px;
+  border-radius: 8px;
+  background: rgba(70, 10, 10, 0.8);
+  border: 1px solid rgba(255, 120, 100, 0.7);
+  color: #ffd7cf;
+  font-size: clamp(12px, 2.4vh, 16px);
+  font-weight: 800;
+  pointer-events: none;
+  animation: banner-pop 620ms ease-out forwards;
+}
+
+.floater {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: clamp(13px, 2.6vh, 18px);
+  font-weight: 800;
+  color: #fff3d6;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 8px rgba(255, 180, 60, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  animation: float-up 900ms ease-out forwards;
+  font-variant-numeric: tabular-nums;
+}
+
+.floater.crit {
+  color: #ffd166;
+  font-size: clamp(17px, 3.4vh, 24px);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 1), 0 0 14px rgba(255, 190, 60, 0.8);
+}
+
+@keyframes float-up {
+  0% { opacity: 1; translate: 0 0; }
+  70% { opacity: 1; }
+  100% { opacity: 0; translate: 0 -46px; }
+}
+
+/* ------------------------------------------------------------ rotate hint */
+
+.rotate-hint {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(5, 8, 12, 0.94);
+  z-index: 50;
+  text-align: center;
+  padding: 24px;
+}
+
+.rotate-hint .icon {
+  font-size: 42px;
+}
+
+.rotate-hint .title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.rotate-hint .sub {
+  font-size: 13px;
+  color: var(--ink-dim);
+  max-width: 34ch;
+  line-height: 1.5;
+}
+
+/* Portrait phones: the world is a side-scroller, so ask for landscape once. */
+@media (orientation: portrait) and (max-width: 820px) {
+  .rotate-hint {
+    display: flex;
+  }
+}
+
+/* ------------------------------------------------------- jobs screen */
+/*
+ * The jobs panel, rebuilt from `JobsUIManager`: five job tabs, the selected job's three
+ * skills, and one unlock row. Like the talent tree it is its own full-screen screen, so it
+ * starts closed and never blocks the game.
+ */
+.jobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  overflow: hidden;
+  background:
+    radial-gradient(140% 90% at 50% 0%, rgba(46, 36, 28, 0.94), rgba(9, 8, 10, 0.985) 70%),
+    #09080a;
+  z-index: 8;
+}
+
+.jobs.hidden {
+  display: none;
+}
+
+.jobs-head {
+  position: absolute;
+  top: calc(var(--safe-top) + 8px);
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  z-index: 3;
+}
+
+.jobs-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #f0e2cd;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.jobs-progress {
+  font-weight: 700;
+  color: #c9995f;
+  font-variant-numeric: tabular-nums;
+}
+
+.jobs-hint {
+  margin-left: auto;
+  color: rgba(226, 210, 188, 0.5);
+}
+
+.jobs-close {
+  pointer-events: auto;
+  margin-left: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 153, 95, 0.5);
+  background: rgba(201, 153, 95, 0.14);
+  color: #f0e2cd;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.jobs-tabs {
+  position: absolute;
+  top: calc(var(--safe-top) + 46px);
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.jobs-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 104, 88, 0.5);
+  background: rgba(26, 22, 19, 0.9);
+  color: rgba(226, 210, 188, 0.55);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jobs-tab[data-state='unlocked'] {
+  color: #f0e2cd;
+  border-color: rgba(201, 153, 95, 0.55);
+  background: rgba(58, 44, 32, 0.92);
+}
+
+/* `JobsUIManager` marks an unlockable job differently from one that is still gated. */
+.jobs-tab[data-state='unlockable'] {
+  color: #ffd166;
+  border-color: rgba(255, 209, 102, 0.6);
+}
+
+.jobs-tab.active {
+  box-shadow: 0 0 0 2px rgba(232, 195, 65, 0.55), 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+.jobs-body {
+  position: absolute;
+  top: calc(var(--safe-top) + 92px);
+  left: 12px;
+  right: 12px;
+  bottom: calc(var(--safe-bottom) + 74px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.jobs-bonus {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(20, 17, 14, 0.85);
+  border: 1px solid rgba(120, 104, 88, 0.4);
+  color: rgba(226, 210, 188, 0.8);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.jobs-bonus[data-state='on'] {
+  color: #cfe6b8;
+  border-color: rgba(143, 224, 164, 0.4);
+}
+
+.jobs-skills {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 10px;
+  align-content: start;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+.job-skill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 6px 8px;
+  border-radius: 12px;
+  border: 2px solid rgba(120, 104, 88, 0.5);
+  background: rgba(26, 22, 19, 0.9);
+  color: #e8dcc8;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.job-skill[hidden] {
+  display: none;
+}
+
+.job-skill.affordable {
+  border-color: rgba(143, 224, 164, 0.75);
+  box-shadow: 0 0 12px rgba(143, 224, 164, 0.28);
+}
+
+.job-skill.maxed {
+  border-color: rgba(255, 209, 102, 0.8);
+  background: rgba(48, 38, 20, 0.92);
+}
+
+.job-skill.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.js-icon {
+  width: 44px;
+  height: 44px;
+  image-rendering: auto;
+  object-fit: contain;
+}
+
+.js-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.js-lv {
+  font-size: 11px;
+  font-weight: 800;
+  color: #9fe6ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.js-cost {
+  font-size: 10px;
+  color: #ffd166;
+  font-variant-numeric: tabular-nums;
+}
+
+.js-lock {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  font-size: 12px;
+}
+
+.jobs-unlock {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: calc(var(--safe-bottom) + 14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(120, 104, 88, 0.55);
+  background: rgba(26, 22, 19, 0.94);
+  color: #e8dcc8;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.jobs-unlock[hidden] {
+  display: none;
+}
+
+.jobs-unlock.affordable {
+  border-color: rgba(255, 209, 102, 0.8);
+  box-shadow: 0 0 16px rgba(255, 209, 102, 0.3);
+}
+
+.jobs-unlock-cost {
+  color: #ffd166;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Toggle in the top bar. */
+.hud-jobs {
+  pointer-events: auto;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(232, 195, 65, 0.5);
+  background: rgba(232, 195, 65, 0.14);
+  color: #ffedbf;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hud-jobs:active {
+  transform: scale(0.95);
+}
+
+/* A skill the player owns no level in reads as dark rather than ready. */
+.skill.unowned {
+  opacity: 0.42;
+}
+
+/* ------------------------------------------------------- mastery screen */
+/*
+ * The mastery screen, from `MasteryUIManager`: the NPC level track on top, its reward
+ * ladder, then nine mastery tiles. Paid in BatCurrency throughout.
+ */
+.mastery {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  overflow: hidden;
+  background:
+    radial-gradient(140% 90% at 50% 0%, rgba(46, 36, 28, 0.94), rgba(9, 8, 10, 0.985) 70%),
+    #09080a;
+  z-index: 8;
+}
+
+.mastery.hidden {
+  display: none;
+}
+
+.mastery-head {
+  position: absolute;
+  top: calc(var(--safe-top) + 8px);
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  z-index: 3;
+}
+
+.mastery-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #f0e2cd;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.mastery-progress {
+  font-weight: 700;
+  color: #c9995f;
+  font-variant-numeric: tabular-nums;
+}
+
+.mastery-hint {
+  margin-left: auto;
+  color: rgba(226, 210, 188, 0.5);
+}
+
+.mastery-close {
+  pointer-events: auto;
+  margin-left: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 153, 95, 0.5);
+  background: rgba(201, 153, 95, 0.14);
+  color: #f0e2cd;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mastery-npc {
+  position: absolute;
+  top: calc(var(--safe-top) + 46px);
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(26, 22, 19, 0.92);
+  border: 1px solid rgba(120, 104, 88, 0.5);
+  font-size: 12px;
+  color: #e8dcc8;
+}
+
+.npc-level {
+  color: #9fe6ff;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+}
+
+.npc-levelup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(120, 104, 88, 0.6);
+  background: rgba(48, 40, 30, 0.9);
+  color: #e8dcc8;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.npc-levelup.affordable {
+  border-color: rgba(255, 209, 102, 0.8);
+  box-shadow: 0 0 12px rgba(255, 209, 102, 0.28);
+}
+
+.npc-levelup:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.npc-cost {
+  color: #ffd166;
+  font-variant-numeric: tabular-nums;
+}
+
+.mastery-rewards {
+  position: absolute;
+  top: calc(var(--safe-top) + 90px);
+  left: 12px;
+  right: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.mr-chip {
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 104, 88, 0.45);
+  background: rgba(24, 20, 17, 0.85);
+  color: rgba(226, 210, 188, 0.4);
+  font-size: 10px;
+}
+
+.mr-chip.got {
+  border-color: rgba(143, 224, 164, 0.55);
+  background: rgba(30, 46, 32, 0.9);
+  color: #cfe6b8;
+}
+
+.mastery-tiles {
+  position: absolute;
+  top: calc(var(--safe-top) + 124px);
+  left: 12px;
+  right: 12px;
+  bottom: calc(var(--safe-bottom) + 10px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+  gap: 10px;
+  align-content: start;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+.mastery-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 6px 8px;
+  border-radius: 12px;
+  border: 2px solid rgba(120, 104, 88, 0.5);
+  background: rgba(26, 22, 19, 0.9);
+  color: #e8dcc8;
+  font-size: 11px;
+}
+
+.mastery-tile[data-state='pinnacle'] {
+  border-color: rgba(196, 138, 220, 0.65);
+  background: rgba(38, 24, 44, 0.92);
+}
+
+.mastery-tile[data-state='maxed'] {
+  border-color: rgba(255, 209, 102, 0.8);
+  background: rgba(48, 38, 20, 0.92);
+}
+
+.mastery-tile[data-state='locked'] {
+  opacity: 0.5;
+}
+
+.mt-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.mt-lock {
+  font-size: 22px;
+  line-height: 42px;
+  height: 42px;
+}
+
+.mt-name {
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.mt-lv {
+  color: #9fe6ff;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.mt-stat {
+  color: rgba(226, 210, 188, 0.6);
+  font-size: 10px;
+  text-align: center;
+}
+
+.mt-cost {
+  color: #ffd166;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mt-level,
+.mt-awaken {
+  width: 100%;
+  margin-top: 2px;
+  padding: 4px 2px;
+  border-radius: 7px;
+  border: 1px solid rgba(120, 104, 88, 0.6);
+  background: rgba(48, 40, 30, 0.9);
+  color: #e8dcc8;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mt-level[hidden],
+.mt-awaken[hidden] {
+  display: none;
+}
+
+.mt-level.affordable,
+.mt-awaken.affordable {
+  border-color: rgba(143, 224, 164, 0.75);
+  box-shadow: 0 0 10px rgba(143, 224, 164, 0.25);
+}
+
+.mt-awaken {
+  border-color: rgba(196, 138, 220, 0.5);
+  color: #e3cdf0;
+}
+
+.mt-awaken:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Toggle in the top bar. */
+.hud-mastery {
+  pointer-events: auto;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(196, 138, 220, 0.5);
+  background: rgba(196, 138, 220, 0.14);
+  color: #f0dcff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hud-mastery:active {
+  transform: scale(0.95);
+}
+
+/* ============ lower-half panel layout (overrides above) ============ */
+/*
+ * The talent / jobs / mastery screens live in the LOWER HALF, not full screen.
+ *
+ * The camera shows 1080 world units while the art frame is only 600 tall, so the lower
+ * 44% of the viewport is UI by construction - that is the band the original puts its
+ * panels in, and covering the top half hid the artwork and the HUD.
+ *
+ * These rules are appended rather than edited in place: everything above still styles the
+ * internals (tiles, cards, links), and only the band each panel occupies changes.
+ */
+.talent,
+.jobs,
+.mastery {
+  inset: auto 0 auto 0;
+  top: calc(55.6% + 44px);
+  /* Clear the control bar, which is ~96px tall at the bottom. */
+  bottom: calc(var(--safe-bottom) + 96px);
+  background:
+    linear-gradient(180deg, rgba(41, 24, 15, 0.97), rgba(18, 12, 9, 0.985));
+  border-top: 2px solid rgba(201, 153, 95, 0.55);
+}
+
+/* The panel's own title row is now the tab strip's job; keep it slim. */
+.talent-head,
+.jobs-head,
+.mastery-head {
+  top: 6px;
+  font-size: 11px;
+}
+.talent-title,
+.jobs-title,
+.mastery-title {
+  font-size: 13px;
+}
+.talent-hint,
+.jobs-hint,
+.mastery-hint {
+  display: none;
+}
+/* The ✕ is redundant once the strip can collapse the band. */
+.talent-close,
+.jobs-close,
+.mastery-close {
+  display: none;
+}
+
+/* --- the tab strip --- */
+.lower-tabs {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: calc(55.6% + 6px);
+  height: 32px;
+  display: flex;
+  gap: 8px;
+  z-index: 9;
+  pointer-events: auto;
+}
+
+.lower-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 5px 8px;
+  border-radius: 9px 9px 0 0;
+  border: 1px solid rgba(120, 104, 88, 0.55);
+  border-bottom: none;
+  background: rgba(26, 22, 19, 0.92);
+  color: rgba(226, 210, 188, 0.6);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lower-tab[hidden] {
+  display: none;
+}
+
+.lower-tab.active {
+  background: rgba(58, 44, 32, 0.98);
+  color: #ffedbf;
+  border-color: rgba(255, 209, 102, 0.7);
+}
+
+/* A tab waiting on its unlock reads as a lock the player can still press to read about. */
+.lower-tab.locked {
+  color: rgba(226, 210, 188, 0.35);
+  border-color: rgba(120, 104, 88, 0.3);
+}
+
+.lower-tab:active {
+  transform: translateY(1px);
+}
+
+/* Panels are sized for a full screen; inside the band their internals need to fit. */
+.talent-viewport {
+  inset: 24px 0 4px 0;
+}
+.jobs-tabs {
+  top: 40px;
+}
+.jobs-body {
+  top: 82px;
+  bottom: 58px;
+}
+.jobs-unlock {
+  bottom: 8px;
+  padding: 8px;
+  font-size: 12px;
+}
+.mastery-npc {
+  top: 40px;
+}
+.mastery-rewards {
+  top: 78px;
+}
+.mastery-tiles {
+  top: 108px;
+  bottom: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+}
+.jobs-skills {
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+}
+
+/* ============ left rail + detail page (original layout) ============ */
+/*
+ * The lower half is a LEFT RAIL plus a detail page, which is what `MainMenusManager` does:
+ * `MenuButtons` is a dictionary keyed by `UnlockableSystems`, and `MenuTransforms[system]`
+ * is that system's page, slid between ShowPosition and HidePosition. So the buttons run
+ * down the left edge and the page occupies the rest of the band — not a row of tabs along
+ * the top, which is what this port had.
+ */
+.lower-tabs {
+  left: 8px;
+  right: auto;
+  top: calc(55.6% + 34px);
+  bottom: calc(var(--safe-bottom) + 96px);
+  width: 64px;
+  height: auto;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+.lower-tab {
+  flex: 0 0 auto;
+  /* A rail button is a squarish chip, so the top-only rounding goes away. */
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(120, 104, 88, 0.55);
+  padding: 8px 4px;
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: normal;
+  text-align: center;
+}
+
+.lower-tab.active {
+  border-color: rgba(255, 209, 102, 0.75);
+}
+
+/* The detail page starts where the rail ends. */
+.talent,
+.jobs,
+.mastery {
+  left: 78px;
+  right: 8px;
+}
+
+/* ============ skill cooldown on the job cards ============ */
+/*
+ * The original shows each skill's own icon with its cooldown on it (`JobsUIManager` drives
+ * a `CooldownImage.fillAmount` per skill). The card is a PURCHASE control — the skill
+ * itself is fired automatically — so the overlay is drawn over the icon, not over the
+ * whole card, and it never blocks the click.
+ */
+.job-skill .js-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.js-cd {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  pointer-events: none;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(6, 6, 10, 0.62);
+  z-index: 2;
+}
+
+.js-cd[hidden] {
+  display: none;
+}
+
+/* A bottom-up wipe over the icon, which reads at this size where a thin ring does not. */
+.js-cd-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: rgba(159, 230, 255, 0.28);
+  transform-origin: 50% 100%;
+  transform: scaleX(1);
+}
+
+.js-cd-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #eaf6ff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============ skill slots, as the original draws them ============ */
+/*
+ * From the original's job card: each skill is a slot made of TWO parts — an inset panel
+ * holding the skill ICON, and below it a darker bar holding the price (a currency orb plus
+ * a number). In a run that lower bar carries the COOLDOWN instead.
+ *
+ * The port previously drew each skill as one flat card with the name, level and price
+ * stacked as text, which is why it read nothing like the original.
+ *
+ * The slot is still a purchase button — the skill fires itself — so the whole slot stays
+ * clickable.
+ */
+.jobs-skills {
+  /* Three across, which is what the original's card holds. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+.job-skill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 1px solid rgba(140, 122, 96, 0.55);
+  background: rgba(18, 15, 12, 0.92);
+}
+
+/* The icon's inset panel: the larger, lighter half. */
+.job-skill .js-icon {
+  display: block;
+  width: 100%;
+  height: 52px;
+  object-fit: contain;
+  padding: 4px;
+  box-sizing: border-box;
+  background: rgba(38, 33, 26, 0.95);
+}
+
+/* The price / cooldown bar underneath. */
+.job-skill .js-cost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 20px;
+  padding: 2px 4px;
+  background: rgba(58, 30, 26, 0.95);
+  border-top: 1px solid rgba(120, 100, 80, 0.5);
+  color: #f2e6d4;
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The currency orb the original puts before the number. Green for ClawCurrency. */
+.job-skill .js-cost:not(:empty)::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b6f09a, #4e9b3a 70%);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  flex: 0 0 auto;
+}
+
+/* The level badge sits in the icon's corner, as the original's level pip does. */
+.job-skill .js-lv {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  padding: 0 3px;
+  border-radius: 4px;
+  background: rgba(8, 8, 12, 0.72);
+  font-size: 10px;
+  font-weight: 800;
+  color: #9fe6ff;
+}
+
+/* The original's slot carries no name text; the tooltip has it. */
+.job-skill .js-name {
+  display: none;
+}
+
+.job-skill .js-lock {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, -60%);
+  font-size: 18px;
+}
+
+.job-skill.affordable {
+  border-color: rgba(143, 224, 164, 0.8);
+  box-shadow: 0 0 10px rgba(143, 224, 164, 0.25);
+}
+
+.job-skill.maxed {
+  border-color: rgba(255, 209, 102, 0.85);
+}
+
+.job-skill.maxed .js-cost {
+  background: rgba(66, 52, 22, 0.95);
+  color: #ffd166;
+}
+
+.job-skill.maxed .js-cost::before {
+  display: none;
+}
+
+/* The cooldown wipe covers the icon panel only, so the price stays readable. */
+.js-cd {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  margin-left: 0;
+  border-radius: 0;
+}
+
+/* ============ jobs page compacted for the band ============ */
+/*
+ * The jobs page's internal offsets were sized when it was a FULL-SCREEN overlay. In the
+ * lower band (about 180px at 720p) they ate almost all of it and pushed the skill slots
+ * out of the clipped area, so the card looked empty.
+ *
+ * The original's panel is roughly 44% of the screen with the job cards filling it; this
+ * port's band is ~25%, so the rows are tightened and the skill slots shortened to fit one
+ * row of three.
+ */
+.jobs-head {
+  top: 2px;
+}
+
+.jobs-tabs {
+  top: 18px;
+}
+
+.jobs-body {
+  top: 50px;
+  bottom: 42px;
+  gap: 6px;
+}
+
+.jobs-bonus {
+  padding: 3px 8px;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.jobs-skills {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  align-content: start;
+}
+
+/* Shorter icon panel so a slot fits the band: 40 + 18 = 58px. */
+.job-skill .js-icon,
+.js-cd {
+  height: 40px;
+}
+
+.job-skill .js-cost {
+  min-height: 18px;
+  font-size: 10px;
+}
+
+.jobs-unlock {
+  bottom: 6px;
+  padding: 6px;
+  font-size: 11px;
+}
+
+/* The mastery page has the same problem: its NPC row and reward chips were full-screen. */
+.mastery-npc {
+  top: 18px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+.mastery-rewards {
+  top: 46px;
+  gap: 4px;
+}
+.mr-chip {
+  padding: 1px 6px;
+  font-size: 9px;
+}
+.mastery-tiles {
+  top: 66px;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 6px;
+}
+.mt-icon {
+  width: 30px;
+  height: 30px;
+}
+.mastery-tile {
+  padding: 5px 4px 4px;
+  font-size: 10px;
+}
+
+/* The tree already fits (it pans), but its header row can shrink too. */
+.talent-viewport {
+  inset: 20px 0 2px 0;
+}
+
+/* ============ job cards + icon rail (original layout) ============ */
+/*
+ * From the original's own screen: the lower panel is a LEFT RAIL of system tabs and a row
+ * of FIVE JOB CARDS. Each card holds the job name, that job's character portrait, a banner
+ * with the job's passive, and a row of three skill slots; a locked card shows a dimmed
+ * portrait and either an unlock button or a padlock.
+ *
+ * Skill slot = inset icon panel on top, darker price/cooldown bar underneath. That is
+ * `SkillsParents[whichJob]` + the per-skill `CooldownImage` in `JobsUIManager`.
+ */
+
+/* ---- the band gets more height: the original's panel is ~44% of the screen, and this
+   port was reserving 96px at the bottom for its control bar. ---- */
+.talent,
+.jobs,
+.mastery {
+  top: calc(55.6% + 40px);
+  bottom: calc(var(--safe-bottom) + 52px);
+}
+
+.lower-tabs {
+  top: calc(55.6% + 30px);
+  bottom: calc(var(--safe-bottom) + 52px);
+}
+
+/* ---- the left rail: icon buttons, as `MenuButtons` is one image per system ---- */
+.lower-tabs {
+  width: 52px;
+  gap: 3px;
+}
+
+.lower-tab {
+  height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 3px 10px 10px 3px;
+  background: rgba(30, 25, 20, 0.94);
+  /* The original's tabs are a trapezoid: the right edge is cut back at the top. */
+  clip-path: polygon(0 0, 78% 0, 100% 26%, 100% 100%, 0 100%);
+  font-size: 0;
+}
+
+.lower-tab .rail-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.lower-tab.active {
+  background: rgba(196, 160, 108, 0.95);
+}
+
+.lower-tab.active .rail-icon {
+  opacity: 1;
+}
+
+/* A locked system shows the padlock instead of its own icon, per `MainMenusManager`. */
+.lower-tab.locked .rail-icon {
+  opacity: 0.45;
+  filter: grayscale(1) brightness(1.6);
+}
+
+.lower-tab.active.locked .rail-icon {
+  opacity: 0.6;
+}
+
+.talent,
+.jobs,
+.mastery {
+  left: 62px;
+}
+
+/* ---- the five job cards ---- */
+.jobs-head {
+  top: 2px;
+}
+
+.jobs-cards {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 16px;
+  bottom: 4px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  overflow-x: auto;
+  touch-action: pan-x;
+}
+
+.job-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid rgba(120, 104, 88, 0.5);
+  background: linear-gradient(180deg, rgba(60, 46, 32, 0.92), rgba(26, 20, 15, 0.95));
+  overflow: hidden;
+}
+
+.job-card[data-state='unlocked'] {
+  border-color: rgba(168, 196, 96, 0.75);
+  box-shadow: inset 0 0 0 1px rgba(168, 196, 96, 0.25);
+}
+
+.job-card[data-state='unlockable'] {
+  border-color: rgba(214, 178, 96, 0.7);
+}
+
+.job-card[data-state='locked'] {
+  opacity: 0.75;
+}
+
+.jc-title {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffe08a;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.jc-portrait {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 34px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.jc-portrait-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.jc-lock {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.jc-lock[hidden] {
+  display: none;
+}
+
+.jc-passive {
+  padding: 2px 4px;
+  border-radius: 5px;
+  background: rgba(12, 10, 8, 0.7);
+  border: 1px solid rgba(120, 104, 88, 0.35);
+  font-size: 9px;
+  line-height: 1.3;
+  text-align: center;
+  color: rgba(226, 210, 188, 0.85);
+  max-height: 24px;
+  overflow: hidden;
+}
+
+.jc-passive[data-state='on'] {
+  color: #cfe6b8;
+}
+
+.jc-skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.jc-skills[hidden] {
+  display: none;
+}
+
+.jc-unlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(214, 178, 96, 0.6);
+  background: rgba(70, 40, 34, 0.95);
+  color: #f2e6d4;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.jc-unlock[hidden] {
+  display: none;
+}
+
+.jc-unlock.affordable {
+  border-color: rgba(255, 209, 102, 0.9);
+  box-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+}
+
+.jc-unlock-cost {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffd166;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The currency orb, which the original draws before every price. */
+.jc-unlock-cost::before,
+.job-skill .js-cost:not(:empty)::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b6f09a, #4e9b3a 70%);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  flex: 0 0 auto;
+}
+
+/* ---- the skill slot ---- */
+.job-skill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid rgba(140, 122, 96, 0.5);
+  background: rgba(16, 13, 10, 0.94);
+  cursor: pointer;
+}
+
+.js-icon-box {
+  display: block;
+  height: 24px;
+  background: rgba(40, 34, 26, 0.95);
+}
+
+.job-skill .js-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.job-skill .js-cost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 13px;
+  background: rgba(58, 30, 26, 0.95);
+  border-top: 1px solid rgba(120, 100, 80, 0.45);
+  color: #f2e6d4;
+  font-size: 9px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.job-skill .js-cost:empty {
+  min-height: 13px;
+}
+
+.job-skill .js-lv {
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  padding: 0 2px;
+  border-radius: 3px;
+  background: rgba(8, 8, 12, 0.7);
+  font-size: 8px;
+  font-weight: 800;
+  color: #9fe6ff;
+}
+
+.job-skill .js-lock {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+.job-skill .js-lock[hidden] {
+  display: none;
+}
+
+.job-skill.affordable {
+  border-color: rgba(143, 224, 164, 0.85);
+}
+
+.job-skill.maxed {
+  border-color: rgba(255, 209, 102, 0.85);
+}
+
+.job-skill.maxed .js-cost {
+  background: rgba(66, 52, 22, 0.95);
+  color: #ffd166;
+}
+
+.job-skill.maxed .js-cost::before {
+  display: none;
+}
+
+/* The cooldown wipe covers the icon panel only, so the price stays readable. */
+.js-cd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.js-cd[hidden] {
+  display: none;
+}
+
+.js-cd-fill {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 18, 0.62);
+  transform-origin: 50% 100%;
+  transform: scaleX(1);
+}
+
+.js-cd-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: #eaf6ff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============ cards: real frame + real portrait, band at the original's height ============ */
+/*
+ * Two corrections, both from comparing against the original's screenshot:
+ *
+ * 1. `Job1`..`Job5` are the card FRAMES, not the portraits — each is a 320x424 ornate
+ *    border with an upper well for the character and a lower well for the passive banner.
+ *    The PORTRAIT is `Archer_1`..`Archer_5`, the same five outfit skins `ChangeSkin`
+ *    switches between. So the frame becomes the card background and the Archer art fills
+ *    the upper well.
+ *
+ * 2. The original's panel is ~44% of the viewport (its cards alone are 424px tall). This
+ *    port was giving the panel 28% because it reserved 96px at the bottom for a control
+ *    bar, so the cards had about 180px and everything inside them was crushed. The band now
+ *    runs to the bottom edge like the original, and the magazine dial — which the original
+ *    does not put there at all — moves out of the way.
+ */
+
+.talent,
+.jobs,
+.mastery {
+  top: 55.6%;
+  bottom: 0;
+}
+
+.lower-tabs {
+  top: calc(55.6% + 34px);
+  /* Stops above the magazine dial rather than behind it. */
+  bottom: calc(var(--safe-bottom) + 74px);
+}
+
+.talent,
+.jobs,
+.mastery {
+  left: 62px;
+}
+
+.jobs-cards {
+  top: 18px;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  gap: 8px;
+}
+
+/* ---- the card ---- */
+.job-card {
+  padding: 0;
+  border: none;
+  background: none;
+  overflow: visible;
+}
+
+.jc-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.job-card[data-state='unlocked'] .jc-frame {
+  opacity: 1;
+}
+
+.job-card[data-state='locked'] .jc-frame {
+  opacity: 0.55;
+}
+
+/* The frame's upper well. */
+.jc-portrait {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 4%;
+  height: 56%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.jc-portrait-img {
+  max-width: 78%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* The frame's lower well: the passive banner sits in it. */
+.jc-passive {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 63%;
+  height: 20%;
+  display: grid;
+  place-items: center;
+  padding: 0 4px;
+  border: none;
+  background: none;
+  max-height: none;
+  font-size: 10px;
+  line-height: 1.25;
+  overflow: hidden;
+}
+
+.jc-skills {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 3%;
+  gap: 4px;
+}
+
+.job-skill .js-icon-box,
+.js-cd {
+  height: 34px;
+}
+
+.job-skill .js-cost {
+  min-height: 15px;
+  font-size: 10px;
+}
+
+.jc-title {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 0.5%;
+  z-index: 1;
+}
+
+.jc-unlock {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 6%;
+  z-index: 1;
+}
+
+.jc-lock {
+  width: 30px;
+  height: 36px;
+}
+
+/* The magazine dial moves up out of the panel's way; it is a port addition, and the
+   original shows no such dial in the lower panel. */
+.hud-bottom {
+  bottom: calc(var(--safe-bottom) + 6px);
+}
+
+.mag {
+  transform: scale(0.82);
+  transform-origin: bottom left;
+}
+
+/* ============ card proportions + rail clearance ============ */
+/*
+ * Two remaining mismatches against the original:
+ *
+ * 1. The skill slots were crushed. The card's rows are proportional to a 424px-tall card,
+ *    but this band gives roughly 296px, so each share has to be re-divided: a slightly
+ *    shorter passive well buys the slot row its height back.
+ *
+ * 2. The left rail's lower tabs sat behind the magazine dial. The original puts no dial in
+ *    the lower panel at all — this port added one — so it shrinks and moves to the corner,
+ *    and the seven tabs are sized to fit the height that frees up.
+ */
+
+.jc-passive {
+  top: 60%;
+  height: 16%;
+  font-size: 9px;
+}
+
+.jc-skills {
+  bottom: 5%;
+}
+
+.job-skill .js-icon-box,
+.js-cd {
+  height: 40px;
+}
+
+.job-skill .js-cost {
+  min-height: 16px;
+}
+
+/* Seven tabs have to fit the band: 7 * 28 + 6 * 3 = 214px. */
+.lower-tabs {
+  top: calc(55.6% + 32px);
+  bottom: calc(var(--safe-bottom) + 56px);
+  gap: 3px;
+}
+
+.lower-tab {
+  height: 28px;
+}
+
+.lower-tab .rail-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* The dial is a port addition; keep it small and out of the rail's column. */
+.hud-bottom {
+  bottom: calc(var(--safe-bottom) + 2px);
+  left: 4px;
+  padding: 0;
+}
+
+.mag {
+  transform: scale(0.6);
+  transform-origin: bottom left;
+}
+
+.mag-label,
+.mag-dial .mag-ring + .mag-count {
+  font-size: 0;
+}
+
+.mag-label {
+  display: none;
+}
+
+/* ============ talent page: the original's plate and tab ============ */
+/*
+ * Colours below are SAMPLED from the shipping game, not chosen. The source is the original
+ * screenshot at 1914x1076:
+ *
+ *   plate interior   rgb(51,40,34)    #332822   (uniform - it does NOT fade)
+ *   plate edge       rgb(24,8,0)      #180800
+ *   title tab fill   rgb(108,68,57)   #6c4439
+ *   title tab light  rgb(176,138,123) #b08a7b
+ *
+ * The port used a radial gradient from rgb(46,36,28) down to near-black. The top of that
+ * gradient was already right; the fade to black was not, and it is what made the tree look
+ * muddy - the node shapes are themselves dark brown (`Slider_Level_01_Bg_3/4`), so they sank
+ * into the background instead of standing on it.
+ *
+ * The title tab straddles the panel's top edge: in the original half of it sits over the
+ * game scene. That is why the panel stops clipping its own overflow and the viewport does
+ * the clipping instead.
+ */
+
+.talent {
+  overflow: visible;
+  background: #332822;
+  border-top: 3px solid #6c4439;
+  box-shadow: inset 0 0 0 2px rgba(176, 138, 123, 0.22);
+}
+
+.talent-head {
+  top: auto;
+  bottom: 100%;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 6px;
+  padding: 3px 20px 4px;
+  border-radius: 8px 8px 0 0;
+  background: #6c4439;
+  box-shadow: inset 0 1px 0 rgba(176, 138, 123, 0.55);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.talent-title {
+  font-size: 12px;
+  color: #e8cbb8;
+  letter-spacing: 0.08em;
+  text-shadow: none;
+}
+
+.talent-progress {
+  color: #b08a7b;
+}
+
+/* The tab lives outside the plate now, so the tree gets the full panel height. */
+.talent-viewport {
+  inset: 0;
+}
+
+/*
+ * `TreeCreator.ApplyAccessibilityDisplayRules` under `InaccessibleNodeDisplayMode.Hide`: a
+ * node the player cannot reach is not drawn at all, and a link is drawn only when BOTH ends
+ * are drawn. This is what makes the tree start as a single node with an arrow pointing at
+ * it - `TreeCreator.UpdateNodeHighlighterColor` calls `ShowHideFirstNodeArrow` for exactly
+ * that state - rather than as all 168 nodes at once.
+ */
+.tn.unrevealed,
+.talent-links .unrevealed {
+  display: none;
+}
