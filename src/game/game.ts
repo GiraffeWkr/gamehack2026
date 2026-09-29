@@ -49,7 +49,6 @@ import { SKILLS, Skills, type SkillId } from './skills.js';
 import { Jobs } from './jobs.js';
 import { Mastery } from './mastery.js';
 import {
-  ARCHER_SPAWN_GATE,
   PET_CHASE_SPEED_MULTIPLIER,
   PET_ENGAGE_DISTANCE,
   SUMMON_GAP,
@@ -181,6 +180,8 @@ interface Arrow {
   radius: number;
   crit: boolean;
   source: 'mouse' | 'multishot' | 'skill' | 'pierce' | 'nova';
+  /** `WormholeShotChance` (job 4's passive): this arrow lands twice in a burst. */
+  wormhole: boolean;
 }
 
 /** An arrow in flight from the bow toward an enemy. */
@@ -395,16 +396,6 @@ export class Game {
   gold = 0;
   kills = 0;
   private defeatedGuardians: Set<EnemyType>;
-
-  /**
-   * The tutorial counter, `PlayerStatsData.IsArcherSpawned`.
-   *
-   * The shipping game pushes packs far out and makes the enemies passive until the archer
-   * has been summoned `ARCHER_SPAWN_GATE` (10) times, which is the self-sustaining Claw
-   * tutorial. An earlier revision hardcoded this to `false` with a comment saying the slice
-   * had no talent tree yet, so every level opened as the tutorial.
-   */
-  private archerSpawnCount = 1;
 
   // --- magazine (the original's core resource constraint) ---
   magazine = 0;
@@ -1039,9 +1030,15 @@ export class Game {
   private tameGuaranteed = false;
   private tameChanceWasZero = true;
 
-  /** `PetsManager.PetsShouldExist()`. */
+  /**
+   * `PetsManager.PetsShouldExist()`.
+   *
+   * The ONLY unlock is the tree's `IsArcherSpawned` node (Node 11, "招募弓箭手"):
+   * grant that stat and the companion shows up. There is deliberately no kill-count
+   * fallback — the archer must be recruited, not earned by playing.
+   */
   private get archerSpawned(): boolean {
-    return this.archerSpawnCount >= ARCHER_SPAWN_GATE;
+    return (this.stats.get('IsArcherSpawned') ?? 0) >= 1;
   }
 
   /**
@@ -1369,6 +1366,24 @@ export class Game {
         strike(t.x, t.y, 70, 'skill');
         break;
       }
+      // The three elemental passives fire with the auto-attack's probability roll, but
+      // they still need to land damage — the original's `ElementalAttacker` spawns the
+      // area effect at the aimed point. The radius stats exist in `PlayerStatsData`
+      // (registered in data.ts) but carry no base, so fall back to the same 9-unit game
+      // radius the BombArrow uses when the tree has not raised them.
+      case 'LightningStrike':
+      case 'FireArea':
+      case 'Blizzard': {
+        const t = alive[0];
+        if (!t) break;
+        const radius = Math.max(
+          90,
+          this.stats.get(id === 'FireArea' ? STATS.fireAreaRadiusOfEffect
+            : id === 'Blizzard' ? STATS.blizzardRadiusOfEffect
+            : STATS.bombArrowRadiusOfEffect) * ONE_GAME_UNIT);
+        strike(t.x, t.y, radius, 'skill');
+        break;
+      }
       default:
         // Buffs need no projectile; `skills.cast` already started the buff timer.
         break;
@@ -1417,6 +1432,9 @@ export class Game {
       radius: blast,
       crit,
       source,
+      // `WormholeShotChance` (job 4's passive, 5% at base) is rolled at launch; a wormhole
+      // arrow lands twice, doubling its payoff when it connects.
+      wormhole: this.rng.next() * 100 < this.stats.get(STATS.wormholeShotChance),
     });
   }
 
@@ -1530,6 +1548,26 @@ export class Game {
         if (d <= a.radius + e.radius) {
           this.damageEnemy(e, a.damage, a.crit);
           hitAny = true;
+        }
+      }
+      // `CriticalPierceChance` (job 2's passive, 20% at base): a crit that lands lets the
+      // arrow keep going, re-striking everyone else in the blast radius with the same hit.
+      if (a.crit) {
+        const pierceChance = this.stats.get(STATS.criticalPierceChance);
+        if (pierceChance > 0 && this.rng.next() * 100 < pierceChance) {
+          for (const e of this.enemies) {
+            if (!e.alive) continue;
+            const d = Math.hypot(e.x - a.toX, e.y - a.toY);
+            if (d <= a.radius + e.radius) this.damageEnemy(e, a.damage, true);
+          }
+        }
+      }
+      // `WormholeShotChance`: a wormhole arrow resolves its impact a second time.
+      if (a.wormhole) {
+        for (const e of this.enemies) {
+          if (!e.alive) continue;
+          const d = Math.hypot(e.x - a.toX, e.y - a.toY);
+          if (d <= a.radius + e.radius) this.damageEnemy(e, a.damage, a.crit);
         }
       }
       this.emitPuff(a.toX, a.toY, hitAny ? 0xffd166 : 0x8899aa, hitAny ? 30 : 18, 0.2);
@@ -1688,7 +1726,11 @@ export class Game {
       }
 
       if (take) {
-        if (c.currency === 'Gold') this.gold += c.value;
+        if (c.currency === 'Gold') {
+          // `GoldGained` is a real `PlayerStatsData` stat (base 1) that the tree and the
+          // Greed mastery both write; it scales the value of every coin picked up.
+          this.gold += c.value * Math.max(0, this.stats.get(STATS.goldGained));
+        }
         else if (c.currency === 'PortalCurrency') {
           // `PlayerManager.ChangeCurrency` rounds portal currency and reveals its counter
           // through the same `WasCurrencyShownBefore` flag as the families.
@@ -1813,10 +1855,6 @@ export class Game {
       // `GoldenDiedBurst_Co`: a golden enemy re-runs the whole reward drop several times.
       if (e.golden) this.goldenExtraSettlements(e, e.champion ? 70 : 45);
 
-      // `PlayerStatsData.IsArcherSpawned` climbs during the tutorial and opens the real
-      // pack layout - and the pets - at 10.
-      if (this.archerSpawnCount < ARCHER_SPAWN_GATE) this.archerSpawnCount++;
-
       // `TamingManager`: a tameable monster may get up again on your side.
       this.tryTame(e);
 
@@ -1848,10 +1886,39 @@ export class Game {
         if (e.x - this.px > PORTAL_CURRENCY_REACHABLE_DISTANCE) {
           dropX = this.px + PORTAL_CURRENCY_RESCUE_SPAWN_OFFSET_X;
         }
-        if (owed > 0) this.spawnDrop(dropX, e.y, 'PortalCurrency', owed);
+        if (owed > 0) {
+          this.spawnDrop(dropX, e.y, 'PortalCurrency', owed);
+          // The drop alone is enough to reveal the counter: without this the HUD stayed
+          // hidden until the coin was PICKED UP, so a portal killed out of reach (or a
+          // run closed right after) never showed the "魔王" tally at all.
+          this.portalCurrencySeen = true;
+        }
         this.runState = 'cleared';
       }
+
+      // Mastery-of-Vitality and Mastery-of-Momentum hooks. Both stats are registered by
+      // the mastery system but were written to the bag with no consumer, so the whole
+      // invest turned into a currency sink. `HealthRestorePercentOnKill` heals a share of
+      // MAX health on every kill; `ChanceToFreeSkillFromCooldown` randomly resets one
+      // cooling-down skill so Momentum's cooldown loop actually pays off.
+      const restore = this.stats.get(STATS.healthRestorePercentOnKill);
+      if (restore > 0) {
+        const heal = (restore / 100) * this.maxHp;
+        this.hp = Math.min(this.maxHp, this.hp + heal);
+        if (heal > 0) this.floaters.push({ x: e.x, y: e.y + 60, value: heal, crit: false });
+      }
+      const freeChance = this.stats.get(STATS.chanceToFreeSkillFromCooldown);
+      if (freeChance > 0 && this.rng.next() * 100 < freeChance) this.freeRandomCooldown();
     }
+  }
+
+  /** `MasteryOfMomentum`: resets one random skill that is still cooling down. */
+  private freeRandomCooldown(): void {
+    const cooling = this.skills.owned().filter((id) => this.skills.get(id)!.cooldownLeft > 0);
+    if (!cooling.length) return;
+    const id = cooling[this.rng.int(0, cooling.length)];
+    this.skills.get(id)!.cooldownLeft = 0;
+    this.skillCasts.push({ skillId: id, buff: false, duration: 1.2 });
   }
 
   /**

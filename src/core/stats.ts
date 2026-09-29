@@ -66,7 +66,10 @@ export class Stat {
   recalc(): void {
     const f = this.flat.real;
     const t = f * (1 + this.additive.real / 100) * this.multiplicative.real;
-    this.total = Math.abs(f) < 1000 ? Math.round(t * 100) / 100 : Math.round(t);
+    // Round on the TOTAL, not the flat layer: a stat whose flat is small but whose
+    // total passes 1000 (e.g. 900 flat + 50% additive = 1350) must still round to a
+    // whole number, which is what the original's `Math.Abs(Total.RealValue)` checks.
+    this.total = Math.abs(t) < 1000 ? Math.round(t * 100) / 100 : Math.round(t);
   }
 
   get(): number {

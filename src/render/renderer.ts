@@ -70,12 +70,22 @@ interface LoadedSprite {
 }
 
 /** Decodes an image with a plain <img>, avoiding any loader pipeline. */
-export function loadImage(url: string): Promise<HTMLImageElement> {
+export function loadImage(url: string, timeoutMs = 10000): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.decoding = 'sync';
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`failed to load image: ${url}`));
+    const timer = window.setTimeout(() => {
+      img.src = '';
+      reject(new Error(`timed out loading image: ${url}`));
+    }, timeoutMs);
+    img.onload = () => {
+      window.clearTimeout(timer);
+      resolve(img);
+    };
+    img.onerror = () => {
+      window.clearTimeout(timer);
+      reject(new Error(`failed to load image: ${url}`));
+    };
     img.src = url;
   });
 }
@@ -184,9 +194,24 @@ export class Renderer {
     // which also blocked automated screenshots). Decoding with a plain <img> and
     // wrapping the element is deterministic and gives us the natural size up
     // front, so nothing downstream has to wait on a lazy GPU upload.
-    const entries = await Promise.all(
-      [...names].map(async (name) => [name, await loadImage(`${ART_BASE}${name}.png`)] as const),
+    // `Promise.allSettled` rather than `Promise.all`: one missing PNG must not sink the
+    // whole game. The failed names are logged and the draw paths already guard with
+    // `if (!loaded) continue`, so a missing art file degrades to "that one thing not
+    // drawn" instead of a white screen.
+    const results = await Promise.allSettled(
+      [...names].map((name) => loadImage(`${ART_BASE}${name}.png`)),
     );
+    const entries: Array<[string, HTMLImageElement]> = [];
+    let failed = 0;
+    for (const [i, name] of [...names].entries()) {
+      const r = results[i];
+      if (r.status === 'fulfilled') entries.push([name, r.value]);
+      else {
+        failed++;
+        console.warn(`[render] skipping unloadable art: ${name}.png`, r.reason);
+      }
+    }
+    if (failed > 0) console.warn(`[render] ${failed}/${names.size} art files missing; game continues.`);
 
     for (const [name, img] of entries) {
       const texture = Texture.from(img);
@@ -596,7 +621,9 @@ export class Renderer {
       s.scale.set(base, base * squash);
       s.x = e.x;
       s.y = -(e.y + bob);
-      s.tint = e.hitFlash > 0 ? 0xffb0a0 : 0xffffff;
+      // A hit flash briefly overrides the golden/champion tint, then falls back to the
+      // material colour set above instead of plain white.
+      if (e.hitFlash > 0) s.tint = 0xffb0a0;
     }
 
     // Park unused character slots.
@@ -696,6 +723,7 @@ export class Renderer {
   /**
    * Circular health indicators above enemies, as the original draws them: a green
    * fill inside a light ring, with the current HP above it.
+   */
   /**
    * Enemy health bars, ported from `EnemySelfer` + `BarSelfer`.
    *
@@ -889,6 +917,13 @@ export class Renderer {
   }
 
   destroy(): void {
+    // Release every preloaded texture first: `app.destroy(..., {children:true})` tears
+    // down the container tree but NOT the textures `Texture.from` created, so they would
+    // linger in GPU memory across any re-init.
+    for (const loaded of this.sprites.values()) loaded.texture.destroy(true);
+    this.sprites.clear();
+    this.charViews.clear();
+    this.ready = false;
     this.app.destroy(true, { children: true });
   }
 }

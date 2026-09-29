@@ -1,166 +1,147 @@
-# Zad Archery — Web Port (Combat Vertical Slice)
+# 扎德弓箭手（Zad Archery）· Web 移植版
 
-A mobile-first web rebuild of *Zad Archery* (Samharia Studios), written from the
-decompiled original. TypeScript + Vite + PixiJS, no engine.
+一个面向移动端的《扎德弓箭手》（Samharia Studios）网页重制版，基于**反编译**的原始游戏编写。技术栈为 **TypeScript + Vite + PixiJS**，不依赖任何游戏引擎。
 
-This is a **vertical slice**: it proves out the render path, the touch control
-scheme, the stat system, the level curve and performance on a phone-sized
-viewport. Art and audio are placeholder; the numbers are the real ones.
+当前是一个**战斗垂直切片（vertical slice）**：验证了渲染管线、触控瞄准方案、数值系统、等级曲线以及手机视口下的性能表现。美术与音频为占位素材，但**数值全部来自原版**。
 
 ---
 
-## Run it
+## 运行方式
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173  (also binds 0.0.0.0 for phone testing)
-npm run build      # typecheck + production bundle into dist/
-npm run preview    # serve the built bundle
-npm run verify     # run the headless simulation test suite
+npm run dev        # http://localhost:5173（同时绑定 0.0.0.0 便于手机联调）
+npm run build      # 类型检查 + 生产构建到 dist/
+npm run preview    # 预览构建产物
+npm run verify     # 运行无头模拟测试套件（338 项断言）
 ```
 
-To test on a phone on the same Wi-Fi, open the `Network:` URL Vite prints.
-The game wants **landscape**; portrait phones get a "rotate" prompt.
+手机测试：同一 Wi-Fi 下打开 Vite 输出的 `Network:` 地址。游戏为**横屏**设计，竖屏会提示旋转。
 
 ---
 
-## What is actually implemented
+## 已实现内容
 
-| Area | State |
+| 模块 | 状态 |
 |---|---|
-| Auto-advancing character | ✅ walks, stops to fight when an enemy is in range, resumes when clear |
-| Tap / drag to aim | ✅ anywhere on screen, no virtual stick needed |
-| Magazine ("arrows") | ✅ finite ammo, regenerates on a timer, shown as pips |
-| Arrow-fall damage | ✅ arrows drop in from above onto the aimed point, with an AoE |
-| Archer auto-attack | ✅ fires on its own while standing still |
-| Enemies | ✅ Claw, Archer, Bat, Warrior, Mage + Run Portal + Guardian, with melee/ranged AI |
-| Pack waves | ✅ 8 packs at level 1 scaling to 24, authored spacing and pack widths |
-| Run portal | ✅ invulnerable until all packs are down, then a summon countdown and an extra wave |
-| Level curve | ✅ real authored tables for levels 1–30, exponential extrapolation to 50 |
-| Stats | ✅ the original's `Flat / Additive / Multiplicative` three-layer model |
-| Skills | ✅ Multishot (shot), Rapid Fire + Sharp Shooter (buffs with real attack-speed effects) |
-| Damage numbers | ✅ crit-aware, pooled DOM floaters |
-| Death / respawn | ✅ progress is kept: only uncleared packs respawn |
-| Save | ✅ localStorage (level, gold, kills, defeated guardians) |
-| Mobile layout | ✅ safe-area insets, thumb-zone controls, ≥48px touch targets |
+| 自动前进角色 | ✅ 自动行走，遇敌停下战斗，清场后继续 |
+| 点按 / 拖拽瞄准 | ✅ 全屏任意位置，无需虚拟摇杆 |
+| 箭匣（弹药） | ✅ 有限弹药，按计时恢复，圆圈中央显示剩余数量 + 冷却环 |
+| 落箭伤害 | ✅ 箭从屏幕上方落入瞄准点，带范围伤害 |
+| 弓箭手自动攻击 | ✅ 站定后自动射击 |
+| 敌人 | ✅ 爪兽 / 弓箭手 / 蝙蝠 / 战士 / 法师 + 传送门 + 守卫，含近战/远程 AI |
+| 波次推进 | ✅ 1 级 8 波、随等级扩至 24 波，间距与宽度沿用原版配置 |
+| 关卡传送门 | ✅ 清空前无敌，清空后召唤倒计时并追加一波敌人 |
+| 等级曲线 | ✅ 1–30 级使用原版表，指数外推至 50 |
+| 数值系统 | ✅ 原版 `Flat / Additive / Multiplicative` 三层模型 |
+| 技能 | ✅ 多重射击（射击）、急速射击 + 精准射手（带真实攻速加成的增益） |
+| 伤害数字 | ✅ 支持暴击，池化 DOM 浮动数字 |
+| 死亡 / 重生 | ✅ 保留已清波次，仅复活未清波次 |
+| 存档 | ✅ localStorage（关卡、金币、击杀、守卫、天赋、职业、精通等） |
+| 移动端布局 | ✅ 安全区适配、拇指操作区、≥48px 触控目标 |
 
-Deliberately **not** in the slice: crafting, mining, shaping, mastery, talents,
-pets, taming, chests, orbs, jobs, the King fight, 14-language localisation,
-audio, and the real Spine animations.
+**刻意未移植**：锻造、采矿、塑形、精通、天赋树全量、宠物驯服、宝箱、法球、职业系统全量、魔王战、14 语言本地化、音频与 Spine 动画。
+
+> 注：本移植版实际已包含**天赋树、职业、精通面板**（位于画面下半部分，通过左侧图标栏切换），上表按代码现状修正。
 
 ---
 
-## Architecture
+## 架构
 
 ```
 src/
   core/
-    math.ts          Rng (seeded), clamping, compact number formatting
-    stats.ts         StatBag: the Flat/Additive/Multiplicative model
+    math.ts          Rng（可种子复现）、钳制、紧凑数字格式化
+    stats.ts         StatBag：Flat/Additive/Multiplicative 模型
   content/
-    data.ts          Every tuning constant, lifted from the decompiled original
-    level.ts         Level curve + run planner (packs, spacing, portal X)
+    data.ts          全部调优常量，取自反编译原版
+    level.ts         等级曲线 + 关卡规划（波次、间距、传送门 X）
   game/
-    game.ts          The whole simulation. No PixiJS import - pure data
-    skills.ts        Skill definitions, cooldowns, buffs
-    types.ts         Snapshot + event queue the UI reads
+    game.ts          完整模拟。不 import PixiJS —— 纯数据
+    skills.ts        技能定义、冷却、增益
+    types.ts         快照 + UI 读取的事件队列
   render/
-    renderer.ts      PixiJS world, follow camera, parallax, sprite recycling
-    placeholder.ts   Procedural baked sprite-sheet animations
+    renderer.ts      PixiJS 世界渲染、跟随相机、视差、精灵回收
+    parallax.ts      视差背景
   ui/
-    hud.ts           DOM HUD, skill wheel, floating damage numbers
-    input.ts         Pointer handling: tap and drag-to-aim
+    hud.ts           DOM HUD、属性面板、伤害数字
+    input.ts         指针处理：点按与拖拽瞄准
+    talent.ts / jobs.ts / mastery.ts   天赋树 / 职业 / 精通面板
   dev/
-    verify.ts        Headless test suite (54 checks)
+    verify.ts        无头测试套件（338 项断言）
 ```
 
-Two rules keep this maintainable:
+两条维护原则：
 
-1. **`game/` never imports PixiJS.** The simulation is plain data, so it runs in
-   Node for tests and could be rendered by something else entirely.
-2. **UI is DOM, world is canvas.** Text, bars and buttons are HTML, which gets
-   crisp text at any DPI, native safe-area handling and real hit-testing for
-   touch — all things that are tedious to rebuild in a canvas UI layer.
+1. **`game/` 绝不 import PixiJS。** 模拟层是纯数据，可在 Node 中直接跑测试，也可换任何渲染后端。
+2. **UI 用 DOM、世界用 canvas。** 文字、进度条、按钮用 HTML——任意 DPI 下文字清晰、安全区原生适配、触控命中测试真实，这些用 canvas 重建都很繁琐。
 
 ---
 
-## The two things worth knowing before you extend it
+## 扩展前需要知道的两件事
 
-### 1. Stat keys are variable names, NOT `functionName`
+### 1. 数值键是「变量名」，不是 `functionName`
 
-The original keys its stat dictionary by **variable name alone** and passes the
-layer as a separate argument:
+原版用**变量名本身**作为数值字典的键，层类型作为独立参数传入：
 
 ```csharp
 stats.ChangeAStat("Damage", StatsProperties.Flat, 1.0, IsAdd: true);
 stats.Damage.Total.RealValue
 ```
 
-`StatInfo.functionName` (`"Damage" + "Flat"` = `"DamageFlat"`) is a
-**localisation key for tooltips**, not a dictionary key. Getting this wrong makes
-every stat's layers unable to find each other and silently returns the flat value.
-This port therefore uses:
+`StatInfo.functionName`（`"Damage" + "Flat"` = `"DamageFlat"`）只是**工具提示的本地化键**，不是字典键。搞错会导致各层互相找不到、静默只返回 Flat 值。因此本移植版用：
 
 ```ts
 stats.change('Damage', StatsProp.Flat, 1, true);
 stats.get('Damage');                          // Total
-stats.layer('Damage', StatsProp.Flat);        // one layer
+stats.layer('Damage', StatsProp.Flat);        // 单层
 ```
 
-The formula, copied from `StatsDouble.CalculateTotal`:
+公式（抄自 `StatsDouble.CalculateTotal`）：
 
 ```
 Total = round( Flat * (1 + Additive/100) * Multiplicative )
 ```
 
-Below 1000 it rounds to 2dp, above it rounds to whole numbers. `Multiplicative`
-is a **running product**, so it starts at 1 — an unset layer would zero the stat.
+小于 1000 保留两位小数，大于等于 1000 取整。`Multiplicative` 是**连乘**，初始为 1——未设置该层会把数值归零。
 
-### 2. The camera clamps on the character, not on itself
+### 2. 相机以角色为锚，而不是以相机自身为锚
 
-The character must be able to walk all the way to the run portal while the portal
-itself stays off the right edge until the last pack dies. Clamp the *camera*
-instead and the character gets stranded off-screen. The working shape is in
-`renderer.updateCamera`:
+角色必须能一路走到关卡传送门，而传送门在最后一批敌人倒下前始终保持在屏幕右缘之外。若改为钳制**相机**，角色会被推出屏幕。正确写法见 `renderer.updateCamera`：
 
 ```ts
 const subjectX = Math.max(game.px, game.portalX - CAMERA.maxLead + CAMERA.additionalLimitAfterPortal);
-const desired  = subjectX - CAMERA.cameraLeadX;   // character sits right of centre
+const desired  = subjectX - CAMERA.cameraLeadX;   // 角色位于中心偏右
 ```
 
 ---
 
-## Art and language
+## 美术与语言
 
-### Real art from the shipping build
+### 来自发行版的原版美术
 
-Everything under `public/art/` was extracted from `Zad Archery_Data` with UnityPy:
+`public/art/` 下的资源均用 UnityPy 从 `Zad Archery_Data` 提取：
 
-| Asset | Source |
+| 资源 | 来源 |
 |---|---|
-| `BG1_*` / `BG2_*` | the 8-layer parallax backgrounds, authored at **1920x600** |
-| `Archer_1..5` | the player archer, used as a real walk cycle |
-| `Guardian_*`, `bat_swarm_0` | minion art |
-| `king_boss` | for the not-yet-ported final fight |
-| `T_Arrow`, `T_GlowOrb_Bullet`, `FX_TX_*`, `FX_Ring_AD`, `shockwave`, `orb` | FX |
+| `BG1_*` / `BG2_*` | 8 层视差背景，作者规格 **1920x600** |
+| `Archer_1..5` | 玩家弓箭手，作为真实行走循环使用 |
+| `Guardian_*`, `bat_swarm_0` | 小怪美术 |
+| `king_boss` | 尚未移植的最终 Boss |
+| `T_Arrow`, `T_GlowOrb_Bullet`, `FX_TX_*`, `FX_Ring_AD`, `shockwave`, `orb` | 特效 |
 
-Because the backgrounds are exactly **1920x600**, that is the project's reference
-resolution and the camera keeps a constant 1920 world units visible horizontally.
-The vertical extent therefore varies with the device aspect ratio, which is the
-same trade the original's orthographic camera makes.
+背景精确为 **1920x600**，故以此为参考分辨率，相机水平方向始终可见 1920 世界单位；垂直范围随设备宽高比变化，与原版正交相机的取舍一致。
 
-Layer depth comes from the asset names themselves — `BG1_0sky` is furthest,
-`BG1_7item` nearest and draws *in front of* the characters. Re-extract any time with:
+图层深度由资源名决定——`BG1_0sky` 最远，`BG1_7item` 最近且绘制在角色之前。需要重新提取时执行：
 
 ```bash
-python analysis/export_sprites.py     # sliced Sprites -> PNG + manifest
-python analysis/export_bg.py          # parallax layers
+python analysis/export_sprites.py     # 切片 Sprites -> PNG + 清单
+python analysis/export_bg.py          # 视差图层
 ```
 
-### Language
+### 语言
 
-Chinese is the default. `src/core/i18n.ts` holds a flat key table with `{name}`
-placeholders, mirroring the original's `LocalizerManager` shape:
+默认中文。`src/core/i18n.ts` 维护扁平键表，支持 `{name}` 占位符，对应原版 `LocalizerManager` 的结构：
 
 ```ts
 setLang('zh');
@@ -168,62 +149,76 @@ t('level', { n: 3 });          // 第 3 关
 t('packs', { done: 2, total: 8 });  // 2/8 波
 ```
 
-`npm run verify` asserts both languages have no missing keys and that every
-placeholder interpolates.
-
-## The one thing to understand before touching the camera
-
-**World Y grows UP and shares the artwork's own space**: ground at `0`, sky at
-`+600`. There is deliberately no sign flip between "where the art is" and "where
-the game is" — that mismatch is what previously put the entire background above
-the viewport.
-
-Pixi's local Y grows *down*, so the renderer negates Y once when placing a
-sprite's parent container and again per sprite when writing a world position:
-
-```ts
-c.y = groundScreenRow;      // world Y=0 lands on the character's feet row
-sprite.y = -worldY;         // world-up -> local-down
-```
-
-Do **not** try to fix this with a negative container scale (`c.scale.y = -s`):
-it mirrors every sprite.
-
-The camera anchors on the **character**, not on a ground row. The visible world
-height depends on the aspect ratio while the ground Y does not, so anchoring on
-the ground pushed both the art and the character off-screen on short viewports:
-
-```ts
-// screen row of the character's feet:
-this.viewH * CAMERA.playerScreenFraction
-```
-
-`cameraLeadX` (300) is how far the camera trails him, which puts his feet at
-roughly 40% of the screen width — most of the frame is the ground he walks into.
-
-Use `?measure=1` on the running game for a live geometry overlay of every layer's
-screen range plus the character's position.
-## Mobile notes
-
-- **Landscape only.** It is a side-scroller; portrait shows a rotate prompt.
-- **Safe areas** are handled with `env(safe-area-inset-*)` — the original solved
-  this in `SafeAreaManager` with hardcoded iPhone insets.
-- **Thumb reach.** The only interactive elements are the skill wheel (bottom
-  right) and the magazine readout (bottom left). Nothing sits mid-screen, because
-  the whole play surface is the aim target.
-- **Fixed 60 Hz timestep** via `Game.tick`, so a 120 Hz phone behaves identically
-  and a GC hitch cannot teleport the simulation.
-- Sprites are **recycled**, not allocated per frame; particles are pooled, and
-  floating damage numbers are pooled DOM nodes capped at 128 per frame.
+`npm run verify` 会断言两种语言无缺失键、所有占位符可正常插值。
 
 ---
 
-## Tests
+## 动相机前必须理解的一点
 
-`npm run verify` compiles and runs `src/dev/verify.ts` under Node — 54 checks
-covering the stat formula, the authored level tables, guardian scheduling, the
-gameplay loop, portal gating, the death/respawn contract, skills, seed
-determinism and world framing. It runs the real simulation with no browser.
+**世界 Y 向上增长，且与美术共用同一坐标系**：地面为 `0`，天空为 `+600`。刻意不做“美术坐标”与“游戏坐标”之间的符号翻转——之前正是这种错位导致整个背景被画到视口上方。
 
-Screenshots and geometry probes live in `debug.html` and `probe.html` at the
-project root; they are development tools, not part of the shipped bundle.
+Pixi 局部坐标 Y 向下，渲染器在放置精灵父容器时翻转一次 Y，写入世界坐标时再翻转一次：
+
+```ts
+c.y = groundScreenRow;      // 世界 Y=0 落在角色脚底行
+sprite.y = -worldY;         // 世界向上 -> 局部向下
+```
+
+**不要**试图用负缩放（`c.scale.y = -s`）修正——那会镜像所有精灵。
+
+相机以**角色**为锚而非地面行。可见世界高度随宽高比变化，而地面 Y 不变，若锚定地面，矮视口上美术和角色都会被推出屏幕：
+
+```ts
+// 角色脚底的屏幕行：
+this.viewH * CAMERA.playerScreenFraction
+```
+
+`cameraLeadX`（300）是相机落后角色的距离，使他的脚落在约 40% 屏宽处——大部分画面是他将要走入的地面。
+
+运行游戏时加 `?measure=1` 可查看各图层屏幕范围 + 角色位置的实时几何覆盖层。
+
+---
+
+## 移动端说明
+
+- **仅横屏。** 这是横版卷轴游戏，竖屏显示旋转提示。
+- **安全区**通过 `env(safe-area-inset-*)` 处理——原版在 `SafeAreaManager` 里用写死的 iPhone 边距。
+- **拇指可达性。** 唯一可交互元素是右下角技能轮盘与左下角箭匣读数。屏幕中部没有任何控件，因为整个可玩区域都是瞄准目标。
+- **固定 60Hz 时间步**（`Game.tick`），120Hz 手机行为一致，GC 卡顿不会瞬移模拟。
+- 精灵**回收复用**而非每帧新建；粒子池化；浮动伤害数字为池化 DOM 节点，每帧上限 128。
+
+---
+
+## 测试
+
+`npm run verify` 在 Node 下编译并运行 `src/dev/verify.ts`——**338 项断言**，覆盖数值公式、原版关卡表、守卫调度、玩法循环、传送门门禁、死亡/重生契约、技能、种子确定性、世界取景。无需浏览器即可跑真实模拟。
+
+截图与几何探针工具位于项目根的 `debug.html` 与 `probe.html`，属开发工具，不进入发布包。
+
+---
+
+## 本次会话的修改记录
+
+本次迭代围绕「可用性修复 + 功能补全」完成了一批改动：
+
+### Bug 修复
+- **被动技能无伤害**：暴风雪 / 余烬射击 / 雷霆一击此前只播放横幅不结算伤害，现按各自倍率与命中次数真正造成伤害。
+- **金色敌人染色被覆盖**：命中闪烁不再无条件把金色/冠军染色覆盖为白色，金色敌人恢复“值钱”视觉标识。
+- **精通 NPC 奖励错位**：升级返回的奖励修正为“本次发放”而非“下一个待发”。
+- **资源加载容错**：任一图片 404 不再整局白屏；加超时与 `Promise.allSettled`，缺图仅降级为“该资源不绘制”。
+- **精通系统接入消费点**：金币获取（GoldGained）、击杀回血、技能冷却重置等 stat 原先写入后无人读取，现全部生效。
+- **职业被动生效**：暴击贯穿（Job2）、虫洞射击（Job4）接入伤害管线。
+- **输入层修复**：触屏不再误置 hover 状态；拖拽滑出画布不再卡死瞄准（指针捕获 + 兜底复位）。
+- **渲染资源泄漏**：`destroy()` 现在真正释放 Pixi 纹理。
+- **数值层舍入**：stat 舍入阈值改用 Total 而非 Flat；Rng 种子碰撞修复。
+- **存档逻辑**：原先仅在清关时保存，现增加切后台 / 关页自动保存，中途退出不再丢进度；并修复重置时 `beforeunload` 把已删存档写回的问题。
+- **天赋树遮挡**：底部 HUD 曾挡住根节点下方的节点，现面板打开时底部栏上移且指针穿透，节点可正常点击。
+
+### 功能 / 体验
+- **箭匣读数**：面板打开时箭雨冷却圈与剩余数量仍可见（移到面板上方），数量居中显示于圆圈内。
+- **HUD 精简**：移除重复的传送门图标与击杀总数，关卡与波次合并显示在等级旁。
+- **属性面板**：右上角新增属性按钮，悬浮面板展示全部当前数值（中文标签），点击外部自动关闭，可滚动。
+- **重置按钮**：右上角新增重置按钮，确认后清除全部存档并回到第 1 关。
+- **招募弓箭手**：随从/宠物改为仅由天赋树「招募弓箭手」（`IsArcherSpawned`）解锁，移除击杀次数自动解锁。
+- **天赋树信息**：tooltip 不再显示内部节点名；加点成功提示改为展示实际属性变化。
+- **传送门货币展示**：传送门掉落「魔王」（传送门币）时立即在左上角显示计数，无需先拾取。

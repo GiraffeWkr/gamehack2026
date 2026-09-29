@@ -574,8 +574,8 @@ console.log('\n[pets in the sim]');
   g.jobs.unlock(1, JOBS[1].unlockCost);
   g.jobs.levelUpSkill(1, 0, g.jobs.skillCost('Wolf'));
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
-  // Push past the archer gate the way the tutorial does: ten kills.
-  for (let i = 0; i < 10; i++) (g as unknown as { archerSpawnCount: number }).archerSpawnCount++;
+  // Unlock the archer companion the way the talent tree does: grant IsArcherSpawned.
+  g.stats.change('IsArcherSpawned', StatsProp.Flat, 100);
   g.tick(1 / 60, input);
   check('the Wolf is summoned into the run', g.getPetList().length === 1,
     `${g.getPetList().length} pets`);
@@ -619,7 +619,7 @@ console.log('\n[pets take damage]');
   const g = new Game({ seed: 31, level: 1 });
   g.jobs.unlock(1, JOBS[1].unlockCost);
   g.jobs.levelUpSkill(1, 0, g.jobs.skillCost('Wolf'));
-  for (let i = 0; i < 10; i++) (g as unknown as { archerSpawnCount: number }).archerSpawnCount++;
+  for (let i = 0; i < 10; i++) g.stats.change('IsArcherSpawned', StatsProp.Flat, 100);
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
   g.tick(1 / 60, input);
   const wolf = g.getPetList()[0];

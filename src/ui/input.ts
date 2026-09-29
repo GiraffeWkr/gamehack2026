@@ -63,6 +63,16 @@ export class AimInput {
     if (this.pointerId !== null) return;
     this.pointerId = ev.pointerId;
     ev.preventDefault();
+    // Keep receiving move/up even when the pointer slides off the play surface (out onto
+    // the HUD or the screen edge). Without capture a drag that leaves the canvas strands
+    // `aiming` forever: the up arrives on whatever element is underneath, this handler
+    // never sees it, and every later tap is swallowed by the `pointerId !== null` guard.
+    try {
+      this.surface.setPointerCapture(ev.pointerId);
+    } catch {
+      // Some browsers throw on capture of a pointer that is already gone; aiming still
+      // works, it just falls back to the leave/cancel reset below.
+    }
     const p = this.localPoint(ev);
     this.lastX = p.x;
     this.lastY = p.y;
@@ -100,6 +110,10 @@ export class AimInput {
    * this the hover path could never fire and drops could only be walked over.
    */
   private readonly onHover = (ev: PointerEvent): void => {
+    // A touch device never hovers: the first finger-drag would set the flag and, because
+    // touch rarely fires `pointerleave`, leave it stuck on — silently enabling the mouse
+    // loot-sweep pickup path on phones.
+    if (ev.pointerType !== 'mouse') return;
     const p = this.localPoint(ev);
     const w = this.cb.toWorld(p.x, p.y);
     this.state.hoverX = w.x;
@@ -109,6 +123,14 @@ export class AimInput {
 
   private readonly onLeave = (): void => {
     this.state.hoverActive = false;
+    // Fallback for environments where pointer capture failed: a drag that left the
+    // surface mid-aim would otherwise hang `aiming` until the pointer comes back.
+    if (this.aiming) {
+      this.pointerId = null;
+      this.aiming = false;
+      this.state.aiming = false;
+      this.holdTimer = 0;
+    }
   };
 
   private readonly onUp = (ev: PointerEvent): void => {
@@ -117,6 +139,11 @@ export class AimInput {
     this.aiming = false;
     this.state.aiming = false;
     this.holdTimer = 0;
+    try {
+      this.surface.releasePointerCapture(ev.pointerId);
+    } catch {
+      // No capture to release; fine.
+    }
   };
 
   /**

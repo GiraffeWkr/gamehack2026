@@ -39,19 +39,89 @@ const LOOT_END_SCALE = 0.2;
 const LOOT_ARC_HEIGHT = 150;
 const LOOT_SPIN_DEG = 720;
 const LOOT_PUNCH_SECONDS = 0.25;
+/** Hard cap for the floating-damage pool; a burst beyond this reuses the oldest node. */
+const MAX_FLOATERS = 48;
+
+/** Chinese labels for the stats panel; unknown keys fall back to their English name. */
+const STAT_LABELS: Record<string, string> = {
+  Damage: '伤害',
+  Health: '生命值',
+  AttackRange: '攻击范围',
+  PlayerMovementSpeed: '移动速度',
+  PlayerAttackSpeed: '攻击速度',
+  CriticalChance: '暴击率',
+  CriticalMultiplier: '暴击伤害',
+  HealthRegen: '生命恢复',
+  GoldGained: '金币获取',
+  ExpGained: '经验获取',
+  DamageReduction: '伤害减免',
+  DodgeChance: '闪避率',
+  ChanceForDoubleDamage: '双倍伤害概率',
+  ChanceForTripleDamage: '三倍伤害概率',
+  MouseMagazineSize: '箭雨容量',
+  MouseMagazineRegenTime: '箭雨装填时间',
+  NumberOfMouseProjectiles: '箭雨箭矢数量',
+  MouseNumberOfHits: '箭雨命中次数',
+  MouseMaxNumberOfEnemies: '箭雨目标上限',
+  MouseChanceForAnotherHit: '额外命中概率',
+  Multishot_NumberOfProjectiles: '多重射击箭数',
+  Multishot_NumberOfHits: '多重射击命中',
+  Multishot_Cooldown: '多重射击冷却',
+  BombArrow_RadiusOfEffect: '爆裂箭范围',
+  SniperScope_RadiusOfEffect: '狙击范围',
+  BatSwarm_RadiusOfEffect: '蝙蝠群范围',
+  FireArea_RadiusOfEffect: '火海范围',
+  Blizzard_RadiusOfEffect: '暴风雪范围',
+  Blizzard_SlowPercent: '暴风雪减速',
+  SuperNova_ExecuteThreshold: '超新星处决阈值',
+  EnemyHealthMultiplier: '敌方生命倍率',
+  EnemyDamageMultiplier: '敌方伤害倍率',
+  EnemyMovementSpeedMultiplier: '敌方移速倍率',
+  EnemyAttackSpeedMultiplier: '敌方攻速倍率',
+  ExplosiveArrows: '爆炸箭概率',
+  ExplosiveArrows_RadiusOfEffect: '爆炸箭范围',
+  ChanceToDropHealthPotion: '血瓶掉落概率',
+  HealthPotionRegenPercentage: '血瓶回复比例',
+  GoldCoinsToDrop: '金币掉落数',
+  GoldChanceToDrop: '金币掉落概率',
+  GoldenRewardMultiplier: '金色敌人奖励倍率',
+  ChanceForGoldenEnemy: '金色敌人概率',
+  UnlockGoldenEnemies: '金色敌人解锁',
+  FirstPacksAlwaysContainGolden: '首波必出金色',
+  ChanceToTameEnemiesOnDeath: '驯服概率',
+  MaxTames: '驯服上限',
+  PetDamageMultiplier: '宠物伤害倍率',
+  PetHealthMultiplier: '宠物生命倍率',
+  TameDamageMultiplier: '驯服宠物伤害',
+  TameHealthMultiplier: '驯服宠物生命',
+  ChanceToFreeSkillFromCooldown: '技能冷却重置概率',
+  HealthRestorePercentOnKill: '击杀回血',
+  CriticalPierceChance: '暴击贯穿概率',
+  WormholeShotChance: '虫洞射击概率',
+  ChanceToSpawnChest: '宝箱生成概率',
+  ChanceToSpawnOrb: '法球生成概率',
+  ChestLootBonus: '宝箱奖励加成',
+  GuaranteeMonsterCurrencyDrop: '保底货币掉落',
+  MouseChanceToFireSkills: '箭雨触发技能概率',
+  SkillsCooldownSpeed: '技能冷却速度',
+  Skills_DamageMultiplier: '技能伤害倍率',
+  PortalSummonTime: '传送门召唤时间',
+  PortalHealthMultiplier: '传送门生命倍率',
+  PortalPackCurrencyBonus: '传送门通货加成',
+};
+
+/** Escapes a display string before it goes into an `innerHTML` row. */
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) =>
+    c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '"' ? '&quot;' : '&#39;');
+}
 
 export interface HudCallbacks {
   /**
-   * The HUD takes no callbacks any more.
-   *
-   * It used to carry three top-right shortcut buttons (天赋 / 职业 / 精通) that opened the
-   * panels. The original opens every system from the ICON RAIL down the left of the lower
-   * panel, and that rail now exists, so the shortcuts were a second, wrong way in - and the
-   * 天赋 one was the only one ever visible.
-   *
-   * There is deliberately no `onSkill` either: every skill is fired automatically by
-   * `CharacterAttacker`, and the original never casts one from a button.
+   * Fired by the top-right reset button. The HUD itself never touches storage or reloads;
+   * the caller (main.ts) clears the save and reloads.
    */
+  onReset?: () => void;
 }
 
 
@@ -60,11 +130,9 @@ export class Hud {
   private readonly hpFill: HTMLDivElement;
   private readonly hpText: HTMLDivElement;
   private readonly levelText: HTMLDivElement;
+  private readonly stageText: HTMLDivElement;
   private readonly expFill: HTMLDivElement;
   private readonly goldText: HTMLSpanElement;
-  private readonly gemText: HTMLSpanElement;
-  private readonly killText: HTMLSpanElement;
-  private readonly clearText: HTMLSpanElement;
   /** Family currency counters, keyed by currency name; hidden until first earned. */
   private readonly curEls = new Map<string, { root: HTMLElement; val: HTMLSpanElement }>();
   /** `playerData.PlayerPortalCurrency`'s counter, gated on `WasCurrencyShownBefore`. */
@@ -77,6 +145,9 @@ export class Hud {
   private readonly portalText: HTMLDivElement;
   private readonly toast: HTMLDivElement;
   private readonly flash: HTMLDivElement;
+  private readonly statsPanel: HTMLDivElement;
+  private readonly statsBody: HTMLDivElement;
+  private statsOpen = false;
 
   // Floating damage numbers, pooled so a burst does not allocate.
   private readonly pool: HTMLDivElement[] = [];
@@ -88,6 +159,7 @@ export class Hud {
   constructor(
     parent: HTMLElement,
     toScreen: (x: number, y: number) => { x: number; y: number },
+    private readonly callbacks: HudCallbacks = {},
   ) {
     this.toScreen = toScreen;
     this.root = el('div', 'hud');
@@ -100,9 +172,6 @@ export class Hud {
         <div class="hud-left">
           <div class="hud-res">
             <span class="res"><img class="res-icon" src="art/cur/Gold.png" alt="" /><span class="res-val gold-text">0</span></span>
-            <span class="res"><img class="res-icon" src="art/cur/GemCurrency.png" alt="" /><span class="res-val gem-text">0</span></span>
-            <span class="res"><img class="res-icon" src="art/cur/Monsters.png" alt="" /><span class="res-val kill-text">0</span></span>
-            <span class="res"><img class="res-icon" src="art/cur/PortalCurrency.png" alt="" /><span class="res-val clear-text">0</span></span>
             <span class="res cur" data-cur="ClawCurrency" hidden><img class="res-icon" src="art/cur/ClawCurrency.png" alt="" /><span class="res-val cur-claw">0</span></span>
             <span class="res cur" data-cur="ArcherCurrency" hidden><img class="res-icon" src="art/cur/ArcherCurrency.png" alt="" /><span class="res-val cur-archer">0</span></span>
             <span class="res cur" data-cur="WarriorCurrency" hidden><img class="res-icon" src="art/cur/WarriorCurrency.png" alt="" /><span class="res-val cur-warrior">0</span></span>
@@ -117,9 +186,20 @@ export class Hud {
         </div>
         <div class="hud-center">
           <div class="level-text"></div>
+          <div class="stage-text"></div>
           <div class="progress hint-exp"><div class="progress-fill exp-fill"></div></div>
         </div>
-        <div class="hud-right"></div>
+        <div class="hud-right">
+          <button type="button" class="stats-btn" title="查看属性"></button>
+          <button type="button" class="reset-btn" title="重置所有进度"></button>
+        </div>
+      </div>
+
+      <div class="stats-panel hidden">
+        <div class="stats-head">
+          <span>属性</span>
+        </div>
+        <div class="stats-body"></div>
       </div>
 
       <div class="hud-portal hidden">
@@ -150,11 +230,9 @@ export class Hud {
     this.hpFill = q(this.root, '.hp-fill');
     this.hpText = q(this.root, '.hp-text');
     this.levelText = q(this.root, '.level-text');
+    this.stageText = q(this.root, '.stage-text');
     this.expFill = q(this.root, '.exp-fill');
     this.goldText = q(this.root, '.gold-text');
-    this.gemText = q(this.root, '.gem-text');
-    this.killText = q(this.root, '.kill-text');
-    this.clearText = q(this.root, '.clear-text');
     // Family currency counters, looked up by the `data-cur` attribute the markup sets.
     // `PortalCurrency` shares the markup shape but not the row: it is not a monster
     // family, so it gets its own handle and its own gate below.
@@ -180,12 +258,60 @@ export class Hud {
     q<HTMLDivElement>(this.root, '.mag-label').textContent = t('arrows');
     q<HTMLDivElement>(this.root, '.portal-label').textContent = t('portalTitle');
 
-    // The top-right shortcut buttons are gone - the left icon rail opens every system, the
-    // way the original does. Nothing else was wired to them.
+    // Reset: the caller clears the save and reloads. Confirmed before wiping so a
+    // stray tap on a run cannot throw progress away.
+    const resetBtn = q<HTMLButtonElement>(this.root, '.reset-btn');
+    resetBtn.textContent = '↻';
+    resetBtn.addEventListener('click', () => {
+      const go = window.confirm('重置所有进度？此操作不可撤销。');
+      if (go) this.callbacks.onReset?.();
+    });
 
+    // Stats: a floating read-only panel of every current stat, styled like the lower
+    // band panels. The ≡ button toggles it; clicking ANYWHERE outside the panel closes
+    // it (there is deliberately no ✕ — the button and the backdrop are the only ways out).
+    this.statsPanel = q(this.root, '.stats-panel');
+    this.statsBody = q(this.root, '.stats-body');
+    const statsBtn = q<HTMLButtonElement>(this.root, '.stats-btn');
+    statsBtn.textContent = '≡';
+    statsBtn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      this.setStatsOpen(!this.statsOpen);
+    });
+    document.addEventListener('click', (ev) => {
+      if (!this.statsOpen) return;
+      const t = ev.target as Node;
+      if (!this.statsPanel.contains(t) && t !== statsBtn) this.setStatsOpen(false);
+    });
+  }
 
+  /** Toggles the floating stats panel. */
+  setStatsOpen(on: boolean): void {
+    this.statsOpen = on;
+    this.statsPanel.classList.toggle('hidden', !on);
+  }
 
-    // The bar starts on Job 0, the job a new profile ships unlocked.
+  /**
+   * Fills the stats panel from the game's current StatBag. Call at a low frequency
+   * (the values only change on purchase / buff ticks).
+   *
+   * The DOM is only rewritten when the VALUES change: rebuilding `innerHTML` every
+   * tick reset the panel's scroll position, so a wheel/touch scroll was yanked back
+   * to the top within 0.25s and the panel read as "cannot scroll".
+   */
+  private statsSig = '';
+  setStats(entries: Array<[string, number]>): void {
+    if (!this.statsOpen) return;
+    const sig = entries.map(([k, v]) => `${k}:${v}`).join('|');
+    if (sig === this.statsSig) return;
+    this.statsSig = sig;
+    const rows = entries
+      .map(([key, value]) => {
+        const label = STAT_LABELS[key] ?? key;
+        return `<div class="stats-row"><span>${escapeHtml(label)}</span><span>${toReadable(value)}</span></div>`;
+      })
+      .join('');
+    this.statsBody.innerHTML = rows || '<div class="stats-empty">暂无属性</div>';
   }
 
   private readonly toScreen: (x: number, y: number) => { x: number; y: number };
@@ -337,17 +463,17 @@ export class Hud {
     this.hpFill.style.background = hpFrac > 0.5 ? '#5bd97a' : hpFrac > 0.25 ? '#e8c341' : '#e05a4a';
     this.hpText.textContent = `${toReadable(Math.ceil(snap.playerHp))} / ${toReadable(Math.ceil(snap.playerMaxHp))}`;
 
-    // Centre cluster mirrors the shipping HUD: the level, then a progress bar.
-    // The bar tracks PLAYER experience: the original declares `PlayerExp` but never
-    // writes it, so there was no curve to copy, and the monster-level bar it does
-    // have moves too rarely to read as progress.
-    this.levelText.textContent = t('playerLevel', { n: snap.playerLevel });
+    // Centre cluster: the run's stage and the player's level share the top line
+    // (`第 N 关 · 等级 M`), with the pack progress underneath — the level icon that
+    // used to sit in the left resource row is gone, so the stage number moves here.
+    // The bar below still tracks PLAYER experience: the original declares `PlayerExp`
+    // but never writes it, so there was no curve to copy, and the monster-level bar
+    // it does have moves too rarely to read as progress.
+    this.levelText.textContent = `${t('level', { n: snap.level })} · ${t('playerLevel', { n: snap.playerLevel })}`;
+    this.stageText.textContent = t('packs', { done: snap.packsCleared, total: snap.packsTotal });
     this.expFill.style.transform = `scaleX(${snap.playerExpFraction})`;
 
     this.goldText.textContent = toReadable(snap.gold);
-    this.gemText.textContent = toReadable(snap.gems);
-    this.killText.textContent = toReadable(snap.kills);
-    this.clearText.textContent = toReadable(snap.packsCleared);
 
     // Family currency counters, revealed the first time that purse is filled - the
     // original's `playerData.WasCurrencyShownBefore` gate. Before that the counters would
@@ -424,9 +550,26 @@ export class Hud {
   /** Stroke length of the cooldown ring, cached from its radius. */
   private magRingLength = 0;
 
-  /** Spawns a floating damage number; pooled to keep GC quiet. */
+  /**
+   * Spawns a floating damage number; pooled to keep GC quiet.
+   *
+   * The pool is capped: past `MAX_FLOATERS` a fresh number reuses the oldest node
+   * instead of growing the DOM forever, which a dense AOE burst (e.g. SuperNova)
+   * could otherwise do across frames.
+   */
   float(worldX: number, worldY: number, value: number, crit: boolean): void {
     const p = this.toScreen(worldX, worldY);
+    if (this.poolUsed >= MAX_FLOATERS) {
+      const reused = this.pool[this.poolUsed % MAX_FLOATERS];
+      this.poolUsed++;
+      reused.textContent = crit ? `${toReadable(value)}!` : toReadable(value);
+      reused.className = crit ? 'floater crit' : 'floater';
+      reused.style.left = `${p.x}px`;
+      reused.style.top = `${p.y}px`;
+      void reused.offsetHeight;
+      reused.style.opacity = '1';
+      return;
+    }
     let node = this.pool[this.poolUsed];
     if (!node) {
       node = el('div', 'floater');
@@ -495,14 +638,26 @@ export class Hud {
   }
 
   /** Call once per frame after all `float` calls. */
-  endFrame(): void {    for (let i = this.poolUsed; i < this.pool.length; i++) {
+  endFrame(): void {
+    const used = Math.min(this.poolUsed, MAX_FLOATERS);
+    for (let i = used; i < this.pool.length; i++) {
       this.pool[i].style.opacity = '0';
     }
     this.poolUsed = 0;
   }
 
   destroy(): void {
+    window.clearTimeout(this.toastTimer);
     this.root.remove();
+  }
+
+  /**
+   * The lower band's panels cover the bottom strip; the HUD bottom bar (magazine dial)
+   * must yield while one is open or it swallows clicks/hovers on the nodes beneath it
+   * (the HUD stacks at z-index 10, above the panels' 8).
+   */
+  setBandOpen(on: boolean): void {
+    this.root.classList.toggle('band-open', on);
   }
 }
 

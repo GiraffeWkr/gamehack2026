@@ -517,8 +517,9 @@ export class TalentPanel {
     const maxed = tree.isMaxed(def);
     const accessible = tree.isAccessible(def);
 
-    const rows: string[] = [`<div class="tt-name">${def.name}</div>`];
-    rows.push(`<div class="tt-lv">{{LV}}</div>`.replace('{{LV}}', `等级 ${level} / ${def.maxLevel}`));
+    // The node's internal name (`Node 16` etc.) is exporter plumbing, not player
+    // knowledge — the tooltip leads with what buying it actually gives.
+    const rows: string[] = [`<div class="tt-lv">{{LV}}</div>`.replace('{{LV}}', `等级 ${level} / ${def.maxLevel}`)];
 
     if (!maxed) {
       const next = level + 1;
