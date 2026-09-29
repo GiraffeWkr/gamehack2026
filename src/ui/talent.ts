@@ -521,17 +521,18 @@ export class TalentPanel {
     // knowledge — the tooltip leads with what buying it actually gives.
     const rows: string[] = [`<div class="tt-lv">{{LV}}</div>`.replace('{{LV}}', `等级 ${level} / ${def.maxLevel}`)];
 
-    // Show what this node CURRENTLY grants at its purchased level — so an already-
-    // bought node's tooltip is not just "等级 1/3 · 花费..." but also "当前: +5 伤害".
+    // Show the TOTAL value this node currently grants at its purchased level — so an
+    // already-bought node's tooltip reads "当前: +5 伤害" (the full amount), not just
+    // the incremental delta from the last level.
     if (level >= 1) {
-      const current = tree.grantsAt(def, level);
-      const curLines = current
-        .map((gr, i) => {
-          if (Math.abs(gr.delta) < 1e-9) return '';
-          return `<div class="tt-grant">${statText(def, i, gr.delta)}</div>`;
+      const curLines = def.grants
+        .map((_gr, i) => {
+          const total = tree.valueOf(def, i);
+          if (Math.abs(total) < 1e-9) return '';
+          return `<div class="tt-grant">${statText(def, i, total)}</div>`;
         })
         .filter(Boolean);
-      if (curLines.length) rows.push(`<div class="tt-cur">${curLines.join('')}</div>`);
+      if (curLines.length) rows.push(`<div class="tt-cur">当前：${curLines.join('')}</div>`);
     }
 
     if (!maxed) {

@@ -202,7 +202,7 @@ console.log('\n[loot drops]');
   // the drop's value: that is the "dropped vs added" invariant.
   // Level 3 is where the shipping save sits, and where Claw currency first pays out:
   // `EnemyCurrencyDrop(3, Claw)` reads `EnemyCurrencyPerRelativeLevel[3 - 2]` = 1.
-  const g = new Game({ seed: 4242, level: 3, spawnNothing: true });
+  const g = new Game({ archerSpawned: true, seed: 4242, level: 3, spawnNothing: true });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
   // The family currency CHANCE bases at 0: `PlayerStatsData` declares the field but never
   // seeds it, so a family only drops once the tree grants the chance. The port used to
@@ -250,7 +250,7 @@ console.log('\n[loot drops]');
   // Now drive the family path directly, with the chance granted the way the tree grants
   // it. A tick cannot be used: the kill's own level-up calls `refreshStats()`, which
   // rebuilds the bag from `PLAYER_BASE_STATS` and would wipe a manually-set stat.
-  const familyGame = new Game({ seed: 4243, level: 3, spawnNothing: true });
+  const familyGame = new Game({ archerSpawned: true, seed: 4243, level: 3, spawnNothing: true });
   const fam = familyGame as unknown as {
     stats: { change: (v: string, p: StatsProp, n: number, add: boolean) => void };
     giveKillRewards: (x: number, y: number, t: EnemyType) => void;
@@ -275,7 +275,7 @@ console.log('\n[loot drops]');
 // -------------------------------------------------------------------- gameplay
 console.log('\n[gameplay]');
 {
-  const game = new Game({ seed: 288089883, level: 1 });
+  const game = new Game({ seed: 288089883, level: 1, archerSpawned: true });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
 
   const startX = game.px;
@@ -346,7 +346,7 @@ console.log('\n[gameplay]');
 // -------------------------------------------------------------- portal gating
 console.log('\n[portal gating]');
 {
-  const game = new Game({ seed: 7, level: 1 });
+  const game = new Game({ archerSpawned: true, seed: 7, level: 1 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
   const portal = game.getEnemyList().find((e) => e.isPortal);
   check('portal exists at level start', portal != null);
@@ -357,7 +357,7 @@ console.log('\n[portal gating]');
 // ------------------------------------------------------------------ death loop
 console.log('\n[death & respawn]');
 {
-  const game = new Game({ seed: 99, level: 3 });
+  const game = new Game({ archerSpawned: true, seed: 99, level: 3 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
   // Clear a couple of packs by hand so we can prove progress survives.
   const list = game.getEnemyList();
@@ -384,7 +384,7 @@ console.log('\n[death & respawn]');
 // ------------------------------------------------------------------- skills
 console.log('\n[skills]');
 {
-  const game = new Game({ seed: 5, level: 1 });
+  const game = new Game({ archerSpawned: true, seed: 5, level: 1 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
 
   // A skill is ABSENT until it is bought: `JobsUIManager` gates slot 0 on nothing, but the
@@ -431,7 +431,7 @@ console.log('\n[skills]');
   // `CharacterAttacker.GetReadySkillProjectile` selects the first owned, ready,
   // `isShotByArcher && !isPassive && !isBuff` skill in DESCENDING job order. That predicate
   // is what `Skills.nextShot` implements, so assert it directly rather than choreography.
-  const sel = new Game({ seed: 11, level: 3 });
+  const sel = new Game({ archerSpawned: true, seed: 11, level: 3 });
   check('no shot skill is selected before anything is owned', sel.skills.nextShot() === null);
   sel.jobs.unlock(1, JOBS[1].unlockCost); // Wolf / Bear / Falcon are pets, not shots
   sel.jobs.levelUpSkill(1, 0, sel.jobs.skillCost('Wolf'));
@@ -469,7 +469,7 @@ console.log('\n[skills]');
 // -------------------------------------------------------------- jobs & passives
 console.log('\n[jobs]');
 {
-  const game = new Game({ seed: 7, level: 1 });
+  const game = new Game({ archerSpawned: true, seed: 7, level: 1 });
   check('job 0 is unlocked from the start', game.jobs.unlocked[0] === true);
   check('jobs 1-4 start locked', game.jobs.unlocked.slice(1).every((u) => !u));
   check('the unlocked jobs match the assets',
@@ -531,7 +531,7 @@ console.log('\n[pets]');
   check('Bear is the taunt pet', petIsTaunt('Bear') && !petIsTaunt('Wolf'));
 
   // `PetsManager.Update` summon gating.
-  const g = new Game({ seed: 3, level: 1 });
+  const g = new Game({ archerSpawned: true, seed: 3, level: 1 });
   const noneAlive = (): boolean => false;
   const noCd = (): number => 0;
   check('no pet is summoned before the archer gate opens',
@@ -570,7 +570,7 @@ console.log('\n[pets in the sim]');
 {
   // Drive a real run: unlock Job1, level a Wolf, open the archer gate, and watch the pet
   // appear and actually damage something.
-  const g = new Game({ seed: 21, level: 1 });
+  const g = new Game({ archerSpawned: true, seed: 21, level: 1 });
   g.jobs.unlock(1, JOBS[1].unlockCost);
   g.jobs.levelUpSkill(1, 0, g.jobs.skillCost('Wolf'));
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
@@ -616,7 +616,7 @@ console.log('\n[pets take damage]');
 {
   // `PetSelfer` gives allies `AllyDamageReductionFraction` and floats the Bear forward.
   // Before this wiring an enemy could hit the archer straight through a pet in front of him.
-  const g = new Game({ seed: 31, level: 1 });
+  const g = new Game({ archerSpawned: true, seed: 31, level: 1 });
   g.jobs.unlock(1, JOBS[1].unlockCost);
   g.jobs.levelUpSkill(1, 0, g.jobs.skillCost('Wolf'));
   for (let i = 0; i < 10; i++) g.stats.change('IsArcherSpawned', StatsProp.Flat, 100);
@@ -785,7 +785,7 @@ console.log('\n[golden enemies]');
 {
   // `EnemiesManager`: gated on `UnlockGoldenEnemies >= 10`, at most one per pack, the first
   // one ever guaranteed, and a Gilded Champion ONLY from the `GoldenPack` mastery prime.
-  const g = new Game({ seed: 77, level: 4 });
+  const g = new Game({ archerSpawned: true, seed: 77, level: 4 });
   const goldens = (): number => g.getEnemyList().filter((e) => e.golden).length;
   check('nothing is golden before the unlock gate', goldens() === 0,
     `unlock=${g.stats.get('UnlockGoldenEnemies')}`);
@@ -809,7 +809,7 @@ console.log('\n[golden enemies]');
     [...perPack.values()].every((n) => n === 1), [...perPack.values()].join());
 
   // The champion comes from the mastery prime charge, not the roll.
-  const championGame = new Game({ seed: 78, level: 4 });
+  const championGame = new Game({ archerSpawned: true, seed: 78, level: 4 });
   championGame.stats.change('UnlockGoldenEnemies', StatsProp.Flat, 10, true);
   // `PinnacleEffectType.GoldenPack` is 1; the legendary charge makes it a champion.
   championGame.mastery.addCharges(1, true, 1);
@@ -825,7 +825,7 @@ console.log('\n[golden enemies]');
   // The payout: `GoldenRewardMultiplier(5) * (champion ? 3 : 1) - 1` extra settlements.
   // With one gold coin at base that is 1 + 4 = 5 coins for a golden, 1 + 14 = 15 for a
   // champion.
-  const payout = new Game({ seed: 79, level: 4 });
+  const payout = new Game({ archerSpawned: true, seed: 79, level: 4 });
   payout.stats.change('UnlockGoldenEnemies', StatsProp.Flat, 10, true);
   payout.startLevel(4, false);
   const victim = payout.getEnemyList().find((e) => e.golden);
@@ -843,13 +843,13 @@ console.log('\n[golden enemies]');
 // ------------------------------------------------------------ determinism
 console.log('\n[determinism]');
 {
-  const mk = (): Game => new Game({ seed: 12345, level: 4 });
+  const mk = (): Game => new Game({ archerSpawned: true, seed: 12345, level: 4 });
   const a = mk();
   const b = mk();
   const layoutA = a.getEnemyList().map((e) => `${e.type}:${e.x.toFixed(3)}:${e.y.toFixed(3)}`).join('|');
   const layoutB = b.getEnemyList().map((e) => `${e.type}:${e.x.toFixed(3)}:${e.y.toFixed(3)}`).join('|');
   check('same seed yields the same layout', layoutA === layoutB, `${a.getEnemyList().length} enemies`);
-  const c = new Game({ seed: 54321, level: 4 });
+  const c = new Game({ archerSpawned: true, seed: 54321, level: 4 });
   const layoutC = c.getEnemyList().map((e) => `${e.type}:${e.x.toFixed(3)}:${e.y.toFixed(3)}`).join('|');
   check('different seed differs', layoutA !== layoutC);
 }
@@ -859,7 +859,7 @@ console.log('\n[bow attack targets]');
 {
   // Regression guard: the projectile sweep used to skip `isPortal`, so the archer
   // could never damage the run portal even though the tapped arrow-rain could.
-  const game = new Game({ seed: 31, level: 1 });
+  const game = new Game({ archerSpawned: true, seed: 31, level: 1 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
 
   // Clear every pack so the portal becomes vulnerable.
@@ -927,7 +927,7 @@ console.log('\n[bow attack targets]');
     check('and reveals its counter', game.portalCurrencySeen === true);
 
     // Re-clearing the same level must NOT pay again: that is what makes it finite.
-    const replay = new Game({ seed: 12, level: 1 });
+    const replay = new Game({ archerSpawned: true, seed: 12, level: 1 });
     for (const lvl of game.portalCurrencyPaid) replay.portalCurrencyPaid.add(lvl);
     check('a replayed level does not owe portal currency',
       replay.portalCurrencyOwed(replay.level) === false,
@@ -940,7 +940,7 @@ console.log('\n[bow attack targets]');
 // ------------------------------------------------------- cooldown ring data
 console.log('\n[magazine cooldown]');
 {
-  const game = new Game({ seed: 12, level: 1 });
+  const game = new Game({ archerSpawned: true, seed: 12, level: 1 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
 
   // Spend the whole magazine. `taps` is a queue the sim drains, so it must be
@@ -991,7 +991,7 @@ console.log('\n[health regen]');
 
   // Behavioural: with the player hurt and no enemies to muddy the reading, no heal
   // before the period elapses and exactly one tick's worth after it.
-  const g = new Game({ seed: 7, level: 1, spawnNothing: true });
+  const g = new Game({ archerSpawned: true, seed: 7, level: 1, spawnNothing: true });
   g.hp = g.maxHp - 5;
   const start = g.hp;
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
@@ -1015,7 +1015,7 @@ console.log('\n[rapid tapping]');
   // Regression guard: `taps` used to be a per-frame boolean, so three taps inside
   // one frame fired a single arrow and the rest were silently dropped - which is why
   // clicking quickly "did nothing".
-  const game = new Game({ seed: 99, level: 1 });
+  const game = new Game({ archerSpawned: true, seed: 99, level: 1 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
   input.aimX = game.px + 300;
   input.aimY = 50;
@@ -1038,7 +1038,7 @@ console.log('\n[rapid tapping]');
   // runs BEFORE the tick and therefore cannot tell an unconsumed tap from one that has
   // not been read yet - clearing there dropped every tap that arrived between frames.
   // That ordering bug is covered end-to-end by `tools/cdp-tap.mjs`, which needs a DOM.
-  const g2 = new Game({ seed: 100, level: 1 });
+  const g2 = new Game({ archerSpawned: true, seed: 100, level: 1 });
   const in2: InputState = { aiming: false, aimX: g2.px + 300, aimY: 50, taps: 99 };
   const before2 = g2.shotsFired;
   g2.tick(1 / 60, in2);

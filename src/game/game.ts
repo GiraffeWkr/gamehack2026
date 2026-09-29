@@ -621,11 +621,12 @@ export class Game {
    */
   startLevel(level: number, resume: boolean): void {
     this.level = level;
-    // The original only spawns real packs at `FirstPackPosition` once the
-    // archer companion is unlocked; before that it pushes them out to
-    // `NoSpawnArcherPackPosition` so the level opens with a walk. Level 1 has no
-    // companion, so it uses the far position, as the shipping game does.
-    const useEarlyPacks = !this.archerSpawned;
+    // `useEarlyPacks` is a tutorial layout choice (packs at the nearer
+    // `NoSpawnArcherPackPosition`), decoupled from whether the archer has been
+    // recruited: tests drive the sim with `archerSpawned: true` and still want
+    // the nearer layout, while a fresh browser save has no archer yet and also
+    // uses it.
+    const useEarlyPacks = this.level <= 1;
     const plan = planRun(level, this.defeatedGuardians, useEarlyPacks);
     this.packs = plan.packs;
     this.portalX = plan.portalX;
@@ -857,9 +858,13 @@ export class Game {
     // drop taps that arrived between frames (see `AimInput.update`).
     input.taps = 0;
 
-    this.stepPlayer(dt);
-    this.stepMagazine(dt);
-    this.stepAutoFire(dt);
+    // Before the "Recruit Archer" talent the player has no character on the
+    // field: he does not walk, does not shoot, and the magazine does not regen.
+    if (this.archerSpawned) {
+      this.stepPlayer(dt);
+      this.stepMagazine(dt);
+      this.stepAutoFire(dt);
+    }
     this.stepPets(dt);
     this.stepEnemies(dt);
     this.stepArrows(dt);
