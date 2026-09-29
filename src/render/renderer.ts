@@ -500,7 +500,11 @@ export class Renderer {
 
   private drawPlayer(game: Game): void {
     const s = this.viewFor(-1);
-    s.visible = true;
+    // The archer is hidden until the "Recruit Archer" talent (Node 11,
+    // `IsArcherSpawned`) is bought — before that the player has no character on
+    // the field at all.
+    s.visible = game.isArcherSpawned;
+    if (!s.visible) return;
 
     // ONE skin, never a frame cycle: `Archer_1..5` are outfit skins chosen by unlocked
     // jobs (see `PLAYER_SKINS`), not walk frames. Cycling them flashed the archer's

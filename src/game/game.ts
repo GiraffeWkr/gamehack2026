@@ -352,6 +352,13 @@ export interface GameOptions {
    * the same number.
    */
   spawnNothing?: boolean;
+  /**
+   * Whether the "Recruit Archer" talent is in effect at construction time. Defaults to
+   * `true` so the headless tests (which drive the sim directly) can run without buying
+   * the node first; the browser entry point passes `false` so a fresh save starts with
+   * no character on the field, exactly like buying the node is what recruits him.
+   */
+  archerSpawned?: boolean;
 }
 
 export class Game {
@@ -523,6 +530,10 @@ export class Game {
     this.defeatedGuardians = new Set(opts.defeatedGuardians ?? []);
     this.spawnNothing = opts.spawnNothing ?? false;
     this.applyBaseStats();
+    // The browser passes `archerSpawned: false` (the default) so a fresh save starts
+    // with no character on the field — buying Node 11 is what recruits the archer.
+    // Tests that drive the sim directly pass `true` to skip the talent requirement.
+    if (opts.archerSpawned === true) this.stats.change('IsArcherSpawned', StatsProp.Flat, 100);
     this.startLevel(this.level, false);
   }
 
@@ -1029,6 +1040,9 @@ export class Game {
   /** `TamingManager.nextTameGuaranteed` — the first tame after the chance stat opens. */
   private tameGuaranteed = false;
   private tameChanceWasZero = true;
+
+  /** Public read of the archer-spawned gate, for the renderer. */
+  get isArcherSpawned(): boolean { return this.archerSpawned; }
 
   /**
    * `PetsManager.PetsShouldExist()`.
