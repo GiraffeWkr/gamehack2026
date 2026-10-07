@@ -13,3 +13,24 @@ dist-verify/
 npm-debug.log*
 .vite/
 *.tsbuildinfo
+
+# Local npm cache. `npm install` normally uses %LOCALAPPDATA%\npm-cache, but on some
+# machines that directory is not writable and npm fails with
+# "Log files were not written due to an error writing to the directory". The workaround
+# is `npm install --cache .npmcache`, which drops ~170 MB here. Never commit it.
+.npmcache/
+
+# Chrome profile for the tools/cdp-*.mjs harnesses. It MUST live outside the project tree
+# (Vite watches the whole workspace and dies with EBUSY when Chrome locks its Cookies
+# file), but this entry is here in case one is created inside the repo anyway.
+.chrome-profile/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+*.log
+
+# Backup of the original (pre-space-reskin) art. Keep it locally for rollback with
+# `node tools/restore-art.mjs`, but it is 4.5 MB of duplicate images - do not commit.
+backup-art/

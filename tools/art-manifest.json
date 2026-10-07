@@ -1,0 +1,572 @@
+[
+  {
+    "file": "tree/Slider_Level_01_Bg_3__1085.png",
+    "w": 63,
+    "h": 62,
+    "bytes": 898
+  },
+  {
+    "file": "tree/Slider_Level_01_Bg_4__1093.png",
+    "w": 63,
+    "h": 62,
+    "bytes": 1574
+  },
+  {
+    "file": "tree/Slider_Level_01_Bg_5__978.png",
+    "w": 90,
+    "h": 90,
+    "bytes": 2991
+  },
+  {
+    "file": "tree/Alert_Diamond_White_Bg_2__1150.png",
+    "w": 68,
+    "h": 70,
+    "bytes": 508
+  },
+  {
+    "file": "tree/Alert_Diamond_White_Bg_1__1022.png",
+    "w": 68,
+    "h": 70,
+    "bytes": 789
+  },
+  {
+    "file": "tree/Alert_Diamond_White_Bg_3__1037.png",
+    "w": 92,
+    "h": 94,
+    "bytes": 1318
+  },
+  {
+    "file": "tree/AChestAlwaysSpawnsBeforeThePortal__985.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 1223
+  },
+  {
+    "file": "tree/AlliesAttackSpeed__1206.png",
+    "w": 64,
+    "h": 54,
+    "bytes": 399
+  },
+  {
+    "file": "tree/ArcherCurrencyTreeIcon_0__939.png",
+    "w": 72,
+    "h": 128,
+    "bytes": 1106
+  },
+  {
+    "file": "tree/AreaNumber_0__1280.png",
+    "w": 100,
+    "h": 100,
+    "bytes": 1729
+  },
+  {
+    "file": "tree/AreaTrigger_0__921.png",
+    "w": 100,
+    "h": 100,
+    "bytes": 1729
+  },
+  {
+    "file": "tree/ArrowDouble__1056.png",
+    "w": 52,
+    "h": 62,
+    "bytes": 317
+  },
+  {
+    "file": "tree/ArrowPlus__1123.png",
+    "w": 56,
+    "h": 62,
+    "bytes": 384
+  },
+  {
+    "file": "tree/ArrowUp__1157.png",
+    "w": 56,
+    "h": 62,
+    "bytes": 384
+  },
+  {
+    "file": "tree/BatCurrencyTreeIcon_0__891.png",
+    "w": 128,
+    "h": 128,
+    "bytes": 2013
+  },
+  {
+    "file": "tree/bomb_arrow_1__1229.png",
+    "w": 61,
+    "h": 61,
+    "bytes": 481
+  },
+  {
+    "file": "tree/ChanceForBetterItemRarity__1169.png",
+    "w": 58,
+    "h": 64,
+    "bytes": 1162
+  },
+  {
+    "file": "tree/ChanceForMainAttackToHitAnAdditionalTime__1031.png",
+    "w": 64,
+    "h": 62,
+    "bytes": 374
+  },
+  {
+    "file": "tree/ChanceForRarerChestTypes__1036.png",
+    "w": 58,
+    "h": 64,
+    "bytes": 1162
+  },
+  {
+    "file": "tree/ChanceForSkillsToNotConsumeTheirCooldown__1105.png",
+    "w": 50,
+    "h": 64,
+    "bytes": 434
+  },
+  {
+    "file": "tree/ChanceToMineAnExtraOre__1209.png",
+    "w": 61,
+    "h": 64,
+    "bytes": 1033
+  },
+  {
+    "file": "tree/ChanceToSpawnAnOrb__979.png",
+    "w": 64,
+    "h": 50,
+    "bytes": 347
+  },
+  {
+    "file": "tree/ChanceToSummonOrbOnKill__987.png",
+    "w": 46,
+    "h": 64,
+    "bytes": 322
+  },
+  {
+    "file": "tree/ClawCurrencyTreeIcon_0__878.png",
+    "w": 121,
+    "h": 121,
+    "bytes": 1804
+  },
+  {
+    "file": "tree/CoinsFromChests__973.png",
+    "w": 62,
+    "h": 64,
+    "bytes": 1808
+  },
+  {
+    "file": "tree/CoinValueFromChests__989.png",
+    "w": 64,
+    "h": 62,
+    "bytes": 1798
+  },
+  {
+    "file": "tree/CriticalChance__1186.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 529
+  },
+  {
+    "file": "tree/CriticalMultiplier__993.png",
+    "w": 61,
+    "h": 64,
+    "bytes": 657
+  },
+  {
+    "file": "tree/DamagePerMasteryLevel__1055.png",
+    "w": 43,
+    "h": 64,
+    "bytes": 344
+  },
+  {
+    "file": "tree/ExtraTreasuresFromAllChests__1179.png",
+    "w": 64,
+    "h": 62,
+    "bytes": 1154
+  },
+  {
+    "file": "tree/FacingABossFreesAllYourSkillsFromCooldown__995.png",
+    "w": 60,
+    "h": 64,
+    "bytes": 465
+  },
+  {
+    "file": "tree/FacingAPortalFreesAllYourSkillsFromCooldown__1140.png",
+    "w": 60,
+    "h": 64,
+    "bytes": 465
+  },
+  {
+    "file": "tree/function_icon_anvil__1050.png",
+    "w": 43,
+    "h": 30,
+    "bytes": 261
+  },
+  {
+    "file": "tree/function_icon_archer__1234.png",
+    "w": 71,
+    "h": 72,
+    "bytes": 1020
+  },
+  {
+    "file": "tree/function_icon_book_0__1272.png",
+    "w": 32,
+    "h": 42,
+    "bytes": 269
+  },
+  {
+    "file": "tree/function_icon_boot_fly__1220.png",
+    "w": 40,
+    "h": 31,
+    "bytes": 276
+  },
+  {
+    "file": "tree/function_icon_shine__1051.png",
+    "w": 61,
+    "h": 61,
+    "bytes": 481
+  },
+  {
+    "file": "tree/function_icon_tool_4__1141.png",
+    "w": 78,
+    "h": 78,
+    "bytes": 616
+  },
+  {
+    "file": "tree/GainIdleGold__1074.png",
+    "w": 64,
+    "h": 62,
+    "bytes": 1798
+  },
+  {
+    "file": "tree/GoldGained__1028.png",
+    "w": 64,
+    "h": 56,
+    "bytes": 1687
+  },
+  {
+    "file": "tree/GoldGainedPerUnlockedMastery__1021.png",
+    "w": 64,
+    "h": 48,
+    "bytes": 1514
+  },
+  {
+    "file": "tree/healthPotionEffect_0__911.png",
+    "w": 45,
+    "h": 64,
+    "bytes": 204
+  },
+  {
+    "file": "tree/HealthRegen_0__1310.png",
+    "w": 56,
+    "h": 45,
+    "bytes": 202
+  },
+  {
+    "file": "tree/icon_aim_4_Copy__1208.png",
+    "w": 124,
+    "h": 124,
+    "bytes": 2319
+  },
+  {
+    "file": "tree/Icon_Armor_Cloak_0__935.png",
+    "w": 61,
+    "h": 64,
+    "bytes": 493
+  },
+  {
+    "file": "tree/icon_arrow_2__1225.png",
+    "w": 48,
+    "h": 42,
+    "bytes": 278
+  },
+  {
+    "file": "tree/icon_bottle_14_0__928.png",
+    "w": 45,
+    "h": 64,
+    "bytes": 204
+  },
+  {
+    "file": "tree/icon_common_68__1218.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 414
+  },
+  {
+    "file": "tree/Icon_Crafting_GlowingAnvil__1104.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 513
+  },
+  {
+    "file": "tree/icon_game_163__1216.png",
+    "w": 50,
+    "h": 50,
+    "bytes": 335
+  },
+  {
+    "file": "tree/icon_game_173__1172.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 414
+  },
+  {
+    "file": "tree/Icon_Loot_MonsterCoins__1214.png",
+    "w": 64,
+    "h": 62,
+    "bytes": 1798
+  },
+  {
+    "file": "tree/Icon_Mining_RockBreak__1080.png",
+    "w": 64,
+    "h": 59,
+    "bytes": 975
+  },
+  {
+    "file": "tree/icon_simpleshape_29__1099.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 414
+  },
+  {
+    "file": "tree/Icon_Skill_FlameCat__1124.png",
+    "w": 54,
+    "h": 64,
+    "bytes": 347
+  },
+  {
+    "file": "tree/icon_store_167__1047.png",
+    "w": 127,
+    "h": 94,
+    "bytes": 725
+  },
+  {
+    "file": "tree/icon_store_169__1039.png",
+    "w": 127,
+    "h": 107,
+    "bytes": 866
+  },
+  {
+    "file": "tree/icon_store_3__1164.png",
+    "w": 32,
+    "h": 32,
+    "bytes": 320
+  },
+  {
+    "file": "tree/Icon_Time_ArchClock__1057.png",
+    "w": 61,
+    "h": 64,
+    "bytes": 817
+  },
+  {
+    "file": "tree/LessMonstersDamage__1045.png",
+    "w": 52,
+    "h": 64,
+    "bytes": 439
+  },
+  {
+    "file": "tree/LessMonstersHealth__1069.png",
+    "w": 64,
+    "h": 47,
+    "bytes": 430
+  },
+  {
+    "file": "tree/lightning_shoot_1__1178.png",
+    "w": 59,
+    "h": 64,
+    "bytes": 463
+  },
+  {
+    "file": "tree/LootFromMonstersSummonedByThePortal__994.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 1223
+  },
+  {
+    "file": "tree/MageCurrencyTreeIcon_0__888.png",
+    "w": 124,
+    "h": 126,
+    "bytes": 1828
+  },
+  {
+    "file": "tree/Mastery4_Name__1097.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 414
+  },
+  {
+    "file": "tree/MaximumHealthPerMasteryLevel__1064.png",
+    "w": 64,
+    "h": 46,
+    "bytes": 212
+  },
+  {
+    "file": "tree/MaximumTamedMonsters__1026.png",
+    "w": 64,
+    "h": 44,
+    "bytes": 360
+  },
+  {
+    "file": "tree/MonstersCanNowRarelyDropItems__1065.png",
+    "w": 64,
+    "h": 48,
+    "bytes": 818
+  },
+  {
+    "file": "tree/MonstersLessAttackSpeed__1199.png",
+    "w": 55,
+    "h": 64,
+    "bytes": 469
+  },
+  {
+    "file": "tree/multi_shoot_skill_1__983.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 529
+  },
+  {
+    "file": "tree/OrbDuration__1046.png",
+    "w": 64,
+    "h": 50,
+    "bytes": 347
+  },
+  {
+    "file": "tree/PermanentOrb__1162.png",
+    "w": 64,
+    "h": 56,
+    "bytes": 344
+  },
+  {
+    "file": "tree/PetDamageMultiplier__1207.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 388
+  },
+  {
+    "file": "tree/PetHealth__1018.png",
+    "w": 64,
+    "h": 59,
+    "bytes": 401
+  },
+  {
+    "file": "tree/PickAxeSpeed__1077.png",
+    "w": 64,
+    "h": 54,
+    "bytes": 924
+  },
+  {
+    "file": "tree/PictoIcon_Boots__1052.png",
+    "w": 52,
+    "h": 52,
+    "bytes": 418
+  },
+  {
+    "file": "tree/PictoIcon_Boots__1158.png",
+    "w": 52,
+    "h": 52,
+    "bytes": 418
+  },
+  {
+    "file": "tree/PictoIcon_Crown__1161.png",
+    "w": 60,
+    "h": 48,
+    "bytes": 705
+  },
+  {
+    "file": "tree/PictoIcon_Health__976.png",
+    "w": 58,
+    "h": 47,
+    "bytes": 204
+  },
+  {
+    "file": "tree/PictoIcon_Shield__1075.png",
+    "w": 52,
+    "h": 52,
+    "bytes": 423
+  },
+  {
+    "file": "tree/PictoIcon_Star__1081.png",
+    "w": 56,
+    "h": 54,
+    "bytes": 591
+  },
+  {
+    "file": "tree/PictoIcon_Timer__1233.png",
+    "w": 50,
+    "h": 57,
+    "bytes": 665
+  },
+  {
+    "file": "tree/RestoreOfHealthWhenOpeningAChest__1184.png",
+    "w": 60,
+    "h": 64,
+    "bytes": 219
+  },
+  {
+    "file": "tree/Skill_3_lightning_chain__1033.png",
+    "w": 61,
+    "h": 75,
+    "bytes": 513
+  },
+  {
+    "file": "tree/SkillsBuffDurationMultiplier__1203.png",
+    "w": 64,
+    "h": 62,
+    "bytes": 837
+  },
+  {
+    "file": "tree/SkillsDamage__1135.png",
+    "w": 64,
+    "h": 64,
+    "bytes": 345
+  },
+  {
+    "file": "tree/tree_icons_set1_1__953.png",
+    "w": 52,
+    "h": 50,
+    "bytes": 307
+  },
+  {
+    "file": "tree/tree_icons_set1_2__1257.png",
+    "w": 51,
+    "h": 50,
+    "bytes": 323
+  },
+  {
+    "file": "tree/tree_icons_set1_Copy_Copy__1096.png",
+    "w": 54,
+    "h": 50,
+    "bytes": 319
+  },
+  {
+    "file": "tree/tree_icons_set1_Copy_Copy_2_1__1130.png",
+    "w": 50,
+    "h": 50,
+    "bytes": 335
+  },
+  {
+    "file": "tree/UnlockOrbs__1129.png",
+    "w": 51,
+    "h": 64,
+    "bytes": 352
+  },
+  {
+    "file": "tree/UnlockScrolls__1204.png",
+    "w": 60,
+    "h": 64,
+    "bytes": 373
+  },
+  {
+    "file": "tree/WarriorCurrencyTreeIcon_0__1286.png",
+    "w": 128,
+    "h": 112,
+    "bytes": 1673
+  },
+  {
+    "file": "tree/well_icon_skills_0__1301.png",
+    "w": 46,
+    "h": 68,
+    "bytes": 354
+  },
+  {
+    "file": "tree/WormholeArrowStrike__1034.png",
+    "w": 64,
+    "h": 52,
+    "bytes": 751
+  }
+]
