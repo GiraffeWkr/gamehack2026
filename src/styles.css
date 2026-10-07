@@ -160,6 +160,118 @@ body {
   flex: 0 0 auto;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* Top-right utility buttons (stats, reset). Small so they never compete with the action bar. */
+.stats-btn,
+.reset-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  border: 1px solid rgba(120, 104, 88, 0.55);
+  background: rgba(26, 22, 19, 0.85);
+  color: rgba(226, 210, 188, 0.75);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.stats-btn:active,
+.reset-btn:active {
+  transform: scale(0.92);
+  background: rgba(96, 42, 34, 0.9);
+}
+
+/* Floating stats panel: same plate as the lower-band panels. */
+.stats-panel {
+  position: absolute;
+  top: calc(var(--safe-top) + 44px);
+  right: calc(var(--safe-right) + 12px);
+  width: min(280px, 60vw);
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  background: #332822;
+  border: 1px solid #6c4439;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(176, 138, 123, 0.22);
+  overflow: hidden;
+  z-index: 20;
+  /*
+   * The HUD root is `pointer-events: none` so the world stays clickable behind it;
+   * that transparency inherits down here and makes the WHOLE panel (scroll region
+   * included) invisible to the mouse — wheels and drags fell through to the canvas.
+   * The panel must opt back in.
+   */
+  pointer-events: auto;
+}
+
+/*
+ * The panel is closed with the HTML `hidden` attribute; the `display: flex` above
+ * would otherwise beat it, leaving the panel permanently visible.
+ */
+.stats-panel.hidden {
+  display: none;
+}
+
+.stats-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #6c4439;
+  color: #e8cbb8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.stats-body {
+  /*
+   * The classic flex scroll pattern: `flex: 1` + `height: 0` makes the body exactly
+   * the panel's spare height, so `overflow-y: auto` reliably scrolls regardless of
+   * content size. The page sets `touch-action: none` on body (to make the game canvas
+   * swallow touches); it inherits down here and kills touch scrolling, so restore
+   * vertical panning for fingers.
+   */
+  flex: 1;
+  height: 0;
+  overflow-y: auto;
+  padding: 4px 0;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #e6d3c2;
+  border-bottom: 1px solid rgba(176, 138, 123, 0.12);
+}
+
+.stats-row span:first-child {
+  color: #b08a7b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stats-row span:last-child {
+  font-variant-numeric: tabular-nums;
+  color: #ffedbf;
+}
+
+.stats-empty {
+  padding: 14px;
+  text-align: center;
+  color: #b08a7b;
+  font-size: 12px;
 }
 
 /* HP */
@@ -199,6 +311,14 @@ body {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.stage-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
 .progress {
@@ -327,7 +447,13 @@ body {
   align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
-  pointer-events: auto;
+  /*
+   * The BAR must not eat pointer events: it spans the whole bottom strip, and a
+   * `pointer-events:auto` here intercepted every `pointermove` over dropped loot,
+   * so hover-pickup (`LootDropSelfer`'s mouse path) silently stopped working in that
+   * band. Only the interactive children (mag dial, skill wheel) get the events back.
+   */
+  pointer-events: none;
 }
 
 /* Magazine */
@@ -340,6 +466,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 3px;
+  /* The bottom bar is pointer-transparent; the dial itself stays interactive. */
+  pointer-events: auto;
 }
 
 .mag-label {
@@ -2714,18 +2842,39 @@ body {
   padding: 0;
 }
 
+/*
+ * The lower band's panels (talent/jobs/mastery) sit at z-index 8 while the HUD is 10,
+ * so the bottom bar — magazine dial etc, `pointer-events:auto` — would cover the panel
+ * strip and eat clicks on the tree nodes that land beneath it. When a band is open the
+ * bar lifts up to just above the panel instead of hiding: the magazine dial is the
+ * player's only read on arrows left / regen, so it must stay visible.
+ *
+ * The panel top is `55.6%` (the later `.talent { top: 55.6% }` override, not the
+ * `+ 44px` variant), so `100% - 55.6%` parks the bar's bottom edge right at the
+ * panel's top edge, then +10px clears it.
+ */
+.hud.band-open .hud-bottom {
+  bottom: calc(100% - 55.6% + 10px);
+  left: calc(var(--safe-left) + 12px);
+  right: calc(var(--safe-right) + 12px);
+}
+
 .mag {
   transform: scale(0.6);
   transform-origin: bottom left;
 }
 
-.mag-label,
-.mag-dial .mag-ring + .mag-count {
-  font-size: 0;
-}
-
 .mag-label {
   display: none;
+}
+
+/*
+ * The dial shrinks on the phone layout, but the count must stay readable and centred:
+ * a `font-size: 0` here (bundled with the label's hide) made the number 0x0 and
+ * invisible inside the ring.
+ */
+.mag-dial .mag-count {
+  font-size: 16px;
 }
 
 /* ============ talent page: the original's plate and tab ============ */

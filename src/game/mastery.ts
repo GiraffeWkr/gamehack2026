@@ -133,11 +133,13 @@ export class Mastery {
     if (!this.canLevelNpc(bat)) return null;
     const spent = this.npcCost();
     this.npcLevel++;
-    const before = this.granted.size;
+    const before = new Set(this.granted);
     this.grantRewardsUpTo(this.npcLevel);
-    const reward = this.granted.size > before
-      ? MASTERY_REWARDS.find((r) => !this.granted.has(r.npcLevel - 1)) ?? null
-      : null;
+    // The reward handed out this level is the one newly granted — matching by
+    // `npcLevel` directly, rather than hunting for the first ungranted entry
+    // (which used to report the NEXT reward, one level ahead).
+    const reward = MASTERY_REWARDS.find((r) => r.npcLevel === this.npcLevel && !before.has(r.npcLevel - 1))
+      ?? null;
     return { reward, spent };
   }
 

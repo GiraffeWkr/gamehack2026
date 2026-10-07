@@ -519,6 +519,13 @@ export const STATS = {
   chanceForGoldenEnemy: 'ChanceForGoldenEnemy',
   unlockGoldenEnemies: 'UnlockGoldenEnemies',
   firstPacksAlwaysContainGolden: 'FirstPacksAlwaysContainGolden',
+  // Mastery stats (registered lazily by the mastery writer; added here so the sim has a
+  // stable handle and the tree/mastery curve can be read back).
+  healthRestorePercentOnKill: 'HealthRestorePercentOnKill',
+  chanceToFreeSkillFromCooldown: 'ChanceToFreeSkillFromCooldown',
+  // Job passive stats written by `Jobs.jobPassives()`; consumed in the damage pipeline.
+  criticalPierceChance: 'CriticalPierceChance',
+  wormholeShotChance: 'WormholeShotChance',
 } as const;
 
 /**

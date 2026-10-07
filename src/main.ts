@@ -14,7 +14,7 @@ import { SKILLS } from './game/skills.js';
 import type { DamageNumber } from './game/types.js';
 import { Renderer } from './render/renderer.js';
 import { Hud } from './ui/hud.js';
-import { TalentPanel } from './ui/talent.js';
+import { TalentPanel, statText } from './ui/talent.js';
 import { JobsPanel } from './ui/jobs.js';
 import { MasteryPanel } from './ui/mastery.js';
 import { MASTERIES } from './content/masteryData.js';
@@ -143,6 +143,10 @@ async function boot(): Promise<void> {
     // health regen, the magazine, camera framing - where live enemies would otherwise
     // move the same numbers (incoming damage hides a heal, and dying resets the bar).
     spawnNothing: new URLSearchParams(location.search).has('quiet'),
+    // The browser entry point starts with NO archer on the field: the "Recruit Archer"
+    // talent node (Node 11, `IsArcherSpawned`) is what puts the character there. Tests
+    // pass `true` (the default) so they can run the sim without buying the node first.
+    archerSpawned: false,
   });
   game.gold = saved.gold;
   // Restore the family purses and their visibility flags, like
@@ -226,9 +230,22 @@ async function boot(): Promise<void> {
    * The HUD also takes no opener for the panels: the left icon rail in the lower band is the
    * only way in, which is where the original puts it.
    */
+  // Set once the reset button is pressed: from that instant `saveNow` goes quiet so the
+  // wipe below is the last write to storage (a real reload fires `beforeunload`, which
+  // would otherwise re-save the old state right back over the deletion).
+  let resetPending = false;
+
   const hud = new Hud(
     app,
     (x, y) => renderer.toScreen(x, y),
+    {
+      onReset: () => {
+        resetPending = true;
+        // Wipe the save and start over from stage 1 with nothing earned.
+        localStorage.removeItem(SAVE_KEY);
+        window.location.reload();
+      },
+    },
   );
 
   // Bake the drop icons with their tints up front. The flying collect icon is a DOM
@@ -257,7 +274,13 @@ async function boot(): Promise<void> {
       }
       game.portalCurrency = Math.max(0, next.currencies.PortalCurrency ?? 0);
       game.refreshStats();
-      hud.announceSkill(`${node.name} ${game.talent.level(node.id)}`, true);
+      // Report what the point actually bought, not the node's internal name: the
+      // grants of the level just reached, formatted like the tooltip.
+      const newLevel = game.talent.level(node.id);
+      const gained = game.talent.grantsAt(node, newLevel)
+        .map((gr, i) => (Math.abs(gr.delta) < 1e-9 ? '' : statText(node, i, gr.delta)))
+        .filter(Boolean);
+      hud.announceSkill(gained.length ? gained.join('、') : `${node.name} Lv${newLevel}`, true);
       return true;
     },
   });
@@ -396,6 +419,11 @@ async function boot(): Promise<void> {
 
   function setBand(active: string | null): void {
     bandOpen.value = active !== null;
+    // While a band panel is open it covers the lower strip, so the bottom HUD bar
+    // (magazine dial) must get out of the way — it sits at z-index 10, above the
+    // panels' 8, and its `pointer-events:auto` was swallowing every click and hover
+    // on the tree nodes that land underneath it (the nodes below the root).
+    hud.setBandOpen(bandOpen.value);
     for (const { def, el, icon } of tabButtons) {
       const unlocked = def.gate === null || game.stats.get(def.gate) >= 10;
       // A locked system still shows a tab, but wearing the padlock.
@@ -451,8 +479,11 @@ async function boot(): Promise<void> {
       'position:absolute;left:0;bottom:0;z-index:99;margin:0;padding:4px 6px;' +
       'font:11px/1.4 monospace;color:#9fe6ff;background:rgba(0,0,0,.7);pointer-events:none';
     app.appendChild(statsEl);
-    window.addEventListener('pointerdown', () => {
-      debugTaps++;
+    // Count only pointer downs that land on the play surface, not HUD buttons or the
+    // panel tabs — the counter is meant to separate "the tap never arrived" from
+    // "the arrow was fired but you could not see it".
+    window.addEventListener('pointerdown', (ev) => {
+      if (canvas.contains(ev.target as Node)) debugTaps++;
     }, true);
   }
 
@@ -482,6 +513,8 @@ async function boot(): Promise<void> {
   let pendingFloaters: DamageNumber[] = [];
   let clearedTimer = 0;
   let levelCleared = false;
+  /** Accumulator for the stats-panel refresh (~4Hz). */
+  let statsTick = 0;
 
   const flushFloaters = (): void => {
     for (const n of pendingFloaters) hud.float(n.x, n.y, n.value, n.crit);
@@ -565,6 +598,16 @@ async function boot(): Promise<void> {
     }
     hud.update(snap, game.skills, dt);
 
+    // Stats panel refresh at ~4Hz: stat values only move on purchases and buff ticks,
+    // so there is no need to rebuild the rows every frame.
+    statsTick += dt;
+    if (statsTick >= 0.25) {
+      statsTick = 0;
+      const entries: Array<[string, number]> = [];
+      for (const [key, stat] of game.stats.entries()) entries.push([key, stat.get()]);
+      hud.setStats(entries);
+    }
+
     // Keep the talent graph live: node colours depend on the purses, so earning gold
     // mid-run must light up the nodes it just made affordable. The signature guard keeps
     // 40-odd class toggles off the per-frame path.
@@ -591,22 +634,7 @@ async function boot(): Promise<void> {
         levelCleared = true;
         clearedTimer = 0;
         hud.showToast(t('levelCleared', { n: snap.level }), 1400);
-        const finished = snap.level;
-        writeSave({
-          level: finished + 1,
-          gold: Math.floor(game.gold),
-          kills: game.kills,
-          defeatedGuardians: game.progress().defeated,
-          progression: game.progression.serialize(),
-          talent: game.talent.serialize(),
-          currencies: { ...game.currencies },
-          currencySeen: { ...game.currencySeen },
-          portalCurrency: game.portalCurrency,
-          portalCurrencySeen: game.portalCurrencySeen,
-          portalCurrencyPaid: [...game.portalCurrencyPaid],
-          jobs: game.jobs.serialize(),
-          mastery: game.mastery.serialize(),
-        });
+        saveNow(true);
       }
       clearedTimer += dt;
       if (clearedTimer > 1.4) {
@@ -624,6 +652,40 @@ async function boot(): Promise<void> {
   };
 
   requestAnimationFrame(frame);
+
+  /**
+   * Persists the CURRENT run state. The cleared-level branch used to be the only writer,
+   * so anything earned mid-level (gold, kills, tree purchases, job/mastery levels) was
+   * lost if the player closed the tab before clearing — a refresh after a long run went
+   * back to the last cleared level. Now the same snapshot also lands on tab hide/close.
+   *
+   * `advance` is true when the caller is saving BECAUSE the level was cleared: the save
+   * then records `level + 1` so a reload starts the next stage, exactly like the old
+   * inline write did. Mid-run saves keep the level the player is on.
+   */
+  function saveNow(advance = false): void {
+    if (resetPending) return;
+    writeSave({
+      level: Math.max(1, game.level + (advance ? 1 : 0)),
+      gold: Math.floor(game.gold),
+      kills: game.kills,
+      defeatedGuardians: game.progress().defeated,
+      progression: game.progression.serialize(),
+      talent: game.talent.serialize(),
+      currencies: { ...game.currencies },
+      currencySeen: { ...game.currencySeen },
+      portalCurrency: game.portalCurrency,
+      portalCurrencySeen: game.portalCurrencySeen,
+      portalCurrencyPaid: [...game.portalCurrencyPaid],
+      jobs: game.jobs.serialize(),
+      mastery: game.mastery.serialize(),
+    });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) saveNow();
+  });
+  window.addEventListener('beforeunload', () => saveNow());
 
   // Expose for quick console poking during development.
   Object.assign(window as unknown as Record<string, unknown>, {

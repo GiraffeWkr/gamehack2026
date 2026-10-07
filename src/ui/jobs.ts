@@ -180,7 +180,6 @@ export class JobsPanel {
       view.title.textContent = unlocked ? job.titleZh : '? ? ?';
       view.portrait.style.filter = unlocked ? 'none' : 'brightness(0.25) grayscale(1)';
       view.portrait.style.opacity = unlocked ? '1' : '0.75';
-      view.lock.hidden = !unlockable ? unlocked : true;
       view.lock.hidden = unlocked || unlockable;
 
       if (unlocked) {

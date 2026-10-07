@@ -50,8 +50,12 @@ export class Rng {
   private state: number;
 
   constructor(seed: number) {
-    // Avoid a zero state, which would make mulberry32 emit only zeros.
-    this.state = (seed >>> 0) || 0x9e3779b9;
+    // Avoid a literal zero state (mulberry32 still works from 0 — it adds a constant
+    // before the first emit — but a 0 seed is conventionally "unset"). Only remap 0
+    // itself, not every multiple of 2^32 that `>>>0` collapses to 0: remapping after
+    // the unsigned fold made seed 0 and seed 0x9e3779b9 emit the SAME sequence.
+    const folded = seed >>> 0;
+    this.state = folded === 0 ? 0x9e3779b9 : folded;
   }
 
   next(): number {
