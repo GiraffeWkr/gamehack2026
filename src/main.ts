@@ -143,10 +143,12 @@ async function boot(): Promise<void> {
     // health regen, the magazine, camera framing - where live enemies would otherwise
     // move the same numbers (incoming damage hides a heal, and dying resets the bar).
     spawnNothing: new URLSearchParams(location.search).has('quiet'),
-    // The browser entry point starts with NO archer on the field: the "Recruit Archer"
-    // talent node (Node 11, `IsArcherSpawned`) is what puts the character there. Tests
-    // pass `true` (the default) so they can run the sim without buying the node first.
-    archerSpawned: false,
+    // `?recruit=0` starts the run with NO archer on the field: the "Recruit
+    // Archer" talent node (Node 11, `IsArcherSpawned`) is what puts the character
+    // there. The browser default is `true` so a fresh save is playable from the
+    // first second — without the archer the magazine never regenerates and the
+    // player cannot see the character they are meant to be controlling.
+    archerSpawned: new URLSearchParams(location.search).get('recruit') !== '0',
   });
   game.gold = saved.gold;
   // Restore the family purses and their visibility flags, like
