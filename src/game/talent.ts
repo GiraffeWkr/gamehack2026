@@ -157,6 +157,24 @@ export class TalentTree {
     return total;
   }
 
+  /**
+   * Whether the "Recruit Archer" node has been purchased.
+   *
+   * The node grants `IsArcherSpawned`, so it is located by that stat rather than
+   * by its generated id hash (`Node 11_<hash>`), which would break if the export
+   * is regenerated. The browser entry point spawns the archer on boot for
+   * playability, so `IsArcherSpawned` on the stat bag is NOT a reliable signal
+   * of a purchase — this read goes straight to the tree's level map.
+   */
+  isArcherRecruited(): boolean {
+    for (const node of TALENT_NODES) {
+      if (node.grants.some((g) => g.stat === 'IsArcherSpawned')) {
+        return this.level(node.id) >= 1;
+      }
+    }
+    return false;
+  }
+
   serialize(): Record<string, number> {
     const out: Record<string, number> = {};
     for (const [k, v] of this.levels) if (v > 0) out[k] = v;

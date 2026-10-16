@@ -387,7 +387,11 @@ async function boot(): Promise<void> {
    */
   const LOWER_TABS = [
     { id: 'talent', label: '天赋', icon: 'rail_tree', panel: talentPanel, gate: null },
-    { id: 'jobs', label: '职业', icon: 'rail_jobs', panel: jobsPanel, gate: null },
+    // Jobs is gated behind the "Recruit Archer" talent (Node 11): until the
+    // archer is recruited there is nothing to equip or level up, so the tab is
+    // hidden outright rather than shown with a padlock. `gate: 'recruitArcher'`
+    // is resolved in `setBand` via `game.talent.isArcherRecruited()`.
+    { id: 'jobs', label: '职业', icon: 'rail_jobs', panel: jobsPanel, gate: 'recruitArcher' },
     { id: 'mastery', label: '精通', icon: 'rail_mastery', panel: masteryPanel, gate: 'UnlockMastery' },
   ] as const;
 
@@ -427,6 +431,22 @@ async function boot(): Promise<void> {
     // on the tree nodes that land underneath it (the nodes below the root).
     hud.setBandOpen(bandOpen.value);
     for (const { def, el, icon } of tabButtons) {
+      // `recruitArcher` resolves through the talent tree (not the stat bag, which
+      // the boot path seeds to 100 for playability), and unlike a stat gate the tab
+      // is HIDDEN until unlocked rather than shown with a padlock: there is nothing
+      // meaningful to show on the jobs panel before the archer exists.
+      if (def.gate === 'recruitArcher') {
+        const unlocked = game.talent.isArcherRecruited();
+        el.hidden = !unlocked;
+        if (unlocked && !icon.src.endsWith('art/' + def.icon + '.png')) {
+          icon.src = 'art/' + def.icon + '.png';
+        }
+        el.classList.remove('locked');
+        const on = unlocked && bandOpen.value && active === def.id;
+        el.classList.toggle('active', on);
+        def.panel.setVisible(on);
+        continue;
+      }
       const unlocked = def.gate === null || game.stats.get(def.gate) >= 10;
       // A locked system still shows a tab, but wearing the padlock.
       const wanted = unlocked ? 'art/' + def.icon + '.png' : 'art/ui_lock.png';
@@ -449,10 +469,13 @@ async function boot(): Promise<void> {
   // dead brown strip across the bottom of a fresh run — the original always has a page
   // showing, and `MainMenusManager` opens the tree first. The `?tree=1` / `?jobs=1` /
   // `?mastery=1` params used by screenshots and the browser harnesses still pick a page.
-  const wanted = (['talent', 'jobs', 'mastery'] as const).find(
+  // Jobs is hidden until the archer is recruited, so `?jobs=1` on a fresh save falls back
+  // to the tree rather than opening a tab whose button is not on the strip.
+  const wantedRaw = (['talent', 'jobs', 'mastery'] as const).find(
     (id) => new URLSearchParams(location.search).get(id === 'talent' ? 'tree' : id) === '1',
   );
-  setBand(wanted ?? 'talent');
+  const wanted = wantedRaw === 'jobs' && !game.talent.isArcherRecruited() ? 'talent' : (wantedRaw ?? 'talent');
+  setBand(wanted);
 
   const input = new AimInput(canvas, {    toWorld: (sx, sy) => renderer.screenToWorld(sx, sy),
     onAim: () => {
