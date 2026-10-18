@@ -1,0 +1,57 @@
+[
+  {
+    "id": "title_splash",
+    "size": "1536x1024",
+    "prompt": "Pixel art game splash: a lone grimdark inquisitor in ornate armor stands on a ruined gothic cathedral battlefield, a giant beam of orbital fire descends from a dark sky, teal and amber palette, crisp 16-bit pixel art, dramatic lighting, cinematic wide composition, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "hub_bridge",
+    "size": "1536x1024",
+    "prompt": "Pixel art game hub background, interior of a vast gothic starship bridge, dark brass and iron machinery, a glowing teal hololithic star map table dominating the center, towering stained-glass window showing a burning planet, floating servo-skulls, candles, cables, incense smoke, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, cinematic wide composition, dark upper corners for UI overlay, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "planet_map",
+    "size": "1536x1024",
+    "prompt": "Pixel art orbital view of a war-torn gothic planet, curved horizon, burning hive cities as embers through ash clouds, colossal cathedral spires, orbital debris and distant warships, dark teal oceans and rust-red continents, grimdark gothic science-fantasy strategy campaign map, 16-bit SNES-era pixel art, limited palette, wide cinematic composition, dark edges for UI overlay, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "player_portrait",
+    "size": "1024x1024",
+    "prompt": "Pixel art character portrait bust of a stern imperial inquisitor, ornate black and gold power armor, wide peaked hat, red cloak and purity seals, glowing green eye lenses, scarred pale face, candlelit gothic cathedral background, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic rim light, centered bust shot, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "faction_orks",
+    "size": "1024x1024",
+    "prompt": "Pixel art bestiary portrait bust of a brutal green-skinned alien ork brute, huge tusks, crude scrap-metal armor, red war paint, mechanical choppa over one shoulder, dusty industrial wasteland background, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic rim light, centered bust shot, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "faction_chaos",
+    "size": "1024x1024",
+    "prompt": "Pixel art bestiary portrait bust of a corrupted transhuman warrior, horned crimson and brass power armor covered in spikes, glowing red eye lenses, tattered black tabard, warp fire and ruined cathedral background, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic rim light, centered bust shot, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "faction_tau",
+    "size": "1024x1024",
+    "prompt": "Pixel art bestiary portrait bust of a blue-skinned alien fire-caste warrior in sleek white and ochre battle armor, smooth helmet with glowing cyan visor and antenna, long elegant pulse rifle, dusty alien outpost with floating drones, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic rim light, centered bust shot, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "faction_thousand",
+    "size": "1024x1024",
+    "prompt": "Pixel art bestiary portrait bust of an ancient dust sorcerer in lapis-blue and gold ornate armor, tall crested helmet with glowing eye slit, floating scrolls and blue warp flame, sand and broken library background, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic rim light, centered bust shot, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "faction_tyranid",
+    "size": "1024x1024",
+    "prompt": "Pixel art bestiary portrait of a chitinous alien hive beast, purple and bone-white carapace, four scythe-like claws, dripping maw, glowing yellow eyes, twisted biomass and spores background, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic rim light, centered creature portrait, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "boss_warboss",
+    "size": "1024x1024",
+    "prompt": "Pixel art boss portrait of an enormous green-skinned alien warboss, mega armor made from scrap and tank parts, one huge mechanical power claw, tusked roaring face, horns and spikes, smoke and flames behind him, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic low-angle composition, centered, no text, no letters, no logos, no watermark, no UI"
+  },
+  {
+    "id": "boss_daemon",
+    "size": "1024x1024",
+    "prompt": "Pixel art final boss portrait of a colossal red-skinned daemon of chaos, enormous curved horns, leathery wings, burning sword, brass armor fused to its body, roaring inside a ruined gothic cathedral with a warp rift behind it, grimdark gothic science-fantasy, 16-bit SNES-era pixel art, limited palette, dramatic low-angle composition, centered, no text, no letters, no logos, no watermark, no UI"
+  }
+]

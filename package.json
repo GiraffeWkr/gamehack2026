@@ -1,0 +1,27 @@
+{
+  "name": "hammer-of-the-emperor",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Warhammer 40,000: Hammer of the Emperor — a fan-made pixel incremental survivor game.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "art": "powershell -ExecutionPolicy Bypass -File scripts/generate-art.ps1",
+    "art:optimize": "node scripts/optimize-art.mjs"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.6.0",
+    "sharp": "^0.34.3",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.0"
+  }
+}

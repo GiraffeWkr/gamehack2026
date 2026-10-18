@@ -1,0 +1,4012 @@
+=== LocalizedTextObject ===
+  [Start]
+      EffectsDropdown
+      HighEffectsText
+      LowEffectsText
+      NoEffectsText
+      
+      
+  [.ctor]
+      
+      
+
+=== LocalizerManager ===
+  [AwakeMe]
+      KEY (
+      ) ALREADY EXISTS FOR LOCALIZATION
+  [FormatTag]
+      <size=110%><color=
+      >
+      </color></size>
+  [GetSystemLangauge]
+      english
+      portuguese
+      brazilian
+      french
+      german
+      russian
+      schinese
+      tchinese
+      spanish
+      latam
+      japanese
+      italian
+      koreana
+      czech
+      polish
+      turkish
+      ukrainian
+      [Localizer] Steam language unavailable, using the OS language instead — 
+  [GetTranslatedValue]
+      
+      Key Not Found For Translation: 
+      [LocalizerManager] Missing translation for key '
+      ' in all languages
+  [GetStringAndReplaceValues]
+      #VALUE#
+  [GetTranslatedThenReplaceValues]
+      
+      _Plural
+      #VALUE#
+      #VALUE1#
+      #VALUE#
+      _Plural
+  [GetTranslatedThenReplaceValues]
+      _Plural
+      _Plural
+  [GetTranslatedThenReplaceValues]
+      _Plural
+      _Plural
+  [GetTranslatedThenReplaceValues]
+      _Plural
+      _Plural
+      #VALUE#
+
+=== SteamManager ===
+  [get_Instance]
+      SteamManager
+  [Awake]
+      Tried to Initialize the SteamAPI twice in one session!
+      [Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.
+      [Steamworks.NET] DllCheck Test returned false, One or more of the Steamworks binaries seems to be the wrong version.
+      [Steamworks.NET] Shutting down because RestartAppIfNecessary returned true. Steam will restart the application.
+      [Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n
+      [Steamworks.NET] SteamAPI_Init() failed. Refer to Valve's documentation or the comment above this line for more information.
+
+=== ChestsManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [EnsureBattlefieldStatBases]
+      ChestCoins_CurrencyChest
+      ChestCoinMultiplier_CurrencyChest
+      ChestCoins_StandardChest
+      ChestCoinMultiplier_StandardChest
+      ChestCoins_LegendaryChest
+      ChestCoinMultiplier_LegendaryChest
+      ChestContentCount_Item
+      ChestContentCount_Rune
+      ChestContentCount_Scroll
+      ChestContentCount_Legendary
+      ChestContentRarity
+      GoldenRewardMultiplier
+  [ChestOpened]
+      OpenChest
+
+=== EnemiesManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [EnsureEnemyStatBases]
+      PortalSummonTime
+      PortalHealthMultiplier
+      EnemyHealthMultiplier
+      EnemyDamageMultiplier
+  [SpawnGuardianMinions]
+      GuardianSpawnEffect
+      GuardianSpawnEffect
+  [CreateAnEnemy]
+      Enemy__
+  [KillAllEnemies_ForFinishGame]
+      
+
+=== EnemySelfer ===
+  [TakeInfo]
+      GFX
+      Center
+      EnemyCanvas
+      SummonEffect
+  [OnEventAnimation]
+      Footstep
+      EnemyWalkSound_
+      attack
+  [DealContactDamage]
+      
+  [ShowRegenNumber]
+      <color=#4CFF8C>+
+      </color>
+      NormalDamageFloater
+  [PlaySummonAnimation]
+      PortalSummonSound
+      Summon_fx
+  [DealDamage]
+      ArrowHitSound
+      Archer_Normal
+  [TakeDamage]
+      EnemyHitCritical
+      EnemyHitNormal
+  [StartedDying]
+      DestroyTarget
+  [OnTriggerEnter2D]
+      Wall
+  [AttackFunction]
+      KingAutoAttackSwingSound
+  [Fire]
+      main
+      _FireSound
+
+=== GoldenEnemyFx ===
+  [Create]
+      GoldenFx
+  [SpawnGlint]
+      GoldenGlint
+  [MakeGlintPart]
+      p
+  [BuildRig]
+      Rays
+      Ray
+      Halo
+      GroundRing
+      Crown
+      CrownGlow
+      CrownL
+      CrownM
+      CrownR
+      Orbiter
+      Motes
+  [<PlayRevealCeremony>b__81_0]
+      GoldenEnemy_Text
+      GildedChampion_Text
+      Golden!
+      Gilded Champion!
+      <color=#FFD75A>
+      </color>
+      NormalDamageFloater
+
+=== GuardianToxinCloudSelfer ===
+  [TakeInfo]
+      GFX_Main/Special_Toxin
+      GFX_Main/Skulls
+  [Update]
+      GuardianToxin
+
+=== GuardiansManager ===
+  [SummonMinions]
+      PortalSummonSound
+  [CastClawFrenzy]
+      GuardianFrenzySound
+  [CastMageToxin]
+      ArcherToxin_Projectile
+      GuardianToxinCloud
+      GuardianToxinSound
+
+=== KingExplosionOrbSelfer ===
+  [Explode]
+      KingExplosionOrbHitSound
+
+=== KingLaserSelfer ===
+  [LandHit]
+      KingLaserHitSound
+  [.cctor]
+      _TintColor
+      _BaseColor
+      _Color
+
+=== KingManager ===
+  [SpawnKing]
+      KingManager: no King EnemyInfo (EnemyType.King) in Resources/EnemyInfos — the throne room is empty.
+      KingManager: the King failed to spawn — check the King prefab has GFX/Center children and the Spine animations Idle/Attack1/Attack2/Skill/Hurt/Death. 
+  [SpawnSummonedGuardian]
+      GuardianSpawnEffect
+      GuardianSpawnEffect
+  [SpawnLaserBeam]
+      KingLaser
+      KingLaser
+  [FireExplosionOrb]
+      KingExplosionOrb
+      KingExplosionOrb
+      KingExplosionOrbFireSound
+  [OnKingDied]
+      DefeatKing
+      KingDeathSound
+  [.ctor]
+      KingRevealSound
+      KingLaserSpawnFX
+      KingLaserHitFX
+      KingMissileExplosionFX
+      KingOrbExplosionFX
+
+=== KingMissileSelfer ===
+  [Arrive]
+      KingMissileHitSound
+
+=== DatabaseManager ===
+  [StripJobPrefix]
+      Job
+  [ListingAndDictionaring]
+      EnemyInfos
+      StatInfos
+      ProjectileInfos
+      SkillDetailInfos
+      JobInfos
+      JobSkillInfos
+      ItemInfos
+      ItemStatsInfos
+      SkillPowerInfos
+      ShapingWeaponInfos
+  [AssignNewPlayerData]
+      .
+      .
+  [LoadRuneStatInfos]
+      RuneStatInfos
+  [LoadMasteryInfos]
+      MasteryInfos
+  [LoadGuardianPerkInfos]
+      GuardianPerkInfos
+  [.cctor]
+      [1,5,10*1.1^(x-2)]
+      Sword_FirstHitDamage
+
+=== FunctionsNeeded ===
+  [ColorToHex]
+      X2
+      X2
+      X2
+  [GetTimeFromSecondsToMinutesAndSeconds]
+      
+      00
+      :
+      00
+      00:
+      00
+  [GetTimeFromSecondsToHoursAndMinutes]
+      
+       Minutes
+       Minute
+       Hours
+       Hour
+  [DisplayNumberAsNumberSuffix]
+      0.00e0
+      
+      .
+      .
+  [RealNumberFromNumberSuffix]
+      BUG If suffix higher than max (z)
+      
+  [HasColorTags]
+      <color=
+      </color>
+      <color=
+      >
+      </color>
+      </color>
+  [ExtractDoubleFromColorTags]
+      <color=
+      </color>
+      <color=
+      >
+      </color>
+      </color>
+  [GenerateStrings]
+      abcdefghijklmnopqrstuvwxyz
+      
+  [FormatTime]
+      {0} 
+      Seconds_String
+      {0} 
+      Minutes_String
+      Hours_String
+      Minutes_String
+      {0} {1} {2} {3}
+      0.0
+      Days_String
+  [ExpandColorToAdjacentChars]
+      <color=#([A-Fa-f0-9]{6})>.*?</color>
+      ^((?:</[^>]+>)*)
+      
+      ^(<color=#[A-Fa-f0-9]{6}>([^<]*?)</color>|([^\s<]+))
+      <color=#
+      >
+      </color>
+      <color=#
+      >
+      </color>
+  [.cctor]
+      K
+      M
+      B
+      T
+      Q
+
+=== MyExtensions ===
+  [DeepCopy]
+      original
+  [Debug]
+      [
+       , 
+      ]
+  [Debug]
+      [
+      (
+       , 
+      )
+       , 
+      ]
+  [MaxObject]
+      source
+      Sequence is empty.
+  [ToReadable]
+      0
+      0.0
+      0.00
+      0.000
+  [ToColoredRarity]
+      <color=#
+      >
+      </color>
+  [ToColored]
+      <color=#
+      >
+      </color>
+
+=== TwoInt ===
+  [ToString]
+      (
+       , 
+      )
+
+=== InAppReviewManager ===
+  [RequestReview]
+      [InAppReviewManager] RequestReview() not supported on this platform; opening fallback URL.
+  [OpenFallbackStoreUrl]
+      [InAppReviewManager] No fallback URL configured for this platform.
+      [InAppReviewManager] Opening fallback URL: 
+  [.ctor]
+      https://play.google.com/store/apps/details?id=com.SamhariaStudios.Maktala
+      https://apps.apple.com/app/id0000000000
+
+=== ManagerOfTheGame ===
+  [Awake]
+      SafeAreaManager
+      InAppReviewManager
+      ObjectPooler
+      [Boot] Save has no stats (poisoned by a failed first-run). Rebuilding as a new player.
+      RunManager
+      ParallaxManager
+      CharacterManager
+      SettingsManager
+      ItemTooltipManager
+      EnemiesManager
+      ChestsManager
+      OrbsManager
+      PlayerManager
+      InventoryManager
+      CraftingManager
+      FloatingNumbersManager
+      CurrencyCollectAnimation
+      MouseAttacker
+      StarManager
+      StarUIManager
+      UIManager
+      MainMenusManager
+      DLCManager
+      SkillsManager
+      ProjectilesManager
+      GroundEffectsManager
+      FXManager
+      JobsUIManager
+      MiningManager
+      MiningUIManager
+      ShapingManager
+      ShapingUIManager
+      ShapingWeaponsManager
+      PetsManager
+      TamingManager
+      GuardiansManager
+      KingManager
+      MasteryManager
+      MasteryUIManager
+      AchievementsManager
+      LoggingManager
+      StatsViewManager
+      FinishManager
+      SaveEveryTenMinutesFunction
+  [HandleApplicationQuit]
+      [Boot] Quitting without saving — boot never completed, so there is nothing safe to write.
+  [ClickedOnDiscord]
+      https://discord.gg/Uy83FuCGFa
+  [ClickedOnSteam]
+      
+      https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Reward&utm_campaign=CGFull
+      https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=RewardTaken&utm_campaign=CGFull
+      https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Settings&utm_campaign=CGFull
+      https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Quit&utm_campaign=CGFull
+      https://store.steampowered.com/developer/SamhariaStudios
+  [ClickedOnOtherGames]
+      
+      https://store.steampowered.com/app/4780870/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+      https://store.steampowered.com/app/5057800/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+      https://store.steampowered.com/app/5167550/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+  [ShowOtherGamesTooltip]
+      
+      Aleef_Desc
+      WhenChest_Desc
+      Mar_Desc
+
+=== ObjectPooler ===
+  [AwakeMe]
+      Destroyed Instance
+      main
+      death
+      _FireSound
+      _HitSound
+      chainEffect
+      mainSkill
+      deathSkill
+      FireSoundSkill
+      HitSoundSkill
+      main
+      main
+      death
+      _FireSound
+      _HitSound
+  [RegisterEnemyProjectilePools]
+      main
+      main
+      death
+      _FireSound
+      _HitSound
+
+=== SafeAreaManager ===
+  [LogSafeAreaReport]
+      ═══ SafeAreaManager report ═══
+      Screen        : 
+      x
+         dpi 
+      Screen.safeArea: 
+      Rect in use   : 
+         source=
+      Screen.safeArea (real device / Device Simulator)
+      SIMULATED iPhone 13 Pro Max cutout (Game view reports no insets)
+      Applied yet   : 
+         (cached originals: 
+      )
+      !! Not in Play mode — nothing has been applied, so positions below are the authored ones.
+      Canvas        : '
+      '   mode=
+         scaleFactor=
+      0.###
+      
+         scaler=
+       ref=
+      !! scaleFactor is 1 on a ScaleWithScreenSize canvas wider than its reference — the CanvasScaler has NOT run yet. Every position below is pre-layout and the whole measurement is meaningless. This is what measuring from Awake looks like.
+      RIGHT
+      LEFT
+      TOP
+      BOTTOM
+  [AppendEdgeReport]
+      ── 
+       ──
+        !! probe transform is UNASSIGNED — this edge is skipped entirely.
+        !! could not resolve bounds for '
+      ' (no camera for a world-space probe?) — this edge is skipped.
+        probe    : 
+         space=
+      World
+      Overlay(px)
+      
+         canvasScale=
+      0.###
+        pivot    : 
+        probe pos: 
+      0.0
+         bound: 
+      0.0
+         overflow: 
+      0.0
+         (inside)
+         << STILL OUTSIDE
+        cap      : MaxRightShift 
+       x 
+      0.###
+       = 
+      0.0
+      
+         << CAP IS LIMITING THE FIX
+        !! object list is EMPTY — the edge is measured but nothing moves.
+        objects (
+      ):
+          [
+      ] !! NULL entry
+          
+      0.0
+         inside
+         outside
+         << DIFFERENT SPACE TO PROBE (shift is meaningless)
+      
+         << NOT CACHED (added after first apply; re-entry won't restore it)
+      
+  [DescribePivot]
+      not a RectTransform (world object — pivot rule doesn't apply)
+      pivot=
+         size=
+      0.0
+         (zero-size marker — pivot irrelevant)
+      pivot=
+         size=
+      0.0
+         reported=
+      0.0
+         true 
+       edge=
+      0.0
+         << MEASURING 
+      0.0
+      px OFF ITS 
+       EDGE — move the pivot to that edge, or the group shifts by that much too little
+        ok
+  [EdgeLabel]
+      right
+      left
+      top
+      bottom
+
+=== SaveLoadManager ===
+  [get_CustomSaveName_Level]
+      CustomSaveName_Level
+      1
+  [set_CustomSaveName_Level]
+      CustomSaveName_Level
+  [get_CustomSaveName_Seed]
+      CustomSaveName_Seed
+      
+  [set_CustomSaveName_Seed]
+      CustomSaveName_Seed
+  [BalanceSavePath]
+      
+      
+      zad_balance_seed
+      _Lv
+      .su
+  [SaveGame_ClearedLevel]
+      [SaveLoadManager] Balance snapshot failed: 
+  [ListBalanceSaves]
+      zad_balance_seed*.su
+      [SaveLoadManager] No balance saves in 
+      [SaveLoadManager] 
+       balance save(s) in 
+      :
+         
+         (
+      yyyy-MM-dd HH:mm
+      )
+  [Save]
+      .tmp
+      .bak
+      [SaveLoadManager] Save aborted: in-memory verification failed. Previous save preserved.
+      [SaveLoadManager] Save aborted: could not stage temp file on mobile.
+      [SaveLoadManager] Save aborted: temp file failed verification.
+      [SaveLoadManager] Save aborted: temp file failed verification.
+      [SaveLoadManager] Save failed, previous save preserved: 
+      .tmp
+  [Load]
+      .bak
+      [SaveLoadManager] Main save unreadable, recovered from backup.
+      [SaveLoadManager] Main save unreadable, recovered from legacy backup.
+      [SaveLoadManager] Main save unreadable, recovered from backup.
+  [DeleteSave]
+      .bak
+      .tmp
+  [MigrateJson]
+      "
+      ":
+      "
+      ":
+  [TryLoadText]
+      [SaveLoadManager] Failed to load '
+      ': 
+  [TryLoadBinary]
+      [SaveLoadManager] Failed to load '
+      ': 
+  [IsPoisoned]
+      [SaveLoadManager] Rejecting '
+      ': the save is marked initialised but has no stats (written by a boot that died partway).
+  [VerifyEncryptedPayload]
+      [SaveLoadManager] Payload verification failed: 
+  [VerifyFileOnDisk]
+      [SaveLoadManager] On-disk verification failed for '
+      ': 
+  [TryWriteTempTextRobust]
+      [SaveLoadManager] Temp save path is a directory and could not be deleted: 
+      [SaveLoadManager] Mobile save attempt 
+      /
+       hit UnauthorizedAccessException at '
+      ': 
+      [SaveLoadManager] Mobile save attempt 
+      /
+       hit IOException at '
+      ': 
+      [SaveLoadManager] Mobile save attempt 
+      /
+       hit unexpected 
+       at '
+      ': 
+      [SaveLoadManager] Could not write temp save to '
+      '. Wrote a recovery copy to '
+      '.
+      [SaveLoadManager] Mobile save totally failed and fallback write also failed: 
+  [RotateAndCommit]
+      [SaveLoadManager] Could not rotate main->bak: 
+  [SafeDelete]
+      [SaveLoadManager] Could not delete '
+      ': 
+  [GetCryproProvider]
+      Q3JpcHRvZ3JhZmlhcyBjb20gUmlxamRhZWwgLyBBRVM
+  [ManageVersioning]
+      .
+      .
+      MaximumSkillPowers
+      .
+      .
+  [.ctor]
+      /zadArchery.su
+  [.cctor]
+      NumberOfOresDropped
+      OreValue
+
+=== SerializableDictionary`2 ===
+  [.ctor]
+      capacity
+  [.ctor]
+      dictionary
+  [Remove]
+      key
+  [Insert]
+      key
+      Key already exists: 
+  [FindIndex]
+      key
+  [CopyTo]
+      array
+      index = {0} array.Length = {1}
+      The number of elements in the dictionary ({0}) is greater than the available space from index to the end of the destination array {1}.
+
+=== CraftingManager ===
+  [AwakeMe]
+      Destroyed Instance
+      ButtonLock
+      Notification
+  [UnlockCraftingSystem]
+      UnlockCrafting
+  [UpdateNPC]
+      CraftingNPC_Name
+      , 
+      Lv_Text
+      LevelUp_Text
+        <sprite name=ArcherCurrency>
+      Max_Text
+      
+  [BuildNPCDescription]
+      _Text
+      #VALUE1#
+      Epic_Rarity_Text
+      #VALUE2#
+      Legendary_Rarity_Text
+      <b>
+      Lv_Text
+      :</b> 
+      
+  [ApplyCrafterLevelUpBonus]
+      ArmorBaseLevel
+      BowBaseLevel
+      ItemStatValuesMultiplier
+      CraftingLuck
+  [UpdateCraftingBase]
+      _Name
+      Health
+      Damage
+      <sprite name=
+      > 
+       - 
+  [UpdateCreateAnItemButton]
+      UnlockBase_Text
+          <sprite name=Gold>
+      CreateArmor_Text
+      CreateBow_Text
+          <sprite name=ArcherCurrency>
+  [PurchaseSelectedBase]
+      ArmorBaseLevel
+      BowBaseLevel
+  [ClickedOnImproveCraftedItemButton]
+      Improving_Text
+      success
+      failed
+  [OnImproveCraftFXEvent]
+      Tool_Interaction_03
+      Craft_Hammer1
+      Ceramic
+      cartoon_style_2_pitch3
+      Craft_Success
+      card_discard
+      Craft_Fail
+  [ManageImproveCraftedItemButton]
+      
+      Max_Text
+      %
+      Improve_Text
+       (
+      )\n<sprite name=ArcherCurrency>
+      Failed_Text
+  [ManageCraft3Button]
+      
+      CraftReroll_Text
+      \n<sprite name=ArcherCurrency>
+  [ManageCraft4Button]
+      
+      Corrupted_Text
+      CraftCorrupt_Text
+      \n<sprite name=ArcherCurrency>
+  [FindButtonLockChild]
+      ButtonLock
+  [BuildCraftingFunctionsInfoText]
+      <size=120%><color=
+      #FFD680
+      ><b>
+      CraftingActions_Text
+      </b></color></size>
+      Improve_Text
+      CraftImprove_Desc
+      CraftReroll_Text
+      CraftReroll_Desc
+      CraftCorrupt_Text
+      CraftCorrupt_Desc
+  [AppendCraftingFunctionInfo]
+      \n\n
+      <color=
+      #FFD680
+      ><b>
+      </b></color>\n
+      <color=
+      #C8C8C8
+      </color>
+      <color=
+      #7A7A7A
+      ><b>? ? ?</b></color>
+
+=== InventoryManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [SellAllTooltipText]
+      SellAll_Text
+      \n
+      SellAllDragHint_Text
+  [AddItemToInventory]
+      No empty slot found
+  [ApplyRemoveItemStats]
+      Damage
+      Health
+  [CreateFlyingIcon]
+      FlyingItemIcon
+      UI
+
+=== ItemSavedData ===
+  [GetTooltipData]
+      Health
+      Damage
+      <sprite name=
+      > 
+       (<color=#88ed66>+
+      </color>)
+      (
+       - 
+      )
+      (
+       - 
+      )
+      _Name
+       +
+      RightClickToEquipUnequip_Text
+      DragToEquip_Text
+      \n
+      RightClickToDestroy_Text
+      DragToSellItem_Text
+
+=== ItemSlotSelfer ===
+  [init]
+      ItemIcon
+      NewItemFrame
+      RarityFrame
+      Silhouette
+  [ShowEquippedComparison]
+      <color=#64FFA2FF>
+      Equipped_Text
+      </color>
+  [OnBeginDrag]
+      ItemDragGhost
+      UI
+  [PlayDestroyAnimation]
+      UI
+  [PunchSlot]
+      UI
+
+=== ItemTooltipManager ===
+  [AwakeMe]
+      [ItemTooltipManager] Duplicate singleton instance destroyed on '
+      '
+  [CreateComparisonTooltip]
+      _Comparison
+  [Initialize]
+      StatsParent
+      RangeText
+      StatsParent
+      RangeText
+      NameText
+      RarityText
+      IconImage
+      WeaponSilhoute
+      WeaponSilhoute
+      BG
+      BG
+      StatsParent
+      BG
+  [ShowTooltip]
+      _Rarity_Text
+  [ShowTooltip]
+      _Rarity_Text
+  [ShowTooltipDramatic]
+      
+      
+      
+  [StopDramaticReveal]
+      CraftDramaticReveal
+
+=== ScrollsManager ===
+  [GetScrollDisplayName]
+      ItemScroll_
+      RuneScroll_
+      _Name
+  [FallbackScrollName]
+      Rune Scroll of Inscription
+      Rune Scroll of Amplification
+      Rune Scroll of Ascension
+      Rune Scroll of Overflow
+      Item Scroll of Refinement
+      Item Scroll of Tempering
+      Item Scroll of Mastery
+      Item Scroll of Perfection
+  [GetEffectDescription]
+      ItemScroll_
+      RuneScroll_
+      _Desc
+  [ColoredForcedRarityName]
+      _Rarity_Text
+  [FallbackEffectDescription]
+      The Next Created Rune Will Have +
+       Implicit Stat
+      The Next Created Rune Will Have +
+      % Implicit Values
+      The Next Created Rune Will Be 
+      The Next Created Rune Will Have 
+       Explicit Stats
+      The Next Crafted Item Will Have +
+       Stat
+      The Next Crafted Item Will Have x
+       Improvement Success Chance
+      The Next Crafted Item Will Be 
+      The Next Crafted Item Will Have +
+      % Stat Values (Excluding Base Damage/Health)
+  [BuildScrollTooltip]
+      
+      <color=#88ed66>
+      ScrollActive_Text
+      Already Active!
+      </color>
+      
+      ScrollActivate_Text
+      Right Click to Activate
+      DragToActivateItemScroll_Text
+      DragToActivateRuneScroll_Text
+      Drag Onto Create an Item to Activate
+      Drag Onto Create Rune to Activate
+      RightClickToDestroy_Text
+      RuneSell_Text
+      DragToSellItem_Text
+      DragToSellRune_Text
+      \n
+
+=== JobSkillInfo ===
+  [GetDescription]
+      _Title_Text
+      <color=#C8C8C8>
+      _Desc_Text
+      </color>
+      \n
+      \n
+  [.ctor]
+      %
+      %
+
+=== JobsUIManager ===
+  [AwakeMe]
+      Destroyed Instance
+      BG
+      TitleText
+      Icon
+      Lock
+      UnlockButton
+      UnlockButton
+      JobBonusImage
+      JobBonusText
+      JobBonusTooltipRayCast
+      SkillsParent
+      LevelUpButton
+      LevelUpButton
+      LevelUpButton
+      Icon
+      Cooldown
+  [UnlockJobsSystem]
+      UnlockJobs
+  [UpdateJob]
+      Job
+      _Title_Text
+      MaxLevel_Text
+      
+      <sprite name=ClawCurrency>
+      ? ? ?
+      Unlock_Text
+       <sprite name=ClawCurrency>
+      ? ? ?
+  [ClickedOnSkillLevelUpButton]
+      _Cooldown
+      _PierceCount
+      _NumberOfTurns
+      _HealthMultiplier
+      _AttackChance
+      _BuffValue
+      _Duration
+      _NumberOfHits
+      _Duration
+  [GetJobBonusText]
+      Job
+      _Bonus_Text
+  [GetJobBonusTooltip]
+      <size=120%><color=#FFD680><b>
+      Job
+      _Bonus_TooltipTitle
+      </b></color></size>
+      <color=#5BF59E>
+      </color>
+      <color=#C8C8C8>
+      Job
+      _Bonus_TooltipDesc
+      #VALUE#
+      </color>
+      \n
+
+=== SkillTooltipRows ===
+  [Specialize]
+      _BuffValue
+      _Duration
+  [Row]
+      \n<color=#A0B0C0><b>
+      </b></color> 
+  [ValuePair]
+       <color=#FFD680>></color> 
+  [PetScalingNote]
+       <size=80%><color=#8A94A0>(
+      #VALUE#
+      )</color></size>
+  [SwitchRow]
+      \n<color=#A0B0C0><b>
+      </b></color>
+  [Value]
+      <color=#5BF59E>
+      </color>
+  [Title]
+      <size=120%><color=#FFD680><b>
+      </b></color></size> <color=#C8C8C8><size=80%>
+      Lv_Text
+       
+      /
+      </size></color>
+  [BuildStatRows]
+      
+      
+      PetHealthScaling_Text
+  [SkillDamageStat]
+      _DamageMultiplier
+  [DamageRow]
+      
+      <color=#A0B0C0><b>
+      Damage_Text
+      </b></color>
+      <color=#5BF59E>
+      </color>
+      
+      PetDamageScaling_Text
+      \n
+       
+       <color=#FFD680>></color> <color=#5BF59E>
+      </color>
+      \n
+       
+  [LevelUpDelta]
+      _Cooldown
+      _NumberOfHits
+      _PierceCount
+      _NumberOfTurns
+      _HealthMultiplier
+      _AttackChance
+      _BuffValue
+      _Duration
+  [.cctor]
+      _BuffValue
+      SkillPower_RapidFireBuff_Desc
+      %
+      _HealthMultiplier
+      SkillPower_PetHealth_Desc
+      
+      _NumberOfHits
+      SkillPower_NumberOfHits_Desc
+      
+      _NumberOfProjectiles
+      SkillPower_NumberOfProjectiles_Desc
+      
+      _NumberOfAttacks
+      SkillPower_NumberOfAims_Desc
+      
+      _PierceCount
+      SkillPower_PierceCount_Desc
+      
+      _NumberOfTurns
+      SkillPower_Turns_Desc
+      
+      _RadiusOfEffect
+      SkillPower_Area_Desc
+      
+      _AttackRadius
+      SkillPower_Area_Desc
+      
+      _AttackChance
+      SkillPower_DiveChance_Desc
+      %
+      _AttackSpeed
+      SkillPower_AttackSpeed_Desc
+      
+      _SlowPercent
+      SkillPower_Slow_Desc
+      %
+      _IceAmountMultiplier
+      SkillPower_IceMultiplier_Desc
+      x
+      _BatsAmountMultiplier
+      SkillPower_BatsMultiplier_Desc
+      x
+      _Duration
+      SkillPower_Duration_Desc
+      s
+      _ChanceForMultiplyProjectiles
+      SkillPower_MultiplyProjectiles_Desc
+      %
+      _ChanceForClusterBombs
+      SkillPower_ClusterBombs_Desc
+      %
+      _ChanceToPierce
+      SkillPower_ChanceToPierce_Desc
+      %
+      _ChanceToDealTripleDamage
+      SkillPower_TripleDamage_Desc
+      %
+      _ChanceToSpreadOnKill
+      SkillPower_BurnSpread_Desc
+      %
+      _DamageVsChilled
+      SkillPower_DamageVsChilled_Desc
+      %
+      _MirrorImageChance
+      SkillPower_MirrorImage_Desc
+      %
+      _DamagePerTurn
+      SkillPower_DamagePerTurn_Desc
+      %
+      _DamagePerAbsorb
+      SkillPower_AbsorbDamage_Desc
+      %
+      _BossDamageBonus
+      SkillPower_BossDamage_Desc
+      %
+      _ExecuteThreshold
+      SkillPower_Execute_Desc
+      %
+      _HealPerEnemyHit
+      SkillPower_NovaHeal_Desc
+      %
+      _LifestealPercent
+      SkillPower_WolfLifesteal_Desc
+      %
+      _RegenPercent
+      SkillPower_Regen_Desc
+      %
+      _Intimidation
+      SkillPower_Intimidation_Desc
+      %
+      _ExtensionPerKill
+      SkillPower_DurationPerKill_Desc
+      s
+      _CooldownReductionOnCrit
+      SkillPower_CritCooldownReduction_Desc
+      s
+      _CritMultiplierBonus
+      SkillPower_CritDamage_Desc
+      %
+      _BlitzBond
+      SkillPower_BlitzBond_Desc
+      
+      _ActivateWithRapidFire
+      SkillPower_LinkedCast_Desc
+      
+      _ResetCooldownOnBossFirstHit
+      SkillPower_BossFreeCooldown_Desc
+      
+      _Cooldown
+      Cooldown_Text
+      s
+      ChanceForLightningStrike
+      ChanceForLightningStrike
+      SkillPower_ChanceOnHit_Desc
+      %
+      ChanceForFireArea
+      ChanceForFireArea
+      SkillPower_ChanceOnHit_Desc
+      %
+      ChanceForBlizzard
+      ChanceForBlizzard
+      SkillPower_ChanceOnHit_Desc
+      %
+      BatSwarm_LifestealPercent
+      _LifestealPercent
+      SkillPower_BatLifesteal_Desc
+      %
+      SharpShooter_BuffValue
+      _BuffValue
+      SkillPower_SharpShooterBuff_Desc
+      %
+      DarkMatter_DamageMultiplier
+      _DamageMultiplier
+      SkillPower_SkillDamage_Desc
+      
+
+=== MasteryEffects ===
+  [PlayMomentumProcFeedback]
+      Mastery_Momentum_Proc_Text
+      Mastery_MomentumAll_Proc_Text
+      <color=#5BF59E>
+      </color>
+      NormalDamageFloater
+  [ChargeKey]
+      _B
+      _L
+  [PlayPrimedDropCallout]
+      Mastery_Forging_Proc_Text
+      Mastery_Inscription_Proc_Text
+      <color=#
+      >
+      </color>
+      NormalDamageFloater
+
+=== MasteryInfo ===
+  [.ctor]
+      10 * 1.5^(x-1)
+      5*x
+      
+      
+      250
+
+=== MasteryManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [UnlockMasterySystem]
+      UnlockMastery
+
+=== MasteryUIManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [BuildMasteryTiles]
+      Icon
+      ButtonsParent
+      LevelUpButton
+      LevelUpButton
+      AwakenButton
+      AwakenButton
+      LockIcon
+      LockedObjects
+  [EnsureTileHoverArea]
+      HoverArea
+      HoverArea
+  [BuildMasteryTooltip]
+      <size=120%><color=#FFD680><b>
+      _Name
+      </b></color></size> <color=#C8C8C8><size=80%>
+      Lv_Text
+       
+      </size></color>
+      \n<color=#C8C8C8>
+      </color>
+      Awaken_Text
+      Awakened_Text
+      <color=#C8C8C8>? ? ?</color>
+      <color=#C8C8C8>
+      </color>
+      \n<color=#b47dc9><b>
+      :</b></color> 
+  [GreenValueStatText]
+      #
+      #5BF59E
+  [BuildPinnacleTooltip]
+      <size=120%><color=#FFD680><b>
+      _Name
+      </b></color></size> <color=#C8C8C8><size=80%>
+      Lv_Text
+       
+      </size></color>
+      \n<color=#A0B0C0><b>
+      Prime_Text
+      :</b></color> <color=#C8C8C8>
+      _StatOne_Desc
+      </color>
+       <color=#5BF59E>(
+      Primed_Text
+       x
+      )</color>
+      \n<color=#b47dc9><b>
+      Awaken_Text
+      :</b></color> 
+      <color=#C8C8C8>
+      _StatTwo_Desc
+      #VALUE#
+      </color>
+       <color=#FFD86B>(
+      Awakened_Text
+       x
+      )</color>
+      <color=#C8C8C8>? ? ?</color>
+  [PinnacleLegendaryValue]
+      
+  [UpdateNPC]
+      MasteryNPC_Name
+      , 
+      Lv_Text
+      LevelUp_Text
+        <sprite name=
+      >
+      Max_Text
+      
+  [BuildNPCDescription]
+      
+      MasteryReward_
+      _Text
+      <b>
+      Lv_Text
+      :</b> 
+  [PlayAwakenJuice]
+      Awakened_Text
+      PrimeLegendary_Text
+  [PlayMaxLevelJuice]
+      Max_Text
+  [SpawnPanelFloater]
+      MasteryPanelFloater
+  [SetTileGlow]
+      AwakenGlow
+  [FlyPrefabGhost]
+      UI
+  [RefreshTile]
+      Lv_Text
+       
+        <sprite name=
+      >
+      Max_Text
+      ReachLevel_Text
+      #VALUE#
+      Awaken_Text
+        <sprite name=
+      >
+  [RefreshPinnacleTile]
+      Prime_Text
+      
+       x
+        <sprite name=
+      >
+      ReachLevel_Text
+      #VALUE#
+      PrimeLegendary_Text
+      
+       x
+        <sprite name=
+      >
+
+=== MiningManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [UnlockMiningSystem]
+      UnlockMining
+  [RefreshGoToMiningButtonText]
+      GoToMining_Text
+      ReturnFromMining_Text
+  [PlayerClickedRock]
+      MiningPickaxeSFX
+
+=== MiningPickaxe ===
+  [Initialize]
+      PointOfContact
+  [Strike]
+      MiningPickaxeSFX
+  [SetupChopTrail]
+      Sprites/Default
+      ChopTrail
+
+=== MiningRockJuice ===
+  [EnsureSetup]
+      MiningRockJuice: no SpriteRenderer found on the rock; juice disabled.
+      Saham/MiningRockHit
+      MiningRockJuice: shader 'Saham/MiningRockHit' not found; juice disabled.
+      MiningRockHit (instance)
+      RockCrack
+  [PlayRockPulse]
+      RockPulse
+      RockPulse
+  [SpawnDebris]
+      RockDebris
+  [PlayPickaxeSparks]
+      RockDebris
+  [PlayDustPuff]
+      RockDebris
+  [ShowClickProgress]
+      /
+  [CreateProgressText]
+      ClickProgressText
+  [PlayOreGlint]
+      RockDebris
+  [GetChip]
+      RockChip
+  [OnDisable]
+      RockDebris
+      RockPulse
+  [.cctor]
+      _Aspect
+      _CrackColor
+      _GlowColor
+      _CrackCount
+      _CrackRadius
+      _CrackWidth
+      _CrackJagged
+      _CrackDarken
+      _DentRadius
+      _DentDarken
+      _Cracks
+      _CrackParams
+      _FlashColor
+      _FlashAmount
+      _FlashRing
+
+=== MiningUIManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [UpdateNPC]
+      MiningNPC_Name
+      , 
+      Lv_Text
+      LevelUp_Text
+        <sprite name=
+      >
+      Max_Text
+      
+  [ApplyReward]
+      MaximumSkillPowers
+      MonsterGemChance
+      MiningChanceToDropAdditionalOre
+  [BuildNPCDescription]
+      
+      <b>
+      Lv_Text
+      :</b> 
+  [GetRewardDescription]
+      MiningReward_
+      _Text
+      #VALUE#
+      #VALUE#
+      #VALUE#
+      0.##
+      #VALUE#
+      #VALUE#
+      0.##
+  [BuildCurrencyUI]
+      Highlighter
+      Highlighter
+      CurrencyText
+      CurrencyText
+      LockedIcon
+      LockedIcon
+  [RefreshOre]
+      
+  [OreCounterText]
+      <sprite name=
+      > 
+  [BuildSkillPowersUI]
+      CostHighlighter
+      SkillIcon
+      LockedIcon
+      LevelText
+  [RefreshSkillPower]
+      
+       / 
+  [SpawnCostGhost]
+      UI
+  [SpawnLevelUpFloater]
+      SkillPowerLevelFloater
+      UI
+      Lv 
+  [BuildSkillPowerTooltip]
+      Locked_Text
+      
+      _Title_Text
+      SkillsPowerTitle_
+      _Text
+      #VALUE#
+      \n
+      : 
+      \n<align=center>
+      <sprite name=
+      >
+      </align>
+      \n<align=center>
+      Max_Text
+      </align>
+  [SkillPowerKey]
+      _
+  [RefreshResetUI]
+      /
+  [ShowResetTooltip]
+      #VALUE1#
+      #VALUE2#
+      MiningSkillPowersLimit_Text
+      \n
+      Cost_Text
+      : <sprite name=Gold>
+  [RefreshPower]
+      ???
+      ???
+      : 
+      Lv_Text
+        
+      Max_Text
+      Lv_Text
+        <sprite name=
+      >
+  [PlayPowerValueJuice]
+      : 
+  [PlayPickaxeGhostFlight]
+      FlyingPickaxeIcon
+      UI
+  [FormatPowerValue]
+      0.##
+      %
+  [.cctor]
+      RockBG
+      CopperBG
+      SilverBG
+      GoldBG
+      NumberOfAutoPickAxes_Text
+      AutoPickaxesSpeed_Text
+      OreValue_Text
+      RareOreChance_Text
+
+=== SkillPowerInfo ===
+  [DescKeyFor]
+      
+  [SuffixFor]
+      
+      
+
+=== OrbSelfer ===
+  [EnsureOrbFx]
+      OrbTrail
+      OrbSparkles
+  [FlyToSky]
+      OnOrbCollectedSound
+  [FireEcho]
+      BombArrow
+      _FireSound
+
+=== OrbsManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [SpawnPermanentOrb]
+      OnOrbCollectedSound
+
+=== AchievementsManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [GrantRetroactiveAchievements]
+      RecruitArcher
+      UnlockJobs
+      UnlockCrafting
+      UnlockMining
+      UnlockShaping
+      UnlockMastery
+      UnlockStar
+      GainLegendaryBowArmor
+  [NotifyLevelReached]
+      ReachLevel40
+  [NotifyItemObtained]
+      GainLegendaryBowArmor
+  [UnlockAchievement]
+      [Achievements] Steam unavailable, '
+      ' not granted — 
+
+=== LootDropSelfer ===
+  [Initialize]
+      icon
+      icon (1)
+  [SpawnBeam]
+      _Beam
+  [Collect]
+      MiningCollectionSFX
+
+=== FXManager ===
+  [AwakeMe]
+      Destroyed Instance
+      MageHit
+      EnemyHitCritical
+      ClickHitPrefab
+      LightningStrike
+      SuperNova
+      FiringDustGFXPrefab
+      EnemySpawnSound
+  [ClassifySound]
+      Sound
+  [.ctor]
+      EnemyHitNormal
+      BatSwarmHit
+
+=== FloatingNumbersManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [BindFloater]
+      NormalDamageFloater
+
+=== GroundEffectSelfer ===
+  [TakeInfo]
+      GFX
+      ClickableGroundEffectPrefab
+  [EndEffect]
+      DestroyEffect
+
+=== GroundEffectsManager ===
+  [AwakeMe]
+      Destroyed Instance
+
+=== LoggingManager ===
+  [get_LogFilePath]
+      Logs.txt
+  [get_SkillsLogFilePath]
+      SkillsLog.txt
+  [IsWritable]
+      ._sahamlogprobe
+      
+  [AwakeMe]
+      Destroyed Instance
+      ---------------------------------------------------------------
+      [LoggingManager] Playtest logs: 
+  [WriteSkillDamageReport]
+      ---------------------------------------------------------------
+  [DumpSkillDamageReportNow]
+      [SkillDamageLog] Nothing recorded yet this level.
+  [BuildSessionHeader]
+      Session started 
+      yyyy-MM-dd HH:mm:ss
+       | Seed: 
+      ?
+       | Version: 
+      ?
+  [AppendToFile]
+      [LoggingManager] Could not write to '
+      ': 
+  [BuildLogLine]
+      INCOMPLETE
+      COMPLETED
+      [TOTAL 
+      ] 
+       game / 
+       real
+       (
+      0.00
+      x)
+      
+      , 
+      : 
+       (
+      )
+      None
+      [{0}] Lv.{1} | Time: {2} | Played: {3} | Deaths: {4} ({5}) | Killed: {6} ({7}) | Currencies: {8}
+  [SecondsToHoursMinutesSeconds]
+      h 
+      m 
+      s
+      m 
+      s
+
+=== PSSelfer ===
+  [OnEnable]
+      DestroyMe
+  [TakeInfo]
+      DestroyMe
+
+=== ParallaxManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [CreateInfiniteClones]
+      _Left
+      _Right
+  [PairAndPrepare]
+      [Parallax] Renderer count mismatch between '{0}' ({1}) and '{2}' ({3}) — pairing the first {4}. Keep day/night layer hierarchies identical.
+  [GetAmbushMaterial]
+      Saham/ParallaxAmbushBlend
+      [Parallax] Saham/ParallaxAmbushBlend shader not found — switching backgrounds instantly instead.
+  [.cctor]
+      _AmbushWaveCenter
+      _AmbushWaveRadius
+      _AmbushWaveSoftness
+      _AmbushEdgeColor
+      _AltTex
+      _AltRect
+      _MainRect
+
+=== ProceduralShardFX ===
+  [get_SoftDotMaterial]
+      Sprites/Default
+  [SpawnGhostPop]
+      FXGhost
+  [SpawnShockwaveRing]
+      FXShockwave
+
+=== RunManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [CreateFlashOverlay]
+      RunPortal_ScreenFlash
+      FlashImage
+  [CreateFadeOverlay]
+      LevelExit_ScreenFade
+      FadeImage
+  [CreateDimOverlay]
+      Drama_ScreenDim
+      DimImage
+  [UpdateLevelText]
+      Lv_Text
+  [PlayLevelAnnouncement]
+      Lv_Text
+      \n
+      Max_Text
+  [PlayGuardianAmbushAnnouncement]
+      _Name
+      KingSentGuardian_Text
+      #VALUE#
+  [TestKingWarningAtIndex]
+      No King warning authored at index 
+  [.ctor]
+      .…!?
+      KingIsWatching_Text
+      KingIsWatching2_Text
+      PortalSummonSound
+
+=== SkillDamageLog ===
+  [GetRow]
+      ~mouse
+      _Mouse
+      ArrowFall
+      ArrowFall
+  [BuildReport]
+          [SKILL DAMAGE] Lv.
+       
+      INCOMPLETE
+      COMPLETED
+       | 
+       game
+       | total 
+       (
+      /s)
+       | player Damage 
+            -- arrow fall (mouse): 
+       total, 
+      0.0
+      % of all damage --
+            -- non-skill sources --
+            buffs cast: 
+      , 
+       x
+       (
+      0.0
+      /min)
+            NO DAMAGE this level: 
+      , 
+       (
+       casts, 0 dmg)
+            -- source split --
+            
+      : 
+       | 
+       (
+      0.0
+      %)
+  [AddUnlockedSkillsWithNoRow]
+      ~mouse
+  [Header]
+            
+      SKILL
+      CASTS
+      /min
+      HITS
+      DAMAGE
+      SHARE
+      DMG/s
+      D/s
+      DMG/CAST
+      DMG/HIT
+      CRIT
+      OVERKILL
+  [Line]
+      -
+      0.0
+      -
+      -
+      0.00
+      -
+      -
+      -
+      0
+      %
+      -
+      0
+      %
+       
+       (pet)
+            
+      0.0
+      %
+  [Trim]
+      .
+  [Fmt]
+      0.##
+      T
+      0.##
+      B
+      0.##
+      M
+      0.##
+      K
+      0
+      0.##
+  [Time]
+      m 
+      s
+
+=== SoundSelfer ===
+  [OnEnable]
+      DestroyMe
+
+=== TextSelfFloating ===
+  [DestroyFloater]
+      
+  [RefreshDamageText]
+       <size={0}><color=#{1}>x{2}</color></size>
+  [GetComboColorHex]
+      FFD700
+      FFA500
+      FF6347
+      FF1744
+  [GetComboSizePercent]
+      60%
+      65%
+      72%
+      78%
+      85%
+  [.ctor]
+      ✦ 
+
+=== TrailAddMultiController ===
+  [FixedUpdate]
+      WellTrailEffect
+      Well_HitSound
+
+=== FalconSelfer ===
+  [OnPlayerAttack]
+      BlitzBond
+  [StartWindup]
+      AttackSound
+  [DealAttackDamage]
+      damage1
+      ShotDust
+  [PlayImpactJuice]
+      HitSound
+  [StrikeFxMaterial]
+      Sprites/Default
+  [EnsureDiveTrail]
+      DiveTrail
+  [EnsureImpactFx]
+      FalconImpactRing
+      FalconImpactRingEcho
+      FalconImpactGlow
+      FalconImpactSlashA
+      FalconImpactSlashB
+
+=== PetSelfer ===
+  [PlayAttackSound]
+      AttackSound
+  [PlayHurtSound]
+      HurtSound
+  [PlayStepSound]
+      StepSound
+  [PlayDeathSound]
+      DeathSound
+  [ApplyIntimidation]
+      Intimidation
+      EnemyAttackSpeedMultiplier
+  [RemoveIntimidation]
+      EnemyAttackSpeedMultiplier
+  [RevertAuraStatsForSave]
+      EnemyAttackSpeedMultiplier
+  [ReapplyAuraStatsAfterSave]
+      EnemyAttackSpeedMultiplier
+  [TakeInfo]
+      GFX
+      Center
+      PetCanvas
+      EnemyCanvas
+      Pet 
+       has no health-bar canvas (child PetCanvas/EnemyCanvas, or assign HealthBarCanvasGO).
+  [Summon]
+      
+  [TickRegen]
+      RegenPercent
+  [HealOnHit]
+      LifestealPercent
+  [HealPercentOfMax]
+      <color=#4CFF8C>+
+      </color>
+      NormalDamageFloater
+  [SpawnFeetDust]
+      RunStopDust
+  [DealAttackDamage]
+      ExecuteThreshold
+      EnemyHitCritical
+      damage1
+      ShotDust
+  [TakeDamageFromEnemy]
+      DodgeChance
+      <color=#FF4444>
+      </color>
+      NormalDamageFloater
+  [PlayDodgeFeedback]
+      Dodge_Proc_Text
+      <color=#9BD8FF>
+      </color>
+      NormalDamageFloater
+      PlayerDodgeSound
+  [OnEventAnimation]
+      attack
+      Footstep
+      step
+  [.ctor]
+      
+
+=== PetsManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [SummonPet]
+      Pet skill 
+       has no petPrefab assigned on its JobSkillInfo.
+      Pet_
+      Pet prefab for 
+       has no PetSelfer component.
+  [.cctor]
+      Bear
+      Wolf
+      Bear
+
+=== CharacterAnimator ===
+  [TakeInfo]
+      
+      GFX
+      target
+      Attack1
+      Attack2
+      Attack3
+      Attack_Mix
+      Buff
+  [ChangeSkin]
+      Skin
+  [OnEventAnimation]
+      attack
+      step
+      CharacterStepSound
+  [ChangeAnimation]
+      Run
+      Attack_Mix
+
+=== CharacterAttacker ===
+  [UpdateAttackWhileMovingInfo]
+      BombArrow
+      PiercingShot
+      DarkMatter
+      SuperNova
+  [GetReadySkillProjectile]
+      LightningStrike
+      FireArea
+      Blizzard
+      Archer_Normal
+  [ProcessAttack]
+      BombArrow
+      PiercingShot
+      DarkMatter
+      SuperNova
+      PiercingShot
+  [Fire]
+      PiercingShot
+      DarkMatter
+      _FireSound
+      ShotDust
+      Multishot
+      BombArrow
+
+=== CharacterManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [SpawnArcher]
+      RecruitArcher
+  [SetBuffVFXActive]
+      _VFX
+  [GetBuffVFX]
+      _VFX
+
+=== CharacterMover ===
+  [SpawnDustPuff]
+      RunStopDust
+
+=== MouseAttackInstance ===
+  [Cleanup]
+      MouseAttackerInstance
+
+=== MouseAttacker ===
+  [AwakeMe]
+      Destroyed Instance
+  [SpawnAttacker]
+      ArrowFall
+      MouseAttackSpawnSound
+      MouseAttackerInstance
+  [UpdateMagazineUI]
+      ArrowFall_Text
+      : 
+  [FireSkillArrowFall]
+      Multishot_Mouse
+      _FireSound
+  [FireSingleProjectile]
+      _FireSound
+
+=== PlayerManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [TakeDamage]
+      PlayerHitSound
+      <color=#FF4444>
+      </color>
+      NormalDamageFloater
+  [PlayDeathBlowImmunityFeedback]
+      DeathBlowImmunity_Proc_Text
+      <color=#FFD680>
+      </color>
+      NormalDamageFloater
+  [PlayDodgeFeedback]
+      Dodge_Proc_Text
+      <color=#9BD8FF>
+      </color>
+      NormalDamageFloater
+      PlayerDodgeSound
+  [PlayHealFeedback]
+      <color=#5BF59E>+
+      </color>
+      NormalDamageFloater
+
+=== BatSwarmSelfer ===
+  [TakeInfo]
+      Bat
+      Orb1 (1)
+      Orb1 (1)
+      Orb1 (1)
+  [BatHitGround]
+      BatSwarmHit
+      BatSwarm
+      damage1
+      BatSwarm
+  [Update]
+      BatSwarm
+
+=== BlizzardSelfer ===
+  [IceHitGround]
+      BlizzardHit
+      Blizzard
+      Blizzard
+      damage1
+  [Update]
+      BlizzardmainSkill
+  [DetectIceDropEmissions]
+      BlizzardIceDropSound
+
+=== DarkMatterDistortionSelfer ===
+  [.ctor]
+      PlayerEffects
+  [.cctor]
+      _Strength
+
+=== EnemyProjectileSelfer ===
+  [TakeInfo]
+      GFX_Main
+      GFX_Tail
+  [OnTriggerEnter2D]
+      Player
+      Pet
+      Wall
+  [SpawnDeathGFX]
+      death
+      _HitSound
+  [DestroyProjectile]
+      main
+
+=== ProjectileBehavior ===
+  [TriggerSkillOnEnemy]
+      LightningStrike
+      FireArea
+      Blizzard
+      Spear_Projectile
+      Archer_Poison
+      Archer_Ice
+  [OnHitAreaBehavior]
+      BombArrow
+      damage1
+      Meteor_Projectile
+  [GenericHitEnemy]
+      BombArrow
+      ArcherToxin_Projectile
+      Archer_Poison
+      damage1
+
+=== ProjectileMover ===
+  [TakeInfo]
+      Enemy
+      Wall
+      Wall
+      Archer_Normal_Mouse
+  [ChangeDirection_Normal]
+      BombArrow
+      SuperNova
+  [ShootRaycast]
+      DarkMatter
+      PiercingShot
+  [FixedUpdate]
+      BombArrow
+      SuperNova
+      PiercingShot
+      DarkMatter
+
+=== ProjectileSelfer ===
+  [TakeInfo]
+      GFX_Main
+      GFX_Tail
+      ArcherToxin_Projectile
+      Radius
+      Duration
+      TickTime
+      Special_Toxin
+      Skulls
+  [ApplyArrowSkin]
+      [DLC] 
+       is flagged CanUseArrowSkin but its GFX_Tail has 
+       children, not the 
+       the skin list expects — arrow skins are off for it until the trails are authored.
+  [SetBPCM]
+      LightningStrike
+      PiercingShot
+  [OnTriggerEnter2D]
+      Enemy
+      TowerCircle_Projectile
+  [GetEnemiesInColliderArea]
+      Enemy
+  [TriggerEffect_ReachedTarget]
+      Enemy
+      PiercingShot
+      Wall
+  [PierceOverlapSweep]
+      Enemy
+      Enemy
+  [DarkMatterOverlapSweep]
+      Enemy
+      Projectile
+      Enemy
+      DarkMatter
+      damage1
+      DarkMatter
+  [TryStartPiercingReturn]
+      PiercingShot
+  [WallBounce]
+      TopWall
+      LeftWall
+      RightWall
+  [DestroyBullet]
+      main
+  [SpawnDeathGFX]
+      Archer_Explosive
+      Radius
+      BombArrow
+      death
+      death
+      Mouse
+      ArrowMissSound
+      _HitSound
+  [Update]
+      ArcherToxin_Projectile
+      damage1
+
+=== ProjectilesManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [FireSingleProjectile]
+      main
+  [FireMirrorPiercingShot]
+      PiercingShotmain
+  [FireSingleHitMultiEnemiesGroundClickable]
+      main
+
+=== SkillsManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [CallSkill]
+      Lightning1_Projectile_LChain
+      Knight2_Projectile_Spear
+      Vampire2_Projectile_BloodSuck
+      Lightning2_Projectile_LStrike
+      LightningStrike
+      Knight1_Projectile_AreaSlash
+      Vampire1_Projectile_VampireExp
+      Archer2_Projectile_Dragon
+      Ninja1_Projectile_Shuriken
+      Archer1_Projectile_RoA
+      Fire1_Projectile_Meteor
+      Archer_Poison
+      Archer_Ice
+      SniperScope
+      BatSwarm
+  [SpawnFireArea]
+      FireArea
+  [SpawnBlizzard]
+      BlizzardmainSkill
+      BlizzardmainSkill
+      BlizzardmainSkill
+  [CastBuff]
+      FireSoundSkill
+      BuffSound
+      RapidFire
+      SharpShooter
+      SharpShooter
+  [ApplyBuff]
+      SharpShooter
+      CriticalMultiplier
+      mainSkill
+      mainSkill
+  [NotifyMonsterKilled]
+      RapidFire
+      RapidFire
+      RapidFire
+      RapidFire
+      <color=#5BF59E>+
+      s</color>
+      NormalDamageFloater
+  [NotifyCriticalCast]
+      SharpShooter
+  [NotifyFreeSkillCast]
+      FreeCooldown_Proc_Text
+      <color=#5BF59E>
+      </color>
+      NormalDamageFloater
+  [NotifyFirstAutoAttackOnBoss]
+      RapidFire
+      RapidFire
+      RapidFire
+      RapidFire
+      RapidFire_BossReset_Proc_Text
+      <color=#5BF59E>
+      </color>
+      NormalDamageFloater
+  [NotifyBossFightStarted]
+      BossFreeCooldowns_Proc_Text
+      <color=#5BF59E>
+      </color>
+      NormalDamageFloater
+  [GetAllyBuffAttackSpeedMultiplier]
+      PlayerAttackSpeed
+  [GetAllyCriticalChance]
+      CriticalChance
+
+=== SniperScopeSelfer ===
+  [Init]
+      SniperScope
+  [TakeInfo]
+      SniperScope_Open
+  [StopSniperScope]
+      SniperScope_Close
+  [DestroyScope]
+      SniperScope
+  [StartAttack]
+      SniperScope_Shoot
+      SniperScope_Shoot
+      SniperScopeHitSoundSkill
+  [EnterWaitingForRange]
+      SniperScope_Idle
+  [UpdateAttacking]
+      SniperScope_Idle
+  [OnAttackEvent]
+      SniperScope
+      damage1
+      SniperScope
+  [GetAnimationLength]
+      SniperScope_Open
+      SniperScope_Shoot
+      SniperScope_Close
+
+=== WormholeFX ===
+  [PlayVanish]
+      PortalSummonSound
+  [PlayEmerge]
+      EnemyDeathSound_Portal
+  [SpawnStars]
+      Star
+  [MakePiece]
+      PlayerEffects
+
+=== RuneSavedData ===
+  [GetDisplayName]
+      ShapingWeapon_
+      _Name
+      Rune_Name
+       Rune
+      Rune_Name
+  [GetTooltipData]
+      ShapingWeapon_
+      _Name
+      RuneExplaination_Text
+      Socket This Rune Into a 
+       to Gain:
+      RuneExplaination_Text
+      <color=#BBBBBB>
+      </color>
+      
+      <color=#FFD86B>
+      </color>
+      RuneSell_Text
+      DragToSellRune_Text
+
+=== RuneSlotSelfer ===
+  [Init]
+      ItemIcon
+      WeaponSilhoute
+      WeaponSilhoute
+      RarityFrame
+      LockedIcon
+      LinkToWeaponIcon
+  [PlayDestroyAnimation]
+      UI
+  [OnBeginDrag]
+      RuneDragGhost
+      WeaponSilhoute
+
+=== RuneStatInfo ===
+  [GetValueDescText]
+      RuneStat_
+      _Text
+      +
+      #VALUE#
+  [GetRangeText]
+      (
+       - 
+      )
+  [.ctor]
+      #VALUE#%
+
+=== ShapingManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [EnsureSaveData]
+      RuneImplicitsCount
+  [UnlockShapingSystem]
+      UnlockShaping
+
+=== ShapingUIManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [BuildWeaponSlots]
+      WeaponSlotLockedIcon
+      WeaponIcon
+      WeaponPlace
+      WeaponNameText
+      LevelText
+      LevelUpButton
+      RerollButton
+      LockedIcon
+  [BuildWeaponDescription]
+      <size=120%><color=#FFD680><b>
+      ShapingWeapon_
+      _Name
+      </b></color></size> <color=#C8C8C8><size=80%>
+      Lv_Text
+       
+      </size></color>
+      <color=#C8C8C8>
+      ShapingWeapon_
+      _Desc
+      </color>
+      Explicit_AttackCooldownSpeed
+      Explicit_BuffCooldownSpeed
+      Explicit_BuffDuration
+      \n<color=#A0B0C0><b>
+      Duration_Text
+      :</b></color> <color=#5BF59E>
+      s</color>\n<color=#A0B0C0><b>
+      Cooldown_Text
+      :</b></color> <color=#5BF59E>
+      s</color>
+      \n<color=#A0B0C0><b>
+      AttackSpeed_Text
+      :</b></color> <color=#5BF59E>
+      </color>
+      \n
+  [WeaponTooltipValue]
+      Explicit_BuffStrength
+      Explicit_AttackDamage
+      <color=#5BF59E>
+      </color>
+  [UpdateNPC]
+      ShapingNPC_Name
+      , 
+      Lv_Text
+      LevelUp_Text
+        <sprite name=
+      >
+      Max_Text
+      
+  [BuildNPCDescription]
+      
+      ShapingReward_
+      _Text
+      <b>
+      Lv_Text
+      :</b> 
+  [ApplyRewardData]
+      RuneImplicitsCount
+  [RefreshWeaponSlot]
+      ShapingWeapon_
+      _Name
+      Lv_Text
+       
+      Lv_Text
+       
+        <sprite name=
+      >
+      Max_Text
+      Reroll_Text
+       <sprite name=
+      >
+  [ManageButtons]
+      CreateRune_Text
+        <sprite name=
+      >
+  [FlyIconGhost]
+      FlyingRuneIcon
+      UI
+  [FlyPrefabGhost]
+      UI
+
+=== ShapingWeapon ===
+  [get_CurrentCooldown]
+      Explicit_AttackCooldownSpeed
+      Explicit_BuffCooldownSpeed
+  [TrailMaterial]
+      Sprites/Default
+  [EnsureSlashTrail]
+      SlashTrail
+  [SpawnShockwave]
+      HammerShockwave
+  [EnsureDurationRing]
+      BuffDurationRing
+  [OrbFxMaterial]
+      Sprites/Default
+  [EnsureOrbFx]
+      OrbTrail
+  [EnsureSparkles]
+      OrbSparkles
+  [DoMeleeDamage]
+      AoERadius
+      Hammer_AoERadius
+      Hammer_DamagePerEnemyHit
+      Hammer_ShatterDamage
+      Hammer_AftershockDamage
+      Sword_TwinSlashChance
+  [SwordStrike]
+      Sword_CleaveDamage
+      CleaveRadius
+  [ExplodeCorpse]
+      ShatterRadius
+  [BuildCastMods]
+      Explicit_AttackDamage
+      Explicit_DoubleDamageChance
+      Explicit_FifthHitDamage
+      Fire_EliteDamage
+      Fire_ExecuteDamage
+      Lightning_ExtraChains
+      Lightning_ForkChance
+      Lightning_DamagePerChain
+      Lightning_FirstTargetDamage
+      Fire_TwinFallChance
+      Fire_MeteorBarrageChance
+  [UpdateBuff]
+      Shield_ActiveRegen
+      Shield_ExpireHeal
+      Explicit_ResetCooldownChance
+      x2!
+  [OnMonsterKilled]
+      Explicit_BuffKillExtend
+      +
+      0.#
+      s
+  [ApplyBuff]
+      Explicit_BuffStrength
+      Explicit_DoubleStrengthChance
+      x2!
+      EnemyAttackSpeedMultiplier
+      Shield_EnemyAttackSlow
+      PlayerAttackSpeed
+      Banner_AttackSpeedBonus
+      ChanceForTripleDamage
+      Banner_TripleDamageChance
+  [BuildDamage]
+      Explicit_AttackDamage
+      Explicit_DoubleDamageChance
+      Explicit_FifthHitDamage
+      Sword_ComboDamage
+      Sword_FirstHitDamage
+      damage1
+  [BuildPortionDamage]
+      Explicit_AttackDamage
+      damage1
+  [get_ScalePulseId]
+      ShapingWeaponPulse
+  [PlayRepeatProcFx]
+      x2!
+  [SpawnGlowBurst]
+      WeaponGlowBurst
+  [SpawnAfterimage]
+      WeaponAfterimage
+  [SpawnProcFloater]
+      WeaponProcFloater
+
+=== ShapingWeaponInfo ===
+  [EvaluateEquation]
+      ShapingWeaponInfo: bad equation '{0}' ({1}); using {2}.
+  [.ctor]
+      1 + 0.1*x
+      5 + 0.5*x
+
+=== ShapingWeaponsManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [GetWeaponDamageAuraMultiplier]
+      Shield_WeaponDamageAura
+  [GetBannerHasteMultiplier]
+      Banner_WeaponHaste
+  [GetKillGoldMultiplier]
+      Explicit_KillGoldBonus
+  [SpawnTestWeapon]
+      [Shaping Test] No ShapingWeaponInfo for 
+       (author one in Resources/ShapingWeaponInfos).
+      [Shaping Test] 
+       has no WeaponPrefab assigned on its ShapingWeaponInfo.
+      [Shaping Test] Spawned 
+       (Lv.
+      ).
+
+=== StarManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [UnlockStarSystem]
+      UnlockStar
+
+=== StarUIManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [BuildPanels]
+      Guardian
+      _Panel
+      BG
+      TitleText
+      BossIcon
+      Lock
+      FirstPerkButton
+      CostText
+      Icon
+      SecondPerkButton
+      CostText
+      Icon
+      King_Panel
+      BG
+      BossIcon
+      FightKingButton
+      KingCounterText
+  [BuildPerkTooltip]
+      
+      \n
+      • 
+      <color=#C8C8C8>
+      </color>
+  [GreenValueStatText]
+      #
+      #5BF59E
+  [PaintGuardianPanel]
+      ? ? ?
+      _Name
+  [RefreshPerk]
+      Owned_Text
+      <sprite name=
+      >
+  [PaintKingPanel]
+      KingCounter_Text
+      \n(
+      /
+      )
+  [FlyPrefabGhost]
+      UI
+  [RefreshKingFightButtonLabel]
+      FightKing_Text
+      ReturnFromKing_Text
+  [ShowResetTooltip]
+      ResetPerks_Text
+      \n
+      Cost_Text
+      : <sprite name=Gold>
+
+=== CrossSystemBonuses ===
+  [ReconcileSkillPowers]
+      _
+  [GetSkillPowerLevel]
+      _
+
+=== EnemyStatsData ===
+  [InitEnemyStats]
+      Health
+  [ChangeAStat]
+      Health
+
+=== PlayerStatsData ===
+  [InitData]
+      Damage
+      Health
+      AttackRange
+      NumberOfMouseProjectiles
+      MouseMagazineRegenTime
+      MouseMagazineSize
+      MouseNumberOfHits
+      MouseMaxNumberOfEnemies
+      HealthPotionRegenPercentage
+      WarriorChanceToSpawn
+      ArcherChanceToSpawn
+      MageChanceToSpawn
+      BatChanceToSpawn
+      PortalSummonTime
+      PortalHealthMultiplier
+      OrbDuration
+      ChestCoins_CurrencyChest
+      ChestCoinMultiplier_CurrencyChest
+      ChestCoins_StandardChest
+      ChestCoinMultiplier_StandardChest
+      ChestCoins_LegendaryChest
+      ChestCoinMultiplier_LegendaryChest
+      ChestContentCount_Item
+      ChestContentCount_Rune
+      ChestContentCount_Scroll
+      ChestContentCount_Legendary
+      ChestContentRarity
+      GoldenRewardMultiplier
+      GoldGained
+      ExpGained
+      GoldCoinsToDrop
+      RoA_CallCount
+      PlayerMovementSpeed
+      EnemyMovementSpeedMultiplier
+      EnemyAttackSpeedMultiplier
+      EnemyHealthMultiplier
+      EnemyDamageMultiplier
+      PlayerAttackSpeed
+      ShapingCooldownSpeed
+      MaximumSkillPowers
+      MiningPickaxeSpeed
+      WormholeShotCount
+      ExplosiveArrows_RadiusOfEffect
+      RuneImplicitsCount
+      BaseMaxValueMultiplier
+      BaseMinValueMultiplier
+      CraftingLuck
+      ItemStatValuesMultiplier
+      ItemImprovment_StartingValue
+      ItemImprovment_DecreasePerImprovement
+      ItemImprovment_MinimumValue
+      Multishot_NumberOfProjectiles
+      Multishot_NumberOfHits
+      Multishot
+      Multishot_Cooldown
+      Multishot
+      BombArrow_RadiusOfEffect
+      BombArrow_NumberOfHits
+      BombArrow
+      BombArrow_Cooldown
+      BombArrow
+      SniperScope_NumberOfAttacks
+      SniperScope_Cooldown
+      SniperScope
+      SniperScope_NumberOfHits
+      SniperScope
+      BatSwarm_Duration
+      BatSwarm
+      BatSwarm_Cooldown
+      BatSwarm
+      BatSwarm_NumberOfHits
+      BatSwarm
+      BatSwarm_RadiusOfEffect
+      BatSwarm_BatsAmountMultiplier
+      RapidFire_Cooldown
+      RapidFire
+      RapidFire_Duration
+      RapidFire
+      RapidFire_BuffValue
+      RapidFire
+      SharpShooter_Cooldown
+      SharpShooter
+      SharpShooter_Duration
+      SharpShooter
+      SharpShooter_BuffValue
+      SharpShooter
+      SharpShooter_CooldownReductionOnCrit
+      PiercingShot_Cooldown
+      PiercingShot
+      PiercingShot_PierceCount
+      PiercingShot
+      PiercingShot_NumberOfTurns
+      PiercingShot
+      PiercingShot_NumberOfHits
+      PiercingShot
+      DarkMatter_Cooldown
+      DarkMatter
+      DarkMatter_RadiusOfEffect
+      DarkMatter_NumberOfHits
+      DarkMatter
+      DarkMatter_DamageMultiplier
+      SuperNova_Cooldown
+      SuperNova
+      SuperNova_NumberOfHits
+      SuperNova
+      CriticalMultiplier
+      AlliesAttackSpeedMultiplier
+      LightningStrike_NumberOfHits
+      LightningStrike
+      FireArea_Duration
+      FireArea
+      FireArea_RadiusOfEffect
+      FireArea_NumberOfHits
+      FireArea
+      Blizzard_Duration
+      Blizzard
+      Blizzard_RadiusOfEffect
+      Blizzard_SlowPercent
+      Blizzard_IceAmountMultiplier
+      Blizzard_NumberOfHits
+      Blizzard
+      Dragon_Time
+      Dragon_RadiusOfEffect
+      Knight_CallCount
+      Knight_RadiusOfEffect
+      Spear_ChainCount
+      LC_ChainCount
+      Vampire_CallCount
+      Vampire_RadiusOfEffect
+      BloodDrain_ChainCount
+      BloodDrain_Time
+      Skills_DamageMultiplier
+      SkillsCooldownSpeed
+      SkillsBuffDurationMultiplier
+      PetHealthMultiplier
+      PetDamageMultiplier
+      ChanceToTameEnemiesOnDeath
+      TameHealthMultiplier
+      TameDamageMultiplier
+      MaxTames
+  [SeedPetSkillBaseStats]
+      _Cooldown
+      Pet skill 
+       has no 
+      _* stats declared in PlayerStatsData.
+      _Cooldown
+      _Cooldown
+      _HealthMultiplier
+      _AttackRange
+      _AttackSpeed
+      _NumberOfHits
+      _AttackChance
+      _AttackRadius
+  [ChangeAStat]
+      Health
+      GuardianCurrencyGain
+      CriticalPierceChance
+      Damage
+      AttackSpeed
+      Cost
+      UnlockSkills
+      UnlockCrafting
+      UnlockMining
+      UnlockShaping
+      UnlockMastery
+      UnlockStar
+      UnlockChests
+      ChanceToSpawnChest
+      UnlockOrbs
+      ChanceToSpawnOrb
+      UnlockGoldenEnemies
+      ChanceForGoldenEnemy
+      UnlockEnemyItemDrops
+      EnemyItemDropChance
+      BowBaseLevel
+      ArmorBaseLevel
+      IsArcherSpawned
+      MouseMagazineSize
+      ChanceToTameEnemiesOnDeath
+      JobPassiveBonus
+      SkillPowerValueBonus
+      MasteryMainStatBonus
+      MasteryAwakenStatBonus
+      DoubleMiningPickaxes
+      MiningPickaxeSpeed
+      ShapingCopyFirstWeapon
+      MaximumSkillPowers
+  [SkillsMultiplier]
+      DarkMatter
+      RainOfArrows
+      AreaSlash
+      VampireExplosion
+      LightningChain
+      Spear
+      BloodSuck
+  [IsSkillDamageSource]
+      _Mouse
+      Tamed_
+  [GetNumberOfHits]
+      _Mouse
+      Multishot
+      BombArrow
+      Archer_Normal
+      Archer_Elementalist_Explosive
+      SniperScope
+      LightningStrike
+      BatSwarm
+      Meteor_Projectile
+      PiercingShot
+      DarkMatter
+      FireArea
+      Blizzard
+      SuperNova
+      Wolf
+      Bear
+      Falcon
+      No Number Of Hits for 
+  [GetCooldown]
+      Multishot
+      BombArrow
+      SniperScope
+      BatSwarm
+      RapidFire
+      SharpShooter
+      PiercingShot
+      DarkMatter
+      SuperNova
+      Wolf
+      Bear
+      Falcon
+      No Cooldown for 
+  [GetPetHealthMultiplier]
+      Wolf
+      Bear
+      No Pet Health Multiplier for 
+  [GetPetAttackRange]
+      Wolf
+      Bear
+      Falcon
+      No Pet Attack Range for 
+  [GetPetAttackSpeed]
+      Wolf
+      Bear
+      Falcon
+      No Pet Attack Speed for 
+  [GetPetAttackChance]
+      Falcon
+      No Pet Attack Chance for 
+  [GetPetOptionalStat]
+      _
+  [GetPetAttackRadius]
+      Falcon
+      No Pet Attack Radius for 
+  [GetBuffValue]
+      RapidFire
+      SharpShooter
+      No Buff Value for 
+  [GetBuffDuration]
+      RapidFire
+      SharpShooter
+      No Buff Duration for 
+  [GetCallCount]
+      RainOfArrows
+      AreaSlash
+      VampireExplosion
+      No Call Count for 
+  [GetDamageIncreaseForEachCallCount]
+      RainOfArrows
+      AreaSlash
+      VampireExplosion
+      No Damage Increase For Each Call Count for 
+  [ChanceForTwinFall]
+      RainOfArrows
+      Spear
+      No Chance For Twin Fall for 
+  [GetChainCount]
+      LightningChain
+      Lightning1_Projectile_LChain
+      Spear
+      BloodSuck
+      No Chain Count for 
+  [GetChanceToForkAfterEachChain]
+      LightningChain
+      Lightning1_Projectile_LChain
+      Spear
+      BloodSuck
+      No Chance To Fork After Each Chain for 
+  [GetDamageIncreasePerChain]
+      LightningChain
+      Lightning1_Projectile_LChain
+      Spear
+      BloodSuck
+      No Damage Increase Per Chain for 
+  [GetRadiusOfEffectArea]
+      AreaSlash
+      VampireExplosion
+      Dragon
+      No Radius Of Effect Area for 
+  [GetTime]
+      Dragon
+      BloodSuck
+      No Time for 
+  [GetDamageIncreasedGainedEachSecond]
+      Dragon
+      BloodSuck
+      No Damage Increased Gained Each Second for 
+  [GetChanceToResetAfterFinishing]
+      Dragon
+      BloodSuck
+      No Chance To Reset After Finishing for 
+  [.cctor]
+      Archer_Normal
+      Archer_Explosive
+      Archer_Ice
+      Archer_Poison
+      Archer_Elementalist_Explosive
+
+=== StatInfo ===
+  [GetValueDescText]
+      
+      
+      
+      -
+      +
+      Flat
+      
+  [GetValueDescText_SingleOrMultipleValues]
+      HealthRegen
+      ClawCurrencyDamageBonus
+      ClawCurrencyHealthBonus
+      
+      #VALUE#
+      #VALUE#
+      #VALUE#
+      #VALUE1#
+      #VALUE
+      #
+      #VALUE1#
+  [GetValueDescText_MultipleValues]
+      
+      
+      -
+      +
+      #VALUE2#
+      #VALUE3#
+      #VALUE4#
+      
+      <b><color=#
+      >
+      </color></b>
+      <b><color=#
+      >
+      </color></b>
+      
+      _FirstTime
+      _FirstTime
+  [GetValueDescText_ForTextsValues]
+      
+      
+  [GetValueDescText]
+      
+
+=== StatsFloat ===
+  [ToString]
+      0.00
+
+=== StatsIntToFloatConverter ===
+  [ReadJson]
+      MinTotal
+      MinTotal
+      MaxTotal
+      MaxTotal
+      MinFlat
+      MinFlat
+      MaxFlat
+      MaxFlat
+      MinAddi
+      MinAddi
+      MaxAddi
+      MaxAddi
+      Total
+      Total
+      Flat
+      Flat
+      AdditiveIncreases
+      AdditiveIncreases
+      MultiplicativeIncreases
+      MultiplicativeIncreases
+  [WriteJson]
+      Writing is not supported by this converter.
+  [IsStatsFloatFormat]
+      Total
+      _Value
+      _Value
+      Flat
+      _Value
+      _Value
+      MinTotal
+      MinTotal
+      MaxTotal
+      MaxTotal
+      MinFlat
+      MinFlat
+      MaxFlat
+      MaxFlat
+  [ConvertStatsValueIntToFloat]
+      _Value
+      _Value
+      RealValue
+      RealValue
+      Max
+      Max
+      Min
+      Min
+
+=== TamedSelfer ===
+  [get_StatName]
+      Tamed_
+      Unknown
+  [PlayStepSound]
+      EnemyWalkSound_
+      Unknown
+  [PlayDeathSound]
+      EnemyDeathSound_Targets
+  [DealAttackDamage]
+      
+      ShotDust
+  [FireProjectile]
+      _FireSound
+
+=== TamingManager ===
+  [TryTameOnDeath]
+      EnemyInfo 
+       is tameable but has no tamedPetPrefab assigned.
+  [SpawnTameBody]
+      EnemyInfo 
+       is tameable but has no tamedPetPrefab assigned.
+      Tamed_
+      tamedPetPrefab for 
+       has no TamedSelfer component.
+
+=== NewSkillStatsTester ===
+  [get_Values]
+      Multishot_ChanceForMultiplyProjectiles
+      BombArrow_ChanceForClusterBombs
+      FireArea_ChanceToSpreadOnKill
+      Blizzard_DamageVsChilled
+      BatSwarm_LifestealPercent
+      SuperNova_ExecuteThreshold
+      SuperNova_BossDamageBonus
+      SuperNova_HealPerEnemyHit
+      DarkMatter_DamagePerAbsorb
+  [get_CurrentTotals]
+      enter play mode + start a run
+       = 
+  [Ready]
+      [NewSkillStatsTester] Enter play mode and start a run first.
+
+=== SkillTester ===
+  [get_Status]
+      idle
+      armed — 
+      RUNNING — 
+  [CastSelectedOnce]
+      [SkillTester] '
+      ' needs an enemy in range — none found.
+  [FireArcherShot]
+      BombArrow
+      PiercingShot
+      DarkMatter
+      SuperNova
+      PiercingShot
+      DarkMatter
+  [EnsureSession]
+      CriticalChance
+  [RestoreSession]
+      CriticalChance
+  [ReadyToFire]
+      [SkillTester] Pick a skill first.
+      [SkillTester] Enter play mode and start a run first.
+  [SkillChoices]
+      Job{0} / {1}  ({2})
+  [Archetype]
+      buff
+      pet
+      passive-proc
+      shot
+      cast
+
+=== ExpressionEvaluator ===
+  [EvaluateDiscreteList]
+      Discrete list is empty
+
+=== TreeCreator ===
+  [RestoreInstantiatedNodesFromSerialization]
+      NodeShape
+      NodeIcon
+      Highlighter
+  [DiscoverExistingNodesInScene]
+      NodeShape
+      NodeIcon
+      Highlighter
+  [UpdateSingleNodePosition]
+      [TreeCreator] Cannot update node position - treeNode: {0}, inDict: {1}
+      null
+      [TreeCreator] Node 
+       GameObject is null, skipping position update
+  [UpdateLinksForNode]
+      Link_
+      _to_
+      _to_
+      [TreeCreator] Error updating link 
+      : 
+  [TriggerLineRecovery]
+      [TreeCreator] Error during line recovery for 
+      : 
+  [CreateLink]
+      [TreeCreator] linksParent is null, creating parent objects
+      [TreeCreator] Failed to create linksParent, cannot create link
+      Link_
+      _to_
+  [ShouldLinkBeLocked]
+      [TreeCreator] Could not find TreeNodeInfo for connected nodes, defaulting to locked
+  [RecreateAllLinks]
+      [TreeCreator] Error cleaning up UILineRenderer during link recreation: 
+  [CleanupUILineRendererSegments]
+      [TreeCreator] Error cleaning up UILineRenderer: 
+  [CleanupTopLevelOrphanedSegments]
+      LineSegment
+      Canvas
+      [TreeCreator] Found orphaned LineSegment: 
+       with parent: 
+      null
+      , destroying it
+  [CreateNodes]
+      TreeCreator: No nodes found in the tree asset!
+  [AddInstantiatedNode]
+      [TreeCreator] Attempted to add node 
+       that already exists. Skipping creation.
+      NodeShape
+      NodeIcon
+      Highlighter
+  [SetupTreeNodeComponent]
+      TreeNode
+      [TreeCreator] TreeNode component type not found - make sure TreeNode.cs is compiled
+  [UpdateNodeVisuals]
+      NodeShape
+      NodeIcon
+      Highlighter
+  [UpdateNodeHighlighterColor]
+      Node 1_55cde9fa
+  [UpdateNodeShapeSize]
+      NodeShape
+      Highlighter
+  [SetupAllTreeNodeComponents]
+      [TreeCreator] No nodes parent found
+  [RefreshAllTreeNodeComponents]
+      [TreeCreator] No nodes parent found
+      TreeNode
+      RefreshVisuals
+  [PlayNeighborRipple]
+      NodeShape
+  [ClearExistingTree]
+      [TreeCreator] Error cleaning up UILineRenderer during tree clear: 
+  [SyncWithTreeData]
+      [TreeCreator] Skipping null node in tree data
+      [TreeCreator] Node 
+       was in dictionary but GameObject was destroyed. Re-creating with minimal impact.
+  [HandleUpdateLogic]
+      [TreeCreator] Asset changed during update, resubscribing to events
+  [CenterTree]
+      TreeCreator: No nodes found to center.
+  [UncenterTree]
+      TreeCreator: No nodes found to uncenter.
+  [ValidateConfiguration]
+      TreeCreator: Tree Asset is not assigned!
+      TreeCreator: Node Prefab is not assigned!
+      TreeCreator: Link Prefab is not assigned!
+      NodeShape
+      NodeIcon
+      TreeCreator: Node Prefab must have a child named 'NodeShape'!
+      TreeCreator: Node Prefab must have a child named 'NodeIcon'!
+      TreeCreator: 'NodeShape' child must have an Image component!
+      TreeCreator: 'NodeIcon' child must have an Image component!
+  [CreateParentObjects]
+      LinksParent
+      NodesParent
+
+=== TreeNode ===
+  [Start]
+      [TreeNode] TreeCreator not found in parent!
+      [TreeNode] TreeState not found!
+  [OnPointerClick]
+      Node 1_55cde9fa
+  [PlayLevelUpAnimation]
+      NodeShape
+      NodeIcon
+  [ManageMySize]
+      NodeShape
+      NodeIcon
+
+=== TreeNodeInfo ===
+  [SetNodeStat]
+      TreeNodeInfo 
+      : Attempted to set NodeStat to null - ignoring to prevent data loss
+  [GenerateUniqueID]
+      _
+      N
+      Node_
+      N
+
+=== TreeNodeTemplate ===
+  [CreateDefault]
+      Default Template
+
+=== TreeState ===
+  [Awake]
+      [TreeState] TreeCreator component not found!
+  [GetTreeNodeInfo]
+      [TreeState] NodeID is null or empty
+      [TreeState] TreeNodes list is null
+  [InitializeNodeLevels]
+      [TreeState] Cannot initialize - TreeCreator or TreeAsset is null
+      [TreeState] TreeNodes list is null
+  [GetNodeLevel]
+      [TreeState] Cannot get level for null node
+      [TreeState] PlayerData is null or does not contain the node ID
+  [SetNodeLevel]
+      [TreeState] Cannot set level for null node
+  [IncreaseNodeLevel]
+      [TreeState] Cannot increase level for null node
+
+=== UILineRenderer ===
+  [EnsureParentCanvas]
+      UILineRenderer: No Canvas found in parent hierarchy!
+  [CreateDefaultLineSegmentPrefab]
+      UILineRenderer: Cannot create default prefab - component has been destroyed
+      UILineRenderer: Cannot create default prefab - GameObject is not active
+      UILineRenderer: Cannot create default prefab - transform is null
+      Template
+      UILineRenderer: Template prefab exists but is not a child, cleaning up old template
+      UILineRenderer: Error cleaning up old template: 
+      LineSegment_Template
+      UILineRenderer: Error cleaning up old template child: 
+      LineSegment_Template
+      UILineRenderer: Failed to create default line segment prefab: 
+  [SetupLine]
+      UILineRenderer: Cannot setup line - component has been destroyed
+      UILineRenderer: Cannot setup line - fromNode or toNode is null
+      UILineRenderer: Cannot setup line - fromNode or toNode has been destroyed
+      UILineRenderer: Cannot setup line - component is not active or enabled
+      UILineRenderer: No Canvas found in parent hierarchy!
+      UILineRenderer: RectTransform component is missing!
+  [OnDestroy]
+      Template
+      UILineRenderer: Template prefab is not a child, destroying manually
+      UILineRenderer: Error cleaning up temporary prefab: 
+  [CreateLine]
+      UILineRenderer: Cannot create line - component has been destroyed
+      UILineRenderer: Cannot create line - fromNode or toNode is null
+      UILineRenderer: Cannot create line - fromNode or toNode has been destroyed
+      UILineRenderer: Cannot create line - parentCanvas is null
+  [GetCanvasPosition]
+      UILineRenderer: Cannot get canvas position - no parent canvas found
+  [ClearLineSegments]
+      UILineRenderer: Component is being destroyed, attempting to clear segments anyway
+      UILineRenderer: Error destroying line segment: 
+      UILineRenderer: Segment '
+      ' belongs to different parent '
+      ', removing from list without destroying
+      UILineRenderer: Error during orphaned segment cleanup: 
+  [CleanupOrphanedSegments]
+      UILineRenderer: Found orphaned segment '
+      ' that was moved from parent, removing from list
+  [CreateLineSegments]
+      UILineRenderer: Cannot create line segments - invalid transform or parent canvas
+      UILineRenderer: Cannot create line segments - component is not active or enabled
+      UILineRenderer: Failed to create default lineSegmentPrefab, cannot proceed
+      UILineRenderer: lineSegmentPrefab has been destroyed, cannot create segments
+      UILineRenderer: lineSegmentPrefab is null/destroyed during instantiation
+      UILineRenderer: transform is null/destroyed during instantiation
+      UILineRenderer: Segment was not properly parented, fixing...
+      UILineRenderer: Failed to create line segment: 
+      UILineRenderer: Failed to instantiate line segment
+      UILineRenderer: Line segment missing RectTransform component
+  [CleanupAllOrphanedSegments]
+      LineSegment
+      Canvas
+      UILineRenderer: Found orphaned LineSegment '
+      ' during global cleanup, destroying it
+      UILineRenderer: Error destroying orphaned segment during global cleanup: 
+  [CleanupAllTemplatePrefabs]
+      LineSegment_Template
+      Template
+      LineSegment
+      
+      top level (old system)
+      Canvas
+      direct child of Canvas (old system)
+      orphaned from UILineRenderer
+      not current template of parent UILineRenderer
+      UILineRenderer: Found orphaned template prefab '
+      ' (
+      ), destroying it
+      UILineRenderer: Error destroying orphaned template prefab: 
+  [RestoreLineSegmentsFromSerialization]
+      UILineRenderer: Cannot restore - serialized fromNode or toNode has been destroyed
+  [UpdateExistingSegments]
+      UILineRenderer: Cannot update existing segments - invalid state
+  [ForceSync]
+      UILineRenderer: Cannot force sync - component has been destroyed
+      UILineRenderer: Cannot force sync - component is not active or enabled
+      UILineRenderer: Cannot force sync - no parent canvas found
+      UILineRenderer: Cannot force sync - RectTransform component is missing!
+      UILineRenderer: Cannot force sync - fromNode or toNode has been destroyed
+      UILineRenderer: Cannot force sync - serialized fromNode or toNode has been destroyed
+      UILineRenderer: Cannot force sync on 
+       - no valid node references found (fromNode: 
+      null
+      , toNode: 
+      null
+      )
+
+=== BarSelfer ===
+  [UpdateBarText]
+      
+       / 
+       / 
+      
+      %
+      
+
+=== LootDropManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [PlayUISellAnimation]
+      UI
+  [PlayCollectAnimation_Internal]
+      LootFlyIcon
+
+=== DLCManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [CheckSteamOwnership]
+      [DLC] Steam ownership check skipped — 
+  [ClickedOnPurchaseDLC]
+      [DLC] Could not open the Steam store overlay — 
+  [InitSkinsUI]
+      ArrowIcon
+      Toggle
+      BG
+      Checkmark
+  [BuildSkinTooltip]
+      <size=120%><b><color=#FFD966>
+      ArrowSkinUnlock_Text
+      </color></b></size>
+       <color=#AAAAAA>/</color> 
+      \n<color=#B8D4E3>
+      ArrowSkinKills_Text
+      :</color> <color=#FFFFFF>
+      </color>
+      \n<color=#B8D4E3>
+      ArrowSkinRequiresDLC_Text
+      </color>
+
+=== MainMenusManager ===
+  [AwakeMe]
+      Destroyed Instance
+      LockIcon
+      MainIcon
+      MainIcon
+      MainIcon
+      Notification
+
+=== SettingsManager ===
+  [AwakeMe]
+      EffectsVolume
+      UIVolume
+      MusicVolume
+      English
+      Français
+      Español
+      Deutsch
+      Italiano
+      Português
+      Русский
+      中文
+      日本語
+      한국어
+      Čeština
+      Polski
+      Türkçe
+      Українська
+      v
+      .
+      .
+      FloatingNumbersAmount
+  [ShowHardResetTooltip]
+      #VALUE#
+      HardResetWarning_Text
+  [SoundSlider_Effects]
+      EffectsVolume
+      EffectsVolume
+  [SoundSlider_UI]
+      UIVolume
+      UIVolume
+  [SoundSlider_Music]
+      MusicVolume
+      MusicVolume
+  [EnableDisableSounds]
+      EffectsVolume
+      UIVolume
+      MusicVolume
+      EffectsVolume
+      UIVolume
+      MusicVolume
+  [EffectsSlider]
+      EffectsAmount
+  [FloatingNumbersAmountSliderChanged]
+      FloatingNumbersAmount
+  [ManageSettingsSliders]
+      EffectsVolume
+      0
+      %
+      UIVolume
+      0
+      %
+      MusicVolume
+      0
+      %
+      EffectsAmount
+      0
+      %
+      FloatingNumbersAmount
+      Max_Text
+
+=== StatsViewManager ===
+  [AwakeMe]
+      Destroyed Instance
+  [UpdateStatsView]
+      StatsView_Damage_Text
+      Damage
+      StatsView_ClawDamageBonus_Text
+      Claw Currency Damage
+      +
+      StatsView_MasteryDamageBonus_Text
+      Mastery Damage
+      +
+      StatsView_AttackSpeed_Text
+      Attack Speed
+      0.00
+      /s
+      StatsView_AttackRange_Text
+      Attack Range
+      StatsView_CritChance_Text
+      Critical Chance
+      StatsView_CritDamage_Text
+      Critical Damage
+      +
+      StatsView_DoubleDamage_Text
+      Double Damage Chance
+      StatsView_TripleDamage_Text
+      Triple Damage Chance
+      StatsView_Offense_Text
+      Offense
+      StatsView_Health_Text
+      Health
+      StatsView_ClawHealthBonus_Text
+      Claw Currency Health
+      +
+      StatsView_MasteryHealthBonus_Text
+      Mastery Health
+      +
+      StatsView_HealthRegen_Text
+      Health Regen
+      /s
+      StatsView_DamageReduction_Text
+      Damage Reduction
+      StatsView_DodgeChance_Text
+      Dodge Chance
+      StatsView_PotionChance_Text
+      Health Potion Chance
+      StatsView_MoveSpeed_Text
+      Movement Speed
+      StatsView_Survival_Text
+      Survival
+      StatsView_MouseProjectiles_Text
+      Arrows / Click
+      StatsView_MouseMagazine_Text
+      Magazine Size
+      StatsView_MouseEnemies_Text
+      Enemies Per Arrow
+      StatsView_MouseSkillChance_Text
+      Skill Cast Chance
+      StatsView_ArrowFall_Text
+      Arrow Fall
+      StatsView_GoldGained_Text
+      Gold Gained
+      +
+      0
+      %
+      StatsView_GoldCoins_Text
+      Gold Coins Per Kill
+      StatsView_GoldChance_Text
+      Extra Gold Coin Chance
+      StatsView_GoldenChance_Text
+      Golden Enemy Chance
+      StatsView_ChestChance_Text
+      Chest Chance
+      StatsView_OrbChance_Text
+      Orb Chance
+      StatsView_PermanentOrbs_Text
+      Permanent Orbs
+      StatsView_EnemyDropChance_Text
+      Monster Loot Chance
+      StatsView_PortalSummonTime_Text
+      Portal Summon Time
+      0.#
+      s
+      StatsView_Loot_Text
+      Loot & Economy
+      StatsView_SkillCooldownSpeed_Text
+      Skill Cooldown Speed
+      0
+      %
+      StatsView_SkillDamage_Text
+      Skill Damage
+      0
+      %
+      StatsView_Skills_Text
+      Skills
+  [AppendCompanions]
+      _Title_Text
+      <b><color=#FFD680>
+       
+      Lv_Text
+      Lv.
+      </color></b>\n
+      StatsView_PetDamage_Text
+      Damage
+      
+       x
+      HealthMultiplier
+      StatsView_PetHealth_Text
+      Health
+      AttackChance
+      StatsView_PetAttackChance_Text
+      Attack Chance
+      AttackRadius
+      StatsView_PetRadius_Text
+      Strike Radius
+      0.#
+      LifestealPercent
+      StatsView_PetLifesteal_Text
+      Lifesteal
+      ExecuteThreshold
+      StatsView_PetExecute_Text
+      Execute Below
+      RegenPercent
+      StatsView_PetRegen_Text
+      Regen
+      /s
+      DodgeChance
+      StatsView_PetDodge_Text
+      Dodge Chance
+      Intimidation
+      StatsView_PetIntimidation_Text
+      Slows Enemies
+      BlitzBond
+      StatsView_PetBlitzBond_Text
+      Crits Call The Dive
+      On_Text
+      On
+      StatsView_Companions_Text
+      Companions
+  [L]
+      [StatsView] Missing localization key "
+      " — showing fallback "
+      "
+  [Line]
+      <color=#C8C8C8>
+      </color>: <color=#5BF59E>
+      </color>\n
+  [AppendSection]
+      <size=115%><b><color=#FFD680>
+      </color></b></size>\n
+  [Pct]
+      0.#
+      %
+  [GameUnits]
+      0.#
+
+=== TooltipController ===
+  [Update]
+        active=
+       enabled=
+      \ndeadline=
+      0.0
+        now=
+      0.0
+        left=
+      0.0
+  [ShowTooltip]
+       / 
+      
+      Requirement_Text
+      : 
+      UnlockPreviousNode_Text
+      Requirement_Text
+      : 
+      _AzrarDesc
+      BowBaseLevel
+      <b>
+      Bow
+      0
+      _Name
+      </b>
+      BowBaseLevelFlat
+      ArmorBaseLevel
+      <b>
+      Armor
+      0
+      _Name
+      </b>
+      ArmorBaseLevelFlat
+      MouseMaxNumberOfEnemies
+      MouseMaxNumberOfEnemiesFlat
+      0
+      
+      • 
+      \n
+      
+      <sprite name=
+      >
+         
+      Max_Text
+
+=== UIManager ===
+  [CurrenciesTextManager]
+      
+      <sprite name=Damage>
+       <sprite name=Gold>
+       <sprite name=PortalCurrency>
+       <sprite name=ClawCurrency>
+       <sprite name=ArcherCurrency>
+      \n<sprite name=WarriorCurrency>
+       <sprite name=WarriorCurrency>
+       <sprite name=MageCurrency>
+       <sprite name=BatCurrency>
+       <sprite name=GuardianCurrency>
+
+=== System.ObjectExtensions ===
+  [.cctor]
+      MemberwiseClone
+
+=== ChestSelfer/<Open_Co>d__24 ===
+  [MoveNext]
+      OnChestOpenSound
+      OnChestOpen2Sound
+      RunStopDust
+
+=== EnemiesManager/<SpawnManager_Co>d__45 ===
+  [MoveNext]
+      RunPortal
+      RunPortal
+
+=== EnemySelfer/<PlayDeathSound>d__119 ===
+  [MoveNext]
+      EnemyDeathSound_Targets
+      EnemyDeathSound_Portal
+
+=== EnemySelfer/<RevealHealthBarDramatically>d__107 ===
+  [MoveNext]
+      PortalSummonSound
+
+=== GuardiansManager/<AmbushCeremony_Co>d__25 ===
+  [MoveNext]
+      GuardianAmbushSound
+
+=== GuardiansManager/<ArcherVolley_Co>d__36 ===
+  [MoveNext]
+      main
+      _FireSound
+
+=== GuardiansManager/<BatBolts_Co>d__39 ===
+  [MoveNext]
+      GuardianBolt
+      GuardianBolt
+      _FireSound
+
+=== GuardiansManager/<ClawPounce_Co>d__35 ===
+  [MoveNext]
+      ShotDust
+      GuardianPounceSound
+      GuardianPounce
+
+=== GuardiansManager/<WarriorSlam_Co>d__37 ===
+  [MoveNext]
+      ShotDust
+      GuardianSlamSound
+      GuardianSlam
+
+=== KingManager/<CastKingSkill_Co>d__58 ===
+  [MoveNext]
+      KingSkillCastSound
+
+=== KingManager/<FireMissiles_Co>d__62 ===
+  [MoveNext]
+      KingMissile
+      KingMissile
+      KingMissileFireSound
+
+=== KingManager/<PlayerDeathReturn_Co>d__72 ===
+  [MoveNext]
+      PlayerDeathSound
+
+=== KingManager/<ProcessSummonQueue_Co>d__52 ===
+  [MoveNext]
+      PortalSummonSound
+
+=== KingManager/<RevealKingHealthBar_Co>d__44 ===
+  [MoveNext]
+      PortalSummonSound
+
+=== SerializableDictionary`2/PrimeHelper ===
+  [GetPrime]
+      min < 0
+
+=== SerializableDictionary`2/Enumerator ===
+  [MoveNext]
+      Enumerator version {0} != Dictionary version {1}
+  [System.Collections.IEnumerator.Reset]
+      Enumerator version {0} != Dictionary version {1}
+
+=== CraftingManager/<LevelUpFanfareCoroutine>d__76 ===
+  [MoveNext]
+      CraftingNPC_Name
+      , 
+      Lv_Text
+      LevelUp_Text
+        <sprite name=ArcherCurrency>
+      Max_Text
+
+=== ItemTooltipManager/<DramaticRevealCoroutine>d__61 ===
+  [MoveNext]
+      CraftDramaticReveal
+      CraftDramaticReveal
+      CraftDramaticReveal
+      CraftDramaticReveal
+      CraftDramaticReveal
+
+=== JobsUIManager/<PlayJobUnlockAnimation>d__37 ===
+  [MoveNext]
+      Job
+      _Title_Text
+      
+      
+      <sprite name=ClawCurrency>
+
+=== MasteryUIManager/<AwakeningRevealCeremony>d__59 ===
+  [MoveNext]
+      MasteryAwakeningUnlocked_Text
+
+=== MasteryUIManager/<NPCLevelUpFanfare>d__55 ===
+  [MoveNext]
+      MasteryNPC_Name
+      , 
+      Lv_Text
+
+=== MiningUIManager/<LevelUpFanfareCoroutine>d__67 ===
+  [MoveNext]
+      MiningNPC_Name
+      , 
+      Lv_Text
+      LevelUp_Text
+        <sprite name=
+      >
+      Max_Text
+
+=== FinishManager/<PlayEnding>d__20 ===
+  [MoveNext]
+      
+      VictorySound
+      #VALUE1#
+      #VALUE2#
+      #VALUE3#
+      FinishGame_Text
+
+=== ParallaxManager/ParallaxBackground ===
+  [.ctor]
+      Background
+
+=== ProceduralShardFX/<Shards_Co>d__19 ===
+  [MoveNext]
+      FXShard
+
+=== RunManager/<PlayerDeathSequence>d__133 ===
+  [MoveNext]
+      PlayerDeathSound
+
+=== SkillDamageLog/Row ===
+  [get_Display]
+      ~
+
+=== CharacterAttacker/<ShootMultishot>d__42 ===
+  [MoveNext]
+      _FireSound
+
+=== MouseAttacker/<ShootMultishotArrowFall>d__50 ===
+  [MoveNext]
+      _FireSound
+      _FireSound
+
+=== EnemyProjectileSelfer/<FullyDestroyWithTail>d__21 ===
+  [MoveNext]
+      main
+
+=== ProjectileMover/<PiercingTurn_Co>d__78 ===
+  [MoveNext]
+      ShotDust
+      _FireSound
+
+=== ProjectileSelfer/<FullyDestroyWithTail>d__69 ===
+  [MoveNext]
+      main
+
+=== ProjectilesManager/<WormholeCopy_Co>d__11 ===
+  [MoveNext]
+      Wormhole
+      Wormhole
+
+=== SkillsManager/<BatSwarm>d__15 ===
+  [MoveNext]
+      FireSoundSkill
+      BatSwarm
+
+=== SkillsManager/<BombArrowCluster_Co>d__31 ===
+  [MoveNext]
+      BombArrow
+      BombArrowdeath
+      BombArrowdeath
+      BombArrow_HitSound
+      BombArrow
+      damage1
+
+=== SkillsManager/<EndBuffAfterDuration>d__45 ===
+  [MoveNext]
+      BuffWarningTickSound
+
+=== SkillsManager/<GenericChainSkill>d__17 ===
+  [MoveNext]
+      FireSoundSkill
+
+=== SkillsManager/<GenericSingleSkill>d__20 ===
+  [MoveNext]
+      LightningStrike
+      mainSkill
+      FireSoundSkill
+      damage1
+      LightningStrike
+      Vampire1_Projectile_VampireExp
+
+=== SkillsManager/<GroundAoE_Co>d__33 ===
+  [MoveNext]
+      mainSkill
+      FireSoundSkill
+      LoopSound
+      FireArea
+      damage1
+
+=== SkillsManager/<IceShard>d__26 ===
+  [MoveNext]
+      NumberOfShards
+      NumberOfShards
+
+=== SkillsManager/<KnightAoESlash>d__21 ===
+  [MoveNext]
+      mainSkill
+      FireSoundSkill
+      damage1
+      KnightSlash
+
+=== SkillsManager/<ProcessChainBranch>d__19 ===
+  [MoveNext]
+      damage1
+      mainSkill
+      chainEffect
+      mainSkill
+      damage1
+      FireSoundSkill
+      Vampire2_Projectile_BloodSuck
+      damage1
+
+=== SkillsManager/<SniperScope>d__14 ===
+  [MoveNext]
+      SniperScope
+      FireSoundSkill
+
+=== SkillsManager/<SuperNova_Co>d__35 ===
+  [MoveNext]
+      SuperNovamainSkill
+      SuperNovamainSkill
+      SuperNovaFireSoundSkill
+      SuperNovadeathSkill
+      SuperNovadeathSkill
+      SuperNovaHitSoundSkill
+      SuperNova
+      SuperNova
+      SuperNova
+      damage1
+      VFX_SuperNova_Hit
+      VFX_SuperNova_Hit
+
+=== SniperScopeSelfer/<WaitForDeathAnimation>d__27 ===
+  [MoveNext]
+      SniperScope_Close
+
+=== SniperScopeSelfer/<WaitForSpawnAnimation>d__24 ===
+  [MoveNext]
+      SniperScope_Open
+
+=== WormholeFX/<Emerge_Co>d__31 ===
+  [MoveNext]
+      WormholeEmerge
+      Flare
+      Bloom
+      Wave
+      Ray
+
+=== WormholeFX/<Rift_Co>d__29 ===
+  [MoveNext]
+      WormholeRift
+      Mouth
+      Bleed
+      Body
+      Hole
+      SwirlOuter
+      SwirlInner
+      Horizon
+      HorizonEcho
+      Stars
+
+=== WormholeFX/<Streak_Co>d__32 ===
+  [MoveNext]
+      WormholeStreak
+      PlayerEffects
+      Head
+
+=== ShapingUIManager/<NPCLevelUpFanfare>d__48 ===
+  [MoveNext]
+      ShapingNPC_Name
+      , 
+      Lv_Text
+
+=== ShapingWeapon/<BuffPulse>d__142 ===
+  [MoveNext]
+      Explicit_BuffDuration
+      Explicit_DoubleDurationChance
+      x2!
+      Banner_MagazineRefillChance
+
+=== ShapingWeapon/<CasterAttack>d__135 ===
+  [MoveNext]
+      Explicit_RepeatAttackChance
+
+=== ShapingWeapon/<HammerSlam>d__109 ===
+  [MoveNext]
+      AoERadius
+
+=== ShapingWeapon/<HammerSmash>d__108 ===
+  [MoveNext]
+      ShapingHammerHitSound
+
+=== ShapingWeapon/<MeleeAttack>d__105 ===
+  [MoveNext]
+      Explicit_RepeatAttackChance
+
+=== ShapingWeapon/<SwordSlash>d__107 ===
+  [MoveNext]
+      ShapingSwordHitSound
+
+=== SkillTester/<FireLoop>d__16 ===
+  [MoveNext]
+      [SkillTester] Fired '{0}' x{1}.
+
+=== ExpressionEvaluator/Parser ===
+  [Parse]
+      Unexpected character at position {0}: '{1}'
+  [ParsePrimary]
+      Unexpected end of input
+      Unexpected end of input after unary minus
+      Missing closing parenthesis
+      Missing closing parenthesis for function '
+      '
+      x
+      value
+      Unknown variable '
+      '
+  [EvalFunction]
+      F
+      C
+      Unknown function '
+      '
+  [ParseNumber]
+      Invalid scientific notation: expected digit after 'e'
+      Invalid number: empty token
+      Invalid number '
+      '

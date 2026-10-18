@@ -1,0 +1,162 @@
+[
+ {
+  "NodeCostCurrencies": [
+   1
+  ],
+  "NonleveledNodeShape": {
+   "m_FileID": 0,
+   "m_PathID": 1085
+  },
+  "LeveledNodeShape": {
+   "m_FileID": 0,
+   "m_PathID": 1093
+  },
+  "ShapeSize": 50.0,
+  "NonleveledShapeOffset": {
+   "x": 0.0,
+   "y": 0.0
+  },
+  "LeveledShapeOffset": {
+   "x": 0.0,
+   "y": 0.0
+  },
+  "HighlighterShape": {
+   "m_FileID": 0,
+   "m_PathID": 978
+  },
+  "HighlighterShapeSize": 71.0,
+  "HighlighterOffset": {
+   "x": 0.30000001192092896,
+   "y": 0.0
+  },
+  "DefaultHighlighterColor": {
+   "r": 1.0,
+   "g": 1.0,
+   "b": 1.0,
+   "a": 0.0
+  },
+  "PurchasableHighlighterColor": {
+   "r": 0.5692417621612549,
+   "g": 0.9811320900917053,
+   "b": 0.5692417621612549,
+   "a": 0.5882353186607361
+  },
+  "InsufficientCurrencyHighlighterColor": {
+   "r": 1.0,
+   "g": 0.5330188274383545,
+   "b": 0.5538657903671265,
+   "a": 0.5882353186607361
+  },
+  "NodeIconSize": 32.0,
+  "NodeIconOffset": {
+   "x": 0.0,
+   "y": 0.0
+  },
+  "UnlockedIconColor": {
+   "r": 1.0,
+   "g": 0.8071002960205078,
+   "b": 0.7028301954269409,
+   "a": 1.0
+  },
+  "LockedIconColor": {
+   "r": 0.40566039085388184,
+   "g": 0.3328721523284912,
+   "b": 0.2927643358707428,
+   "a": 1.0
+  },
+  "UnlockedLinkColor": {
+   "r": 0.7735849022865295,
+   "g": 0.6433097124099731,
+   "b": 0.5728906989097595,
+   "a": 1.0
+  },
+  "LockedLinkColor": {
+   "r": 0.3962264060974121,
+   "g": 0.33314791321754456,
+   "b": 0.31212174892425537,
+   "a": 1.0
+  },
+  "_pathID": 3411,
+  "_file": "sharedassets0.assets"
+ },
+ {
+  "NodeCostCurrencies": [
+   4
+  ],
+  "NonleveledNodeShape": {
+   "m_FileID": 0,
+   "m_PathID": 1150
+  },
+  "LeveledNodeShape": {
+   "m_FileID": 0,
+   "m_PathID": 1022
+  },
+  "ShapeSize": 75.0,
+  "NonleveledShapeOffset": {
+   "x": 0.0,
+   "y": 0.0
+  },
+  "LeveledShapeOffset": {
+   "x": 0.0,
+   "y": 0.0
+  },
+  "HighlighterShape": {
+   "m_FileID": 0,
+   "m_PathID": 1037
+  },
+  "HighlighterShapeSize": 100.0,
+  "HighlighterOffset": {
+   "x": 0.30000001192092896,
+   "y": 0.0
+  },
+  "DefaultHighlighterColor": {
+   "r": 1.0,
+   "g": 1.0,
+   "b": 1.0,
+   "a": 0.0
+  },
+  "PurchasableHighlighterColor": {
+   "r": 0.5692417621612549,
+   "g": 0.9811320900917053,
+   "b": 0.5692417621612549,
+   "a": 0.5882353186607361
+  },
+  "InsufficientCurrencyHighlighterColor": {
+   "r": 1.0,
+   "g": 0.5330188274383545,
+   "b": 0.5538657903671265,
+   "a": 0.5882353186607361
+  },
+  "NodeIconSize": 38.0,
+  "NodeIconOffset": {
+   "x": 0.0,
+   "y": 0.0
+  },
+  "UnlockedIconColor": {
+   "r": 0.8509804010391235,
+   "g": 0.7309091687202454,
+   "b": 0.5882353186607361,
+   "a": 1.0
+  },
+  "LockedIconColor": {
+   "r": 0.42352941632270813,
+   "g": 0.3542596399784088,
+   "b": 0.30980393290519714,
+   "a": 1.0
+  },
+  "UnlockedLinkColor": {
+   "r": 0.7735849022865295,
+   "g": 0.6433097124099731,
+   "b": 0.5728906989097595,
+   "a": 1.0
+  },
+  "LockedLinkColor": {
+   "r": 0.3962264060974121,
+   "g": 0.33314791321754456,
+   "b": 0.31212174892425537,
+   "a": 1.0
+  },
+  "_pathID": 3412,
+  "_file": "sharedassets0.assets"
+ }
+]

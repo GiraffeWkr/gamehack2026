@@ -1,0 +1,1625 @@
+# 1624 条 #US 字符串
+000001	EffectsDropdown
+000021	HighEffectsText
+000041	LowEffectsText
+00005f	NoEffectsText
+00007b	
+00007d	KEY (
+000089	) ALREADY EXISTS FOR LOCALIZATION
+0000cd	<size=110%><color=
+0000f3	>
+0000f7	</color></size>
+000117	english
+000127	portuguese
+00013d	brazilian
+000151	french
+00015f	german
+00016d	russian
+00017d	schinese
+00018f	tchinese
+0001a1	spanish
+0001b1	latam
+0001bd	japanese
+0001cf	italian
+0001df	koreana
+0001ef	czech
+0001fb	polish
+000209	turkish
+000219	ukrainian
+00022d	[Localizer] Steam language unavailable, using the OS language instead — 
+0002c0	Key Not Found For Translation: 
+000300	[LocalizerManager] Missing translation for key '
+000362	' in all languages
+000388	#VALUE#
+000398	_Plural
+0003a8	#VALUE1#
+0003ba	SteamManager
+0003d4	Tried to Initialize the SteamAPI twice in one session!
+000442	[Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.
+000527	[Steamworks.NET] DllCheck Test returned false, One or more of the Steamworks binaries seems to be the wrong version.
+000612	[Steamworks.NET] Shutting down because RestartAppIfNecessary returned true. Steam will restart the application.
+0006f3	[Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n
+00080e	[Steamworks.NET] SteamAPI_Init() failed. Refer to Valve's documentation or the comment above this line for more information.
+000909	Destroyed Instance
+00092f	ChestCoins_CurrencyChest
+000961	ChestCoinMultiplier_CurrencyChest
+0009a5	ChestCoins_StandardChest
+0009d7	ChestCoinMultiplier_StandardChest
+000a1b	ChestCoins_LegendaryChest
+000a4f	ChestCoinMultiplier_LegendaryChest
+000a95	ChestContentCount_Item
+000ac3	ChestContentCount_Rune
+000af1	ChestContentCount_Scroll
+000b23	ChestContentCount_Legendary
+000b5b	ChestContentRarity
+000b81	GoldenRewardMultiplier
+000baf	OpenChest
+000bc3	PortalSummonTime
+000be5	PortalHealthMultiplier
+000c13	EnemyHealthMultiplier
+000c3f	EnemyDamageMultiplier
+000c6b	GuardianSpawnEffect
+000c93	Enemy__
+000ca3	GFX
+000cab	Center
+000cb9	EnemyCanvas
+000cd1	SummonEffect
+000ceb	Footstep
+000cfd	EnemyWalkSound_
+000d1d	attack
+000d2b	<color=#4CFF8C>+
+000d4d	</color>
+000d5f	NormalDamageFloater
+000d87	PortalSummonSound
+000dab	Summon_fx
+000dbf	ArrowHitSound
+000ddb	Archer_Normal
+000df7	EnemyHitCritical
+000e19	EnemyHitNormal
+000e37	DestroyTarget
+000e53	Wall
+000e5d	KingAutoAttackSwingSound
+000e8f	main
+000e99	_FireSound
+000eaf	GoldenFx
+000ec1	GoldenGlint
+000ed9	p
+000edd	Rays
+000ee7	Ray
+000eef	Halo
+000ef9	GroundRing
+000f0f	Crown
+000f1b	CrownGlow
+000f2f	CrownL
+000f3d	CrownM
+000f4b	CrownR
+000f59	Orbiter
+000f69	Motes
+000f75	GoldenEnemy_Text
+000f97	GildedChampion_Text
+000fbf	Golden!
+000fcf	Gilded Champion!
+000ff1	<color=#FFD75A>
+001011	GFX_Main/Special_Toxin
+00103f	GFX_Main/Skulls
+00105f	GuardianToxin
+00107b	GuardianFrenzySound
+0010a3	ArcherToxin_Projectile
+0010d1	GuardianToxinCloud
+0010f7	GuardianToxinSound
+00111d	KingExplosionOrbHitSound
+00114f	KingLaserHitSound
+001173	_TintColor
+001189	_BaseColor
+00119f	_Color
+0011ad	KingManager: no King EnemyInfo (EnemyType.King) in Resources/EnemyInfos — the throne room is empty.
+001276	KingManager: the King failed to spawn — check the King prefab has GFX/Center children and the Spine animations Idle/Attack1/Attack2/Skill/Hurt/Death. 
+0013a5	KingLaser
+0013b9	KingExplosionOrb
+0013db	KingExplosionOrbFireSound
+00140f	DefeatKing
+001425	KingDeathSound
+001443	KingRevealSound
+001463	KingLaserSpawnFX
+001485	KingLaserHitFX
+0014a3	KingMissileExplosionFX
+0014d1	KingOrbExplosionFX
+0014f7	KingMissileHitSound
+00151f	Job
+001527	EnemyInfos
+00153d	StatInfos
+001551	ProjectileInfos
+001571	SkillDetailInfos
+001593	JobInfos
+0015a5	JobSkillInfos
+0015c1	ItemInfos
+0015d5	ItemStatsInfos
+0015f3	SkillPowerInfos
+001613	ShapingWeaponInfos
+001639	.
+00163d	RuneStatInfos
+001659	MasteryInfos
+001673	GuardianPerkInfos
+001697	[1,5,10*1.1^(x-2)]
+0016bd	Sword_FirstHitDamage
+0016e7	X2
+0016ed	00
+0016f3	:
+0016f7	00:
+0016ff	 Minutes
+001711	 Minute
+001721	 Hours
+00172f	 Hour
+00173b	0.00e0
+001749	BUG If suffix higher than max (z)
+00178d	<color=
+00179d	abcdefghijklmnopqrstuvwxyz
+0017d3	{0} 
+0017dd	Seconds_String
+0017fb	Minutes_String
+001819	Hours_String
+001833	{0} {1} {2} {3}
+001853	0.0
+00185b	Days_String
+001873	<color=#([A-Fa-f0-9]{6})>.*?</color>
+0018bd	^((?:</[^>]+>)*)
+0018df	^(<color=#[A-Fa-f0-9]{6}>([^<]*?)</color>|([^\s<]+))
+001949	<color=#
+00195b	K
+00195f	M
+001963	B
+001967	T
+00196b	Q
+00196f	original
+001981	[
+001985	 , 
+00198d	]
+001991	(
+001995	)
+001999	source
+0019a7	Sequence is empty.
+0019cd	0
+0019d1	0.00
+0019db	0.000
+0019e7	[InAppReviewManager] RequestReview() not supported on this platform; opening fallback URL.
+001a9e	[InAppReviewManager] No fallback URL configured for this platform.
+001b25	[InAppReviewManager] Opening fallback URL: 
+001b7d	https://play.google.com/store/apps/details?id=com.SamhariaStudios.Maktala
+001c12	https://apps.apple.com/app/id0000000000
+001c62	SafeAreaManager
+001c82	InAppReviewManager
+001ca8	ObjectPooler
+001cc2	[Boot] Save has no stats (poisoned by a failed first-run). Rebuilding as a new player.
+001d71	RunManager
+001d87	ParallaxManager
+001da7	CharacterManager
+001dc9	SettingsManager
+001de9	ItemTooltipManager
+001e0f	EnemiesManager
+001e2d	ChestsManager
+001e49	OrbsManager
+001e61	PlayerManager
+001e7d	InventoryManager
+001e9f	CraftingManager
+001ebf	FloatingNumbersManager
+001eed	CurrencyCollectAnimation
+001f1f	MouseAttacker
+001f3b	StarManager
+001f53	StarUIManager
+001f6f	UIManager
+001f83	MainMenusManager
+001fa5	DLCManager
+001fbb	SkillsManager
+001fd7	ProjectilesManager
+001ffd	GroundEffectsManager
+002027	FXManager
+00203b	JobsUIManager
+002057	MiningManager
+002073	MiningUIManager
+002093	ShapingManager
+0020b1	ShapingUIManager
+0020d3	ShapingWeaponsManager
+0020ff	PetsManager
+002117	TamingManager
+002133	GuardiansManager
+002155	KingManager
+00216d	MasteryManager
+00218b	MasteryUIManager
+0021ad	AchievementsManager
+0021d5	LoggingManager
+0021f3	StatsViewManager
+002215	FinishManager
+002231	SaveEveryTenMinutesFunction
+002269	[Boot] Quitting without saving — boot never completed, so there is nothing safe to write.
+00231e	https://discord.gg/Uy83FuCGFa
+00235a	https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Reward&utm_campaign=CGFull
+00241f	https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=RewardTaken&utm_campaign=CGFull
+0024ee	https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Settings&utm_campaign=CGFull
+0025b7	https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Quit&utm_campaign=CGFull
+002678	https://store.steampowered.com/developer/SamhariaStudios
+0026ea	https://store.steampowered.com/app/4780870/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+0027a1	https://store.steampowered.com/app/5057800/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+002858	https://store.steampowered.com/app/5167550/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+00290f	Aleef_Desc
+002925	WhenChest_Desc
+002943	Mar_Desc
+002955	death
+002961	_HitSound
+002975	chainEffect
+00298d	mainSkill
+0029a1	deathSkill
+0029b7	FireSoundSkill
+0029d5	HitSoundSkill
+0029f1	═══ SafeAreaManager report ═══
+002a2f	Screen        : 
+002a51	x
+002a55	   dpi 
+002a65	Screen.safeArea: 
+002a89	Rect in use   : 
+002aab	   source=
+002ac1	Screen.safeArea (real device / Device Simulator)
+002b23	SIMULATED iPhone 13 Pro Max cutout (Game view reports no insets)
+002ba6	Applied yet   : 
+002bc8	   (cached originals: 
+002bf6	!! Not in Play mode — nothing has been applied, so positions below are the authored ones.
+002cab	Canvas        : '
+002ccf	'   mode=
+002ce3	   scaleFactor=
+002d03	0.###
+002d0f	   scaler=
+002d25	 ref=
+002d31	!! scaleFactor is 1 on a ScaleWithScreenSize canvas wider than its reference — the CanvasScaler has NOT run yet. Every position below is pre-layout and the whole measurement is meaningless. This is what measuring from Awake looks like.
+002f0a	RIGHT
+002f16	LEFT
+002f20	TOP
+002f28	BOTTOM
+002f36	── 
+002f3e	 ──
+002f46	  !! probe transform is UNASSIGNED — this edge is skipped entirely.
+002fcf	  !! could not resolve bounds for '
+003017	' (no camera for a world-space probe?) — this edge is skipped.
+003095	  probe    : 
+0030b1	   space=
+0030c5	World
+0030d1	Overlay(px)
+0030e9	   canvasScale=
+003109	  pivot    : 
+003125	  probe pos: 
+003141	   bound: 
+003157	   overflow: 
+003173	   (inside)
+00318b	   << STILL OUTSIDE
+0031b3	  cap      : MaxRightShift 
+0031eb	 x 
+0031f3	 = 
+0031fb	   << CAP IS LIMITING THE FIX
+003237	  !! object list is EMPTY — the edge is measured but nothing moves.
+0032c0	  objects (
+0032d8	):
+0032de	    [
+0032ea	] !! NULL entry
+00330a	    
+003314	   inside
+003328	   outside
+00333e	   << DIFFERENT SPACE TO PROBE (shift is meaningless)
+0033aa	   << NOT CACHED (added after first apply; re-entry won't restore it)
+003437	not a RectTransform (world object — pivot rule doesn't apply)
+0034b3	pivot=
+0034c1	   size=
+0034d3	   (zero-size marker — pivot irrelevant)
+003525	   reported=
+00353f	   true 
+003551	 edge=
+00355f	   << MEASURING 
+003581	px OFF ITS 
+003599	 EDGE — move the pivot to that edge, or the group shifts by that much too little
+00363c	  ok
+003646	right
+003652	left
+00365c	top
+003664	bottom
+003672	CustomSaveName_Level
+00369c	1
+0036a0	CustomSaveName_Seed
+0036c8	zad_balance_seed
+0036ea	_Lv
+0036f2	.su
+0036fa	[SaveLoadManager] Balance snapshot failed: 
+003752	zad_balance_seed*.su
+00377c	[SaveLoadManager] No balance saves in 
+0037ca	[SaveLoadManager] 
+0037f0	 balance save(s) in 
+00381a	   
+003822	   (
+00382c	yyyy-MM-dd HH:mm
+00384e	.tmp
+003858	.bak
+003862	[SaveLoadManager] Save aborted: in-memory verification failed. Previous save preserved.
+003913	[SaveLoadManager] Save aborted: could not stage temp file on mobile.
+00399e	[SaveLoadManager] Save aborted: temp file failed verification.
+003a1c	[SaveLoadManager] Save failed, previous save preserved: 
+003a8e	[SaveLoadManager] Main save unreadable, recovered from backup.
+003b0c	[SaveLoadManager] Main save unreadable, recovered from legacy backup.
+003b99	"
+003b9d	":
+003ba3	[SaveLoadManager] Failed to load '
+003be9	': 
+003bf1	[SaveLoadManager] Rejecting '
+003c2d	': the save is marked initialised but has no stats (written by a boot that died partway).
+003ce2	[SaveLoadManager] Payload verification failed: 
+003d42	[SaveLoadManager] On-disk verification failed for '
+003daa	[SaveLoadManager] Temp save path is a directory and could not be deleted: 
+003e41	[SaveLoadManager] Mobile save attempt 
+003e8f	/
+003e93	 hit UnauthorizedAccessException at '
+003edf	 hit IOException at '
+003f0b	 hit unexpected 
+003f2d	 at '
+003f39	[SaveLoadManager] Could not write temp save to '
+003f9b	'. Wrote a recovery copy to '
+003fd7	'.
+003fdd	[SaveLoadManager] Mobile save totally failed and fallback write also failed: 
+00407a	[SaveLoadManager] Could not rotate main->bak: 
+0040d8	[SaveLoadManager] Could not delete '
+004122	Q3JpcHRvZ3JhZmlhcyBjb20gUmlxamRhZWwgLyBBRVM
+00417a	MaximumSkillPowers
+0041a0	/zadArchery.su
+0041be	NumberOfOresDropped
+0041e6	OreValue
+0041f8	capacity
+00420a	dictionary
+004220	key
+004228	Key already exists: 
+004252	array
+00425e	index = {0} array.Length = {1}
+00429c	The number of elements in the dictionary ({0}) is greater than the available space from index to the end of the destination array {1}.
+0043ab	ButtonLock
+0043c1	Notification
+0043db	UnlockCrafting
+0043f9	CraftingNPC_Name
+00441b	, 
+004421	Lv_Text
+004431	LevelUp_Text
+00444b	  <sprite name=ArcherCurrency>
+004489	Max_Text
+00449b	_Text
+0044a7	Epic_Rarity_Text
+0044c9	#VALUE2#
+0044db	Legendary_Rarity_Text
+004507	<b>
+00450f	:</b> 
+00451d	ArmorBaseLevel
+00453b	BowBaseLevel
+004555	ItemStatValuesMultiplier
+004587	CraftingLuck
+0045a1	_Name
+0045ad	Health
+0045bb	Damage
+0045c9	<sprite name=
+0045e5	> 
+0045eb	 - 
+0045f3	UnlockBase_Text
+004613	    <sprite name=Gold>
+004641	CreateArmor_Text
+004663	CreateBow_Text
+004681	    <sprite name=ArcherCurrency>
+0046c3	Improving_Text
+0046e1	success
+0046f1	failed
+0046ff	Tool_Interaction_03
+004727	Craft_Hammer1
+004743	Ceramic
+004753	cartoon_style_2_pitch3
+004781	Craft_Success
+00479d	card_discard
+0047b7	Craft_Fail
+0047cd	%
+0047d1	Improve_Text
+0047eb	 (
+0047f1	)\n<sprite name=ArcherCurrency>
+00482f	Failed_Text
+004847	CraftReroll_Text
+004869	\n<sprite name=ArcherCurrency>
+0048a5	Corrupted_Text
+0048c3	CraftCorrupt_Text
+0048e7	<size=120%><color=
+00490d	#FFD680
+00491d	><b>
+004927	CraftingActions_Text
+004951	</b></color></size>
+004979	CraftImprove_Desc
+00499d	CraftReroll_Desc
+0049bf	CraftCorrupt_Desc
+0049e3	\n\n
+0049e9	</b></color>\n
+004a05	#C8C8C8
+004a15	#7A7A7A
+004a25	><b>? ? ?</b></color>
+004a51	SellAll_Text
+004a6b	\n
+004a6f	SellAllDragHint_Text
+004a99	No empty slot found
+004ac1	FlyingItemIcon
+004adf	UI
+004ae5	 (<color=#88ed66>+
+004b0b	</color>)
+004b1f	 +
+004b25	RightClickToEquipUnequip_Text
+004b61	DragToEquip_Text
+004b83	RightClickToDestroy_Text
+004bb5	DragToSellItem_Text
+004bdd	ItemIcon
+004bef	NewItemFrame
+004c09	RarityFrame
+004c21	Silhouette
+004c37	<color=#64FFA2FF>
+004c5b	Equipped_Text
+004c77	ItemDragGhost
+004c93	[ItemTooltipManager] Duplicate singleton instance destroyed on '
+004d16	'
+004d1a	_Comparison
+004d32	StatsParent
+004d4a	RangeText
+004d5e	NameText
+004d70	RarityText
+004d86	IconImage
+004d9a	WeaponSilhoute
+004db8	BG
+004dbe	DescText
+004dd0	StatArea
+004de2	_Rarity_Text
+004dfc	CraftDramaticReveal
+004e24	ItemScroll_
+004e3c	RuneScroll_
+004e54	Rune Scroll of Inscription
+004e8a	Rune Scroll of Amplification
+004ec4	Rune Scroll of Ascension
+004ef6	Rune Scroll of Overflow
+004f26	Item Scroll of Refinement
+004f5a	Item Scroll of Tempering
+004f8c	Item Scroll of Mastery
+004fba	Item Scroll of Perfection
+004fee	_Desc
+004ffa	The Next Created Rune Will Have +
+00503e	 Implicit Stat
+00505c	% Implicit Values
+005080	The Next Created Rune Will Be 
+0050be	The Next Created Rune Will Have 
+005100	 Explicit Stats
+005120	The Next Crafted Item Will Have +
+005164	 Stat
+005170	The Next Crafted Item Will Have x
+0051b4	 Improvement Success Chance
+0051ec	The Next Crafted Item Will Be 
+00522a	% Stat Values (Excluding Base Damage/Health)
+005284	<color=#88ed66>
+0052a4	ScrollActive_Text
+0052c8	Already Active!
+0052e8	ScrollActivate_Text
+005310	Right Click to Activate
+005340	DragToActivateItemScroll_Text
+00537c	DragToActivateRuneScroll_Text
+0053b8	Drag Onto Create an Item to Activate
+005402	Drag Onto Create Rune to Activate
+005446	RuneSell_Text
+005462	DragToSellRune_Text
+00548a	_Title_Text
+0054a2	<color=#C8C8C8>
+0054c2	_Desc_Text
+0054d8	TitleText
+0054ec	Icon
+0054f6	Lock
+005500	UnlockButton
+00551a	CostText
+00552c	JobBonusImage
+005548	JobBonusText
+005562	JobBonusTooltipRayCast
+005590	SkillsParent
+0055aa	LevelUpButton
+0055c6	Cooldown
+0055d8	UnlockJobs
+0055ee	MaxLevel_Text
+00560a	<sprite name=ClawCurrency>
+005640	? ? ?
+00564c	Unlock_Text
+005664	 <sprite name=ClawCurrency>
+00569c	_Cooldown
+0056b0	_PierceCount
+0056ca	_NumberOfTurns
+0056e8	_HealthMultiplier
+00570c	_AttackChance
+005728	_BuffValue
+00573e	_Duration
+005752	_NumberOfHits
+00576e	_Bonus_Text
+005786	<size=120%><color=#FFD680><b>
+0057c2	_Bonus_TooltipTitle
+0057ea	<color=#5BF59E>
+00580a	_Bonus_TooltipDesc
+005830	\n<color=#A0B0C0><b>
+005858	</b></color> 
+005874	 <color=#FFD680>></color> 
+0058aa	 <size=80%><color=#8A94A0>(
+0058e2	)</color></size>
+005904	</b></color>
+00591e	</b></color></size> <color=#C8C8C8><size=80%>
+00597a	 
+00597e	</size></color>
+00599e	PetHealthScaling_Text
+0059ca	_DamageMultiplier
+0059ee	<color=#A0B0C0><b>
+005a14	Damage_Text
+005a2c	PetDamageScaling_Text
+005a58	 <color=#FFD680>></color> <color=#5BF59E>
+005aac	SkillPower_RapidFireBuff_Desc
+005ae8	SkillPower_PetHealth_Desc
+005b1c	SkillPower_NumberOfHits_Desc
+005b56	_NumberOfProjectiles
+005b80	SkillPower_NumberOfProjectiles_Desc
+005bc8	_NumberOfAttacks
+005bea	SkillPower_NumberOfAims_Desc
+005c24	SkillPower_PierceCount_Desc
+005c5c	SkillPower_Turns_Desc
+005c88	_RadiusOfEffect
+005ca8	SkillPower_Area_Desc
+005cd2	_AttackRadius
+005cee	SkillPower_DiveChance_Desc
+005d24	_AttackSpeed
+005d3e	SkillPower_AttackSpeed_Desc
+005d76	_SlowPercent
+005d90	SkillPower_Slow_Desc
+005dba	_IceAmountMultiplier
+005de4	SkillPower_IceMultiplier_Desc
+005e20	_BatsAmountMultiplier
+005e4c	SkillPower_BatsMultiplier_Desc
+005e8a	SkillPower_Duration_Desc
+005ebc	s
+005ec0	_ChanceForMultiplyProjectiles
+005efc	SkillPower_MultiplyProjectiles_Desc
+005f44	_ChanceForClusterBombs
+005f72	SkillPower_ClusterBombs_Desc
+005fac	_ChanceToPierce
+005fcc	SkillPower_ChanceToPierce_Desc
+00600a	_ChanceToDealTripleDamage
+00603e	SkillPower_TripleDamage_Desc
+006078	_ChanceToSpreadOnKill
+0060a4	SkillPower_BurnSpread_Desc
+0060da	_DamageVsChilled
+0060fc	SkillPower_DamageVsChilled_Desc
+00613c	_MirrorImageChance
+006162	SkillPower_MirrorImage_Desc
+00619a	_DamagePerTurn
+0061b8	SkillPower_DamagePerTurn_Desc
+0061f4	_DamagePerAbsorb
+006216	SkillPower_AbsorbDamage_Desc
+006250	_BossDamageBonus
+006272	SkillPower_BossDamage_Desc
+0062a8	_ExecuteThreshold
+0062cc	SkillPower_Execute_Desc
+0062fc	_HealPerEnemyHit
+00631e	SkillPower_NovaHeal_Desc
+006350	_LifestealPercent
+006374	SkillPower_WolfLifesteal_Desc
+0063b0	_RegenPercent
+0063cc	SkillPower_Regen_Desc
+0063f8	_Intimidation
+006414	SkillPower_Intimidation_Desc
+00644e	_ExtensionPerKill
+006472	SkillPower_DurationPerKill_Desc
+0064b2	_CooldownReductionOnCrit
+0064e4	SkillPower_CritCooldownReduction_Desc
+006530	_CritMultiplierBonus
+00655a	SkillPower_CritDamage_Desc
+006590	_BlitzBond
+0065a6	SkillPower_BlitzBond_Desc
+0065da	_ActivateWithRapidFire
+006608	SkillPower_LinkedCast_Desc
+00663e	_ResetCooldownOnBossFirstHit
+006678	SkillPower_BossFreeCooldown_Desc
+0066ba	Cooldown_Text
+0066d6	ChanceForLightningStrike
+006708	SkillPower_ChanceOnHit_Desc
+006740	ChanceForFireArea
+006764	ChanceForBlizzard
+006788	BatSwarm_LifestealPercent
+0067bc	SkillPower_BatLifesteal_Desc
+0067f6	SharpShooter_BuffValue
+006824	SkillPower_SharpShooterBuff_Desc
+006866	DarkMatter_DamageMultiplier
+00689e	SkillPower_SkillDamage_Desc
+0068d6	Mastery_Momentum_Proc_Text
+00690c	Mastery_MomentumAll_Proc_Text
+006948	_B
+00694e	_L
+006954	Mastery_Forging_Proc_Text
+006988	Mastery_Inscription_Proc_Text
+0069c4	10 * 1.5^(x-1)
+0069e2	5*x
+0069ea	250
+0069f2	UnlockMastery
+006a0e	ButtonsParent
+006a2a	AwakenButton
+006a44	LockIcon
+006a56	LockedObjects
+006a72	HoverArea
+006a86	\n<color=#C8C8C8>
+006aa8	Awaken_Text
+006ac0	Awakened_Text
+006adc	<color=#C8C8C8>? ? ?</color>
+006b16	\n<color=#b47dc9><b>
+006b3e	:</b></color> 
+006b5c	#
+006b60	#5BF59E
+006b70	Prime_Text
+006b86	:</b></color> <color=#C8C8C8>
+006bc2	_StatOne_Desc
+006bde	 <color=#5BF59E>(
+006c02	Primed_Text
+006c1a	 x
+006c20	)</color>
+006c34	_StatTwo_Desc
+006c50	 <color=#FFD86B>(
+006c74	MasteryNPC_Name
+006c94	  <sprite name=
+006cb4	MasteryReward_
+006cd2	PrimeLegendary_Text
+006cfa	MasteryPanelFloater
+006d22	AwakenGlow
+006d38	ReachLevel_Text
+006d58	UnlockMining
+006d72	GoToMining_Text
+006d92	ReturnFromMining_Text
+006dbe	MiningPickaxeSFX
+006de0	PointOfContact
+006dfe	Sprites/Default
+006e1e	ChopTrail
+006e32	MiningRockJuice: no SpriteRenderer found on the rock; juice disabled.
+006ebf	Saham/MiningRockHit
+006ee7	MiningRockJuice: shader 'Saham/MiningRockHit' not found; juice disabled.
+006f7a	MiningRockHit (instance)
+006fac	RockCrack
+006fc0	RockPulse
+006fd4	RockDebris
+006fea	ClickProgressText
+00700e	RockChip
+007020	_Aspect
+007030	_CrackColor
+007048	_GlowColor
+00705e	_CrackCount
+007076	_CrackRadius
+007090	_CrackWidth
+0070a8	_CrackJagged
+0070c2	_CrackDarken
+0070dc	_DentRadius
+0070f4	_DentDarken
+00710c	_Cracks
+00711c	_CrackParams
+007136	_FlashColor
+00714e	_FlashAmount
+007168	_FlashRing
+00717e	MiningNPC_Name
+00719c	MonsterGemChance
+0071be	MiningChanceToDropAdditionalOre
+0071fe	MiningReward_
+00721a	0.##
+007224	Highlighter
+00723c	CurrencyText
+007256	LockedIcon
+00726c	CostHighlighter
+00728c	SkillIcon
+0072a0	LevelText
+0072b4	 / 
+0072bc	SkillPowerLevelFloater
+0072ea	Lv 
+0072f2	Locked_Text
+00730a	SkillsPowerTitle_
+00732e	: 
+007334	\n<align=center>
+007354	</align>
+007366	_
+00736a	MiningSkillPowersLimit_Text
+0073a2	Cost_Text
+0073b6	: <sprite name=Gold>
+0073e0	???
+0073e8	  
+0073ee	FlyingPickaxeIcon
+007412	RockBG
+007420	CopperBG
+007432	SilverBG
+007444	GoldBG
+007452	NumberOfAutoPickAxes_Text
+007486	AutoPickaxesSpeed_Text
+0074b4	OreValue_Text
+0074d0	RareOreChance_Text
+0074f6	OrbTrail
+007508	OrbSparkles
+007520	OnOrbCollectedSound
+007548	BombArrow
+00755c	RecruitArcher
+007578	UnlockShaping
+007594	UnlockStar
+0075aa	GainLegendaryBowArmor
+0075d6	ReachLevel40
+0075f0	[Achievements] Steam unavailable, '
+007638	' not granted — 
+00765a	icon
+007664	icon (1)
+007676	_Beam
+007682	MiningCollectionSFX
+0076aa	MageHit
+0076ba	ClickHitPrefab
+0076d8	LightningStrike
+0076f8	SuperNova
+00770c	FiringDustGFXPrefab
+007734	EnemySpawnSound
+007754	Sound
+007760	BatSwarmHit
+007778	ClickableGroundEffectPrefab
+0077b0	DestroyEffect
+0077cc	Logs.txt
+0077de	SkillsLog.txt
+0077fa	._sahamlogprobe
+00781a	---------------------------------------------------------------
+00789a	[LoggingManager] Playtest logs: 
+0078dc	[SkillDamageLog] Nothing recorded yet this level.
+007940	Session started 
+007962	yyyy-MM-dd HH:mm:ss
+00798a	 | Seed: 
+00799e	?
+0079a2	 | Version: 
+0079bc	[LoggingManager] Could not write to '
+007a08	INCOMPLETE
+007a1e	COMPLETED
+007a32	[TOTAL 
+007a42	] 
+007a48	 game / 
+007a5a	 real
+007a66	x)
+007a6c	None
+007a76	[{0}] Lv.{1} | Time: {2} | Played: {3} | Deaths: {4} ({5}) | Killed: {6} ({7}) | Currencies: {8}
+007b39	h 
+007b3f	m 
+007b45	DestroyMe
+007b59	_Left
+007b65	_Right
+007b73	[Parallax] Renderer count mismatch between '{0}' ({1}) and '{2}' ({3}) — pairing the first {4}. Keep day/night layer hierarchies identical.
+007c8c	Saham/ParallaxAmbushBlend
+007cc0	[Parallax] Saham/ParallaxAmbushBlend shader not found — switching backgrounds instantly instead.
+007d83	_AmbushWaveCenter
+007da7	_AmbushWaveRadius
+007dcb	_AmbushWaveSoftness
+007df3	_AmbushEdgeColor
+007e15	_AltTex
+007e25	_AltRect
+007e37	_MainRect
+007e4b	FXGhost
+007e5b	FXShockwave
+007e73	RunPortal_ScreenFlash
+007e9f	FlashImage
+007eb5	LevelExit_ScreenFade
+007edf	FadeImage
+007ef3	Drama_ScreenDim
+007f13	DimImage
+007f25	KingSentGuardian_Text
+007f51	No King warning authored at index 
+007f97	.…!?
+007fa1	KingIsWatching_Text
+007fc9	KingIsWatching2_Text
+007ff3	~mouse
+008001	_Mouse
+00800f	ArrowFall
+008023	    [SKILL DAMAGE] Lv.
+008051	 | 
+008059	 game
+008065	 | total 
+008079	/s)
+008081	 | player Damage 
+0080a5	      -- arrow fall (mouse): 
+0080e1	 total, 
+0080f3	% of all damage --
+008119	      -- non-skill sources --
+008155	      buffs cast: 
+00817b	/min)
+008187	      NO DAMAGE this level: 
+0081c1	 casts, 0 dmg)
+0081df	      -- source split --
+008211	      
+00821f	%)
+008225	SKILL
+008231	CASTS
+00823d	/min
+008247	HITS
+008251	DAMAGE
+00825f	SHARE
+00826b	DMG/s
+008277	D/s
+00827f	DMG/CAST
+008291	DMG/HIT
+0082a1	CRIT
+0082ab	OVERKILL
+0082bd	-
+0082c1	 (pet)
+0082cf	 <size={0}><color=#{1}>x{2}</color></size>
+008325	FFD700
+008333	FFA500
+008341	FF6347
+00834f	FF1744
+00835d	60%
+008365	65%
+00836d	72%
+008375	78%
+00837d	85%
+008385	✦ 
+00838b	WellTrailEffect
+0083ab	Well_HitSound
+0083c7	BlitzBond
+0083db	AttackSound
+0083f3	damage1
+008403	ShotDust
+008415	HitSound
+008427	DiveTrail
+00843b	FalconImpactRing
+00845d	FalconImpactRingEcho
+008487	FalconImpactGlow
+0084a9	FalconImpactSlashA
+0084cf	FalconImpactSlashB
+0084f5	HurtSound
+008509	StepSound
+00851d	DeathSound
+008533	Intimidation
+00854d	EnemyAttackSpeedMultiplier
+008583	PetCanvas
+008597	Pet 
+0085a1	 has no health-bar canvas (child PetCanvas/EnemyCanvas, or assign HealthBarCanvasGO).
+00864e	RegenPercent
+008668	LifestealPercent
+00868a	RunStopDust
+0086a2	ExecuteThreshold
+0086c4	DodgeChance
+0086dc	<color=#FF4444>
+0086fc	Dodge_Proc_Text
+00871c	<color=#9BD8FF>
+00873c	PlayerDodgeSound
+00875e	step
+008768	Pet skill 
+00877e	 has no petPrefab assigned on its JobSkillInfo.
+0087de	Pet_
+0087e8	Pet prefab for 
+008808	 has no PetSelfer component.
+008842	Bear
+00884c	Wolf
+008856	target
+008864	Attack1
+008874	Attack2
+008884	Attack3
+008894	Attack_Mix
+0088aa	Buff
+0088b4	Skin
+0088be	CharacterStepSound
+0088e4	Run
+0088ec	PiercingShot
+008906	DarkMatter
+00891c	FireArea
+00892e	Blizzard
+008940	Multishot
+008954	_VFX
+00895e	MouseAttackerInstance
+00898a	MouseAttackSpawnSound
+0089b6	ArrowFall_Text
+0089d4	Multishot_Mouse
+0089f4	PlayerHitSound
+008a12	DeathBlowImmunity_Proc_Text
+008a4a	<color=#FFD680>
+008a6a	<color=#5BF59E>+
+008a8c	Bat
+008a94	Orb1 (1)
+008aa6	Orb2
+008ab0	OrbGlow2
+008ac2	BatSwarm
+008ad4	BlizzardHit
+008aec	BlizzardmainSkill
+008b10	BlizzardIceDropSound
+008b3a	PlayerEffects
+008b56	_Strength
+008b6a	GFX_Main
+008b7c	GFX_Tail
+008b8e	Player
+008b9c	Pet
+008ba4	Spear_Projectile
+008bc6	Archer_Poison
+008be2	Archer_Ice
+008bf8	Meteor_Projectile
+008c1c	Enemy
+008c28	Archer_Normal_Mouse
+008c50	Radius
+008c5e	Duration
+008c70	TickTime
+008c82	Special_Toxin
+008c9e	Skulls
+008cac	[DLC] 
+008cba	 is flagged CanUseArrowSkin but its GFX_Tail has 
+008d1e	 children, not the 
+008d46	 the skin list expects — arrow skins are off for it until the trails are authored.
+008ded	TowerCircle_Projectile
+008e1b	Projectile
+008e31	TopWall
+008e41	LeftWall
+008e53	RightWall
+008e67	Archer_Explosive
+008e89	Mouse
+008e95	ArrowMissSound
+008eb3	PiercingShotmain
+008ed5	Lightning1_Projectile_LChain
+008f0f	Knight2_Projectile_Spear
+008f41	Vampire2_Projectile_BloodSuck
+008f7d	Lightning2_Projectile_LStrike
+008fb9	Knight1_Projectile_AreaSlash
+008ff3	Vampire1_Projectile_VampireExp
+009031	Archer2_Projectile_Dragon
+009065	Ninja1_Projectile_Shuriken
+00909b	Archer1_Projectile_RoA
+0090c9	Fire1_Projectile_Meteor
+0090f9	SniperScope
+009111	BuffSound
+009125	RapidFire
+009139	SharpShooter
+009153	CriticalMultiplier
+009179	s</color>
+00918d	FreeCooldown_Proc_Text
+0091bb	RapidFire_BossReset_Proc_Text
+0091f7	BossFreeCooldowns_Proc_Text
+00922f	PlayerAttackSpeed
+009253	CriticalChance
+009271	Sockwave
+009283	SniperScope_Open
+0092a5	SniperScope_Close
+0092c9	SniperScope_Shoot
+0092ed	SniperScopeHitSoundSkill
+00931f	SniperScope_Idle
+009341	EnemyDeathSound_Portal
+00936f	Star
+009379	ShapingWeapon_
+009397	Rune_Name
+0093ab	 Rune
+0093b7	RuneExplaination_Text
+0093e3	Socket This Rune Into a 
+009415	 to Gain:
+009429	<color=#BBBBBB>
+009449	<color=#FFD86B>
+009469	LinkToWeaponIcon
+00948b	RuneDragGhost
+0094a7	RuneStat_
+0094bb	+
+0094bf	#VALUE#%
+0094d1	RuneImplicitsCount
+0094f7	WeaponSlotLockedIcon
+009521	WeaponIcon
+009537	WeaponPlace
+00954f	WeaponNameText
+00956d	RerollButton
+009587	Explicit_AttackCooldownSpeed
+0095c1	Explicit_BuffCooldownSpeed
+0095f7	Explicit_BuffDuration
+009623	Duration_Text
+00963f	:</b></color> <color=#5BF59E>
+00967b	s</color>\n<color=#A0B0C0><b>
+0096b5	AttackSpeed_Text
+0096d7	Explicit_BuffStrength
+009703	Explicit_AttackDamage
+00972f	ShapingNPC_Name
+00974f	ShapingReward_
+00976d	Reroll_Text
+009785	 <sprite name=
+0097a3	CreateRune_Text
+0097c3	FlyingRuneIcon
+0097e1	SlashTrail
+0097f7	HammerShockwave
+009817	BuffDurationRing
+009839	AoERadius
+00984d	Hammer_AoERadius
+00986f	Hammer_DamagePerEnemyHit
+0098a1	Hammer_ShatterDamage
+0098cb	Hammer_AftershockDamage
+0098fb	Sword_TwinSlashChance
+009927	Sword_CleaveDamage
+00994d	CleaveRadius
+009967	ShatterRadius
+009983	Explicit_DoubleDamageChance
+0099bb	Explicit_FifthHitDamage
+0099eb	Fire_EliteDamage
+009a0d	Fire_ExecuteDamage
+009a33	Lightning_ExtraChains
+009a5f	Lightning_ForkChance
+009a89	Lightning_DamagePerChain
+009abb	Lightning_FirstTargetDamage
+009af3	Fire_TwinFallChance
+009b1b	Fire_MeteorBarrageChance
+009b4d	Shield_ActiveRegen
+009b73	Shield_ExpireHeal
+009b97	Explicit_ResetCooldownChance
+009bd1	x2!
+009bd9	Explicit_BuffKillExtend
+009c09	0.#
+009c11	Explicit_DoubleStrengthChance
+009c4d	Shield_EnemyAttackSlow
+009c7b	Banner_AttackSpeedBonus
+009cab	ChanceForTripleDamage
+009cd7	Banner_TripleDamageChance
+009d0b	Sword_ComboDamage
+009d2f	ShapingWeaponPulse
+009d55	WeaponGlowBurst
+009d75	WeaponAfterimage
+009d97	WeaponProcFloater
+009dbb	ShapingWeaponInfo: bad equation '{0}' ({1}); using {2}.
+009e2b	1 + 0.1*x
+009e3f	5 + 0.5*x
+009e53	Shield_WeaponDamageAura
+009e83	Banner_WeaponHaste
+009ea9	Explicit_KillGoldBonus
+009ed7	[Shaping Test] No ShapingWeaponInfo for 
+009f29	 (author one in Resources/ShapingWeaponInfos).
+009f87	[Shaping Test] 
+009fa7	 has no WeaponPrefab assigned on its ShapingWeaponInfo.
+00a017	[Shaping Test] Spawned 
+00a047	 (Lv.
+00a053	).
+00a059	Guardian
+00a06b	_Panel
+00a079	BossIcon
+00a08b	FirstPerkButton
+00a0ab	SecondPerkButton
+00a0cd	King_Panel
+00a0e3	FightKingButton
+00a103	KingCounterText
+00a123	• 
+00a129	Owned_Text
+00a13f	KingCounter_Text
+00a161	\n(
+00a167	FightKing_Text
+00a185	ReturnFromKing_Text
+00a1ad	ResetPerks_Text
+00a1cd	AttackRange
+00a1e5	NumberOfMouseProjectiles
+00a217	MouseMagazineRegenTime
+00a245	MouseMagazineSize
+00a269	MouseNumberOfHits
+00a28d	MouseMaxNumberOfEnemies
+00a2bd	HealthPotionRegenPercentage
+00a2f5	WarriorChanceToSpawn
+00a31f	ArcherChanceToSpawn
+00a347	MageChanceToSpawn
+00a36b	BatChanceToSpawn
+00a38d	OrbDuration
+00a3a5	GoldGained
+00a3bb	ExpGained
+00a3cf	GoldCoinsToDrop
+00a3ef	RoA_CallCount
+00a40b	PlayerMovementSpeed
+00a433	EnemyMovementSpeedMultiplier
+00a46d	ShapingCooldownSpeed
+00a497	MiningPickaxeSpeed
+00a4bd	WormholeShotCount
+00a4e1	ExplosiveArrows_RadiusOfEffect
+00a51f	BaseMaxValueMultiplier
+00a54d	BaseMinValueMultiplier
+00a57b	ItemImprovment_StartingValue
+00a5b5	ItemImprovment_DecreasePerImprovement
+00a601	ItemImprovment_MinimumValue
+00a639	Multishot_NumberOfProjectiles
+00a675	Multishot_NumberOfHits
+00a6a3	Multishot_Cooldown
+00a6c9	BombArrow_RadiusOfEffect
+00a6fb	BombArrow_NumberOfHits
+00a729	BombArrow_Cooldown
+00a74f	SniperScope_NumberOfAttacks
+00a787	SniperScope_Cooldown
+00a7b1	SniperScope_NumberOfHits
+00a7e3	BatSwarm_Duration
+00a807	BatSwarm_Cooldown
+00a82b	BatSwarm_NumberOfHits
+00a857	BatSwarm_RadiusOfEffect
+00a887	BatSwarm_BatsAmountMultiplier
+00a8c3	RapidFire_Cooldown
+00a8e9	RapidFire_Duration
+00a90f	RapidFire_BuffValue
+00a937	SharpShooter_Cooldown
+00a963	SharpShooter_Duration
+00a98f	SharpShooter_CooldownReductionOnCrit
+00a9d9	PiercingShot_Cooldown
+00aa05	PiercingShot_PierceCount
+00aa37	PiercingShot_NumberOfTurns
+00aa6d	PiercingShot_NumberOfHits
+00aaa1	DarkMatter_Cooldown
+00aac9	DarkMatter_RadiusOfEffect
+00aafd	DarkMatter_NumberOfHits
+00ab2d	SuperNova_Cooldown
+00ab53	SuperNova_NumberOfHits
+00ab81	AlliesAttackSpeedMultiplier
+00abb9	LightningStrike_NumberOfHits
+00abf3	FireArea_Duration
+00ac17	FireArea_RadiusOfEffect
+00ac47	FireArea_NumberOfHits
+00ac73	Blizzard_Duration
+00ac97	Blizzard_RadiusOfEffect
+00acc7	Blizzard_SlowPercent
+00acf1	Blizzard_IceAmountMultiplier
+00ad2b	Blizzard_NumberOfHits
+00ad57	Dragon_Time
+00ad6f	Dragon_RadiusOfEffect
+00ad9b	Knight_CallCount
+00adbd	Knight_RadiusOfEffect
+00ade9	Spear_ChainCount
+00ae0b	LC_ChainCount
+00ae27	Vampire_CallCount
+00ae4b	Vampire_RadiusOfEffect
+00ae79	BloodDrain_ChainCount
+00aea5	BloodDrain_Time
+00aec5	Skills_DamageMultiplier
+00aef5	SkillsCooldownSpeed
+00af1d	SkillsBuffDurationMultiplier
+00af57	PetHealthMultiplier
+00af7f	PetDamageMultiplier
+00afa7	ChanceToTameEnemiesOnDeath
+00afdd	TameHealthMultiplier
+00b007	TameDamageMultiplier
+00b031	MaxTames
+00b043	 has no 
+00b055	_* stats declared in PlayerStatsData.
+00b0a1	_AttackRange
+00b0bb	GuardianCurrencyGain
+00b0e5	CriticalPierceChance
+00b10f	AttackSpeed
+00b127	Cost
+00b131	UnlockSkills
+00b14b	UnlockChests
+00b165	ChanceToSpawnChest
+00b18b	UnlockOrbs
+00b1a1	ChanceToSpawnOrb
+00b1c3	UnlockGoldenEnemies
+00b1eb	ChanceForGoldenEnemy
+00b215	UnlockEnemyItemDrops
+00b23f	EnemyItemDropChance
+00b267	IsArcherSpawned
+00b287	JobPassiveBonus
+00b2a7	SkillPowerValueBonus
+00b2d1	MasteryMainStatBonus
+00b2fb	MasteryAwakenStatBonus
+00b329	DoubleMiningPickaxes
+00b353	ShapingCopyFirstWeapon
+00b381	RainOfArrows
+00b39b	AreaSlash
+00b3af	VampireExplosion
+00b3d1	LightningChain
+00b3ef	Spear
+00b3fb	BloodSuck
+00b40f	Tamed_
+00b41d	Archer_Elementalist_Explosive
+00b459	Falcon
+00b467	No Number Of Hits for 
+00b495	No Cooldown for 
+00b4b7	No Pet Health Multiplier for 
+00b4f3	No Pet Attack Range for 
+00b525	No Pet Attack Speed for 
+00b557	No Pet Attack Chance for 
+00b58b	No Pet Attack Radius for 
+00b5bf	No Buff Value for 
+00b5e5	No Buff Duration for 
+00b611	No Call Count for 
+00b637	No Damage Increase For Each Call Count for 
+00b68f	No Chance For Twin Fall for 
+00b6c9	No Chain Count for 
+00b6f1	No Chance To Fork After Each Chain for 
+00b741	No Damage Increase Per Chain for 
+00b785	Dragon
+00b793	No Radius Of Effect Area for 
+00b7cf	No Time for 
+00b7e9	No Damage Increased Gained Each Second for 
+00b841	No Chance To Reset After Finishing for 
+00b891	Flat
+00b89b	HealthRegen
+00b8b3	ClawCurrencyDamageBonus
+00b8e3	ClawCurrencyHealthBonus
+00b913	#VALUE
+00b921	#VALUE3#
+00b933	#VALUE4#
+00b945	<b><color=#
+00b95d	</color></b>
+00b977	_FirstTime
+00b98d	MinTotal
+00b99f	MaxTotal
+00b9b1	MinFlat
+00b9c1	MaxFlat
+00b9d1	MinAddi
+00b9e1	MaxAddi
+00b9f1	Total
+00b9fd	AdditiveIncreases
+00ba21	MultiplicativeIncreases
+00ba51	Writing is not supported by this converter.
+00baa9	_Value
+00bab7	RealValue
+00bacb	Max
+00bad3	Min
+00badb	Unknown
+00baeb	EnemyDeathSound_Targets
+00bb1b	EnemyInfo 
+00bb31	 is tameable but has no tamedPetPrefab assigned.
+00bb93	tamedPetPrefab for 
+00bbbb	 has no TamedSelfer component.
+00bbf9	Multishot_ChanceForMultiplyProjectiles
+00bc47	BombArrow_ChanceForClusterBombs
+00bc87	FireArea_ChanceToSpreadOnKill
+00bcc3	Blizzard_DamageVsChilled
+00bcf5	SuperNova_ExecuteThreshold
+00bd2b	SuperNova_BossDamageBonus
+00bd5f	SuperNova_HealPerEnemyHit
+00bd93	DarkMatter_DamagePerAbsorb
+00bdc9	enter play mode + start a run
+00be05	[NewSkillStatsTester] Enter play mode and start a run first.
+00be7f	idle
+00be89	armed — 
+00be9b	RUNNING — 
+00beb1	[SkillTester] '
+00bed1	' needs an enemy in range — none found.
+00bf21	[SkillTester] Pick a skill first.
+00bf65	[SkillTester] Enter play mode and start a run first.
+00bfcf	Job{0} / {1}  ({2})
+00bff7	buff
+00c001	pet
+00c009	passive-proc
+00c023	shot
+00c02d	cast
+00c037	Discrete list is empty
+00c065	NodeShape
+00c079	NodeIcon
+00c08b	[TreeCreator] Cannot update node position - treeNode: {0}, inDict: {1}
+00c11a	null
+00c124	[TreeCreator] Node 
+00c14c	 GameObject is null, skipping position update
+00c1a8	Link_
+00c1b4	_to_
+00c1be	[TreeCreator] Error updating link 
+00c204	[TreeCreator] Error during line recovery for 
+00c260	[TreeCreator] linksParent is null, creating parent objects
+00c2d6	[TreeCreator] Failed to create linksParent, cannot create link
+00c354	[TreeCreator] Could not find TreeNodeInfo for connected nodes, defaulting to locked
+00c3fd	[TreeCreator] Error cleaning up UILineRenderer during link recreation: 
+00c48e	[TreeCreator] Error cleaning up UILineRenderer: 
+00c4f0	LineSegment
+00c508	Canvas
+00c516	[TreeCreator] Found orphaned LineSegment: 
+00c56c	 with parent: 
+00c58a	, destroying it
+00c5aa	TreeCreator: No nodes found in the tree asset!
+00c608	[TreeCreator] Attempted to add node 
+00c652	 that already exists. Skipping creation.
+00c6a4	TreeNode
+00c6b6	[TreeCreator] TreeNode component type not found - make sure TreeNode.cs is compiled
+00c75f	Node 1_55cde9fa
+00c77f	[TreeCreator] No nodes parent found
+00c7c7	RefreshVisuals
+00c7e5	[TreeCreator] Error cleaning up UILineRenderer during tree clear: 
+00c86c	[TreeCreator] Skipping null node in tree data
+00c8c8	 was in dictionary but GameObject was destroyed. Re-creating with minimal impact.
+00c96d	[TreeCreator] Asset changed during update, resubscribing to events
+00c9f4	TreeCreator: No nodes found to center.
+00ca42	TreeCreator: No nodes found to uncenter.
+00ca94	TreeCreator: Tree Asset is not assigned!
+00cae6	TreeCreator: Node Prefab is not assigned!
+00cb3a	TreeCreator: Link Prefab is not assigned!
+00cb8e	TreeCreator: Node Prefab must have a child named 'NodeShape'!
+00cc0a	TreeCreator: Node Prefab must have a child named 'NodeIcon'!
+00cc84	TreeCreator: 'NodeShape' child must have an Image component!
+00ccfe	TreeCreator: 'NodeIcon' child must have an Image component!
+00cd76	LinksParent
+00cd8e	NodesParent
+00cda6	[TreeNode] TreeCreator not found in parent!
+00cdfe	[TreeNode] TreeState not found!
+00ce3e	TreeNodeInfo 
+00ce5a	: Attempted to set NodeStat to null - ignoring to prevent data loss
+00cee3	N
+00cee7	Node_
+00cef3	Default Template
+00cf15	[TreeState] TreeCreator component not found!
+00cf6f	[TreeState] NodeID is null or empty
+00cfb7	[TreeState] TreeNodes list is null
+00cffd	[TreeState] Cannot initialize - TreeCreator or TreeAsset is null
+00d080	[TreeState] Cannot get level for null node
+00d0d6	[TreeState] PlayerData is null or does not contain the node ID
+00d154	[TreeState] Cannot set level for null node
+00d1aa	[TreeState] Cannot increase level for null node
+00d20a	UILineRenderer: No Canvas found in parent hierarchy!
+00d274	UILineRenderer: Cannot create default prefab - component has been destroyed
+00d30d	UILineRenderer: Cannot create default prefab - GameObject is not active
+00d39e	UILineRenderer: Cannot create default prefab - transform is null
+00d421	Template
+00d433	UILineRenderer: Template prefab exists but is not a child, cleaning up old template
+00d4dc	UILineRenderer: Error cleaning up old template: 
+00d53e	LineSegment_Template
+00d568	UILineRenderer: Error cleaning up old template child: 
+00d5d6	UILineRenderer: Failed to create default line segment prefab: 
+00d654	UILineRenderer: Cannot setup line - component has been destroyed
+00d6d7	UILineRenderer: Cannot setup line - fromNode or toNode is null
+00d755	UILineRenderer: Cannot setup line - fromNode or toNode has been destroyed
+00d7ea	UILineRenderer: Cannot setup line - component is not active or enabled
+00d879	UILineRenderer: RectTransform component is missing!
+00d8e1	UILineRenderer: Template prefab is not a child, destroying manually
+00d96a	UILineRenderer: Error cleaning up temporary prefab: 
+00d9d4	UILineRenderer: Cannot create line - component has been destroyed
+00da59	UILineRenderer: Cannot create line - fromNode or toNode is null
+00dad9	UILineRenderer: Cannot create line - fromNode or toNode has been destroyed
+00db70	UILineRenderer: Cannot create line - parentCanvas is null
+00dbe4	UILineRenderer: Cannot get canvas position - no parent canvas found
+00dc6d	UILineRenderer: Component is being destroyed, attempting to clear segments anyway
+00dd12	UILineRenderer: Error destroying line segment: 
+00dd72	UILineRenderer: Segment '
+00dda6	' belongs to different parent '
+00dde6	', removing from list without destroying
+00de38	UILineRenderer: Error during orphaned segment cleanup: 
+00dea8	UILineRenderer: Found orphaned segment '
+00defa	' that was moved from parent, removing from list
+00df5c	UILineRenderer: Cannot create line segments - invalid transform or parent canvas
+00dfff	UILineRenderer: Cannot create line segments - component is not active or enabled
+00e0a2	UILineRenderer: Failed to create default lineSegmentPrefab, cannot proceed
+00e139	UILineRenderer: lineSegmentPrefab has been destroyed, cannot create segments
+00e1d4	UILineRenderer: lineSegmentPrefab is null/destroyed during instantiation
+00e267	UILineRenderer: transform is null/destroyed during instantiation
+00e2ea	UILineRenderer: Segment was not properly parented, fixing...
+00e364	UILineRenderer: Failed to create line segment: 
+00e3c4	UILineRenderer: Failed to instantiate line segment
+00e42a	UILineRenderer: Line segment missing RectTransform component
+00e4a4	UILineRenderer: Found orphaned LineSegment '
+00e4fe	' during global cleanup, destroying it
+00e54c	UILineRenderer: Error destroying orphaned segment during global cleanup: 
+00e5e1	top level (old system)
+00e60f	direct child of Canvas (old system)
+00e657	orphaned from UILineRenderer
+00e691	not current template of parent UILineRenderer
+00e6ed	UILineRenderer: Found orphaned template prefab '
+00e74f	' (
+00e757	), destroying it
+00e779	UILineRenderer: Error destroying orphaned template prefab: 
+00e7f1	UILineRenderer: Cannot restore - serialized fromNode or toNode has been destroyed
+00e896	UILineRenderer: Cannot update existing segments - invalid state
+00e916	UILineRenderer: Cannot force sync - component has been destroyed
+00e999	UILineRenderer: Cannot force sync - component is not active or enabled
+00ea28	UILineRenderer: Cannot force sync - no parent canvas found
+00ea9e	UILineRenderer: Cannot force sync - RectTransform component is missing!
+00eb2f	UILineRenderer: Cannot force sync - fromNode or toNode has been destroyed
+00ebc4	UILineRenderer: Cannot force sync - serialized fromNode or toNode has been destroyed
+00ec6f	UILineRenderer: Cannot force sync on 
+00ecbb	 - no valid node references found (fromNode: 
+00ed17	, toNode: 
+00ed2d	LootFlyIcon
+00ed45	[DLC] Steam ownership check skipped — 
+00ed93	[DLC] Could not open the Steam store overlay — 
+00edf3	ArrowIcon
+00ee07	Toggle
+00ee15	Checkmark
+00ee29	<size=120%><b><color=#FFD966>
+00ee65	ArrowSkinUnlock_Text
+00ee8f	</color></b></size>
+00eeb7	 <color=#AAAAAA>/</color> 
+00eeed	\n<color=#B8D4E3>
+00ef0f	ArrowSkinKills_Text
+00ef37	:</color> <color=#FFFFFF>
+00ef6b	ArrowSkinRequiresDLC_Text
+00ef9f	MainIcon
+00efb1	EffectsVolume
+00efcd	UIVolume
+00efdf	MusicVolume
+00eff7	English
+00f007	Français
+00f019	Español
+00f029	Deutsch
+00f039	Italiano
+00f04b	Português
+00f05f	Русский
+00f06f	中文
+00f075	日本語
+00f07d	한국어
+00f085	Čeština
+00f095	Polski
+00f0a3	Türkçe
+00f0b1	Українська
+00f0c7	v
+00f0cb	FloatingNumbersAmount
+00f0f7	HardResetWarning_Text
+00f123	EffectsAmount
+00f13f	StatsView_Damage_Text
+00f16b	StatsView_ClawDamageBonus_Text
+00f1a9	Claw Currency Damage
+00f1d3	StatsView_MasteryDamageBonus_Text
+00f217	Mastery Damage
+00f235	StatsView_AttackSpeed_Text
+00f26b	Attack Speed
+00f285	/s
+00f28b	StatsView_AttackRange_Text
+00f2c1	Attack Range
+00f2db	StatsView_CritChance_Text
+00f30f	Critical Chance
+00f32f	StatsView_CritDamage_Text
+00f363	Critical Damage
+00f383	StatsView_DoubleDamage_Text
+00f3bb	Double Damage Chance
+00f3e5	StatsView_TripleDamage_Text
+00f41d	Triple Damage Chance
+00f447	StatsView_Offense_Text
+00f475	Offense
+00f485	StatsView_Health_Text
+00f4b1	StatsView_ClawHealthBonus_Text
+00f4ef	Claw Currency Health
+00f519	StatsView_MasteryHealthBonus_Text
+00f55d	Mastery Health
+00f57b	StatsView_HealthRegen_Text
+00f5b1	Health Regen
+00f5cb	StatsView_DamageReduction_Text
+00f609	Damage Reduction
+00f62b	StatsView_DodgeChance_Text
+00f661	Dodge Chance
+00f67b	StatsView_PotionChance_Text
+00f6b3	Health Potion Chance
+00f6dd	StatsView_MoveSpeed_Text
+00f70f	Movement Speed
+00f72d	StatsView_Survival_Text
+00f75d	Survival
+00f76f	StatsView_MouseProjectiles_Text
+00f7af	Arrows / Click
+00f7cd	StatsView_MouseMagazine_Text
+00f807	Magazine Size
+00f823	StatsView_MouseEnemies_Text
+00f85b	Enemies Per Arrow
+00f87f	StatsView_MouseSkillChance_Text
+00f8bf	Skill Cast Chance
+00f8e3	StatsView_ArrowFall_Text
+00f915	Arrow Fall
+00f92b	StatsView_GoldGained_Text
+00f95f	Gold Gained
+00f977	StatsView_GoldCoins_Text
+00f9a9	Gold Coins Per Kill
+00f9d1	StatsView_GoldChance_Text
+00fa05	Extra Gold Coin Chance
+00fa33	StatsView_GoldenChance_Text
+00fa6b	Golden Enemy Chance
+00fa93	StatsView_ChestChance_Text
+00fac9	Chest Chance
+00fae3	StatsView_OrbChance_Text
+00fb15	Orb Chance
+00fb2b	StatsView_PermanentOrbs_Text
+00fb65	Permanent Orbs
+00fb83	StatsView_EnemyDropChance_Text
+00fbc1	Monster Loot Chance
+00fbe9	StatsView_PortalSummonTime_Text
+00fc29	Portal Summon Time
+00fc4f	StatsView_Loot_Text
+00fc77	Loot & Economy
+00fc95	StatsView_SkillCooldownSpeed_Text
+00fcd9	Skill Cooldown Speed
+00fd03	StatsView_SkillDamage_Text
+00fd39	Skill Damage
+00fd53	StatsView_Skills_Text
+00fd7f	Skills
+00fd8d	<b><color=#FFD680>
+00fdb3	Lv.
+00fdbb	</color></b>\n
+00fdd7	StatsView_PetDamage_Text
+00fe09	HealthMultiplier
+00fe2b	StatsView_PetHealth_Text
+00fe5d	AttackChance
+00fe77	StatsView_PetAttackChance_Text
+00feb5	Attack Chance
+00fed1	AttackRadius
+00feeb	StatsView_PetRadius_Text
+00ff1d	Strike Radius
+00ff39	StatsView_PetLifesteal_Text
+00ff71	Lifesteal
+00ff85	StatsView_PetExecute_Text
+00ffb9	Execute Below
+00ffd5	StatsView_PetRegen_Text
+010005	Regen
+010011	StatsView_PetDodge_Text
+010041	StatsView_PetIntimidation_Text
+01007f	Slows Enemies
+01009b	StatsView_PetBlitzBond_Text
+0100d3	Crits Call The Dive
+0100fb	On_Text
+01010b	On
+010111	StatsView_Companions_Text
+010145	Companions
+01015b	[StatsView] Missing localization key "
+0101a9	" — showing fallback "
+0101d7	</color>: <color=#5BF59E>
+01020b	</color>\n
+01021f	<size=115%><b><color=#FFD680>
+01025b	</color></b></size>\n
+010285	  active=
+010299	 enabled=
+0102ad	\ndeadline=
+0102c3	  now=
+0102d1	  left=
+0102e1	Requirement_Text
+010303	UnlockPreviousNode_Text
+010333	_AzrarDesc
+010349	Bow
+010351	</b>
+01035b	BowBaseLevelFlat
+01037d	Armor
+010389	ArmorBaseLevelFlat
+0103af	MouseMaxNumberOfEnemiesFlat
+0103e7	<sprite name=Damage>
+010411	 <sprite name=Gold>
+010439	 <sprite name=PortalCurrency>
+010475	 <sprite name=ArcherCurrency>
+0104b1	\n<sprite name=WarriorCurrency>
+0104ef	 <sprite name=WarriorCurrency>
+01052d	 <sprite name=MageCurrency>
+010565	 <sprite name=BatCurrency>
+01059b	 <sprite name=GuardianCurrency>
+0105db	MemberwiseClone
+0105fb	OnChestOpenSound
+01061d	OnChestOpen2Sound
+010641	RunPortal
+010655	GuardianAmbushSound
+01067d	GuardianBolt
+010697	GuardianPounceSound
+0106bf	GuardianPounce
+0106dd	GuardianSlamSound
+010701	GuardianSlam
+01071b	KingSkillCastSound
+010741	KingMissile
+010759	KingMissileFireSound
+010783	PlayerDeathSound
+0107a5	min < 0
+0107b5	Enumerator version {0} != Dictionary version {1}
+010817	MasteryAwakeningUnlocked_Text
+010853	VictorySound
+01086d	FinishGame_Text
+01088d	Background
+0108a3	FXShard
+0108b3	~
+0108b7	Wormhole
+0108c9	BombArrowdeath
+0108e7	BombArrow_HitSound
+01090d	BuffWarningTickSound
+010937	LoopSound
+01094b	NumberOfShards
+010969	KnightSlash
+010981	SuperNovamainSkill
+0109a7	SuperNovaFireSoundSkill
+0109d7	SuperNovadeathSkill
+0109ff	SuperNovaHitSoundSkill
+010a2d	VFX_SuperNova_Hit
+010a51	WormholeEmerge
+010a6f	Flare
+010a7b	Bloom
+010a87	Wave
+010a91	WormholeRift
+010aab	Mouth
+010ab7	Bleed
+010ac3	Body
+010acd	Hole
+010ad7	SwirlOuter
+010aed	SwirlInner
+010b03	Horizon
+010b13	HorizonEcho
+010b2b	Stars
+010b37	WormholeStreak
+010b55	Head
+010b5f	Explicit_DoubleDurationChance
+010b9b	Banner_MagazineRefillChance
+010bd3	Explicit_RepeatAttackChance
+010c0b	ShapingHammerHitSound
+010c37	ShapingSwordHitSound
+010c61	[SkillTester] Fired '{0}' x{1}.
+010ca1	Unexpected character at position {0}: '{1}'
+010cf9	Unexpected end of input
+010d29	Unexpected end of input after unary minus
+010d7d	Missing closing parenthesis
+010db5	Missing closing parenthesis for function '
+010e0b	value
+010e17	Unknown variable '
+010e3d	F
+010e41	C
+010e45	Unknown function '
+010e6b	Invalid scientific notation: expected digit after 'e'
+010ed7	Invalid number: empty token
+010f0f	Invalid number '

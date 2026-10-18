@@ -1,0 +1,362 @@
+[
+ {
+  "functionName": "Archer",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 903
+  },
+  "enemyType": 2,
+  "AttackRange": 530.0,
+  "AttackSpeed": 0.33000001311302185,
+  "MovementSpeed": 85.0,
+  "DamageMultiplier": 1.5,
+  "HealthMultiplier": 1.5,
+  "baseMovementSpeedForAnimation": 45.0,
+  "IsRanged": 1,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4813
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 1,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 906
+  },
+  "_pathID": 4812,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Bat",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 898
+  },
+  "enemyType": 4,
+  "AttackRange": 200.0,
+  "AttackSpeed": 0.5,
+  "MovementSpeed": 85.0,
+  "DamageMultiplier": 1.5,
+  "HealthMultiplier": 3.0,
+  "baseMovementSpeedForAnimation": 45.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 15.0,
+  "IsTameable": 1,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 907
+  },
+  "_pathID": 4814,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Claw",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 905
+  },
+  "enemyType": 0,
+  "AttackRange": 110.0,
+  "AttackSpeed": 0.30000001192092896,
+  "MovementSpeed": 80.0,
+  "DamageMultiplier": 1.0,
+  "HealthMultiplier": 1.100000023841858,
+  "baseMovementSpeedForAnimation": 45.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 1,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 896
+  },
+  "_pathID": 4815,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "GuardianArcher",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 894
+  },
+  "enemyType": 8,
+  "AttackRange": 650.0,
+  "AttackSpeed": 0.949999988079071,
+  "MovementSpeed": 100.0,
+  "DamageMultiplier": 1.100000023841858,
+  "HealthMultiplier": 30.0,
+  "baseMovementSpeedForAnimation": 55.0,
+  "IsRanged": 1,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4813
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4816,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "GuardianBat",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 909
+  },
+  "enemyType": 10,
+  "AttackRange": 350.0,
+  "AttackSpeed": 1.2000000476837158,
+  "MovementSpeed": 100.0,
+  "DamageMultiplier": 1.25,
+  "HealthMultiplier": 50.0,
+  "baseMovementSpeedForAnimation": 55.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 8.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4817,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "GuardianClaw",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 899
+  },
+  "enemyType": 6,
+  "AttackRange": 300.0,
+  "AttackSpeed": 0.949999988079071,
+  "MovementSpeed": 100.0,
+  "DamageMultiplier": 1.0,
+  "HealthMultiplier": 25.0,
+  "baseMovementSpeedForAnimation": 55.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4818,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "GuardianMage",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 904
+  },
+  "enemyType": 9,
+  "AttackRange": 850.0,
+  "AttackSpeed": 0.949999988079071,
+  "MovementSpeed": 100.0,
+  "DamageMultiplier": 1.100000023841858,
+  "HealthMultiplier": 45.0,
+  "baseMovementSpeedForAnimation": 55.0,
+  "IsRanged": 1,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "Mage_Attack_Effect",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "MageHit",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4819,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "GuardianWarrior",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 897
+  },
+  "enemyType": 7,
+  "AttackRange": 300.0,
+  "AttackSpeed": 1.0,
+  "MovementSpeed": 100.0,
+  "DamageMultiplier": 1.2000000476837158,
+  "HealthMultiplier": 35.0,
+  "baseMovementSpeedForAnimation": 55.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4820,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "King",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 900
+  },
+  "enemyType": 11,
+  "AttackRange": 1650.0,
+  "AttackSpeed": 1.0,
+  "MovementSpeed": 0.0,
+  "DamageMultiplier": 0.699999988079071,
+  "HealthMultiplier": 200.0,
+  "baseMovementSpeedForAnimation": 55.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "KingHitEffect",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "EnemyHitCritical",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4821,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mage",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 908
+  },
+  "enemyType": 3,
+  "AttackRange": 770.0,
+  "AttackSpeed": 0.5,
+  "MovementSpeed": 85.0,
+  "DamageMultiplier": 2.200000047683716,
+  "HealthMultiplier": 1.0,
+  "baseMovementSpeedForAnimation": 45.0,
+  "IsRanged": 1,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "Mage_Attack_Effect",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "MageHit",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 1,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 902
+  },
+  "_pathID": 4822,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "RunPortal",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 893
+  },
+  "enemyType": 5,
+  "AttackRange": 0.0,
+  "AttackSpeed": 0.0,
+  "MovementSpeed": 0.0,
+  "DamageMultiplier": 0.0,
+  "HealthMultiplier": 25.0,
+  "baseMovementSpeedForAnimation": 80.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 0,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "_pathID": 4823,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Warrior",
+  "prefab": {
+   "m_FileID": 0,
+   "m_PathID": 895
+  },
+  "enemyType": 1,
+  "AttackRange": 160.0,
+  "AttackSpeed": 0.25,
+  "MovementSpeed": 75.0,
+  "DamageMultiplier": 1.5,
+  "HealthMultiplier": 3.5,
+  "baseMovementSpeedForAnimation": 45.0,
+  "IsRanged": 0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "HitTargetGFXName": "",
+  "HitTargetGFXDuration": 1.5,
+  "HitTargetSFXName": "",
+  "LifestealPercentOfMaxHealth": 0.0,
+  "IsTameable": 1,
+  "tamedPetPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 901
+  },
+  "_pathID": 4824,
+  "_file": "resources.assets"
+ }
+]

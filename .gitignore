@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env.local
+.env
+*.log
+api-test-*
+.DS_Store
+Thumbs.db
+art-raw/
+.npm-cache/

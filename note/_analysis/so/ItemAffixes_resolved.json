@@ -1,0 +1,137 @@
+[
+ {
+  "stat": "Flat_ChanceToDropHealthPotion",
+  "target": "Armor",
+  "min": 1.0,
+  "max": 5.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_ChanceToSpawnChest",
+  "target": "Armor",
+  "min": 8.0,
+  "max": 35.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Flat_DodgeChance",
+  "target": "Armor",
+  "min": 2.0,
+  "max": 8.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_Health",
+  "target": "Armor",
+  "min": 10.0,
+  "max": 30.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_HealthRegen",
+  "target": "Armor",
+  "min": 15.0,
+  "max": 45.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_ChanceToSpawnOrb",
+  "target": "Armor",
+  "min": 10.0,
+  "max": 35.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_PetHealthMultiplier",
+  "target": "Armor",
+  "min": 20.0,
+  "max": 40.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Flat_ChanceForDoubleDamage",
+  "target": "Bow",
+  "min": 10.0,
+  "max": 25.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Flat_CriticalChance",
+  "target": "Bow",
+  "min": 2.0,
+  "max": 10.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Flat_CriticalMultiplier",
+  "target": "Bow",
+  "min": 30.0,
+  "max": 100.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_Damage",
+  "target": "Bow",
+  "min": 15.0,
+  "max": 40.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Flat_MouseChanceForAnotherHit",
+  "target": "Bow",
+  "min": 15.0,
+  "max": 40.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_MouseMagazineRegenTime",
+  "target": "Bow",
+  "min": 10.0,
+  "max": 35.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_PlayerAttackSpeed",
+  "target": "Bow",
+  "min": 15.0,
+  "max": 50.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ },
+ {
+  "stat": "Additive_Skills_DamageMultiplier",
+  "target": "Bow",
+  "min": 15.0,
+  "max": 40.0,
+  "chance": 100.0,
+  "stackable": true,
+  "conditions": null
+ }
+]

@@ -1,0 +1,1637 @@
+# #US 字符串堆分类摘要（共 1618 条）
+
+===== A. 本地化键（*_Text/_Desc/_Name/_Title 等） : 192 条 =====
+  Aleef_Desc
+  ArrowFall_Text
+  ArrowSkinKills_Text
+  ArrowSkinRequiresDLC_Text
+  ArrowSkinUnlock_Text
+  AttackSpeed_Text
+  AutoPickaxesSpeed_Text
+  Awaken_Text
+  Awakened_Text
+  BossFreeCooldowns_Proc_Text
+  Cooldown_Text
+  Corrupted_Text
+  Cost_Text
+  CraftCorrupt_Desc
+  CraftCorrupt_Text
+  CraftImprove_Desc
+  CraftReroll_Desc
+  CraftReroll_Text
+  CraftingActions_Text
+  CraftingNPC_Name
+  CreateArmor_Text
+  CreateBow_Text
+  CreateRune_Text
+  Damage_Text
+  DeathBlowImmunity_Proc_Text
+  Dodge_Proc_Text
+  DragToActivateItemScroll_Text
+  DragToActivateRuneScroll_Text
+  DragToEquip_Text
+  DragToSellItem_Text
+  DragToSellRune_Text
+  Duration_Text
+  Epic_Rarity_Text
+  Equipped_Text
+  Failed_Text
+  FightKing_Text
+  FinishGame_Text
+  FreeCooldown_Proc_Text
+  GildedChampion_Text
+  GoToMining_Text
+  GoldenEnemy_Text
+  HardResetWarning_Text
+  Improve_Text
+  Improving_Text
+  KingCounter_Text
+  KingIsWatching2_Text
+  KingIsWatching_Text
+  KingSentGuardian_Text
+  Legendary_Rarity_Text
+  LevelUp_Text
+  Locked_Text
+  Lv_Text
+  Mar_Desc
+  MasteryAwakeningUnlocked_Text
+  MasteryNPC_Name
+  Mastery_Forging_Proc_Text
+  Mastery_Inscription_Proc_Text
+  Mastery_MomentumAll_Proc_Text
+  Mastery_Momentum_Proc_Text
+  MaxLevel_Text
+  Max_Text
+  MiningNPC_Name
+  MiningSkillPowersLimit_Text
+  NumberOfAutoPickAxes_Text
+  On_Text
+  OreValue_Text
+  Owned_Text
+  PetDamageScaling_Text
+  PetHealthScaling_Text
+  PrimeLegendary_Text
+  Prime_Text
+  Primed_Text
+  RapidFire_BossReset_Proc_Text
+  RareOreChance_Text
+  ReachLevel_Text
+  Requirement_Text
+  Reroll_Text
+  ResetPerks_Text
+  ReturnFromKing_Text
+  ReturnFromMining_Text
+  RightClickToDestroy_Text
+  RightClickToEquipUnequip_Text
+  RuneExplaination_Text
+  RuneSell_Text
+  Rune_Name
+  ScrollActivate_Text
+  ScrollActive_Text
+  SellAllDragHint_Text
+  SellAll_Text
+  ShapingNPC_Name
+  SkillPower_AbsorbDamage_Desc
+  SkillPower_Area_Desc
+  SkillPower_AttackSpeed_Desc
+  SkillPower_BatLifesteal_Desc
+  SkillPower_BatsMultiplier_Desc
+  SkillPower_BlitzBond_Desc
+  SkillPower_BossDamage_Desc
+  SkillPower_BossFreeCooldown_Desc
+  SkillPower_BurnSpread_Desc
+  SkillPower_ChanceOnHit_Desc
+  SkillPower_ChanceToPierce_Desc
+  SkillPower_ClusterBombs_Desc
+  SkillPower_CritCooldownReduction_Desc
+  SkillPower_CritDamage_Desc
+  SkillPower_DamagePerTurn_Desc
+  SkillPower_DamageVsChilled_Desc
+  SkillPower_DiveChance_Desc
+  SkillPower_DurationPerKill_Desc
+  SkillPower_Duration_Desc
+  SkillPower_Execute_Desc
+  SkillPower_IceMultiplier_Desc
+  SkillPower_Intimidation_Desc
+  SkillPower_LinkedCast_Desc
+  SkillPower_MirrorImage_Desc
+  SkillPower_MultiplyProjectiles_Desc
+  SkillPower_NovaHeal_Desc
+  SkillPower_NumberOfAims_Desc
+  SkillPower_NumberOfHits_Desc
+  SkillPower_NumberOfProjectiles_Desc
+  SkillPower_PetHealth_Desc
+  SkillPower_PierceCount_Desc
+  SkillPower_RapidFireBuff_Desc
+  SkillPower_Regen_Desc
+  SkillPower_SharpShooterBuff_Desc
+  SkillPower_SkillDamage_Desc
+  SkillPower_Slow_Desc
+  SkillPower_TripleDamage_Desc
+  SkillPower_Turns_Desc
+  SkillPower_WolfLifesteal_Desc
+  StatsView_ArrowFall_Text
+  StatsView_AttackRange_Text
+  StatsView_AttackSpeed_Text
+  StatsView_ChestChance_Text
+  StatsView_ClawDamageBonus_Text
+  StatsView_ClawHealthBonus_Text
+  StatsView_Companions_Text
+  StatsView_CritChance_Text
+  StatsView_CritDamage_Text
+  StatsView_DamageReduction_Text
+  StatsView_Damage_Text
+  StatsView_DodgeChance_Text
+  StatsView_DoubleDamage_Text
+  StatsView_EnemyDropChance_Text
+  StatsView_GoldChance_Text
+  StatsView_GoldCoins_Text
+  StatsView_GoldGained_Text
+  StatsView_GoldenChance_Text
+  StatsView_HealthRegen_Text
+  StatsView_Health_Text
+  StatsView_Loot_Text
+  StatsView_MasteryDamageBonus_Text
+  StatsView_MasteryHealthBonus_Text
+  StatsView_MouseEnemies_Text
+  StatsView_MouseMagazine_Text
+  StatsView_MouseProjectiles_Text
+  StatsView_MouseSkillChance_Text
+  StatsView_MoveSpeed_Text
+  StatsView_Offense_Text
+  StatsView_OrbChance_Text
+  StatsView_PermanentOrbs_Text
+  StatsView_PetAttackChance_Text
+  StatsView_PetBlitzBond_Text
+  StatsView_PetDamage_Text
+  StatsView_PetDodge_Text
+  StatsView_PetExecute_Text
+  StatsView_PetHealth_Text
+  StatsView_PetIntimidation_Text
+  StatsView_PetLifesteal_Text
+  StatsView_PetRadius_Text
+  StatsView_PetRegen_Text
+  StatsView_PortalSummonTime_Text
+  StatsView_PotionChance_Text
+  StatsView_SkillCooldownSpeed_Text
+  StatsView_SkillDamage_Text
+  StatsView_Skills_Text
+  StatsView_Survival_Text
+  StatsView_TripleDamage_Text
+  UnlockBase_Text
+  UnlockPreviousNode_Text
+  Unlock_Text
+  WhenChest_Desc
+  _Bonus_Text
+  _Bonus_TooltipDesc
+  _Bonus_TooltipTitle
+  _Desc
+  _Desc_Text
+  _Name
+  _Rarity_Text
+  _StatOne_Desc
+  _StatTwo_Desc
+  _Text
+  _Title_Text
+
+===== B. 符文词缀键（RuneStatNames 常量） : 37 条 =====
+  Banner_AttackSpeedBonus
+  Banner_MagazineRefillChance
+  Banner_TripleDamageChance
+  Banner_WeaponHaste
+  Explicit_AttackCooldownSpeed
+  Explicit_AttackDamage
+  Explicit_BuffCooldownSpeed
+  Explicit_BuffDuration
+  Explicit_BuffKillExtend
+  Explicit_BuffStrength
+  Explicit_DoubleDamageChance
+  Explicit_DoubleDurationChance
+  Explicit_DoubleStrengthChance
+  Explicit_FifthHitDamage
+  Explicit_KillGoldBonus
+  Explicit_RepeatAttackChance
+  Explicit_ResetCooldownChance
+  Fire_EliteDamage
+  Fire_ExecuteDamage
+  Fire_MeteorBarrageChance
+  Fire_TwinFallChance
+  Hammer_AftershockDamage
+  Hammer_AoERadius
+  Hammer_DamagePerEnemyHit
+  Hammer_ShatterDamage
+  Lightning_DamagePerChain
+  Lightning_ExtraChains
+  Lightning_FirstTargetDamage
+  Lightning_ForkChance
+  Shield_ActiveRegen
+  Shield_EnemyAttackSlow
+  Shield_ExpireHeal
+  Shield_WeaponDamageAura
+  Sword_CleaveDamage
+  Sword_ComboDamage
+  Sword_FirstHitDamage
+  Sword_TwinSlashChance
+
+===== C. 技能参数键与技能/投射物 functionName : 128 条 =====
+  Archer1_Projectile_RoA
+  Archer2_Projectile_Dragon
+  ArcherToxin_Projectile
+  Archer_Elementalist_Explosive
+  Archer_Explosive
+  Archer_Ice
+  Archer_Normal
+  Archer_Normal_Mouse
+  Archer_Poison
+  Attack_Mix
+  BatSwarm_BatsAmountMultiplier
+  BatSwarm_Cooldown
+  BatSwarm_Duration
+  BatSwarm_LifestealPercent
+  BatSwarm_NumberOfHits
+  BatSwarm_RadiusOfEffect
+  Blizzard_DamageVsChilled
+  Blizzard_Duration
+  Blizzard_IceAmountMultiplier
+  Blizzard_NumberOfHits
+  Blizzard_RadiusOfEffect
+  Blizzard_SlowPercent
+  BloodDrain_ChainCount
+  BloodDrain_Time
+  BombArrow_ChanceForClusterBombs
+  BombArrow_Cooldown
+  BombArrow_HitSound
+  BombArrow_NumberOfHits
+  BombArrow_RadiusOfEffect
+  ChestCoinMultiplier_CurrencyChest
+  ChestCoinMultiplier_LegendaryChest
+  ChestCoinMultiplier_StandardChest
+  ChestCoins_CurrencyChest
+  ChestCoins_LegendaryChest
+  ChestCoins_StandardChest
+  ChestContentCount_Item
+  ChestContentCount_Legendary
+  ChestContentCount_Rune
+  ChestContentCount_Scroll
+  Craft_Fail
+  Craft_Hammer1
+  Craft_Success
+  CustomSaveName_Level
+  CustomSaveName_Seed
+  DarkMatter_Cooldown
+  DarkMatter_DamageMultiplier
+  DarkMatter_DamagePerAbsorb
+  DarkMatter_NumberOfHits
+  DarkMatter_RadiusOfEffect
+  Days_String
+  Dragon_RadiusOfEffect
+  Dragon_Time
+  Drama_ScreenDim
+  EnemyDeathSound_Portal
+  EnemyDeathSound_Targets
+  ExplosiveArrows_RadiusOfEffect
+  Fire1_Projectile_Meteor
+  FireArea_ChanceToSpreadOnKill
+  FireArea_Duration
+  FireArea_NumberOfHits
+  FireArea_RadiusOfEffect
+  GFX_Main
+  GFX_Tail
+  Hours_String
+  ItemImprovment_DecreasePerImprovement
+  ItemImprovment_MinimumValue
+  ItemImprovment_StartingValue
+  King_Panel
+  Knight1_Projectile_AreaSlash
+  Knight2_Projectile_Spear
+  Knight_CallCount
+  Knight_RadiusOfEffect
+  LC_ChainCount
+  LevelExit_ScreenFade
+  Lightning1_Projectile_LChain
+  Lightning2_Projectile_LStrike
+  LightningStrike_NumberOfHits
+  LineSegment_Template
+  Meteor_Projectile
+  Minutes_String
+  Multishot_ChanceForMultiplyProjectiles
+  Multishot_Cooldown
+  Multishot_Mouse
+  Multishot_NumberOfHits
+  Multishot_NumberOfProjectiles
+  Ninja1_Projectile_Shuriken
+  PiercingShot_Cooldown
+  PiercingShot_NumberOfHits
+  PiercingShot_NumberOfTurns
+  PiercingShot_PierceCount
+  RapidFire_BuffValue
+  RapidFire_Cooldown
+  RapidFire_Duration
+  RoA_CallCount
+  RunPortal_ScreenFlash
+  Seconds_String
+  SharpShooter_BuffValue
+  SharpShooter_Cooldown
+  SharpShooter_CooldownReductionOnCrit
+  SharpShooter_Duration
+  Skills_DamageMultiplier
+  SniperScope_Close
+  SniperScope_Cooldown
+  SniperScope_Idle
+  SniperScope_NumberOfAttacks
+  SniperScope_NumberOfHits
+  SniperScope_Open
+  SniperScope_Shoot
+  Spear_ChainCount
+  Spear_Projectile
+  Special_Toxin
+  Summon_fx
+  SuperNova_BossDamageBonus
+  SuperNova_Cooldown
+  SuperNova_ExecuteThreshold
+  SuperNova_HealPerEnemyHit
+  SuperNova_NumberOfHits
+  Tool_Interaction_03
+  TowerCircle_Projectile
+  VFX_SuperNova_Hit
+  Vampire1_Projectile_VampireExp
+  Vampire2_Projectile_BloodSuck
+  Vampire_CallCount
+  Vampire_RadiusOfEffect
+  Well_HitSound
+  card_discard
+  cartoon_style_2_pitch3
+  zad_balance_seed
+
+===== D. 音效名/音频事件 : 49 条 =====
+  ArrowHitSound
+  ArrowMissSound
+  AttackSound
+  BlizzardIceDropSound
+  BuffSound
+  BuffWarningTickSound
+  CharacterStepSound
+  DeathSound
+  EnemySpawnSound
+  EnemyWalkSound_
+  FireSoundSkill
+  GuardianAmbushSound
+  GuardianFrenzySound
+  GuardianPounceSound
+  GuardianSlamSound
+  GuardianToxinSound
+  HitSound
+  HitSoundSkill
+  HurtSound
+  KingAutoAttackSwingSound
+  KingDeathSound
+  KingExplosionOrbFireSound
+  KingExplosionOrbHitSound
+  KingLaserHitSound
+  KingMissileFireSound
+  KingMissileHitSound
+  KingRevealSound
+  KingSkillCastSound
+  LoopSound
+  MiningCollectionSFX
+  MiningPickaxeSFX
+  MouseAttackSpawnSound
+  OnChestOpen2Sound
+  OnChestOpenSound
+  OnOrbCollectedSound
+  PlayerDeathSound
+  PlayerDodgeSound
+  PlayerHitSound
+  PortalSummonSound
+  ShapingHammerHitSound
+  ShapingSwordHitSound
+  SniperScopeHitSoundSkill
+  Sound
+  StepSound
+  SuperNovaFireSoundSkill
+  SuperNovaHitSoundSkill
+  VictorySound
+  _FireSound
+  _HitSound
+
+===== E. 动画名 : 11 条 =====
+  Attack1
+  Attack2
+  Attack3
+  BlizzardmainSkill
+  Buff
+  ChanceToTameEnemiesOnDeath
+  Run
+  SuperNovadeathSkill
+  SuperNovamainSkill
+  deathSkill
+  mainSkill
+
+===== F. 预制体/资源/层级节点名 : 30 条 =====
+  BG
+  ButtonLock
+  ButtonsParent
+  Canvas
+  Center
+  Crown
+  CrownGlow
+  CrownL
+  CrownM
+  CrownR
+  FXGhost
+  FXManager
+  FXShard
+  FXShockwave
+  GFX
+  GFX_Main/Skulls
+  GFX_Main/Special_Toxin
+  Halo
+  Icon
+  IconImage
+  Lock
+  LockIcon
+  LockedIcon
+  LockedObjects
+  Motes
+  Orbiter
+  Ray
+  Rays
+  Wall
+  main
+
+===== G. 存档/校验相关 : 18 条 =====
+  .bak
+  .tmp
+  AlliesAttackSpeedMultiplier
+  ChanceForLightningStrike
+  ClickableGroundEffectPrefab
+  CurrencyCollectAnimation
+  EnemyAttackSpeedMultiplier
+  EnemyMovementSpeedMultiplier
+  HealthPotionRegenPercentage
+  ItemStatValuesMultiplier
+  MiningChanceToDropAdditionalOre
+  MouseMaxNumberOfEnemiesFlat
+  NumberOfMouseProjectiles
+  Q3JpcHRvZ3JhZmlhcyBjb20gUmlxamRhZWwgLyBBRVM
+  Saham/ParallaxAmbushBlend
+  SaveEveryTenMinutesFunction
+  SkillsBuffDurationMultiplier
+  abcdefghijklmnopqrstuvwxyz
+
+===== H. 调试/日志/错误信息 : 453 条 =====
+        -- arrow fall (mouse): 
+        -- non-skill sources --
+        -- source split --
+        NO DAMAGE this level: 
+        buffs cast: 
+      <sprite name=ArcherCurrency>
+      <sprite name=Gold>
+      [
+      [SKILL DAMAGE] Lv.
+     (
+     (cached originals: 
+     (inside)
+     (zero-size marker — pivot irrelevant)
+     << CAP IS LIMITING THE FIX
+     << DIFFERENT SPACE TO PROBE (shift is meaningless)
+     << MEASURING 
+     << NOT CACHED (added after first apply; re-entry won't restore it)
+     << STILL OUTSIDE
+     bound: 
+     canvasScale=
+     dpi 
+     inside
+     outside
+     overflow: 
+     reported=
+     scaleFactor=
+     scaler=
+     size=
+     source=
+     space=
+     true 
+    !! could not resolve bounds for '
+    !! object list is EMPTY — the edge is measured but nothing moves.
+    !! probe transform is UNASSIGNED — this edge is skipped entirely.
+    <sprite name=
+    <sprite name=ArcherCurrency>
+    active=
+    cap      : MaxRightShift 
+    left=
+    now=
+    objects (
+    ok
+    pivot    : 
+    probe    : 
+    probe pos: 
+   (
+   (<color=#88ed66>+
+   (Lv.
+   (author one in Resources/ShapingWeaponInfos).
+   (pet)
+   +
+   , 
+   - 
+   - no valid node references found (fromNode: 
+   / 
+   <color=#5BF59E>(
+   <color=#AAAAAA>/</color> 
+   <color=#FFD680>></color> 
+   <color=#FFD680>></color> <color=#5BF59E>
+   <color=#FFD86B>(
+   <size=80%><color=#8A94A0>(
+   <size={0}><color=#{1}>x{2}</color></size>
+   <sprite name=
+   <sprite name=ArcherCurrency>
+   <sprite name=BatCurrency>
+   <sprite name=ClawCurrency>
+   <sprite name=Gold>
+   <sprite name=GuardianCurrency>
+   <sprite name=MageCurrency>
+   <sprite name=PortalCurrency>
+   <sprite name=WarriorCurrency>
+   = 
+   EDGE — move the pivot to that edge, or the group shifts by that much too little
+   Explicit Stats
+   GameObject is null, skipping position update
+   Hour
+   Hours
+   Implicit Stat
+   Improvement Success Chance
+   Minute
+   Minutes
+   Rune
+   Stat
+   at '
+   balance save(s) in 
+   casts, 0 dmg)
+   children, not the 
+   edge=
+   enabled=
+   game
+   game / 
+   has no 
+   has no PetSelfer component.
+   has no TamedSelfer component.
+   has no WeaponPrefab assigned on its ShapingWeaponInfo.
+   has no health-bar canvas (child PetCanvas/EnemyCanvas, or assign HealthBarCanvasGO).
+   has no petPrefab assigned on its JobSkillInfo.
+   hit IOException at '
+   hit UnauthorizedAccessException at '
+   hit unexpected 
+   is flagged CanUseArrowSkin but its GFX_Tail has 
+   is tameable but has no tamedPetPrefab assigned.
+   real
+   ref=
+   that already exists. Skipping creation.
+   the skin list expects — arrow skins are off for it until the trails are authored.
+   to Gain:
+   total, 
+   was in dictionary but GameObject was destroyed. Re-creating with minimal impact.
+   with parent: 
+   x
+   x 
+   | 
+   | Seed: 
+   | Version: 
+   | player Damage 
+   | total 
+   ──
+  !! Not in Play mode — nothing has been applied, so positions below are the authored ones.
+  !! scaleFactor is 1 on a ScaleWithScreenSize canvas wider than its reference — the CanvasScaler has NOT run yet. Every position below is pre-layout and the whole measurement is meaningless. This is what measuring from Awake looks like.
+  " — showing fallback "
+  % Implicit Values
+  % Stat Values (Excluding Base Damage/Health)
+  % of all damage --
+  '   mode=
+  ' (
+  ' (no camera for a world-space probe?) — this edge is skipped.
+  ' belongs to different parent '
+  ' during global cleanup, destroying it
+  ' in all languages
+  ' needs an enemy in range — none found.
+  ' not granted — 
+  ' that was moved from parent, removing from list
+  ', removing from list without destroying
+  '. Wrote a recovery copy to '
+  ': 
+  ': the save is marked initialised but has no stats (written by a boot that died partway).
+  ) ALREADY EXISTS FOR LOCALIZATION
+  ), destroying it
+  )\n<sprite name=ArcherCurrency>
+  , 
+  , destroying it
+  , toNode: 
+  1 + 0.1*x
+  10 * 1.5^(x-1)
+  5 + 0.5*x
+  : 
+  : <sprite name=Gold>
+  : Attempted to set NodeStat to null - ignoring to prevent data loss
+  :</b> 
+  :</b></color> 
+  :</b></color> <color=#5BF59E>
+  :</b></color> <color=#C8C8C8>
+  :</color> <color=#FFFFFF>
+  </b></color> 
+  </b></color></size> <color=#C8C8C8><size=80%>
+  </color>: <color=#5BF59E>
+  <color=#C8C8C8>? ? ?</color>
+  <sprite name=
+  <sprite name=ClawCurrency>
+  <sprite name=Damage>
+  > 
+  ><b>? ? ?</b></color>
+  ? ? ?
+  Already Active!
+  Applied yet   : 
+  Arrow Fall
+  Arrows / Click
+  Attack Chance
+  Attack Range
+  Attack Speed
+  BUG If suffix higher than max (z)
+  Canvas        : '
+  Chest Chance
+  Claw Currency Damage
+  Claw Currency Health
+  Critical Chance
+  Critical Damage
+  Crits Call The Dive
+  Damage Reduction
+  Default Template
+  Destroyed Instance
+  Discrete list is empty
+  Dodge Chance
+  Double Damage Chance
+  Drag Onto Create Rune to Activate
+  Drag Onto Create an Item to Activate
+  Enemies Per Arrow
+  EnemyInfo 
+  Enumerator version {0} != Dictionary version {1}
+  Execute Below
+  Extra Gold Coin Chance
+  Gilded Champion!
+  Gold Coins Per Kill
+  Gold Gained
+  Golden Enemy Chance
+  Health Potion Chance
+  Health Regen
+  Invalid number '
+  Invalid number: empty token
+  Invalid scientific notation: expected digit after 'e'
+  Item Scroll of Mastery
+  Item Scroll of Perfection
+  Item Scroll of Refinement
+  Item Scroll of Tempering
+  Job{0} / {1}  ({2})
+  KEY (
+  Key Not Found For Translation: 
+  Key already exists: 
+  KingManager: no King EnemyInfo (EnemyType.King) in Resources/EnemyInfos — the throne room is empty.
+  KingManager: the King failed to spawn — check the King prefab has GFX/Center children and the Spine animations Idle/Attack1/Attack2/Skill/Hurt/Death. 
+  Loot & Economy
+  Lv 
+  Magazine Size
+  Mastery Damage
+  Mastery Health
+  MiningRockHit (instance)
+  MiningRockJuice: no SpriteRenderer found on the rock; juice disabled.
+  MiningRockJuice: shader 'Saham/MiningRockHit' not found; juice disabled.
+  Missing closing parenthesis
+  Missing closing parenthesis for function '
+  Monster Loot Chance
+  Movement Speed
+  No Buff Duration for 
+  No Buff Value for 
+  No Call Count for 
+  No Chain Count for 
+  No Chance For Twin Fall for 
+  No Chance To Fork After Each Chain for 
+  No Chance To Reset After Finishing for 
+  No Cooldown for 
+  No Damage Increase For Each Call Count for 
+  No Damage Increase Per Chain for 
+  No Damage Increased Gained Each Second for 
+  No King warning authored at index 
+  No Number Of Hits for 
+  No Pet Attack Chance for 
+  No Pet Attack Radius for 
+  No Pet Attack Range for 
+  No Pet Attack Speed for 
+  No Pet Health Multiplier for 
+  No Radius Of Effect Area for 
+  No Time for 
+  No empty slot found
+  Node 1_55cde9fa
+  Orb Chance
+  Orb1 (1)
+  Permanent Orbs
+  Pet 
+  Pet prefab for 
+  Pet skill 
+  Portal Summon Time
+  RUNNING — 
+  Rect in use   : 
+  Right Click to Activate
+  Rune Scroll of Amplification
+  Rune Scroll of Ascension
+  Rune Scroll of Inscription
+  Rune Scroll of Overflow
+  SIMULATED iPhone 13 Pro Max cutout (Game view reports no insets)
+  Screen        : 
+  Screen.safeArea (real device / Device Simulator)
+  Screen.safeArea: 
+  Sequence is empty.
+  Session started 
+  ShapingWeaponInfo: bad equation '{0}' ({1}); using {2}.
+  Skill Cast Chance
+  Skill Cooldown Speed
+  Skill Damage
+  Slows Enemies
+  Socket This Rune Into a 
+  Strike Radius
+  The Next Crafted Item Will Be 
+  The Next Crafted Item Will Have +
+  The Next Crafted Item Will Have x
+  The Next Created Rune Will Be 
+  The Next Created Rune Will Have 
+  The Next Created Rune Will Have +
+  The number of elements in the dictionary ({0}) is greater than the available space from index to the end of the destination array {1}.
+  TreeCreator: 'NodeIcon' child must have an Image component!
+  TreeCreator: 'NodeShape' child must have an Image component!
+  TreeCreator: Link Prefab is not assigned!
+  TreeCreator: No nodes found in the tree asset!
+  TreeCreator: No nodes found to center.
+  TreeCreator: No nodes found to uncenter.
+  TreeCreator: Node Prefab is not assigned!
+  TreeCreator: Node Prefab must have a child named 'NodeIcon'!
+  TreeCreator: Node Prefab must have a child named 'NodeShape'!
+  TreeCreator: Tree Asset is not assigned!
+  TreeNodeInfo 
+  Tried to Initialize the SteamAPI twice in one session!
+  Triple Damage Chance
+  UILineRenderer: Cannot create default prefab - GameObject is not active
+  UILineRenderer: Cannot create default prefab - component has been destroyed
+  UILineRenderer: Cannot create default prefab - transform is null
+  UILineRenderer: Cannot create line - component has been destroyed
+  UILineRenderer: Cannot create line - fromNode or toNode has been destroyed
+  UILineRenderer: Cannot create line - fromNode or toNode is null
+  UILineRenderer: Cannot create line - parentCanvas is null
+  UILineRenderer: Cannot create line segments - component is not active or enabled
+  UILineRenderer: Cannot create line segments - invalid transform or parent canvas
+  UILineRenderer: Cannot force sync - RectTransform component is missing!
+  UILineRenderer: Cannot force sync - component has been destroyed
+  UILineRenderer: Cannot force sync - component is not active or enabled
+  UILineRenderer: Cannot force sync - fromNode or toNode has been destroyed
+  UILineRenderer: Cannot force sync - no parent canvas found
+  UILineRenderer: Cannot force sync - serialized fromNode or toNode has been destroyed
+  UILineRenderer: Cannot force sync on 
+  UILineRenderer: Cannot get canvas position - no parent canvas found
+  UILineRenderer: Cannot restore - serialized fromNode or toNode has been destroyed
+  UILineRenderer: Cannot setup line - component has been destroyed
+  UILineRenderer: Cannot setup line - component is not active or enabled
+  UILineRenderer: Cannot setup line - fromNode or toNode has been destroyed
+  UILineRenderer: Cannot setup line - fromNode or toNode is null
+  UILineRenderer: Cannot update existing segments - invalid state
+  UILineRenderer: Component is being destroyed, attempting to clear segments anyway
+  UILineRenderer: Error cleaning up old template child: 
+  UILineRenderer: Error cleaning up old template: 
+  UILineRenderer: Error cleaning up temporary prefab: 
+  UILineRenderer: Error destroying line segment: 
+  UILineRenderer: Error destroying orphaned segment during global cleanup: 
+  UILineRenderer: Error destroying orphaned template prefab: 
+  UILineRenderer: Error during orphaned segment cleanup: 
+  UILineRenderer: Failed to create default line segment prefab: 
+  UILineRenderer: Failed to create default lineSegmentPrefab, cannot proceed
+  UILineRenderer: Failed to create line segment: 
+  UILineRenderer: Failed to instantiate line segment
+  UILineRenderer: Found orphaned LineSegment '
+  UILineRenderer: Found orphaned segment '
+  UILineRenderer: Found orphaned template prefab '
+  UILineRenderer: Line segment missing RectTransform component
+  UILineRenderer: No Canvas found in parent hierarchy!
+  UILineRenderer: RectTransform component is missing!
+  UILineRenderer: Segment '
+  UILineRenderer: Segment was not properly parented, fixing...
+  UILineRenderer: Template prefab exists but is not a child, cleaning up old template
+  UILineRenderer: Template prefab is not a child, destroying manually
+  UILineRenderer: lineSegmentPrefab has been destroyed, cannot create segments
+  UILineRenderer: lineSegmentPrefab is null/destroyed during instantiation
+  UILineRenderer: transform is null/destroyed during instantiation
+  Unexpected character at position {0}: '{1}'
+  Unexpected end of input
+  Unexpected end of input after unary minus
+  Unknown function '
+  Unknown variable '
+  Writing is not supported by this converter.
+  [
+  [1,5,10*1.1^(x-2)]
+  [Achievements] Steam unavailable, '
+  [Boot] Quitting without saving — boot never completed, so there is nothing safe to write.
+  [Boot] Save has no stats (poisoned by a failed first-run). Rebuilding as a new player.
+  [DLC] 
+  [DLC] Could not open the Steam store overlay — 
+  [DLC] Steam ownership check skipped — 
+  [InAppReviewManager] No fallback URL configured for this platform.
+  [InAppReviewManager] Opening fallback URL: 
+  [InAppReviewManager] RequestReview() not supported on this platform; opening fallback URL.
+  [ItemTooltipManager] Duplicate singleton instance destroyed on '
+  [LocalizerManager] Missing translation for key '
+  [Localizer] Steam language unavailable, using the OS language instead — 
+  [LoggingManager] Could not write to '
+  [LoggingManager] Playtest logs: 
+  [NewSkillStatsTester] Enter play mode and start a run first.
+  [Parallax] Renderer count mismatch between '{0}' ({1}) and '{2}' ({3}) — pairing the first {4}. Keep day/night layer hierarchies identical.
+  [Parallax] Saham/ParallaxAmbushBlend shader not found — switching backgrounds instantly instead.
+  [SaveLoadManager] 
+  [SaveLoadManager] Balance snapshot failed: 
+  [SaveLoadManager] Could not delete '
+  [SaveLoadManager] Could not rotate main->bak: 
+  [SaveLoadManager] Could not write temp save to '
+  [SaveLoadManager] Failed to load '
+  [SaveLoadManager] Main save unreadable, recovered from backup.
+  [SaveLoadManager] Main save unreadable, recovered from legacy backup.
+  [SaveLoadManager] Mobile save attempt 
+  [SaveLoadManager] Mobile save totally failed and fallback write also failed: 
+  [SaveLoadManager] No balance saves in 
+  [SaveLoadManager] On-disk verification failed for '
+  [SaveLoadManager] Payload verification failed: 
+  [SaveLoadManager] Rejecting '
+  [SaveLoadManager] Save aborted: could not stage temp file on mobile.
+  [SaveLoadManager] Save aborted: in-memory verification failed. Previous save preserved.
+  [SaveLoadManager] Save aborted: temp file failed verification.
+  [SaveLoadManager] Save failed, previous save preserved: 
+  [SaveLoadManager] Temp save path is a directory and could not be deleted: 
+  [Shaping Test] 
+  [Shaping Test] No ShapingWeaponInfo for 
+  [Shaping Test] Spawned 
+  [SkillDamageLog] Nothing recorded yet this level.
+  [SkillTester] '
+  [SkillTester] Enter play mode and start a run first.
+  [SkillTester] Fired '{0}' x{1}.
+  [SkillTester] Pick a skill first.
+  [StatsView] Missing localization key "
+  [Steamworks.NET] Could not load [lib]steam_api.dll/so/dylib. It's likely not in the correct location. Refer to the README for more details.\n
+  [Steamworks.NET] DllCheck Test returned false, One or more of the Steamworks binaries seems to be the wrong version.
+  [Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.
+  [Steamworks.NET] Shutting down because RestartAppIfNecessary returned true. Steam will restart the application.
+  [Steamworks.NET] SteamAPI_Init() failed. Refer to Valve's documentation or the comment above this line for more information.
+  [TOTAL 
+  [TreeCreator] Asset changed during update, resubscribing to events
+  [TreeCreator] Attempted to add node 
+  [TreeCreator] Cannot update node position - treeNode: {0}, inDict: {1}
+  [TreeCreator] Could not find TreeNodeInfo for connected nodes, defaulting to locked
+  [TreeCreator] Error cleaning up UILineRenderer during link recreation: 
+  [TreeCreator] Error cleaning up UILineRenderer during tree clear: 
+  [TreeCreator] Error cleaning up UILineRenderer: 
+  [TreeCreator] Error during line recovery for 
+  [TreeCreator] Error updating link 
+  [TreeCreator] Failed to create linksParent, cannot create link
+  [TreeCreator] Found orphaned LineSegment: 
+  [TreeCreator] No nodes parent found
+  [TreeCreator] Node 
+  [TreeCreator] Skipping null node in tree data
+  [TreeCreator] TreeNode component type not found - make sure TreeNode.cs is compiled
+  [TreeCreator] linksParent is null, creating parent objects
+  [TreeNode] TreeCreator not found in parent!
+  [TreeNode] TreeState not found!
+  [TreeState] Cannot get level for null node
+  [TreeState] Cannot increase level for null node
+  [TreeState] Cannot initialize - TreeCreator or TreeAsset is null
+  [TreeState] Cannot set level for null node
+  [TreeState] NodeID is null or empty
+  [TreeState] PlayerData is null or does not contain the node ID
+  [TreeState] TreeCreator component not found!
+  [TreeState] TreeNodes list is null
+  [{0}] Lv.{1} | Time: {2} | Played: {3} | Deaths: {4} ({5}) | Killed: {6} ({7}) | Currencies: {8}
+  \n<sprite name=ArcherCurrency>
+  \n<sprite name=WarriorCurrency>
+  ] 
+  ] !! NULL entry
+  _* stats declared in PlayerStatsData.
+  armed — 
+  direct child of Canvas (old system)
+  enter play mode + start a run
+  h 
+  icon (1)
+  index = {0} array.Length = {1}
+  m 
+  min < 0
+  not a RectTransform (world object — pivot rule doesn't apply)
+  not current template of parent UILineRenderer
+  orphaned from UILineRenderer
+  px OFF ITS 
+  tamedPetPrefab for 
+  top level (old system)
+  yyyy-MM-dd HH:mm
+  yyyy-MM-dd HH:mm:ss
+  {0} 
+  {0} {1} {2} {3}
+  • 
+  ── 
+  ═══ SafeAreaManager report ═══
+  ✦ 
+
+===== I. 其他（类型名/GO名/标识符碎片）: 700 条 =====
+  "
+  ":
+  #
+  #5BF59E
+  #7A7A7A
+  #C8C8C8
+  #FFD680
+  #VALUE
+  #VALUE#
+  #VALUE#%
+  #VALUE1#
+  #VALUE2#
+  #VALUE3#
+  #VALUE4#
+  %
+  %)
+  '
+  '.
+  (
+  )
+  ).
+  ):
+  )</color>
+  )</color></size>
+  +
+  -
+  ---------------------------------------------------------------
+  .
+  ._sahamlogprobe
+  .su
+  .…!?
+  /
+  /min
+  /min)
+  /s
+  /s)
+  /zadArchery.su
+  0
+  0.#
+  0.##
+  0.###
+  0.0
+  0.00
+  0.000
+  0.00e0
+  00
+  00:
+  1
+  250
+  5*x
+  60%
+  65%
+  72%
+  78%
+  85%
+  :
+  </align>
+  </b>
+  </b></color>
+  </b></color></size>
+  </b></color>\n
+  </color>
+  </color>)
+  </color></b>
+  </color></b></size>
+  </color></b></size>\n
+  </color></b>\n
+  </color></size>
+  </color>\n
+  </size></color>
+  <b>
+  <b><color=#
+  <b><color=#FFD680>
+  <color=
+  <color=#
+  <color=#([A-Fa-f0-9]{6})>.*?</color>
+  <color=#4CFF8C>+
+  <color=#5BF59E>
+  <color=#5BF59E>+
+  <color=#64FFA2FF>
+  <color=#88ed66>
+  <color=#9BD8FF>
+  <color=#A0B0C0><b>
+  <color=#BBBBBB>
+  <color=#C8C8C8>
+  <color=#FF4444>
+  <color=#FFD680>
+  <color=#FFD75A>
+  <color=#FFD86B>
+  <size=110%><color=
+  <size=115%><b><color=#FFD680>
+  <size=120%><b><color=#FFD966>
+  <size=120%><color=
+  <size=120%><color=#FFD680><b>
+  >
+  ><b>
+  ?
+  ???
+  AchievementsManager
+  AdditiveIncreases
+  AoERadius
+  ArcherChanceToSpawn
+  AreaSlash
+  Armor
+  ArmorBaseLevel
+  ArmorBaseLevelFlat
+  ArrowFall
+  ArrowIcon
+  AttackChance
+  AttackRadius
+  AttackRange
+  AttackSpeed
+  AwakenButton
+  AwakenGlow
+  B
+  BOTTOM
+  Background
+  BaseMaxValueMultiplier
+  BaseMinValueMultiplier
+  Bat
+  BatChanceToSpawn
+  BatSwarm
+  BatSwarmHit
+  Bear
+  Bleed
+  BlitzBond
+  Blizzard
+  BlizzardHit
+  BloodSuck
+  Bloom
+  Body
+  BombArrow
+  BombArrowdeath
+  BossIcon
+  Bow
+  BowBaseLevel
+  BowBaseLevelFlat
+  BuffDurationRing
+  C
+  CASTS
+  COMPLETED
+  CRIT
+  Ceramic
+  ChanceForBlizzard
+  ChanceForFireArea
+  ChanceForGoldenEnemy
+  ChanceForTripleDamage
+  ChanceToSpawnChest
+  ChanceToSpawnOrb
+  CharacterManager
+  Checkmark
+  ChestContentRarity
+  ChestsManager
+  ChopTrail
+  ClawCurrencyDamageBonus
+  ClawCurrencyHealthBonus
+  CleaveRadius
+  ClickHitPrefab
+  ClickProgressText
+  Companions
+  Cooldown
+  CopperBG
+  Cost
+  CostHighlighter
+  CostText
+  CraftDramaticReveal
+  CraftingLuck
+  CraftingManager
+  CriticalChance
+  CriticalMultiplier
+  CriticalPierceChance
+  CurrencyText
+  D/s
+  DAMAGE
+  DLCManager
+  DMG/CAST
+  DMG/HIT
+  DMG/s
+  Damage
+  DarkMatter
+  DefeatKing
+  DescText
+  DestroyEffect
+  DestroyMe
+  DestroyTarget
+  Deutsch
+  DimImage
+  DiveTrail
+  DodgeChance
+  DoubleMiningPickaxes
+  Dragon
+  Duration
+  EffectsAmount
+  EffectsDropdown
+  EffectsVolume
+  EnemiesManager
+  Enemy
+  EnemyCanvas
+  EnemyDamageMultiplier
+  EnemyHealthMultiplier
+  EnemyHitCritical
+  EnemyHitNormal
+  EnemyInfos
+  EnemyItemDropChance
+  Enemy__
+  English
+  Español
+  ExecuteThreshold
+  ExpGained
+  F
+  FF1744
+  FF6347
+  FFA500
+  FFD700
+  FadeImage
+  Falcon
+  FalconImpactGlow
+  FalconImpactRing
+  FalconImpactRingEcho
+  FalconImpactSlashA
+  FalconImpactSlashB
+  FightKingButton
+  FinishManager
+  FireArea
+  FiringDustGFXPrefab
+  FirstPerkButton
+  Flare
+  FlashImage
+  Flat
+  FloatingNumbersAmount
+  FloatingNumbersManager
+  FlyingItemIcon
+  FlyingPickaxeIcon
+  FlyingRuneIcon
+  Footstep
+  Français
+  GainLegendaryBowArmor
+  GoldBG
+  GoldCoinsToDrop
+  GoldGained
+  Golden!
+  GoldenFx
+  GoldenGlint
+  GoldenRewardMultiplier
+  GroundEffectsManager
+  GroundRing
+  Guardian
+  GuardianBolt
+  GuardianCurrencyGain
+  GuardianPerkInfos
+  GuardianPounce
+  GuardianSlam
+  GuardianSpawnEffect
+  GuardianToxin
+  GuardianToxinCloud
+  GuardiansManager
+  HITS
+  HammerShockwave
+  Head
+  Health
+  HealthMultiplier
+  HealthRegen
+  HighEffectsText
+  Highlighter
+  Hole
+  Horizon
+  HorizonEcho
+  HoverArea
+  INCOMPLETE
+  InAppReviewManager
+  Intimidation
+  InventoryManager
+  IsArcherSpawned
+  Italiano
+  ItemDragGhost
+  ItemIcon
+  ItemInfos
+  ItemScroll_
+  ItemStatsInfos
+  ItemTooltipManager
+  Job
+  JobBonusImage
+  JobBonusText
+  JobBonusTooltipRayCast
+  JobInfos
+  JobPassiveBonus
+  JobSkillInfos
+  JobsUIManager
+  K
+  KingCounterText
+  KingExplosionOrb
+  KingLaser
+  KingLaserHitFX
+  KingLaserSpawnFX
+  KingManager
+  KingMissile
+  KingMissileExplosionFX
+  KingOrbExplosionFX
+  KnightSlash
+  LEFT
+  LeftWall
+  LevelText
+  LevelUpButton
+  Lifesteal
+  LifestealPercent
+  LightningChain
+  LightningStrike
+  LineSegment
+  LinkToWeaponIcon
+  Link_
+  LinksParent
+  LoggingManager
+  Logs.txt
+  LootFlyIcon
+  LowEffectsText
+  Lv.
+  M
+  MageChanceToSpawn
+  MageHit
+  MainIcon
+  MainMenusManager
+  MasteryAwakenStatBonus
+  MasteryInfos
+  MasteryMainStatBonus
+  MasteryManager
+  MasteryPanelFloater
+  MasteryReward_
+  MasteryUIManager
+  Max
+  MaxAddi
+  MaxFlat
+  MaxTames
+  MaxTotal
+  MaximumSkillPowers
+  MemberwiseClone
+  Min
+  MinAddi
+  MinFlat
+  MinTotal
+  MiningManager
+  MiningPickaxeSpeed
+  MiningReward_
+  MiningUIManager
+  MonsterGemChance
+  Mouse
+  MouseAttacker
+  MouseAttackerInstance
+  MouseMagazineRegenTime
+  MouseMagazineSize
+  MouseMaxNumberOfEnemies
+  MouseNumberOfHits
+  Mouth
+  MultiplicativeIncreases
+  Multishot
+  MusicVolume
+  N
+  NameText
+  NewItemFrame
+  NoEffectsText
+  NodeIcon
+  NodeShape
+  Node_
+  NodesParent
+  None
+  NormalDamageFloater
+  Notification
+  NumberOfOresDropped
+  NumberOfShards
+  OVERKILL
+  ObjectPooler
+  Offense
+  On
+  OpenChest
+  Orb2
+  OrbDuration
+  OrbGlow2
+  OrbSparkles
+  OrbTrail
+  OrbsManager
+  OreValue
+  Overlay(px)
+  ParallaxManager
+  Pet
+  PetCanvas
+  PetDamageMultiplier
+  PetHealthMultiplier
+  Pet_
+  PetsManager
+  PiercingShot
+  PiercingShotmain
+  Player
+  PlayerAttackSpeed
+  PlayerEffects
+  PlayerManager
+  PlayerMovementSpeed
+  PointOfContact
+  Polski
+  PortalHealthMultiplier
+  PortalSummonTime
+  Português
+  Projectile
+  ProjectileInfos
+  ProjectilesManager
+  Q
+  RIGHT
+  Radius
+  RainOfArrows
+  RangeText
+  RapidFire
+  RarityFrame
+  RarityText
+  ReachLevel40
+  RealValue
+  RecruitArcher
+  RefreshVisuals
+  Regen
+  RegenPercent
+  RerollButton
+  RightWall
+  RockBG
+  RockChip
+  RockCrack
+  RockDebris
+  RockPulse
+  RunManager
+  RunPortal
+  RunStopDust
+  RuneDragGhost
+  RuneImplicitsCount
+  RuneScroll_
+  RuneStatInfos
+  RuneStat_
+  SHARE
+  SKILL
+  SafeAreaManager
+  Saham/MiningRockHit
+  SecondPerkButton
+  SettingsManager
+  ShapingCooldownSpeed
+  ShapingCopyFirstWeapon
+  ShapingManager
+  ShapingReward_
+  ShapingUIManager
+  ShapingWeaponInfos
+  ShapingWeaponPulse
+  ShapingWeapon_
+  ShapingWeaponsManager
+  SharpShooter
+  ShatterRadius
+  ShotDust
+  Silhouette
+  SilverBG
+  SkillDetailInfos
+  SkillIcon
+  SkillPowerInfos
+  SkillPowerLevelFloater
+  SkillPowerValueBonus
+  Skills
+  SkillsCooldownSpeed
+  SkillsLog.txt
+  SkillsManager
+  SkillsParent
+  SkillsPowerTitle_
+  Skin
+  Skulls
+  SlashTrail
+  SniperScope
+  Sockwave
+  Spear
+  Sprites/Default
+  Star
+  StarManager
+  StarUIManager
+  Stars
+  StatArea
+  StatInfos
+  StatsParent
+  StatsViewManager
+  SteamManager
+  SummonEffect
+  SuperNova
+  Survival
+  SwirlInner
+  SwirlOuter
+  T
+  TOP
+  TameDamageMultiplier
+  TameHealthMultiplier
+  Tamed_
+  TamingManager
+  Template
+  TickTime
+  TitleText
+  Toggle
+  TopWall
+  Total
+  TreeNode
+  Türkçe
+  UI
+  UIManager
+  UIVolume
+  Unknown
+  UnlockButton
+  UnlockChests
+  UnlockCrafting
+  UnlockEnemyItemDrops
+  UnlockGoldenEnemies
+  UnlockJobs
+  UnlockMastery
+  UnlockMining
+  UnlockOrbs
+  UnlockShaping
+  UnlockSkills
+  UnlockStar
+  VampireExplosion
+  WarriorChanceToSpawn
+  Wave
+  WeaponAfterimage
+  WeaponGlowBurst
+  WeaponIcon
+  WeaponNameText
+  WeaponPlace
+  WeaponProcFloater
+  WeaponSilhoute
+  WeaponSlotLockedIcon
+  WellTrailEffect
+  Wolf
+  World
+  Wormhole
+  WormholeEmerge
+  WormholeRift
+  WormholeShotCount
+  WormholeStreak
+  X2
+  \n
+  \n(
+  \n<align=center>
+  \n<color=#A0B0C0><b>
+  \n<color=#B8D4E3>
+  \n<color=#C8C8C8>
+  \n<color=#b47dc9><b>
+  \n\n
+  \ndeadline=
+  ]
+  ^((?:</[^>]+>)*)
+  ^(<color=#[A-Fa-f0-9]{6}>([^<]*?)</color>|([^\s<]+))
+  _
+  _ActivateWithRapidFire
+  _AltRect
+  _AltTex
+  _AmbushEdgeColor
+  _AmbushWaveCenter
+  _AmbushWaveRadius
+  _AmbushWaveSoftness
+  _Aspect
+  _AttackChance
+  _AttackRadius
+  _AttackRange
+  _AttackSpeed
+  _AzrarDesc
+  _B
+  _BaseColor
+  _BatsAmountMultiplier
+  _Beam
+  _BlitzBond
+  _BossDamageBonus
+  _BuffValue
+  _ChanceForClusterBombs
+  _ChanceForMultiplyProjectiles
+  _ChanceToDealTripleDamage
+  _ChanceToPierce
+  _ChanceToSpreadOnKill
+  _Color
+  _Comparison
+  _Cooldown
+  _CooldownReductionOnCrit
+  _CrackColor
+  _CrackCount
+  _CrackDarken
+  _CrackJagged
+  _CrackParams
+  _CrackRadius
+  _CrackWidth
+  _Cracks
+  _CritMultiplierBonus
+  _DamageMultiplier
+  _DamagePerAbsorb
+  _DamagePerTurn
+  _DamageVsChilled
+  _DentDarken
+  _DentRadius
+  _Duration
+  _ExecuteThreshold
+  _ExtensionPerKill
+  _FirstTime
+  _FlashAmount
+  _FlashColor
+  _FlashRing
+  _GlowColor
+  _HealPerEnemyHit
+  _HealthMultiplier
+  _IceAmountMultiplier
+  _Intimidation
+  _L
+  _Left
+  _LifestealPercent
+  _Lv
+  _MainRect
+  _MirrorImageChance
+  _Mouse
+  _NumberOfAttacks
+  _NumberOfHits
+  _NumberOfProjectiles
+  _NumberOfTurns
+  _Panel
+  _PierceCount
+  _Plural
+  _RadiusOfEffect
+  _RegenPercent
+  _ResetCooldownOnBossFirstHit
+  _Right
+  _SlowPercent
+  _Strength
+  _TintColor
+  _VFX
+  _Value
+  _to_
+  array
+  attack
+  bottom
+  brazilian
+  buff
+  capacity
+  cast
+  chainEffect
+  czech
+  damage1
+  death
+  dictionary
+  english
+  failed
+  french
+  german
+  https://apps.apple.com/app/id0000000000
+  https://discord.gg/Uy83FuCGFa
+  https://play.google.com/store/apps/details?id=com.SamhariaStudios.Maktala
+  https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Quit&utm_campaign=CGFull
+  https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Reward&utm_campaign=CGFull
+  https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=RewardTaken&utm_campaign=CGFull
+  https://store.steampowered.com/app/4412000/?utm_source=Game&utm_medium=Settings&utm_campaign=CGFull
+  https://store.steampowered.com/app/4780870/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+  https://store.steampowered.com/app/5057800/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+  https://store.steampowered.com/app/5167550/?utm_source=Zad&utm_medium=Zad&utm_campaign=Zad
+  https://store.steampowered.com/developer/SamhariaStudios
+  icon
+  idle
+  italian
+  japanese
+  key
+  koreana
+  latam
+  left
+  null
+  original
+  p
+  passive-proc
+  pet
+  pivot=
+  polish
+  portuguese
+  right
+  russian
+  s
+  s</color>
+  s</color>\n<color=#A0B0C0><b>
+  schinese
+  shot
+  source
+  spanish
+  step
+  success
+  target
+  tchinese
+  top
+  turkish
+  ukrainian
+  v
+  value
+  x
+  x)
+  x2!
+  zad_balance_seed*.su
+  ~
+  ~mouse
+  Čeština
+  Русский
+  Українська
+  中文
+  日本語
+  한국어

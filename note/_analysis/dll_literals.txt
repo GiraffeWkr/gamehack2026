@@ -1,0 +1,442 @@
+=== Languages ===
+    Languages      German                                   = 3
+    Languages      Russian                                  = 4
+    Languages      Chinese                                  = 5
+    Languages      Spanish                                  = 6
+    Languages      Japanese                                 = 7
+    Languages      Italian                                  = 8
+    Languages      Korean                                   = 9
+    Languages      Czech                                    = 10
+    Languages      Polish                                   = 11
+    Languages      Turkish                                  = 12
+    Languages      Ukrainian                                = 13
+
+=== ChestType ===
+    ChestType      Scroll                                   = 3
+    ChestType      Legendary                                = 4
+
+=== EnemiesManager ===
+    float          PackWidthScale                           = 92
+    float          MinXDistanceForSameY                     = 50
+    float          SmallXOffsetWhenClose                    = 25
+    float          GuardianMinionSpreadX                    = 220
+    string         GuardianMinionSpawnEffect                = 'GuardianSpawnEffect'
+
+=== EnemyType ===
+    EnemyType      Mage                                     = 3
+    EnemyType      Bat                                      = 4
+    EnemyType      RunPortal                                = 5
+    EnemyType      Guardian_Claw                            = 6
+    EnemyType      Guardian_Warrior                         = 7
+    EnemyType      Guardian_Archer                          = 8
+    EnemyType      Guardian_Mage                            = 9
+    EnemyType      Guardian_Bat                             = 10
+    EnemyType      King                                     = 11
+
+=== EnemySelfer ===
+    float          ATTACK_ANIM_WATCHDOG_SECONDS             = 4
+    float          GoldenScale                              = 1.12
+    float          GoldenChampionScale                      = 1.32
+    float          MaxRespawnScaleMultiplier                = 1.3
+    float          MinRespawnScaleMultiplier                = 0.75
+    float          RespawnScaleResetChance                  = 20
+    float          HURT_ANIMATION_COOLDOWN                  = 2.5
+
+=== Animations ===
+    Animations     Hurt                                     = 3
+    Animations     Walk                                     = 4
+    Animations     Attack1                                  = 5
+    Animations     Attack2                                  = 6
+    Animations     Skill                                    = 7
+
+=== GuardiansManager ===
+    float          LootScatterX                             = 70
+    float          LootScatterY                             = 45
+
+=== KingManager ===
+    string         GuardianSpawnEffect                      = 'GuardianSpawnEffect'
+
+=== GeneralPlatform ===
+    GeneralPlatform Mobile                                   = 3
+    GeneralPlatform Server                                   = 4
+    GeneralPlatform Web                                      = 5
+    GeneralPlatform Cloud                                    = 6
+
+=== Rarity ===
+    Rarity         Legendary                                = 3
+
+=== SaveLoadManager ===
+    string         Key                                      = 'Q3JpcHRvZ3JhZmlhcyBjb20gUmlxamRhZWwgLyBBRVM'
+    string         TmpSuffix                                = '.tmp'
+    string         BakSuffix                                = '.bak'
+
+=== CraftingManager ===
+    int            CraftingReward_StatValuesBonusPercent    = 25
+    int            CraftingReward_LuckBonusPercent          = 500
+    int            CraftingReward_FirstForgeAmount          = 3
+    int            CraftingReward_LegendaryGuaranteeLevel   = 8
+    string         CraftInfo_TitleColor                     = '#FFD680'
+    string         CraftInfo_BodyColor                      = '#C8C8C8'
+    string         CraftInfo_LockedColor                    = '#7A7A7A'
+
+=== CraftingUnlockType ===
+    CraftingUnlockType NonNormalRarity                          = 3
+    CraftingUnlockType StatValuesBonus                          = 4
+    CraftingUnlockType RerollButton                             = 5
+    CraftingUnlockType ForgingBonus                             = 6
+    CraftingUnlockType CraftingLuckBonus                        = 7
+    CraftingUnlockType RarityFloorRare                          = 8
+    CraftingUnlockType CorruptButton                            = 9
+
+=== ItemType ===
+    ItemType       Scroll                                   = 3
+
+=== ItemTooltipManager ===
+    string         DRAMATIC_REVEAL_TWEEN_ID                 = 'CraftDramaticReveal'
+
+=== ScrollsManager ===
+    double         RuneScrollBaseSellPrice                  = 5
+    double         ItemScrollBaseSellPrice                  = 5
+    double         RuneScroll_ImplicitValueMultiplier       = 1.2
+    int            RuneScroll_ExplicitCount                 = 5
+    float          ItemScroll_ImproveChanceMultiplier       = 1.3
+    double         ItemScroll_StatValuesMultiplier          = 1.5
+    Rarity         Scroll_ForcedRarity                      = 3
+
+=== SkillTooltipRows ===
+    string         TitleColorHex                            = '#FFD680'
+    string         BodyColorHex                             = '#C8C8C8'
+    string         LabelColorHex                            = '#A0B0C0'
+    string         ValueColorHex                            = '#5BF59E'
+    string         ArrowColorHex                            = '#FFD680'
+    string         NoteColorHex                             = '#8A94A0'
+    string         PetDamageScalingKey                      = 'PetDamageScaling_Text'
+    string         PetHealthScalingKey                      = 'PetHealthScaling_Text'
+
+=== MasteryEffects ===
+    double         FreeSkillCooldownThreshold               = 30
+    float          MomentumFxCooldown                       = 0.25
+    float          HealFxCooldown                           = 0.15
+
+=== MasteryRewardType ===
+    MasteryRewardType UnlockMastery4                           = 3
+    MasteryRewardType UnlockMastery5                           = 4
+    MasteryRewardType UnlockMastery6                           = 5
+    MasteryRewardType UnlockMastery7                           = 6
+    MasteryRewardType UnlockMastery8                           = 7
+    MasteryRewardType UnlockMastery9                           = 8
+    MasteryRewardType UnlockAwakening                          = 9
+
+=== OreType ===
+    OreType        Gold                                     = 3
+
+=== MiningPowerType ===
+    MiningPowerType RareOreChance                            = 3
+
+=== MiningPickaxe ===
+    float          ChopAngle                                = 45
+    float          WindupAngle                              = -30
+
+=== MiningRockJuice ===
+    int            MaxCracks                                = 8
+    string         TweenIdDebris                            = 'RockDebris'
+    string         TweenIdPulse                             = 'RockPulse'
+
+=== MiningRewardType ===
+    MiningRewardType IncreaseMaxSkillPowers                   = 3
+    MiningRewardType BonusRockPerRareOre                      = 4
+    MiningRewardType UnlockSilver                             = 5
+    MiningRewardType ChanceToMineGems                         = 6
+    MiningRewardType UnlockGold                               = 7
+    MiningRewardType IncreaseSkillPowerMaxLevel               = 8
+    MiningRewardType ChanceToDropAdditionalOre                = 9
+
+=== OrbsManager ===
+    float          PermanentSummonStagger                   = 0.25
+
+=== AchievementsManager ===
+    int            LevelMilestone                           = 40
+
+=== GeneralSounds ===
+    GeneralSounds  card_click                               = 3
+    GeneralSounds  card_discard                             = 4
+    GeneralSounds  card_draw                                = 5
+    GeneralSounds  card_hover                               = 6
+    GeneralSounds  generic_ui_hover                         = 7
+    GeneralSounds  gold_gain_one                            = 8
+    GeneralSounds  purchase                                 = 9
+    GeneralSounds  relic_activation                         = 10
+    GeneralSounds  send_to_play                             = 11
+    GeneralSounds  card_declick                             = 12
+    GeneralSounds  gain_add                                 = 13
+    GeneralSounds  gain_mult                                = 14
+    GeneralSounds  calculation                              = 15
+    GeneralSounds  menu_whoosh                              = 16
+    GeneralSounds  calculation_show                         = 17
+    GeneralSounds  start_attack                             = 18
+    GeneralSounds  ascend_appear                            = 19
+    GeneralSounds  stat_winlose_tick                        = 20
+    GeneralSounds  reward_plate_appear                      = 21
+    GeneralSounds  lose                                     = 22
+    GeneralSounds  space_enter_tick                         = 23
+    GeneralSounds  DestroyItem                              = 24
+    GeneralSounds  EquipItem                                = 25
+    GeneralSounds  DropItem                                 = 26
+    GeneralSounds  CraftItem                                = 27
+    GeneralSounds  level_completed                          = 28
+    GeneralSounds  DropCurrency                             = 29
+    GeneralSounds  CollectCurrency                          = 30
+
+=== FloatingNumbersManager ===
+    int            MaxFloaterBudget                         = 40
+    float          PromotionMargin                          = 1.35
+    float          MinVisibleSeconds                        = 0.25
+    double         CritScoreWeight                          = 1.5
+    double         StackScoreWeightPerHit                   = 0.06
+
+=== ParallaxManager ===
+    float          WaveRadiusParked                         = -1e+06
+
+=== RunManager ===
+    int            FarmUnlockLevel                          = 7
+
+=== RunState ===
+    RunState       Ended                                    = 3
+
+=== SkillDamageLog ===
+    string         EnabledPrefKey                           = 'Saham.SkillDamageLog.Enabled'
+    string         MenuPath_Enabled                         = 'Tools/Saham/Skill Damage Log/Enabled'
+    string         MenuPath_DumpNow                         = 'Tools/Saham/Skill Damage Log/Dump Current Level Now'
+    string         MenuPath_Reset                           = 'Tools/Saham/Skill Damage Log/Reset Current Level Counters'
+    string         MenuPath_Open                            = 'Tools/Saham/Skill Damage Log/Open SkillsLog.txt'
+    string         MouseBaseRowKey                          = 'ArrowFall'
+    string         MouseVariantSuffix                       = '~mouse'
+
+=== PetSelfer ===
+    float          BiteStandoffFraction                     = 0.6
+    float          DodgeFxCooldown                          = 0.2
+
+=== PetAnimations ===
+    PetAnimations  Hurt                                     = 3
+    PetAnimations  Run                                      = 4
+
+=== PetsManager ===
+    float          SummonStagger                            = 0.18
+
+=== CharacterAnimator ===
+    float          BuffApplyAtAnimationFraction             = 0.65
+
+=== CharacterAnimations ===
+    CharacterAnimations Attack3                                  = 3
+    CharacterAnimations Attack_Mix                               = 4
+    CharacterAnimations Death                                    = 5
+    CharacterAnimations Hurt                                     = 6
+    CharacterAnimations Run                                      = 7
+    CharacterAnimations Buff                                     = 8
+
+=== CharacterManager ===
+    float          nonShotSkillsInterval                    = 0.5
+    float          BuffVFXFadeTimeout                       = 4
+
+=== MouseAttacker ===
+    int            MultishotArrowFallCount                  = 5
+    float          UnaimedTargetRadius                      = 1500
+
+=== PlayerManager ===
+    float          PortalCurrencyReachableDistance          = 1200
+    float          PortalCurrencyRescueSpawnOffsetX         = 150
+    float          DodgeFxCooldown                          = 0.2
+
+=== Currencies ===
+    Currencies     ArcherCurrency                           = 3
+    Currencies     PortalCurrency                           = 4
+    Currencies     WarriorCurrency                          = 5
+    Currencies     MageCurrency                             = 6
+    Currencies     BatCurrency                              = 7
+    Currencies     MiningRock                               = 8
+    Currencies     MiningCopper                             = 9
+    Currencies     MiningSilver                             = 10
+    Currencies     MiningGold                               = 11
+    Currencies     GuardianCurrency                         = 12
+
+=== SkillTags ===
+    SkillTags      Area                                     = 3
+    SkillTags      Duration                                 = 4
+    SkillTags      Chain                                    = 5
+
+=== ProjectileMover ===
+    float          MinDistanceForArcMotion                  = 250
+    float          NormalMotionInitialBurst                 = 2.2
+    float          NormalMotionSettleTime                   = 0.25
+    float          WormholeEmergeBurst                      = 0.3
+    float          OffscreenExtraDistance                   = 150
+    float          TurnArcHeightFactor                      = 0.5
+    float          TurnArcMinHeight                         = 350
+    float          TurnArcMaxHeight                         = 650
+    float          TurnBehindFactor                         = 0.85
+    float          TurnBehindMin                            = 150
+    float          TurnBehindMax                            = 350
+    float          TurnMaxRideSeconds                       = 0.9
+    float          CoasterGravity                           = 0.65
+    float          CoasterMinSpeed                          = 0.45
+    float          CoasterMaxSpeed                          = 1.8
+    float          AboveMotionInitialBurst                  = 2.2
+    float          AboveMotionSettleTime                    = 0.25
+
+=== ProjectileSelfer ===
+    float          PierceSweepRadius                        = 75
+
+=== ProjectileMotionBehaviour ===
+    ProjectileMotionBehaviour Circular                                 = 3
+
+=== ProjectilesManager ===
+    float          WormholeArcStart                         = 45
+    float          WormholeArcEnd                           = 135
+
+=== SkillsManager ===
+    float          BuffEndWarningFraction                   = 0.25
+    float          BuffWarningTickInterval                  = 0.5
+    float          AdrenalineFxCooldown                     = 0.6
+    float          FreeCastFxCooldown                       = 0.4
+
+=== SniperScopeSelfer ===
+    float          attackRange                              = 20
+    string         ANIM_SPAWN                               = 'SniperScope_Open'
+    string         ANIM_IDLE                                = 'SniperScope_Idle'
+    string         ANIM_ATTACK                              = 'SniperScope_Shoot'
+    string         ANIM_DEATH                               = 'SniperScope_Close'
+    float          ENEMY_SEARCH_INTERVAL                    = 0.25
+
+=== WormholeFX ===
+    string         SortingLayer                             = 'PlayerEffects'
+    int            BleedOrder                               = -4
+    int            BodyOrder                                = -3
+    int            HoleOrder                                = -2
+    int            SwirlOuterOrder                          = -1
+    int            EchoOrder                                = 5
+    int            RimOrder                                 = 6
+    float          MouthSquash                              = 0.44
+    float          RiftCloseSeconds                         = 0.22
+    float          SpinOuter                                = 150
+    float          SpinInner                                = -260
+    float          SpinRim                                  = 55
+    float          StarSpin                                 = 190
+    float          StreakMaxSeconds                         = 3
+    string         VanishSound                              = 'PortalSummonSound'
+    string         EmergeSound                              = 'EnemyDeathSound_Portal'
+
+=== RuneStatNames ===
+    string         AttackCooldownSpeed                      = 'Explicit_AttackCooldownSpeed'
+    string         AttackDamage                             = 'Explicit_AttackDamage'
+    string         DoubleDamageChance                       = 'Explicit_DoubleDamageChance'
+    string         KillGoldBonus                            = 'Explicit_KillGoldBonus'
+    string         RepeatAttackChance                       = 'Explicit_RepeatAttackChance'
+    string         FifthHitDamage                           = 'Explicit_FifthHitDamage'
+    string         BuffStrength                             = 'Explicit_BuffStrength'
+    string         BuffDuration                             = 'Explicit_BuffDuration'
+    string         BuffCooldownSpeed                        = 'Explicit_BuffCooldownSpeed'
+    string         BuffKillExtend                           = 'Explicit_BuffKillExtend'
+    string         DoubleStrengthChance                     = 'Explicit_DoubleStrengthChance'
+    string         ResetCooldownChance                      = 'Explicit_ResetCooldownChance'
+    string         DoubleDurationChance                     = 'Explicit_DoubleDurationChance'
+    string         SwordTwinSlashChance                     = 'Sword_TwinSlashChance'
+    string         SwordComboDamage                         = 'Sword_ComboDamage'
+    string         SwordCleaveDamage                        = 'Sword_CleaveDamage'
+    string         SwordFirstHitDamage                      = 'Sword_FirstHitDamage'
+    string         HammerAoERadius                          = 'Hammer_AoERadius'
+    string         HammerDamagePerEnemyHit                  = 'Hammer_DamagePerEnemyHit'
+    string         HammerAftershockDamage                   = 'Hammer_AftershockDamage'
+    string         HammerShatterDamage                      = 'Hammer_ShatterDamage'
+    string         LightningExtraChains                     = 'Lightning_ExtraChains'
+    string         LightningForkChance                      = 'Lightning_ForkChance'
+    string         LightningDamagePerChain                  = 'Lightning_DamagePerChain'
+    string         LightningFirstTargetDamage               = 'Lightning_FirstTargetDamage'
+    string         FireTwinFallChance                       = 'Fire_TwinFallChance'
+    string         FireMeteorBarrageChance                  = 'Fire_MeteorBarrageChance'
+    string         FireEliteDamage                          = 'Fire_EliteDamage'
+    string         FireExecuteDamage                        = 'Fire_ExecuteDamage'
+    string         ShieldActiveRegen                        = 'Shield_ActiveRegen'
+    string         ShieldExpireHeal                         = 'Shield_ExpireHeal'
+    string         ShieldEnemyAttackSlow                    = 'Shield_EnemyAttackSlow'
+    string         ShieldWeaponDamageAura                   = 'Shield_WeaponDamageAura'
+    string         BannerAttackSpeedBonus                   = 'Banner_AttackSpeedBonus'
+    string         BannerWeaponHaste                        = 'Banner_WeaponHaste'
+    string         BannerTripleDamageChance                 = 'Banner_TripleDamageChance'
+    string         BannerMagazineRefillChance               = 'Banner_MagazineRefillChance'
+
+=== WeaponType ===
+    WeaponType     Fire                                     = 3
+    WeaponType     Shield                                   = 4
+    WeaponType     Banner                                   = 5
+
+=== ShapingRewardType ===
+    ShapingRewardType UnlockSlot2                              = 3
+    ShapingRewardType UnlockSocket2                            = 4
+    ShapingRewardType SecondImplicit                           = 5
+    ShapingRewardType RunesForEquippedOnly                     = 6
+    ShapingRewardType UnlockBuffs                              = 7
+    ShapingRewardType UnlockSocket3                            = 8
+    ShapingRewardType UnlockSlot3                              = 9
+
+=== ShapingWeapon ===
+    float          KillExtendCap                            = 5
+    float          HeldTelegraphInterval                    = 2.5
+
+=== GuardianType ===
+    GuardianType   Mage                                     = 3
+    GuardianType   Bat                                      = 4
+
+=== ValueNumberTypes ===
+    ValueNumberTypes Bool                                     = 3
+
+=== StatsProperties ===
+    StatsProperties SetFlat_And_ResetAddMulti                = 3
+    StatsProperties SetFlatOnly                              = 4
+    StatsProperties SetAdditiveOnly                          = 5
+    StatsProperties SetMultiplicativeOnly                    = 6
+
+=== BarTextFormat ===
+    BarTextFormat  MaxMinusCurrent                          = 3
+    BarTextFormat  Nothing                                  = 4
+
+=== DLCManager ===
+    float          UnboundedIconWidth                       = 100000
+
+=== LootType ===
+    LootType       PortalCurrency                           = 3
+    LootType       WarriorCurrency                          = 4
+    LootType       MageCurrency                             = 5
+    LootType       BatCurrency                              = 6
+    LootType       MiningRock                               = 7
+    LootType       MiningCopper                             = 8
+    LootType       MiningSilver                             = 9
+    LootType       MiningGold                               = 10
+    LootType       GuardianCurrency                         = 11
+    LootType       HealthPotion                             = 100
+    LootType       Item                                     = 200
+    LootType       Rune                                     = 201
+
+=== UnlockableSystems ===
+    UnlockableSystems Mining                                   = 3
+    UnlockableSystems Shaping                                  = 4
+    UnlockableSystems Mastery                                  = 5
+    UnlockableSystems Star                                     = 6
+
+=== StatsViewManager ===
+    string         LabelColor                               = '#C8C8C8'
+    string         ValueColor                               = '#5BF59E'
+    string         SectionColor                             = '#FFD680'
+
+=== SafeAreaManager/Edge ===
+    SafeAreaManager/Edge Bottom                                   = 3
+
+=== SkillTooltipRows/ValueKind ===
+    SkillTooltipRows/ValueKind PetHealth                                = 3
+    SkillTooltipRows/ValueKind SkillDamage                              = 4
+    SkillTooltipRows/ValueKind BoolSwitch                               = 5
+
+=== MiningPickaxe/Phase ===
+    MiningPickaxe/Phase Recover                                  = 3
+
+=== SniperScopeSelfer/AttackState ===
+    SniperScopeSelfer/AttackState Cooldown                                 = 3

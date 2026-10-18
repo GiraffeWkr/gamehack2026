@@ -1,0 +1,947 @@
+[
+ {
+  "functionName": "BatSwarm",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4887
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5016
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5253
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5014
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5255
+   }
+  ],
+  "Values": [
+   7.0,
+   -0.5,
+   15.0,
+   0.3
+  ],
+  "CostEquations": [
+   "[600,1000,1500,3000,5000,8000,15000,20000,40000,50000]",
+   "[80,150,250,500,1000,1500,3000,6000,10000,15000]",
+   "[25,50,80,150,250,500,800,1500,3000,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_Duration_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_BatsMultiplier_Desc",
+   "SkillPower_BatLifesteal_Desc"
+  ],
+  "Suffixes": [
+   "s",
+   "s",
+   "x",
+   "%"
+  ],
+  "DecimalPlaces": [
+   1,
+   1,
+   2,
+   1
+  ],
+  "_pathID": 4987,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Bear",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4878
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5024
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5021
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5261
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5263
+   }
+  ],
+  "Values": [
+   7.0,
+   25.0,
+   3.0,
+   20.0
+  ],
+  "CostEquations": [
+   "[40,100,200,500,1000,2500,5000,10000,25000,50000]",
+   "[10,25,50,150,300,700,1500,4000,8000,15000]",
+   "[4,100,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   3,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_PetHealth_Desc",
+   "SkillPower_AttackSpeed_Desc",
+   "SkillPower_DodgeChance_Desc",
+   "SkillPower_Intimidation_Desc"
+  ],
+  "Suffixes": [
+   "x",
+   "",
+   "%",
+   "%"
+  ],
+  "DecimalPlaces": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4988,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Blizzard",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4884
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5284
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5033
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5030
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5266
+   }
+  ],
+  "Values": [
+   0.05,
+   5.0,
+   10.0,
+   25.0
+  ],
+  "CostEquations": [
+   "[250,500,800,1500,3000,5000,10000,20000,30000,50000]",
+   "[40,80,150,300,600,1500,2500,5000,10000,15000]",
+   "[15,25,50,100,200,400,700,1500,2500,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_ChanceOnHit_Desc",
+   "SkillPower_Slow_Desc",
+   "SkillPower_IceMultiplier_Desc",
+   "SkillPower_DamageVsChilled_Desc"
+  ],
+  "Suffixes": [
+   "%",
+   "%",
+   "x",
+   "%"
+  ],
+  "DecimalPlaces": [
+   2,
+   0,
+   2,
+   0
+  ],
+  "_pathID": 4989,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "BombArrow",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4875
+  },
+  "Stats": [
+   {
+    "m_FileID": 2,
+    "m_PathID": 3132
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5279
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5280
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5278
+   }
+  ],
+  "Values": [
+   7.0,
+   -0.5,
+   1.0,
+   20.0
+  ],
+  "CostEquations": [
+   "[10,40,100,250,600,1500,4000,10000,25000,50000]",
+   "[5,15,30,80,200,500,1500,3000,8000,15000]",
+   "[2,5,10,25,60,150,400,800,2000,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_Area_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_ClusterBombs_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "s",
+   "",
+   "%"
+  ],
+  "DecimalPlaces": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4990,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "DarkMatter",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4888
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5089
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5313
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5316
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5315
+   }
+  ],
+  "Values": [
+   6.0,
+   -0.6,
+   1.0,
+   10.0
+  ],
+  "CostEquations": [
+   "[600,1000,1500,3000,5000,8000,15000,20000,40000,50000]",
+   "[80,150,250,500,1000,1500,3000,6000,10000,15000]",
+   "[25,50,80,150,250,500,800,1500,3000,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_SkillDamage_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_AbsorbDamage_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "s",
+   "",
+   "%"
+  ],
+  "DecimalPlaces": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4991,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Falcon",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4879
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5331
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5107
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5337
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5335
+   }
+  ],
+  "Values": [
+   0.1,
+   7.0,
+   1.0,
+   100.0
+  ],
+  "CostEquations": [
+   "[40,100,200,500,1000,2500,5000,10000,25000,50000]",
+   "[10,25,50,150,300,700,1500,4000,8000,15000]",
+   "[4,100,500,1500,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   5,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_DiveChance_Desc",
+   "SkillPower_Area_Desc",
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_BlitzBond_Desc"
+  ],
+  "Suffixes": [
+   "%",
+   "",
+   "",
+   ""
+  ],
+  "DecimalPlaces": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4992,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "FireArea",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4885
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5285
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5116
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5339
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5338
+   }
+  ],
+  "Values": [
+   0.1,
+   6.0,
+   0.2,
+   5.0
+  ],
+  "CostEquations": [
+   "[250,500,800,1500,3000,5000,10000,20000,30000,50000]",
+   "[40,80,150,300,600,1500,2500,5000,10000,15000]",
+   "[15,25,50,100,200,400,700,1500,2500,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_ChanceOnHit_Desc",
+   "SkillPower_Area_Desc",
+   "SkillPower_Duration_Desc",
+   "SkillPower_BurnSpread_Desc"
+  ],
+  "Suffixes": [
+   "%",
+   "",
+   "s",
+   "%"
+  ],
+  "DecimalPlaces": [
+   2,
+   1,
+   2,
+   0
+  ],
+  "_pathID": 4993,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "LightningStrike",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4886
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5286
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5359
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5358
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5357
+   }
+  ],
+  "Values": [
+   0.35,
+   1.0,
+   15.0,
+   20.0
+  ],
+  "CostEquations": [
+   "[250,500,800,1500,3000,5000,10000,20000,30000,50000]",
+   "[40,80,150,300,600,1500,2500,5000,10000,15000]",
+   "[15,50,200,700,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   4,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_ChanceOnHit_Desc",
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_ChanceToPierce_Desc",
+   "SkillPower_TripleDamage_Desc"
+  ],
+  "Suffixes": [
+   "%",
+   "",
+   "%",
+   "%"
+  ],
+  "DecimalPlaces": [
+   2,
+   0,
+   0,
+   0
+  ],
+  "_pathID": 4994,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Multishot",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4876
+  },
+  "Stats": [
+   {
+    "m_FileID": 2,
+    "m_PathID": 3208
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5371
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5372
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5370
+   }
+  ],
+  "Values": [
+   1.0,
+   -0.15,
+   1.0,
+   5.0
+  ],
+  "CostEquations": [
+   "[10,40,150,600,1500,5000,25000,50000]",
+   "[5,15,30,80,200,500,1500,3000,8000,15000]",
+   "[2,100,700,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   8,
+   10,
+   4,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_NumberOfProjectiles_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_MultiplyProjectiles_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "s",
+   "",
+   "%"
+  ],
+  "DecimalPlaces": [
+   0,
+   2,
+   0,
+   0
+  ],
+  "_pathID": 4995,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "PiercingShot",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4881
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5382
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5377
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5381
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5379
+   }
+  ],
+  "Values": [
+   1.0,
+   -0.5,
+   1.0,
+   1.0
+  ],
+  "CostEquations": [
+   "[100,200,400,800,1500,3000,7000,15000,30000,50000]",
+   "[20,40,100,200,400,1000,2000,4000,10000,15000]",
+   "[10,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   2,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_PierceCount_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_Turns_Desc",
+   "SkillPower_MirrorImage_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "s",
+   "",
+   "%"
+  ],
+  "DecimalPlaces": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4996,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "RapidFire",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4877
+  },
+  "Stats": [
+   {
+    "m_FileID": 2,
+    "m_PathID": 3213
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5389
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5390
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5391
+   }
+  ],
+  "Values": [
+   0.2,
+   15.0,
+   -0.5,
+   0.2
+  ],
+  "CostEquations": [
+   "[10,40,100,250,600,1500,4000,10000,25000,50000]",
+   "[5,15,30,80,200,500,1500,3000,8000,15000]",
+   "[2,5,10,25,60,150,400,800,2000,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_Duration_Desc",
+   "SkillPower_RapidFireBuff_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_DurationPerKill_Desc"
+  ],
+  "Suffixes": [
+   "s",
+   "%",
+   "s",
+   "s"
+  ],
+  "DecimalPlaces": [
+   1,
+   0,
+   2,
+   0
+  ],
+  "_pathID": 4997,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "SharpShooter",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4882
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5402
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5404
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5405
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5401
+   }
+  ],
+  "Values": [
+   1.0,
+   0.1,
+   10.0,
+   100.0
+  ],
+  "CostEquations": [
+   "[100,200,400,800,1500,3000,7000,15000,30000,50000]",
+   "[20,40,100,200,400,1000,2000,4000,10000,15000]",
+   "[8,15,30,70,150,300,600,1000,2500,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_SharpShooterBuff_Desc",
+   "SkillPower_CritCooldownReduction_Desc",
+   "SkillPower_CritDamage_Desc",
+   "SkillPower_LinkedCast_Desc"
+  ],
+  "Suffixes": [
+   "%",
+   "s",
+   "%",
+   "%"
+  ],
+  "DecimalPlaces": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4998,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "SniperScope",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4883
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5414
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5412
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5413
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5415
+   }
+  ],
+  "Values": [
+   1.0,
+   -0.7,
+   1.0,
+   2.0
+  ],
+  "CostEquations": [
+   "[100,200,400,800,1500,3000,7000,15000,30000,50000]",
+   "[20,40,100,200,400,1000,2000,4000,10000,15000]",
+   "[10,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   2,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_NumberOfAims_Desc",
+   "SkillPower_Area_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "s",
+   "",
+   ""
+  ],
+  "DecimalPlaces": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 4999,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "SuperNova",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4889
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5424
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5421
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5420
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5423
+   }
+  ],
+  "Values": [
+   2.0,
+   -3.0,
+   25.0,
+   5.0
+  ],
+  "CostEquations": [
+   "[600,1000,1500,3000,5000,8000,15000,20000,40000,50000]",
+   "[80,150,250,500,1000,1500,3000,6000,10000,15000]",
+   "[25,50,80,150,250,500,800,1500,3000,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   10,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_Cooldown_Desc",
+   "SkillPower_BossDamage_Desc",
+   "SkillPower_NovaHeal_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "s",
+   "%",
+   "%"
+  ],
+  "DecimalPlaces": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 5000,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Wolf",
+  "RelatedSkill": {
+   "m_FileID": 0,
+   "m_PathID": 4880
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5236
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5239
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5437
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5434
+   }
+  ],
+  "Values": [
+   20.0,
+   5.0,
+   2.0,
+   25.0
+  ],
+  "CostEquations": [
+   "[40,100,200,500,1000,2500,5000,10000,25000,50000]",
+   "[10,25,50,150,300,700,1500,4000,8000,15000]",
+   "[4,40,200,1000,4000]",
+   "[100]"
+  ],
+  "MaxLevels": [
+   10,
+   10,
+   5,
+   1
+  ],
+  "DescKeys": [
+   "SkillPower_AttackSpeed_Desc",
+   "SkillPower_PetHealth_Desc",
+   "SkillPower_NumberOfHits_Desc",
+   "SkillPower_Execute_Desc"
+  ],
+  "Suffixes": [
+   "",
+   "x",
+   "%",
+   "%"
+  ],
+  "DecimalPlaces": [
+   2,
+   1,
+   0,
+   0
+  ],
+  "_pathID": 5001,
+  "_file": "resources.assets"
+ }
+]

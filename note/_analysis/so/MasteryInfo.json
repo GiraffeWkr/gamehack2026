@@ -1,0 +1,335 @@
+[
+ {
+  "functionName": "Mastery0",
+  "MasteryIndex": 0,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 436
+  },
+  "IconColor": {
+   "r": 0.8509804606437683,
+   "g": 0.6392157077789307,
+   "b": 0.458823561668396,
+   "a": 1.0
+  },
+  "IsPinnacle": 0,
+  "PinnacleEffect": 0,
+  "MaxLevel": 100,
+  "LevelUpCostEquation": "[ 5, 10, 20, 35, 55, 80, 120, 170, 220, 300, 400, 550, 700, 1000, 1300, 1700, 2100, 2600, 3200, 4000 ]",
+  "MainStat": {
+   "m_FileID": 0,
+   "m_PathID": 5289
+  },
+  "MainValueEquation": "0.8+0.2*x",
+  "MainSuffix": "%",
+  "MainDecimals": 2,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5288
+  },
+  "AwakenValue": 1.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 1,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "150",
+  "_pathID": 4890,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery1",
+  "MasteryIndex": 1,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 441
+  },
+  "IconColor": {
+   "r": 0.8509804606437683,
+   "g": 0.6392157077789307,
+   "b": 0.458823561668396,
+   "a": 1.0
+  },
+  "IsPinnacle": 0,
+  "PinnacleEffect": 0,
+  "MaxLevel": 100,
+  "LevelUpCostEquation": "[ 10, 30, 50, 80, 120, 170, 220, 300, 400, 450, 550, 650, 800, 1050, 1300, 1700, 2100, 2600, 3200, 4000 ]",
+  "MainStat": {
+   "m_FileID": 0,
+   "m_PathID": 5346
+  },
+  "MainValueEquation": "1.9+0.1*x",
+  "MainSuffix": "%",
+  "MainDecimals": 1,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5283
+  },
+  "AwakenValue": 10.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "500",
+  "_pathID": 4891,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery2",
+  "MasteryIndex": 2,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 449
+  },
+  "IconColor": {
+   "r": 0.8301886916160583,
+   "g": 0.503334105014801,
+   "b": 0.4894980490207672,
+   "a": 1.0
+  },
+  "IsPinnacle": 1,
+  "PinnacleEffect": 0,
+  "MaxLevel": 10,
+  "LevelUpCostEquation": "[10,20,40,70,100,130,180,200,250,300,500,700,1000,1500]",
+  "MainStat": {
+   "m_FileID": 2,
+   "m_PathID": 3165
+  },
+  "MainValueEquation": "5*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5287
+  },
+  "AwakenValue": 100.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 10,
+  "AwakenCostEquation": "[5000]",
+  "_pathID": 4892,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery3",
+  "MasteryIndex": 3,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 414
+  },
+  "IconColor": {
+   "r": 0.8509804606437683,
+   "g": 0.6392157077789307,
+   "b": 0.458823561668396,
+   "a": 1.0
+  },
+  "IsPinnacle": 0,
+  "PinnacleEffect": 0,
+  "MaxLevel": 100,
+  "LevelUpCostEquation": "[ 10, 30, 60, 100, 150, 220, 300, 400, 500, 600, 650, 750, 900, 1100, 1300, 1700, 2100, 2600, 3200, 4000 ]",
+  "MainStat": {
+   "m_FileID": 0,
+   "m_PathID": 5054
+  },
+  "MainValueEquation": "15*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5303
+  },
+  "AwakenValue": 50.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "1500",
+  "_pathID": 4893,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery4",
+  "MasteryIndex": 4,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 447
+  },
+  "IconColor": {
+   "r": 0.8509804606437683,
+   "g": 0.6392157077789307,
+   "b": 0.458823561668396,
+   "a": 1.0
+  },
+  "IsPinnacle": 0,
+  "PinnacleEffect": 0,
+  "MaxLevel": 100,
+  "LevelUpCostEquation": "[ 10, 30, 60, 100, 150, 220, 300, 400, 500, 600, 650, 750, 900, 1100, 1300, 1700, 2100, 2600, 3200, 4000 ]",
+  "MainStat": {
+   "m_FileID": 0,
+   "m_PathID": 5055
+  },
+  "MainValueEquation": "10*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5330
+  },
+  "AwakenValue": 1.0,
+  "AwakenSuffix": "",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "3000",
+  "_pathID": 4894,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery5",
+  "MasteryIndex": 5,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 425
+  },
+  "IconColor": {
+   "r": 0.8301886916160583,
+   "g": 0.503334105014801,
+   "b": 0.4894980490207672,
+   "a": 1.0
+  },
+  "IsPinnacle": 1,
+  "PinnacleEffect": 1,
+  "MaxLevel": 10,
+  "LevelUpCostEquation": "[50,70,100,200,300,500,1000,2500]",
+  "MainStat": {
+   "m_FileID": 2,
+   "m_PathID": 3165
+  },
+  "MainValueEquation": "5*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5287
+  },
+  "AwakenValue": 100.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "[4000]",
+  "_pathID": 4895,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery6",
+  "MasteryIndex": 6,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 428
+  },
+  "IconColor": {
+   "r": 0.8509804606437683,
+   "g": 0.6392157077789307,
+   "b": 0.458823561668396,
+   "a": 1.0
+  },
+  "IsPinnacle": 0,
+  "PinnacleEffect": 0,
+  "MaxLevel": 100,
+  "LevelUpCostEquation": "[ 10, 30, 60, 100, 150, 220, 300, 400, 500, 600, 650, 750, 900, 1100, 1300, 1700, 2100, 2600, 3200, 4000 ]",
+  "MainStat": {
+   "m_FileID": 2,
+   "m_PathID": 3144
+  },
+  "MainValueEquation": "10*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 2,
+   "m_PathID": 3206
+  },
+  "AwakenValue": 50.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "5000",
+  "_pathID": 4896,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery7",
+  "MasteryIndex": 7,
+  "Icon": {
+   "m_FileID": 2,
+   "m_PathID": 1097
+  },
+  "IconColor": {
+   "r": 0.8509804606437683,
+   "g": 0.6392157077789307,
+   "b": 0.458823561668396,
+   "a": 1.0
+  },
+  "IsPinnacle": 0,
+  "PinnacleEffect": 0,
+  "MaxLevel": 100,
+  "LevelUpCostEquation": "[ 10, 30, 60, 100, 150, 220, 300, 400, 500, 600, 650, 750, 900, 1100, 1300, 1700, 2100, 2600, 3200, 4000 ]",
+  "MainStat": {
+   "m_FileID": 2,
+   "m_PathID": 3139
+  },
+  "MainValueEquation": "25*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5344
+  },
+  "AwakenValue": 25.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 5,
+  "AwakenCostEquation": "10000",
+  "_pathID": 4897,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mastery8",
+  "MasteryIndex": 8,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 431
+  },
+  "IconColor": {
+   "r": 0.8301886916160583,
+   "g": 0.503334105014801,
+   "b": 0.4894980490207672,
+   "a": 1.0
+  },
+  "IsPinnacle": 1,
+  "PinnacleEffect": 2,
+  "MaxLevel": 10,
+  "LevelUpCostEquation": "[1000,2000,3000]",
+  "MainStat": {
+   "m_FileID": 2,
+   "m_PathID": 3165
+  },
+  "MainValueEquation": "5*x",
+  "MainSuffix": "%",
+  "MainDecimals": 0,
+  "AwakenStat": {
+   "m_FileID": 0,
+   "m_PathID": 5287
+  },
+  "AwakenValue": 100.0,
+  "AwakenSuffix": "%",
+  "AwakenDecimals": 0,
+  "AwakenShowValue": 1,
+  "AwakenRequiredLevel": 3,
+  "AwakenCostEquation": "[9000]",
+  "_pathID": 4898,
+  "_file": "resources.assets"
+ }
+]

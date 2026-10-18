@@ -1,0 +1,252 @@
+[
+ {
+  "functionName": "Archer1",
+  "GuardianType": 1,
+  "OrderId": 0,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 435
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5308
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5306
+   }
+  ],
+  "Values": [
+   100.0,
+   1.0
+  ],
+  "_pathID": 4825,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Archer2",
+  "GuardianType": 1,
+  "OrderId": 1,
+  "Icon": {
+   "m_FileID": 2,
+   "m_PathID": 1099
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5310
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5132
+   }
+  ],
+  "Values": [
+   100.0,
+   40.0
+  ],
+  "_pathID": 4826,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Bat1",
+  "GuardianType": 4,
+  "OrderId": 0,
+  "Icon": {
+   "m_FileID": 2,
+   "m_PathID": 1023
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5362
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5361
+   }
+  ],
+  "Values": [
+   25.0,
+   10.0
+  ],
+  "_pathID": 4827,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Bat2",
+  "GuardianType": 4,
+  "OrderId": 1,
+  "Icon": {
+   "m_FileID": 2,
+   "m_PathID": 1053
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5384
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5383
+   }
+  ],
+  "Values": [
+   2.0,
+   1.0
+  ],
+  "_pathID": 4828,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Claw1",
+  "GuardianType": 0,
+  "OrderId": 0,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 415
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5304
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5305
+   }
+  ],
+  "Values": [
+   10.0,
+   5.0
+  ],
+  "_pathID": 4829,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Claw2",
+  "GuardianType": 0,
+  "OrderId": 1,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 423
+  },
+  "Stats": [
+   {
+    "m_FileID": 2,
+    "m_PathID": 3198
+   },
+   {
+    "m_FileID": 2,
+    "m_PathID": 3154
+   }
+  ],
+  "Values": [
+   40.0,
+   20.0
+  ],
+  "_pathID": 4830,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mage1",
+  "GuardianType": 3,
+  "OrderId": 0,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 418
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5400
+   },
+   {
+    "m_FileID": 2,
+    "m_PathID": 3214
+   }
+  ],
+  "Values": [
+   100.0,
+   15.0
+  ],
+  "_pathID": 4831,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Mage2",
+  "GuardianType": 3,
+  "OrderId": 1,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 413
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5397
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5398
+   }
+  ],
+  "Values": [
+   100.0,
+   15.0
+  ],
+  "_pathID": 4832,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Warrior1",
+  "GuardianType": 2,
+  "OrderId": 0,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 438
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5318
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5374
+   }
+  ],
+  "Values": [
+   100.0,
+   1.0
+  ],
+  "_pathID": 4833,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Warrior2",
+  "GuardianType": 2,
+  "OrderId": 1,
+  "Icon": {
+   "m_FileID": 0,
+   "m_PathID": 427
+  },
+  "Stats": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 5364
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 5407
+   }
+  ],
+  "Values": [
+   2.0,
+   10.0
+  ],
+  "_pathID": 4834,
+  "_file": "resources.assets"
+ }
+]
