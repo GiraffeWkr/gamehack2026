@@ -11,7 +11,7 @@
  *  - Levels are a fixed plan of enemy packs spaced along +X, ending in a run
  *    portal. The portal only becomes vulnerable after every pack is cleared,
  *    then it summons one more wave.
- *  - Death never loses progress: only uncleared packs are respawned.
+ *  - Death restarts the current level: monster/wave progress is wiped, resources stay.
  *
  * No PixiJS imports here on purpose: the simulation is pure data so it can be
  * unit-tested and so a different renderer can be dropped in later.
@@ -26,12 +26,16 @@ import {
   CURRENCY_CHANCE_STAT,
   MONSTER_CURRENCY,
   ONE_GAME_UNIT,
+  MUZZLE,
   MULTIPLICATIVE_STATS,
   PLAYER_BASE_STATS,
   SPAWN,
   STATS,
   WORLD,
+  wargearDamage,
+  wargearHealth,
   enemyWeightsForLevel,
+  PROGRESSION,
   type EnemyType,
   type MonsterCurrency,
 } from '../content/data.js';
@@ -121,6 +125,14 @@ interface Enemy {
   laneOffset: number;
   hitFlash: number;
   alive: boolean;
+  /** Fraction of incoming damage ignored (Bulwark). */
+  armor?: number;
+  /** Fraction of dealt damage healed back (Leech). */
+  leech?: number;
+  /** Summon timer / cadence / what it calls in (Summoner). */
+  summonTimer?: number;
+  summonEvery?: number;
+  summonType?: EnemyType;
 }
 
 /**
@@ -243,8 +255,8 @@ interface Coin {
   value: number;
   /**
    * Which purse this drop feeds. `PlayerManager.MonsterDiedGiveRewards` drops gold from
-   * EVERY kill plus the enemy family's own currency, so a Warrior yields WarriorCurrency
-   * and a Mage yields MageCurrency rather than everything collapsing into gold.
+ * EVERY kill plus the enemy family's own spendable currency (Claw / Bat); the other
+ * families' currencies were removed because nothing could spend them.
    */
   currency: DropCurrency;
   collected: boolean;
@@ -306,10 +318,6 @@ interface Puff {
   color: number;
   radius: number;
 }
-
-/** Where the bow sits relative to the character's feet, in world units. */
-const BOW_OFFSET_X = 46;
-const BOW_OFFSET_Y = 132;
 
 /**
  * The arrow-rain blast radius, in world units.
@@ -391,6 +399,8 @@ export class Game {
   portalX = 0;
   portalPackSize = 0;
   private clearedPacks = new Set<number>();
+  /** Packs already materialised in the world; packs spawn by distance, not all at once. */
+  private readonly spawnedPacks = new Set<number>();
   private portal: Enemy | null = null;
   private summonTimer = 0;
   private summonDuration = BASE.portalSummonTime;
@@ -432,6 +442,18 @@ export class Game {
 
   /** Arrow-falls the player successfully fired. Surfaced by `?stats=1`. */
   shotsFired = 0;
+  /** Auto-attack arrows fired; asserted by the verify suite. */
+  autoShots = 0;
+  /**
+   * Sound cues emitted this frame, drained by `main.ts` into the WebAudio mixer.
+   * The simulation never touches an AudioContext, so it stays headless-testable.
+   */
+  readonly sfx: string[] = [];
+
+  private cue(name: string): void {
+    // Bounded: a test that never drains the queue must not grow it without limit.
+    if (this.sfx.length < 64) this.sfx.push(name);
+  }
   /** Taps that did nothing because the magazine was empty. */
   shotsBlocked = 0;
 
@@ -477,16 +499,13 @@ export class Game {
   runState: 'running' | 'cleared' | 'dead' = 'running';
 
   /**
-   * The five monster-family currencies, mirroring `Currencies` in the original.
+   * The spendable monster-family currencies.
    *
-   * `PlayerManager.MonsterDiedGiveRewards` awards gold plus the dead enemy's own family
-   * currency, so these are the reason killing a Warrior beats killing a Claw.
+   * ClawCurrency pays for jobs and skill levels; BatCurrency pays for masteries. The other
+   * three family currencies had no sink, so they were removed instead of left to drop.
    */
   readonly currencies: Record<MonsterCurrency, number> = {
     ClawCurrency: 0,
-    ArcherCurrency: 0,
-    WarriorCurrency: 0,
-    MageCurrency: 0,
     BatCurrency: 0,
   };
 
@@ -497,9 +516,6 @@ export class Game {
    */
   readonly currencySeen: Record<MonsterCurrency, boolean> = {
     ClawCurrency: false,
-    ArcherCurrency: false,
-    WarriorCurrency: false,
-    MageCurrency: false,
     BatCurrency: false,
   };
 
@@ -562,6 +578,20 @@ export class Game {
       s.change(variable, StatsProp.SetMultiplicativeOnly, 1);
     }
 
+    /*
+     * Wargear: the port's stand-in for the original's equipment item level.
+     *
+     * The shipping enemy table was balanced against an equipment economy (item level,
+     * affixes, forging, shaping) that this slice does not ship. Without that layer the
+     * player's damage only came from the talent tree, which grows ~x1.1/level against an
+     * enemy curve that grows x1.66 - hence the old build stalling around level 3.
+     * `POWER` restores the missing multiplier as battle-level gear, so `Damage` and
+     * `Health` grow every level and the tree stacks on top as a build layer.
+     */
+    s.change(STATS.damage, StatsProp.SetFlatOnly, BASE.damage * wargearDamage(this.level));
+    s.change(STATS.health, StatsProp.SetFlatOnly, BASE.health * wargearHealth(this.level));
+    s.change(STATS.healthRegen, StatsProp.SetFlatOnly, PLAYER_BASE_STATS.HealthRegen * wargearHealth(this.level));
+
     // The talent tree is the progression system, so it is replayed here: the bag is
     // rebuilt from its bases and every purchased node is applied on top, which is what
     // keeps a refund-free tree and the live stats from ever drifting apart.
@@ -616,39 +646,35 @@ export class Game {
   // -------------------------------------------------------------------------
 
   /**
-   * `PrepareRun` + `StartRun`. `resume` keeps cleared packs (the original's
-   * post-death behaviour: only uncleared packs respawn).
+   * `PrepareRun` + `StartRun`. `resume` keeps cleared packs; death now passes `false`,
+   * so a wipe restarts the whole stage.
    */
   startLevel(level: number, resume: boolean): void {
-    this.level = level;
+    // Old saves could sit past the old 50-level cap; the campaign is 40 levels now, so a
+    // restored level is clamped rather than fed to tables that stop at 40.
+    this.level = Math.max(1, Math.min(PROGRESSION.maxBattleLevel, Math.floor(level)));
     // `useEarlyPacks` is a tutorial layout choice (packs at the nearer
     // `NoSpawnArcherPackPosition`), decoupled from whether the archer has been
     // recruited: tests drive the sim with `archerSpawned: true` and still want
     // the nearer layout, while a fresh browser save has no archer yet and also
     // uses it.
     const useEarlyPacks = this.level <= 1;
-    const plan = planRun(level, this.defeatedGuardians, useEarlyPacks);
+    const plan = planRun(this.level, this.defeatedGuardians, useEarlyPacks);
     this.packs = plan.packs;
     this.portalX = plan.portalX;
     this.portalPackSize = plan.portalPackSize;
 
-    if (!resume) {
-      this.clearedPacks.clear();
-      this.enemies.length = 0;
-      this.arrows.length = 0;
-      this.projectiles.length = 0;
-      this.shots.length = 0;
-      this.portal = null;
-            this.summonTimer = 0;
-    } else {
-      // Drop surviving enemies; packs regenerate fresh from the plan.
-      this.enemies.length = 0;
-      this.arrows.length = 0;
-      this.projectiles.length = 0;
-      this.shots.length = 0;
-      this.portal = null;
-            this.summonTimer = 0;
-    }
+    if (!resume) this.clearedPacks.clear();
+    // Both branches rebuild the enemy list; respawn is "cleared packs stay cleared, every
+    // other pack is fresh", so the materialised set resets too and the survivors of the
+    // previous attempt are re-spawned as the player advances again.
+    this.enemies.length = 0;
+    this.arrows.length = 0;
+    this.projectiles.length = 0;
+    this.shots.length = 0;
+    this.portal = null;
+    this.summonTimer = 0;
+    this.spawnedPacks.clear();
 
     this.px = WORLD.playerStartX;
     this.py = WORLD.playerStartY;
@@ -660,22 +686,48 @@ export class Game {
     this.runState = 'running';
     this.deathTimer = 0;
 
-    this.spawnAllPacks();
+    this.spawnPacksNear();
+    this.spawnPortal();
   }
 
-  private spawnAllPacks(): void {
+  /**
+   * Materialises the packs that have come within `SPAWN.spawnAheadDistance` of the archer.
+   *
+   * Distance-triggered spawning is the reference design's explicit rule
+   * (`SpawnPackEvery_Distance`): the player's advance sets the pace, packs never spawn
+   * behind him, and a player who is stuck is fighting the pack in front of him rather
+   * than the whole level at once.
+   */
+  private spawnPacksNear(): void {
     // Test-only switch: leave the level empty so the player can be observed without
     // incoming damage moving the same numbers.
     if (this.spawnNothing) return;
+    const ahead = this.px + SPAWN.spawnAheadDistance;
     for (const pack of this.packs) {
-      if (this.clearedPacks.has(pack.packId)) continue;
+      if (this.clearedPacks.has(pack.packId) || this.spawnedPacks.has(pack.packId)) continue;
+      if (pack.centerX > ahead) continue;
+      this.spawnedPacks.add(pack.packId);
       if (pack.isGuardianPack) {
         this.spawnGuardian(pack);
       } else {
         this.spawnPack(pack);
       }
     }
-    this.spawnPortal();
+  }
+
+  /**
+   * Test helper: materialise every pack immediately, bypassing distance spawning.
+   *
+   * The live game spawns by distance, so a test that wants the whole level's roster (or
+   * wants to clear every pack and open the portal) has to ask for it explicitly.
+   */
+  spawnAllPacksForTest(): void {
+    for (const pack of this.packs) {
+      if (this.spawnedPacks.has(pack.packId) || this.clearedPacks.has(pack.packId)) continue;
+      this.spawnedPacks.add(pack.packId);
+      if (pack.isGuardianPack) this.spawnGuardian(pack);
+      else this.spawnPack(pack);
+    }
   }
 
   private spawnPack(pack: PackPlan): void {
@@ -728,6 +780,11 @@ export class Game {
         laneOffset: this.rng.range(-40, 40),
         hitFlash: 0,
         alive: true,
+        armor: def.armor,
+        leech: def.leech,
+        summonEvery: def.summon?.every,
+        summonType: def.summon?.type,
+        summonTimer: def.summon ? def.summon.every : undefined,
       });
     }
   }
@@ -790,10 +847,49 @@ export class Game {
       laneOffset: 0,
       hitFlash: 0,
       alive: true,
+      armor: def.armor,
+      leech: def.leech,
     });
   }
 
+  /**
+   * A minion called in by a Summoner mid-fight.
+   *
+   * It joins its summoner's pack so the pack is not "cleared" while its spawns are still
+   * alive; the cap keeps a long fight from flooding the entity list.
+   */
+  private spawnSummon(type: EnemyType, x: number, y: number, packId: number): void {
+    const alive = this.enemies.reduce((n, e) => n + (e.alive ? 1 : 0), 0);
+    if (alive > 400) return;
+    const def = ENEMIES[type];
+    const hp = enemyHealth(this.level) * def.healthMultiplier * this.stats.get(STATS.enemyHealthMultiplier);
+    this.enemies.push({
+      type,
+      x: x + this.rng.range(-60, 60),
+      y: Math.max(WORLD.minY, Math.min(WORLD.maxY, y + this.rng.range(-20, 20))),
+      hp,
+      maxHp: hp,
+      speed: def.speed,
+      attackRange: def.attackRange,
+      attackCooldown: def.attackCooldown,
+      attackTimer: this.rng.range(0, def.attackCooldown),
+      attackKind: def.attackKind,
+      radius: def.radius,
+      color: def.color,
+      damage: enemyDamage(this.level) * def.damageMultiplier * this.stats.get(STATS.enemyDamageMultiplier),
+      gold: enemyGold(this.level),
+      packId,
+      isPortal: false,
+      isGuardian: false,
+      laneOffset: this.rng.range(-30, 30),
+      hitFlash: 0,
+      alive: true,
+    });
+    this.emitPuff(x, y, 0x9a6bff, 28, 0.3);
+  }
+
   private spawnPortal(): void {
+    this.cue('portal');
     const def = ENEMIES.RunPortal;
     const hp = enemyHealth(this.level) * def.healthMultiplier;
     const portal: Enemy = {
@@ -834,8 +930,10 @@ export class Game {
     if (this.runState === 'dead') {
       this.deathTimer += dt;
       if (this.deathTimer > 1.2) {
-        // Respawn at the level start, keeping cleared packs.
-        this.startLevel(this.level, true);
+        // Death restarts the LEVEL, not just the uncleared packs: the monster/wave progress
+        // is wiped and every pack respawns. Resources (gold, gems, talents, jobs, masteries)
+        // are untouched - `startLevel` only rebuilds the run, never the meta progression.
+        this.startLevel(this.level, false);
       }
       this.stepPuffs(dt);
       return;
@@ -865,6 +963,8 @@ export class Game {
       this.stepMagazine(dt);
       this.stepAutoFire(dt);
     }
+    // Distance-triggered: the next pack materialises as the archer approaches it.
+    this.spawnPacksNear();
     this.stepPets(dt);
     this.stepEnemies(dt);
     this.stepArrows(dt);
@@ -876,6 +976,9 @@ export class Game {
     // --- pack clearing ---
     for (const pack of this.packs) {
       if (this.clearedPacks.has(pack.packId)) continue;
+      // A pack that has not spawned yet has no bodies to check; it must never be marked
+      // cleared, or the level would end before its enemies ever appeared.
+      if (!this.spawnedPacks.has(pack.packId)) continue;
       const anyAlive = this.enemies.some((e) => e.alive && e.packId === pack.packId);
       if (!anyAlive) {
         this.clearedPacks.add(pack.packId);
@@ -889,6 +992,7 @@ export class Game {
 
     if (this.hp <= 0 && this.runState === 'running') {
       this.runState = 'dead';
+      this.cue('death');
       this.deathTimer = 0;
       this.skills.endAllBuffs();
     }
@@ -911,7 +1015,10 @@ export class Game {
       this.moving = false;
     } else {
       this.moving = true;
-      this.px += this.moveSpeed * dt * this.facing;
+      // Once the portal is down the character walks out of the level: a short sprint so
+      // the exit reads as leaving the stage instead of a cut to the next one.
+      const speed = this.moveSpeed * (this.runState === 'cleared' ? 4.5 : 1);
+      this.px += speed * dt * this.facing;
     }
 
     // Never walk through the portal, whatever else happens.
@@ -1247,10 +1354,13 @@ export class Game {
 
   /** Fires one travelling arrow from the bow toward an enemy. */
   private shootArrowAt(target: Enemy): void {
-    const bx = this.px + BOW_OFFSET_X;
-    const by = this.py + BOW_OFFSET_Y;
+    const bx = this.px + MUZZLE.x;
+    const by = this.py + MUZZLE.y;
+    // Aim at the body, not the feet: the hit test uses `e.y + radius/2`, so aiming at
+    // `e.y` made every arrow dive into the ground short of the silhouette.
+    const aimY = target.y + target.radius * 0.5;
     const dx = target.x - bx;
-    const dy = target.y - by;
+    const dy = aimY - by;
     const len = Math.hypot(dx, dy) || 1;
     // 950 units/s: fast enough to feel like an arrow, slow enough to be seen.
     // At 1500 the shot crossed the whole frame in about 0.2s and was easy to miss.
@@ -1266,6 +1376,8 @@ export class Game {
       crit,
       life: 0,
     });
+    this.autoShots++;
+    this.cue('shoot');
     this.bowFlash = 0.12;
   }
 
@@ -1286,6 +1398,7 @@ export class Game {
     }
     this.magazine--;
     this.shotsFired++;
+    this.cue('tap');
     // Mouse arrows hit harder than the archer's own, matching ArrowFall's
     // dominance in the original's damage logs.
     const dmg = this.damage * this.arrowDamageMultiplier;
@@ -1407,6 +1520,7 @@ export class Game {
         // Buffs need no projectile; `skills.cast` already started the buff timer.
         break;
     }
+    this.cue('skill');
     return true;
   }
 
@@ -1467,6 +1581,15 @@ export class Game {
       if (e.hitFlash > 0) e.hitFlash = Math.max(0, e.hitFlash - dt * 4);
       if (e.isPortal) continue;
 
+      // Summoners call a minion on a fixed cadence, independent of range.
+      if (e.summonEvery && e.summonType) {
+        e.summonTimer = (e.summonTimer ?? e.summonEvery) - dt;
+        if (e.summonTimer <= 0) {
+          e.summonTimer = e.summonEvery;
+          this.spawnSummon(e.summonType, e.x, e.y, e.packId);
+        }
+      }
+
       const dx = this.px - e.x;
       const dist = Math.abs(dx);
       const targetX = this.px - Math.sign(dx || 1) * e.attackRange * 0.9;
@@ -1489,6 +1612,10 @@ export class Game {
               this.damagePet(decoy, e.damage);
             } else {
               this.damagePlayer(e.damage);
+            }
+            // Leech: heals a share of the damage it just dealt.
+            if (e.leech) {
+              e.hp = Math.min(e.maxHp, e.hp + e.damage * e.leech);
             }
             this.emitPuff(e.x, e.y, 0xff6a4a, 26, 0.22);
           } else {
@@ -1745,6 +1872,7 @@ export class Game {
       }
 
       if (take) {
+        this.cue(c.currency === 'Gold' ? 'coin' : 'gem');
         if (c.currency === 'Gold') {
           // `GoldGained` is a real `PlayerStatsData` stat (base 1) that the tree and the
           // Greed mastery both write; it scales the value of every coin picked up.
@@ -1863,12 +1991,16 @@ export class Game {
     // The run portal is invulnerable until every pack is down, which is what
     // makes the level a sequence rather than a race to the exit.
     if (e.isPortal && !this.allPacksCleared()) return;
-    e.hp -= amount;
+    // Bulwark-style armour: a flat share of every hit, applied before the HP loss.
+    const dealt = e.armor ? amount * (1 - Math.max(0, Math.min(0.9, e.armor))) : amount;
+    e.hp -= dealt;
+    this.cue('hit');
     e.hitFlash = 1;
-    this.floaters.push({ x: e.x, y: e.y, value: amount, crit });
+    this.floaters.push({ x: e.x, y: e.y, value: dealt, crit });
     if (e.hp <= 0) {
       e.alive = false;
       this.kills++;
+      this.cue('kill');
       this.emitDeathPuff(e);
       if (e.isGuardian) this.defeatedGuardians.add(e.type);
       // `GoldenDiedBurst_Co`: a golden enemy re-runs the whole reward drop several times.
@@ -1877,17 +2009,17 @@ export class Game {
       // `TamingManager`: a tameable monster may get up again on your side.
       this.tryTame(e);
 
-      // Experience, scaled by how tough the archetype was.
-      const gained = this.progression.gainExp(expForKill(this.level, e.maxHp));
+      // Experience, scaled by how tough the archetype was. `expForKill` expects the
+      // archetype's HEALTH MULTIPLIER, not its current HP: passing `e.maxHp` fed millions
+      // of XP per kill at high levels and rocketed the character level past the enemies.
+      const gained = this.progression.gainExp(expForKill(this.level, ENEMIES[e.type].healthMultiplier));
       this.levelsGained += gained;
       if (gained > 0) {
         // A level-up must take effect immediately, not on the next purchase.
         this.refreshStats();
       }
 
-      // Gems are the scarce currency: guardians only, so they stay meaningful.
-      if (e.isGuardian) this.progression.addGems(3);
-      if (e.isPortal) this.progression.addGems(1);
+
       // `MonsterDiedGiveRewards`: gold drops from EVERY kill. `GoldCoinsToDrop` is 1 and
       // `GoldChanceToDrop` is 0 at base, so that is exactly one coin - each coin carries
       // the whole `EnemyGold` amount, it is not a share of it. Both are tree-grantable.
@@ -1913,6 +2045,7 @@ export class Game {
           this.portalCurrencySeen = true;
         }
         this.runState = 'cleared';
+        this.cue('clear');
       }
 
       // Mastery-of-Vitality and Mastery-of-Momentum hooks. Both stats are registered by
@@ -2144,12 +2277,13 @@ export class Game {
       currencySeen: { ...this.currencySeen },
       portalCurrency: this.portalCurrency,
       portalCurrencySeen: this.portalCurrencySeen,
-      gems: this.progression.gems,
+
       playerLevel: this.progression.level,
       playerExp: this.progression.exp,
       playerExpNeeded: this.progression.xpNeeded(),
       playerExpFraction: this.progression.fraction(),
       kills: this.kills,
+      autoShots: this.autoShots,
       packsCleared: cleared,
       packsTotal: total,
       magazine: this.magazine,
@@ -2235,12 +2369,7 @@ export class Game {
   /** Marks the run complete and advances. Returns the level just finished. */
   advanceLevel(): number {
     const finished = this.level;
-    // First-clear bonus: guardians do not appear until stage 25, so without this
-    // the premium currency would sit at zero for the whole early game.
-    if (finished > this.highestCleared) {
-      this.highestCleared = finished;
-      this.progression.addGems(finished % 5 === 0 ? 3 : 1);
-    }
+    if (finished > this.highestCleared) this.highestCleared = finished;
     this.startLevel(this.level + 1, false);
     return finished;
   }
@@ -2258,3 +2387,4 @@ export class Game {
 /** Exposed for the renderer's camera maths. */
 export const cameraLimits = CAMERA;
 export const worldBounds = WORLD;
+

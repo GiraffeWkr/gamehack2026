@@ -1,0 +1,170 @@
+[
+  {
+    "file": "Archer_1.png",
+    "w": 150,
+    "h": 176,
+    "cols": 25,
+    "rows": 30,
+    "bytes": 821
+  },
+  {
+    "file": "Archer_2.png",
+    "w": 146,
+    "h": 182,
+    "cols": 25,
+    "rows": 30,
+    "bytes": 845
+  },
+  {
+    "file": "Archer_3.png",
+    "w": 150,
+    "h": 176,
+    "cols": 25,
+    "rows": 30,
+    "bytes": 819
+  },
+  {
+    "file": "Archer_4.png",
+    "w": 150,
+    "h": 182,
+    "cols": 25,
+    "rows": 30,
+    "bytes": 832
+  },
+  {
+    "file": "Archer_5.png",
+    "w": 150,
+    "h": 182,
+    "cols": 25,
+    "rows": 30,
+    "bytes": 829
+  },
+  {
+    "file": "Guardian_Claw_0.png",
+    "w": 250,
+    "h": 214,
+    "cols": 21,
+    "rows": 18,
+    "bytes": 1300
+  },
+  {
+    "file": "Guardian_Warrior_0.png",
+    "w": 256,
+    "h": 176,
+    "cols": 32,
+    "rows": 22,
+    "bytes": 1170
+  },
+  {
+    "file": "Guardian_Archer_0.png",
+    "w": 256,
+    "h": 211,
+    "cols": 21,
+    "rows": 18,
+    "bytes": 1066
+  },
+  {
+    "file": "Guardian_Mage_0.png",
+    "w": 225,
+    "h": 256,
+    "cols": 19,
+    "rows": 21,
+    "bytes": 1516
+  },
+  {
+    "file": "bat_swarm_0.png",
+    "w": 118,
+    "h": 123,
+    "cols": 13,
+    "rows": 14,
+    "bytes": 474
+  },
+  {
+    "file": "Guardian_Bat_0.png",
+    "w": 256,
+    "h": 201,
+    "cols": 32,
+    "rows": 25,
+    "bytes": 1151
+  },
+  {
+    "file": "king_boss.png",
+    "w": 277,
+    "h": 439,
+    "cols": 28,
+    "rows": 44,
+    "bytes": 2794
+  },
+  {
+    "file": "Portal_tex.png",
+    "w": 512,
+    "h": 512,
+    "cols": 43,
+    "rows": 43,
+    "bytes": 5621
+  },
+  {
+    "file": "Claw_Skitter.png",
+    "w": 250,
+    "h": 214,
+    "cols": 21,
+    "rows": 18,
+    "bytes": 1298
+  },
+  {
+    "file": "Warrior_Bulwark.png",
+    "w": 256,
+    "h": 176,
+    "cols": 32,
+    "rows": 22,
+    "bytes": 1165
+  },
+  {
+    "file": "Archer_Bomber.png",
+    "w": 256,
+    "h": 211,
+    "cols": 21,
+    "rows": 18,
+    "bytes": 1061
+  },
+  {
+    "file": "Mage_Summoner.png",
+    "w": 225,
+    "h": 256,
+    "cols": 19,
+    "rows": 21,
+    "bytes": 1521
+  },
+  {
+    "file": "Bat_Leech.png",
+    "w": 118,
+    "h": 123,
+    "cols": 13,
+    "rows": 14,
+    "bytes": 472
+  },
+  {
+    "file": "Wolf.png",
+    "w": 111,
+    "h": 124,
+    "cols": 18,
+    "rows": 20,
+    "bytes": 470
+  },
+  {
+    "file": "Bear.png",
+    "w": 104,
+    "h": 108,
+    "cols": 17,
+    "rows": 18,
+    "bytes": 470
+  },
+  {
+    "file": "Falcon.png",
+    "w": 127,
+    "h": 110,
+    "cols": 21,
+    "rows": 18,
+    "bytes": 477
+  }
+]

@@ -55,6 +55,13 @@ const rectRes = await send(
       if (!el) return 'null';
       el.classList.remove('hidden');
       el.dispatchEvent(new Event('x'));
+      /*
+       * The HUD paints a red damage flash over the whole viewport when the archer is
+       * hit. Capturing one frame while it is fading tints the whole panel red, which
+       * made an earlier UI review look like the palette was wrong. Hide it for the shot.
+       */
+      const flash = document.querySelector('.hud-flash');
+      if (flash) flash.style.setProperty('opacity', '0', 'important');
       const r = el.getBoundingClientRect();
       const icons = [...el.querySelectorAll('img')].map(i => i.naturalWidth + 'x' + i.naturalHeight);
       return JSON.stringify({ x: r.x, y: r.y, w: r.width, h: r.height, iconCount: icons.length,

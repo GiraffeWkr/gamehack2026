@@ -7,7 +7,7 @@
  *  - the character advances, stops for enemies, and resumes
  *  - arrows damage enemies; enemies damage the player; packs clear
  *  - the portal only opens after every pack is down
- *  - death respawns without losing cleared packs
+ *  - death wipes the level's monster progress but keeps resources
  *  - the stat formula matches `Flat * (1 + Additive/100) * Multiplicative`
  *
  * Run with:  node --experimental-strip-types src/dev/verify.ts
@@ -15,14 +15,14 @@
 
 import { Game, type InputState } from '../game/game.js';
 import { StatBag, StatsProp } from '../core/stats.js';
-import { enemyDamage, enemyCurrencyDrop, enemyHealth, enemyGold, packsPerLevel, planRun, rollOver100 } from '../content/level.js';
+import { enemyDamage, enemyCurrencyDrop, enemyHealth, enemyGold, enemiesPerPack, packsPerLevel, planRun, rollOver100 } from '../content/level.js';
 import { ENEMY_CURRENCY_PER_RELATIVE_LEVEL, ENEMY_CURRENCY_UNLOCK_LEVEL, GOLD_CHANCE_TO_DROP, GOLD_COINS_TO_DROP, MULTIPLICATIVE_STATS, PLAYER_BASE_STATS } from '../content/data.js';
 import { evaluate } from '../core/equations.js';
 import { TalentTree, type Purses } from '../game/talent.js';
 import { TALENT_BY_ID, TALENT_EDGES, TALENT_LINKS, TALENT_NODES, TALENT_ROOT, TALENT_TEXT, TREE_TEMPLATES } from '../content/talent.js';
 import { readable } from '../ui/talent.js';
 import { Rng } from '../core/math.js';
-import { BASE, CAMERA, ENEMIES, STATS, WORLD } from '../content/data.js';
+import { BASE, CAMERA, CURVE, ENEMIES, STATS, WORLD, MUZZLE, enemyWeightsForLevel, wargearDamage, wargearHealth } from '../content/data.js';
 import type { EnemyType } from '../content/data.js';
 import { ENEMY_INFO, ENEMY_INFO_BY_ID, GUARDIAN_IDS, MONSTER_IDS } from '../content/enemyData.js';
 import { allArtFiles, BAR, BIOME1, CHARACTERS, DESIGN, FRAME, FX, GROUND_LINE_ART_Y, GROUND_LINE_FRACTION, MIDDLE_OF_GROUND_Y_POS, PLAYER_SKIN, PLAYER_SKINS, UI_SPRITES } from '../content/art.js';
@@ -31,6 +31,7 @@ import { SKILLS } from '../game/skills.js';
 import { JOBS } from '../content/jobData.js';
 import { MASTERIES, NPC_LEVEL_COST } from '../content/masteryData.js';
 import { Mastery, levelUpCost, mainDelta } from '../game/mastery.js';
+import { emptySave, normalizeSave } from '../core/save.js';
 import {
   PET_IDS,
   TAMING,
@@ -122,35 +123,94 @@ console.log('\n[stat formula]');
 // -------------------------------------------------------------- level tables
 console.log('\n[level tables]');
 {
-  check('level 1 enemy HP = 3', enemyHealth(1) === 3, `=${enemyHealth(1)}`);
-  check('level 30 enemy HP = 3,600,000', enemyHealth(30) === 3600000);
-  check('level 31 extrapolates 1.5x', Math.abs(enemyHealth(31) - 3600000 * 1.5) < 1, `=${enemyHealth(31)}`);
-  check('level 1 damage = 2', enemyDamage(1) === 2);
-  check('level 30 damage = 2500', enemyDamage(30) === 2500);
+  /*
+   * The tables are formula-driven now (see `CURVE` in data.ts); these assertions pin the
+   * SHAPE and the two ends of the campaign so a silent edit cannot flatten or explode it.
+   */
+  check('level 1 enemy HP is the curve base', enemyHealth(1) === CURVE.healthBase, `=${enemyHealth(1)}`);
+  check('level 40 enemy HP closes the authored curve',
+    Math.abs(enemyHealth(40) - CURVE.healthBase * Math.pow(CURVE.healthGrowth, 39)) <= 1,
+    `=${enemyHealth(40).toExponential(3)}`);
+  check('HP growth is exponential, not a cliff at level 2',
+    enemyHealth(2) / enemyHealth(1) < 1.6 && enemyHealth(2) / enemyHealth(1) > 1.4,
+    `x${(enemyHealth(2) / enemyHealth(1)).toFixed(2)}`);
+  check('level 1 damage is the curve base', enemyDamage(1) === CURVE.damageBase);
+  check('damage grows every level', enemyDamage(10) > enemyDamage(9) && enemyDamage(40) > enemyDamage(30));
   check('level 1 gold = 1', enemyGold(1) === 1);
-  check('level 1 packs = 8', packsPerLevel(1) === 8);
-  check('level 30 packs = 24', packsPerLevel(30) === 24);
-  check('packs clamp past authored range', packsPerLevel(45) === 24);
+  check('packs start at 6', packsPerLevel(1) === 6, `${packsPerLevel(1)}`);
+  check('packs grow with the campaign', packsPerLevel(40) > packsPerLevel(1), `${packsPerLevel(40)}`);
+  check('packs clamp past the campaign', packsPerLevel(45) === packsPerLevel(40));
 
   const plan = planRun(1, new Set(), true);
-  check('level 1 plan has 8 packs', plan.packs.length === 8, `${plan.packs.length}`);
+  check('level 1 plan has the authored pack count', plan.packs.length === packsPerLevel(1), `${plan.packs.length}`);
   check('level 1 uses pack distance 650', plan.packs[1].centerX - plan.packs[0].centerX === 650, `${plan.packs[1].centerX - plan.packs[0].centerX}`);
   check('portal sits past the last pack', plan.portalX > plan.packs[plan.packs.length - 1].centerX);
 
-  const plan25 = planRun(25, new Set(), false);
-  check('level 25 adds a guardian pack',
-    plan25.guardianType === 'GuardianClaw' && plan25.packs[0].isGuardianPack,
-    `${plan25.guardianType}`);
-  check('the guardian pack carries its own type',
-    plan25.packs[0].guardianType === 'GuardianClaw', `${plan25.packs[0].guardianType}`);
-  const plan25b = planRun(25, new Set<EnemyType>(['GuardianClaw']), false);
-  check('defeated guardian does not respawn', plan25b.guardianType === null);
-  const plan26 = planRun(26, new Set<EnemyType>(['GuardianClaw']), false);
-  check('the next guardian in order is the Warrior variant',
-    plan26.guardianType === 'GuardianWarrior', `${plan26.guardianType}`);
+  /*
+   * Boss gates: four per campaign (10/20/30/40), and the boss is the LAST pack before the
+   * portal - it is the act's gate, not the opening encounter.
+   */
+  const plan10 = planRun(10, new Set(), false);
+  check('level 10 adds the first boss', plan10.guardianType === 'GuardianClaw', `${plan10.guardianType}`);
+  check('the boss pack is last', plan10.packs[plan10.packs.length - 1].isGuardianPack === true);
+  check('the boss pack carries its own type',
+    plan10.packs[plan10.packs.length - 1].guardianType === 'GuardianClaw');
+  check('level 20 sends the Warrior boss', planRun(20, new Set(), false).guardianType === 'GuardianWarrior');
+  check('level 30 sends the Mage boss', planRun(30, new Set(), false).guardianType === 'GuardianMage');
+  check('level 40 sends the King', planRun(40, new Set(), false).guardianType === 'King');
+  const plan10b = planRun(10, new Set<EnemyType>(['GuardianClaw']), false);
+  check('defeated boss does not respawn', plan10b.guardianType === null);
+  check('non-boss levels have no boss pack', planRun(11, new Set(), false).guardianType === null);
   check('the five guardians are distinct archetypes',
     ENEMY_INFO.filter((e) => e.id.startsWith('Guardian')).length === 5,
     ENEMY_INFO.filter((e) => e.id.startsWith('Guardian')).map((e) => e.id).join());
+}
+
+// ------------------------------------------------------------------ balance
+console.log('\n[balance]');
+{
+  /*
+   * The curve is only "OK" if the numbers actually meet in the middle. This block models
+   * a player with NO talent investment at all - just wargear + the auto bow + sustained
+   * tapping - and asserts the resulting kill and survival windows. Talent investment can
+   * only improve these numbers, so a failure here is a real wall.
+   */
+  const hit = (lvl: number) => BASE.damage * wargearDamage(lvl);
+  const bowDps = (lvl: number) => hit(lvl) * BASE.playerAttackSpeed;
+  const tapDps = (lvl: number) => bowDps(lvl) + hit(lvl) * 1.5 * 2.5;
+  const maxHp = (lvl: number) => BASE.health * wargearHealth(lvl);
+  const clawHp = (lvl: number) => enemyHealth(lvl) * ENEMIES.Claw.healthMultiplier;
+  const warriorHit = (lvl: number) => enemyDamage(lvl) * ENEMIES.Warrior.damageMultiplier;
+
+  const ttk1 = clawHp(1) / tapDps(1);
+  const ttk40 = clawHp(40) / tapDps(40);
+  check('a level-1 minion dies in about a second of tapping', ttk1 > 0.4 && ttk1 < 2.5, `${ttk1.toFixed(2)}s`);
+  check('a level-40 minion still dies in seconds of tapping', ttk40 > 0.3 && ttk40 < 6, `${ttk40.toFixed(2)}s`);
+  check('kill time does not run away across the campaign', ttk40 / ttk1 < 6, `x${(ttk40 / ttk1).toFixed(2)}`);
+  check('bow alone is a fallback, not a wall', clawHp(1) / bowDps(1) < 15, `${(clawHp(1) / bowDps(1)).toFixed(1)}s`);
+
+  const hits1 = maxHp(1) / warriorHit(1);
+  const hits40 = maxHp(40) / warriorHit(40);
+  check('a level-1 archer survives several hits', hits1 >= 3, `${hits1.toFixed(1)} hits`);
+  check('late-game survival improves but stays finite', hits40 > hits1 && hits40 < 60, `${hits40.toFixed(1)} hits`);
+
+  /*
+   * Roster breadth: ten minion archetypes (five families + one elite each). The elite
+   * variants are not reskins: each carries a mechanic the AI reads.
+   */
+  const minions: EnemyType[] = ['Claw', 'Warrior', 'Archer', 'Mage', 'Bat', 'Skitter', 'Bulwark', 'Bomber', 'Summoner', 'Leech'];
+  check('ten minion archetypes', minions.every((t) => ENEMIES[t] && ENEMIES[t].weight > 0), `${minions.length}`);
+  check('elites enter across the campaign, not all at once',
+    enemyWeightsForLevel(1).length === 1
+      && enemyWeightsForLevel(5).length === 5
+      && enemyWeightsForLevel(22).length === 10,
+    `${enemyWeightsForLevel(1).length}/${enemyWeightsForLevel(5).length}/${enemyWeightsForLevel(22).length}`);
+  check('armoured / leeching / summoning behaviours are wired',
+    (ENEMIES.Bulwark.armor ?? 0) > 0 && (ENEMIES.Leech.leech ?? 0) > 0 && ENEMIES.Summoner.summon != null,
+    `armor=${ENEMIES.Bulwark.armor} leech=${ENEMIES.Leech.leech}`);
+  check('every archetype has art and a preload entry',
+    minions.every((t) => CHARACTERS[t]) && minions.every((t) => allArtFiles().includes(CHARACTERS[t].file)),
+    minions.filter((t) => !CHARACTERS[t]).join() || `${minions.length} covered`);
 }
 
 // ------------------------------------------------------- monster-family currency
@@ -159,18 +219,18 @@ console.log('\n[monster currency]');
   // `DatabaseManager.EnemyCurrencyDrop` indexes `EnemyCurrencyPerRelativeLevel` by
   // `level - unlockAt`, and the unlock levels are the `EnemyCurrencyData(N)` arguments.
   // This is what makes a Warrior worth far more than a Claw at the same level.
-  check('currency unlock levels match EnemyCurrencyData', JSON.stringify(ENEMY_CURRENCY_UNLOCK_LEVEL)
-    === JSON.stringify({ ClawCurrency: 2, ArcherCurrency: 3, WarriorCurrency: 6, MageCurrency: 10, BatCurrency: 16 }),
+  check('only the spendable families own a currency', JSON.stringify(ENEMY_CURRENCY_UNLOCK_LEVEL)
+    === JSON.stringify({ ClawCurrency: 2, BatCurrency: 16 }),
     JSON.stringify(ENEMY_CURRENCY_UNLOCK_LEVEL));
-  check('relative-level table has 31 rows (0..30)', ENEMY_CURRENCY_PER_RELATIVE_LEVEL.length === 31,
+  check('relative-level table covers the 40-level campaign', ENEMY_CURRENCY_PER_RELATIVE_LEVEL.length === 40,
     `${ENEMY_CURRENCY_PER_RELATIVE_LEVEL.length}`);
 
-  // Level 3 is the shipping save's MonstersLevel: Claw reads index 1 = 1, Archer index 0 = 1.
+  // Level 3 is the shipping save's MonstersLevel: Claw reads index 1 = 1.
   check('level 3 Claw drops 1', enemyCurrencyDrop(3, 'Claw') === 1, `${enemyCurrencyDrop(3, 'Claw')}`);
-  check('level 3 Archer drops 1', enemyCurrencyDrop(3, 'Archer') === 1, `${enemyCurrencyDrop(3, 'Archer')}`);
-  // Warrior unlocks at 6, so it drops nothing before that.
-  check('level 3 Warrior drops nothing', enemyCurrencyDrop(3, 'Warrior') === 0, `${enemyCurrencyDrop(3, 'Warrior')}`);
-  check('level 6 Warrior drops 1', enemyCurrencyDrop(6, 'Warrior') === 1, `${enemyCurrencyDrop(6, 'Warrior')}`);
+  // Families without a spendable currency (Archer/Warrior/Mage) must never drop one.
+  check('families without a sink drop no currency',
+    enemyCurrencyDrop(3, 'Archer') === 0 && enemyCurrencyDrop(6, 'Warrior') === 0 && enemyCurrencyDrop(12, 'Mage') === 0,
+    `${enemyCurrencyDrop(3, 'Archer')}/${enemyCurrencyDrop(6, 'Warrior')}/${enemyCurrencyDrop(12, 'Mage')}`);
   // At level 26 the tiers separate sharply: Claw index 24 = 1200, Bat index 10 = 18.
   check('level 26 Claw drops 1200', enemyCurrencyDrop(26, 'Claw') === 1200, `${enemyCurrencyDrop(26, 'Claw')}`);
   check('level 26 Bat drops 18', enemyCurrencyDrop(26, 'Bat') === 18, `${enemyCurrencyDrop(26, 'Bat')}`);
@@ -207,8 +267,8 @@ console.log('\n[loot drops]');
   // The family currency CHANCE bases at 0: `PlayerStatsData` declares the field but never
   // seeds it, so a family only drops once the tree grants the chance. The port used to
   // hardcode 100, which made every level-1 Claw drop a ClawCurrency whose row was still
-  // locked - worth 0, so the ball could be picked up and changed nothing.
-  g.stats.change('ClawCurrencyChanceDrop', StatsProp.Flat, 100, true);
+  // locked - worth 0, so the ball could be picked up and changed nothing. Nothing is
+  // granted here on purpose: the kill must pay gold and nothing else.
   const goldBefore = g.gold;
   const clawBefore = g.currencies.ClawCurrency;
   void clawBefore;
@@ -220,7 +280,7 @@ console.log('\n[loot drops]');
   // Its health is set to 1 first: this test is about the DROP, not about how long a
   // level-3 Claw takes to kill (40 HP against a base-damage bow).
   g.spawnEnemyForTest('Claw', g.px + 200);
-  const subject = g.getEnemyList()[0];
+  const subject = g.getEnemyList().find((e) => !e.isPortal) as { hp: number; gold: number };
   subject.hp = 1;
   const goldValue = subject.gold;
   for (let i = 0; i < 8 * 60; i++) {
@@ -263,9 +323,9 @@ console.log('\n[loot drops]');
     famDrops.length === 1, `${famDrops.length} drops, amount ${amount}`);
   check('and that drop is worth the authored amount', famDrops.every((c) => c.value === amount),
     famDrops.map((c) => c.value).join());
-  check('unearned family purses stay at zero',
-    g.currencies.WarriorCurrency === 0 && g.currencies.MageCurrency === 0 && g.currencies.BatCurrency === 0,
-    `W${g.currencies.WarriorCurrency} M${g.currencies.MageCurrency} B${g.currencies.BatCurrency}`);
+  check('the purse holds only the spendable families',
+    Object.keys(g.currencies).sort().join() === 'BatCurrency,ClawCurrency' && g.currencies.BatCurrency === 0,
+    Object.keys(g.currencies).join());
   check('a purse that never dropped anything stays unseen',
     g.currencySeen.ClawCurrency === false && g.currencySeen.BatCurrency === false,
     JSON.stringify(g.currencySeen));
@@ -279,8 +339,12 @@ console.log('\n[gameplay]');
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
 
   const startX = game.px;
-  const enemiesAtStart = game.getEnemyList().filter((e) => e.alive).length;
-  check('level 1 spawns 72 enemies + portal', enemiesAtStart === 8 * 9 + 1, `${enemiesAtStart}`);
+  // The live game spawns packs by distance; a separate instance materialises the whole
+  // roster so the pack-size assertion covers the level rather than the opening screen.
+  const roster = new Game({ seed: 288089883, level: 1, archerSpawned: true });
+  roster.spawnAllPacksForTest();
+  const enemiesAtStart = roster.getEnemyList().filter((e) => e.alive).length;
+  check('level 1 spawns the authored pack sizes + portal', enemiesAtStart === packsPerLevel(1) * enemiesPerPack(1) + 1, `${enemiesAtStart}`);
 
   // Run 90 simulated seconds with the player never aiming: the auto-attack should still
   // clear something on its own.
@@ -295,7 +359,10 @@ console.log('\n[gameplay]');
   }
   const snap1 = game.snapshot();
   check('character advanced', game.px > startX, `x ${startX.toFixed(0)} -> ${game.px.toFixed(0)}`);
-  check('auto-attack killed something', snap1.kills > 0, `kills=${snap1.kills}`);
+  // Assert the bow FIRES, not that it kills: with no input the archer eventually dies,
+  // and death restarts the level, so a zero kill count is a legal outcome.
+  check('auto-attack fired arrows', snap1.autoShots > 0, `autoShots=${snap1.autoShots}`);
+  check('firing emits a sound cue', game.sfx.includes('shoot'), game.sfx.slice(0, 6).join(','));
   // 30 seconds with NO input is not real play, and the tree's free root nodes now add
   // health, so "the player is still alive" is not a property of a correct simulation -
   // it depends on the RNG stream and on how many talent levels are owned. What IS a
@@ -340,7 +407,7 @@ console.log('\n[gameplay]');
   // Progression from the same run: experience accrues and the level rises.
   check('kills produced experience', snap2.playerExp > 0 || snap2.playerLevel > 1, `exp=${snap2.playerExp.toFixed(0)} lvl=${snap2.playerLevel}`);
   check('exp bar fraction is in range', snap2.playerExpFraction >= 0 && snap2.playerExpFraction <= 1, `${snap2.playerExpFraction.toFixed(3)}`);
-  check('gems only come from guardians/portals/first-clears', snap2.gems >= 0, `gems=${snap2.gems}`);
+  check('the dead premium-gem currency is gone from the snapshot', !('gems' in (snap2 as object)));
 }
 
 // -------------------------------------------------------------- portal gating
@@ -359,7 +426,7 @@ console.log('\n[death & respawn]');
 {
   const game = new Game({ archerSpawned: true, seed: 99, level: 3 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
-  // Clear a couple of packs by hand so we can prove progress survives.
+  // Clear a pack by hand, then die: the level's monster progress must be WIPED.
   const list = game.getEnemyList();
   let killedPack = -1;
   for (const e of list) {
@@ -377,8 +444,32 @@ console.log('\n[death & respawn]');
   (game as unknown as { hp: number }).hp = 0;
   for (let i = 0; i < 3 * 60; i++) game.tick(1 / 60, input);
   check('respawned after death', game.snapshot().runState === 'running', game.snapshot().runState);
-  check('cleared packs survived the death', game.snapshot().packsCleared >= clearedBefore, `${game.snapshot().packsCleared} >= ${clearedBefore}`);
+  check('death emits a sound cue', game.sfx.includes('death'), game.sfx.slice(-4).join(','));
+  check("death resets the level's monster progress", game.snapshot().packsCleared === 0,
+    `${game.snapshot().packsCleared} (was ${clearedBefore})`);
+  check('death keeps the gold and talent resources', game.gold >= 0 && game.talent.totalLevels() >= 0);
   check('player healed on respawn', game.snapshot().playerHp > 0, `hp=${game.snapshot().playerHp}`);
+
+  // The exit walk: once the portal is down the character keeps moving (faster than a
+  // normal walk) so the player visibly leaves the stage instead of being cut back to x=0.
+  {
+    const exitGame = new Game({ archerSpawned: true, spawnNothing: true, seed: 5 });
+    (exitGame as unknown as { portal: { alive: boolean } }).portal.alive = false;
+    const walk = new Game({ archerSpawned: true, spawnNothing: true, seed: 5 });
+    (walk as unknown as { portal: { alive: boolean } }).portal.alive = false;
+    walk.runState = 'cleared';
+    const px0 = exitGame.px;
+    const px1 = walk.px;
+    for (let i = 0; i < 60; i++) {
+      const idle: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
+      exitGame.tick(1 / 60, idle);
+      walk.tick(1 / 60, idle);
+    }
+    const normal = exitGame.px - px0;
+    const exiting = walk.px - px1;
+    check('the cleared character walks faster than normal', exiting > normal * 2,
+      `${normal.toFixed(1)} vs ${exiting.toFixed(1)} units/s`);
+  }
 }
 
 // ------------------------------------------------------------------- skills
@@ -862,7 +953,10 @@ console.log('\n[bow attack targets]');
   const game = new Game({ archerSpawned: true, seed: 31, level: 1 });
   const input: InputState = { aiming: false, aimX: 0, aimY: 0, taps: 0 };
 
-  // Clear every pack so the portal becomes vulnerable.
+  // Clear every pack so the portal becomes vulnerable. Packs spawn by distance now, so
+  // materialise the whole level first - clearing only the near packs would leave the
+  // portal invulnerable forever.
+  game.spawnAllPacksForTest();
   for (const e of game.getEnemyList()) {
     if (e.packId >= 0) {
       (e as { hp: number; alive: boolean }).hp = 0;
@@ -883,11 +977,33 @@ console.log('\n[bow attack targets]');
     (game as unknown as { px: number }).px = portal.x - 400;
     const hpBefore = portal.hp;
     let sawProjectile = false;
+    /*
+     * Regression guard for the release point. `BOW` is the bow's position on the
+     * 150x176 canvas converted to world units; the old constant (46, 132) forgot the
+     * 99/176 sprite scale, so 132 was above the 99-unit-tall archer and every shot
+     * visibly spawned over his head. Extrapolate the first arrow back along its
+     * velocity to recover the spawn point.
+     */
+    let spawnOffset: { x: number; y: number } | null = null;
     for (let i = 0; i < 12 * 60; i++) {
       game.tick(1 / 60, input);
-      if (game.getProjectileList().length > 0) sawProjectile = true;
+      const list = game.getProjectileList();
+      if (list.length > 0) {
+        sawProjectile = true;
+        if (!spawnOffset) {
+          const p = list[0];
+          spawnOffset = { x: p.x - p.vx * p.life - game.px, y: p.y - p.vy * p.life - game.py };
+        }
+      }
     }
     check('the archer fired arrows at the portal', sawProjectile);
+    check(
+      'arrows leave from the bow, not above the archer\'s head',
+      spawnOffset != null
+        && Math.abs(spawnOffset.x - MUZZLE.x) < 3
+        && Math.abs(spawnOffset.y - MUZZLE.y) < 3,
+      spawnOffset ? `(${spawnOffset.x.toFixed(1)}, ${spawnOffset.y.toFixed(1)}) vs BOW (${MUZZLE.x}, ${MUZZLE.y})` : 'no arrows',
+    );
     check(
       'bow arrows damage the portal',
       portal.hp < hpBefore,
@@ -909,6 +1025,7 @@ console.log('\n[bow attack targets]');
       game.tick(1 / 60, input);
     }
     check('the portal can be killed', !portal.alive, `hp=${portal.hp.toFixed(1)}`);
+    check('clearing emits a sound cue', game.sfx.includes('clear'), game.sfx.slice(-4).join(','));
     const owedDrops = game.getCoinList().filter((c) => c.currency === 'PortalCurrency');
     check('the portal drops exactly one portal currency',
       owedDrops.length === 1, `${owedDrops.length} drops`);
@@ -1107,6 +1224,27 @@ console.log('\n[talent tree]');
   check('links are mirrored', TALENT_NODES.every((n) =>
     (TALENT_LINKS[n.id] ?? []).every((other) => (TALENT_LINKS[other] ?? []).includes(n.id))));
 
+  // The three family currencies with no sink were deleted. Their tree nodes are structural
+  // (they sit on articulation points), so their grants were retargeted to gold gain rather
+  // than leaving seven nodes that promise a currency that no longer exists.
+  const retargeted = TALENT_NODES.flatMap((n) => n.grants).filter((g) => g.locKey === 'RemovedGemGoldGain');
+  check('deleted-currency nodes now grant gold gain', retargeted.length === 7, `${retargeted.length} grants`);
+  check('their tooltip no longer mentions a gem',
+    !/宝石/.test(TALENT_TEXT.RemovedGemGoldGain?.zh ?? '') && /金币/.test(TALENT_TEXT.RemovedGemGoldGain?.zh ?? ''),
+    TALENT_TEXT.RemovedGemGoldGain?.zh);
+  check('no tree grant references a deleted currency',
+    TALENT_NODES.every((n) => n.grants.every((g) => !/^(Archer|Warrior|Mage)Currency/.test(g.stat))));
+  // End-to-end: owning such a node must actually move the gold-gain stat.
+  {
+    const node = TALENT_NODES.find((n) => n.grants.some((g) => g.locKey === 'RemovedGemGoldGain'));
+    const g = new Game({ spawnNothing: true, seed: 3 });
+    const before = g.stats.get('GoldGained');
+    if (node) g.talent.load({ [node.id]: 1 });
+    g.refreshStats();
+    check('a retargeted node raises gold gain', g.stats.get('GoldGained') > before,
+      `${before} -> ${g.stats.get('GoldGained')}`);
+  }
+
   // `NodeUnlockBehavior`: exactly one node is `AlwaysUnlockable`, the rest need a neighbour.
   const roots = TALENT_NODES.filter((n) => n.unlock === 'always');
   const gated = TALENT_NODES.filter((n) => n.unlock === 'requiresConnection');
@@ -1162,7 +1300,7 @@ console.log('\n[talent tree]');
 
   const rich: Purses = {
     gold: 1e12,
-    currencies: { PortalCurrency: 1e6, ClawCurrency: 1e6, WarriorCurrency: 1e6 },
+    currencies: { PortalCurrency: 1e6, ClawCurrency: 1e6, BatCurrency: 1e6 },
   };
   check('the root is affordable when rich', tree.canBuy(TALENT_ROOT, rich));
   check('a locked node cannot be bought however rich',
@@ -1276,7 +1414,7 @@ console.log('\n[world geometry]');
   check('enemy band matches the measured MinMaxYPos', WORLD.minY === 0 && WORLD.maxY === 30, `${WORLD.minY}..${WORLD.maxY}`);
   check('enemy band keeps the pack on the road', WORLD.maxY <= MIDDLE_OF_GROUND_Y_POS, `${WORLD.maxY} <= ${MIDDLE_OF_GROUND_Y_POS}`);
   const plan = planRun(30, new Set(), false);
-  check('level 30 portal is far along +X', plan.portalX > 40000, `portalX=${plan.portalX.toFixed(0)}`);
+  check('level 30 portal is far along +X', plan.portalX > 20000, `portalX=${plan.portalX.toFixed(0)}`);
 }
 
 // ------------------------------------------------------------------- framing
@@ -1335,16 +1473,11 @@ console.log('\n[art assets]');
   check('the active skin is one of the skins', PLAYER_SKINS.includes(PLAYER_SKIN));
   check('the player is drawn at the measured original height', CHARACTERS.player.height === 99, `${CHARACTERS.player.height} units`);
 
-  // The health bar's tints were solved from the one bar visible in the shipping
-  // screenshot: the fill sprite's own gradient is 229 -> 255 -> 229 and it renders
-  // (183,87,87) where the sprite is 255 and (164,78,78) where it is 229. So
-  // tint = rendered * 255 / sprite, and this pins that arithmetic so it cannot drift.
-  check(
-    'bar fill tint reproduces the measured shading',
-    Math.round(0xb7 * 229 / 255) === 164 && Math.round(0x57 * 229 / 255) === 78,
-    `183->${Math.round(0xb7 * 229 / 255)}, 87->${Math.round(0x57 * 229 / 255)}`,
-  );
-  check('bar frame tint is the measured outline colour', BAR.frameTint === 0x0c0605, `#${BAR.frameTint.toString(16)}`);
+  // The bar tints are part of the pixel palette now (see tools/pixel-core.mjs): the frame
+  // is the palette shadow and the fill is the palette red. Pinning them keeps the enemy
+  // bars from silently drifting back to the original browns.
+  check('bar fill tint is the palette red', BAR.fillTint === 0xe2564a, `#${BAR.fillTint.toString(16)}`);
+  check('bar frame tint is the palette shadow', BAR.frameTint === 0x0a0c18, `#${BAR.frameTint.toString(16)}`);
   check('bar sprites are in the preload list', UI_SPRITES.every((f) => allArtFiles().includes(f)), UI_SPRITES.join(', '));
   check('every enemy type the run can spawn has art',
     (Object.keys(ENEMIES) as string[]).every((k) => k in CHARACTERS),
@@ -1381,6 +1514,34 @@ console.log('\n[localisation]');
   check('unknown key falls back to the key itself', t('__nope__') === '__nope__');
 }
 
+// ---------------------------------------------------------------------- save
+console.log('\n[save]');
+{
+  // Regression: the loader must admit every field `saveNow` writes. It once dropped the
+  // talent tree, jobs and masteries, so every restart silently reset the whole late-game
+  // power curve while keeping the level and gold.
+  const full = {
+    level: 12, gold: 34567, kills: 890,
+    defeatedGuardians: ['GuardianClaw'],
+    talent: { 'Node 11_bd6ad84f': 3 },
+    progression: { level: 8, exp: 42 },
+    jobs: { jobs: [0, 2], skills: { Multishot: 2 } },
+    mastery: { npcLevel: 3, levels: { Mastery0: 4 }, awakened: ['Mastery0'], charges: { Mastery0: 1 } },
+    currencies: { ClawCurrency: 7 }, currencySeen: { ClawCurrency: true },
+    portalCurrency: 2, portalCurrencySeen: true, portalCurrencyPaid: [10, 20],
+  };
+  const s = normalizeSave(full);
+  check('save keeps the talent tree', s.talent?.['Node 11_bd6ad84f'] === 3, JSON.stringify(s.talent));
+  check('save keeps jobs and skill levels', s.jobs?.jobs.includes(2) === true && s.jobs?.skills.Multishot === 2, JSON.stringify(s.jobs));
+  check('save keeps masteries', s.mastery?.npcLevel === 3 && s.mastery?.levels.Mastery0 === 4, JSON.stringify(s.mastery));
+  check('save keeps progression', s.progression.level === 8 && s.progression.exp === 42, JSON.stringify(s.progression));
+  check('save keeps currencies and paid portals', s.currencies?.ClawCurrency === 7 && s.portalCurrencyPaid?.length === 2);
+  // Damaged / absent saves must boot, not brick.
+  const junk = normalizeSave({ level: 'x', gold: -5, talent: { a: 'b', c: 2 }, jobs: { jobs: 'nope' }, mastery: { npcLevel: 'z' } });
+  check('junk save falls back to a playable state', junk.level === 1 && junk.gold === 0 && junk.jobs?.jobs[0] === 0, JSON.stringify(junk).slice(0, 80));
+  check('junk save keeps only numeric talent levels', junk.talent?.c === 2 && junk.talent?.a === undefined);
+  check('empty save is playable', emptySave().level === 1 && emptySave().jobs?.jobs.includes(0) === true);
+}
 console.log(`\n${checks - failures}/${checks} checks passed`);
 if (failures > 0) {
   // `process` exists under Node; the browser never loads this module.

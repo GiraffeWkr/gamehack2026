@@ -1,0 +1,562 @@
+[
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor1",
+  "ItemType": 1,
+  "BaseLevel": 1,
+  "CreateCost": 2.0,
+  "UnlockCost": 0.0,
+  "ItemIcon": {
+   "m_FileID": 2,
+   "m_PathID": 1294
+  },
+  "minValue": 10.0,
+  "maxValue": 18.0,
+  "_pathID": 4835,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor10",
+  "ItemType": 1,
+  "BaseLevel": 10,
+  "CreateCost": 120000.0,
+  "UnlockCost": 250000000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 394
+  },
+  "minValue": 900.0,
+  "maxValue": 930.0,
+  "_pathID": 4836,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor2",
+  "ItemType": 1,
+  "BaseLevel": 2,
+  "CreateCost": 6.0,
+  "UnlockCost": 5000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 461
+  },
+  "minValue": 21.0,
+  "maxValue": 30.0,
+  "_pathID": 4837,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor3",
+  "ItemType": 1,
+  "BaseLevel": 3,
+  "CreateCost": 25.0,
+  "UnlockCost": 40000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 463
+  },
+  "minValue": 38.0,
+  "maxValue": 48.0,
+  "_pathID": 4838,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor4",
+  "ItemType": 1,
+  "BaseLevel": 4,
+  "CreateCost": 100.0,
+  "UnlockCost": 380000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 393
+  },
+  "minValue": 87.0,
+  "maxValue": 100.0,
+  "_pathID": 4839,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor5",
+  "ItemType": 1,
+  "BaseLevel": 5,
+  "CreateCost": 300.0,
+  "UnlockCost": 5000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 398
+  },
+  "minValue": 149.0,
+  "maxValue": 160.0,
+  "_pathID": 4840,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor6",
+  "ItemType": 1,
+  "BaseLevel": 6,
+  "CreateCost": 1000.0,
+  "UnlockCost": 55000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 410
+  },
+  "minValue": 232.0,
+  "maxValue": 245.0,
+  "_pathID": 4841,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor7",
+  "ItemType": 1,
+  "BaseLevel": 7,
+  "CreateCost": 3000.0,
+  "UnlockCost": 400000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 459
+  },
+  "minValue": 318.0,
+  "maxValue": 332.0,
+  "_pathID": 4842,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor8",
+  "ItemType": 1,
+  "BaseLevel": 8,
+  "CreateCost": 7500.0,
+  "UnlockCost": 3000000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 456
+  },
+  "minValue": 418.0,
+  "maxValue": 435.0,
+  "_pathID": 4843,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Armor9",
+  "ItemType": 1,
+  "BaseLevel": 9,
+  "CreateCost": 45000.0,
+  "UnlockCost": 25000000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 458
+  },
+  "minValue": 580.0,
+  "maxValue": 600.0,
+  "_pathID": 4844,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow1",
+  "ItemType": 0,
+  "BaseLevel": 1,
+  "CreateCost": 2.0,
+  "UnlockCost": 0.0,
+  "ItemIcon": {
+   "m_FileID": 2,
+   "m_PathID": 906
+  },
+  "minValue": 3.0,
+  "maxValue": 6.0,
+  "_pathID": 4845,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow10",
+  "ItemType": 0,
+  "BaseLevel": 10,
+  "CreateCost": 120000.0,
+  "UnlockCost": 250000000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 392
+  },
+  "minValue": 680.0,
+  "maxValue": 700.0,
+  "_pathID": 4846,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow2",
+  "ItemType": 0,
+  "BaseLevel": 2,
+  "CreateCost": 6.0,
+  "UnlockCost": 5000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 462
+  },
+  "minValue": 10.0,
+  "maxValue": 16.0,
+  "_pathID": 4847,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow3",
+  "ItemType": 0,
+  "BaseLevel": 3,
+  "CreateCost": 25.0,
+  "UnlockCost": 40000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 396
+  },
+  "minValue": 27.0,
+  "maxValue": 35.0,
+  "_pathID": 4848,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow4",
+  "ItemType": 0,
+  "BaseLevel": 4,
+  "CreateCost": 100.0,
+  "UnlockCost": 380000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 400
+  },
+  "minValue": 65.0,
+  "maxValue": 75.0,
+  "_pathID": 4849,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow5",
+  "ItemType": 0,
+  "BaseLevel": 5,
+  "CreateCost": 300.0,
+  "UnlockCost": 5000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 453
+  },
+  "minValue": 113.0,
+  "maxValue": 125.0,
+  "_pathID": 4850,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow6",
+  "ItemType": 0,
+  "BaseLevel": 6,
+  "CreateCost": 1000.0,
+  "UnlockCost": 55000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 402
+  },
+  "minValue": 190.0,
+  "maxValue": 205.0,
+  "_pathID": 4851,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow7",
+  "ItemType": 0,
+  "BaseLevel": 7,
+  "CreateCost": 3000.0,
+  "UnlockCost": 400000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 460
+  },
+  "minValue": 238.0,
+  "maxValue": 250.0,
+  "_pathID": 4852,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow8",
+  "ItemType": 0,
+  "BaseLevel": 8,
+  "CreateCost": 7500.0,
+  "UnlockCost": 3000000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 454
+  },
+  "minValue": 310.0,
+  "maxValue": 325.0,
+  "_pathID": 4853,
+  "_file": "resources.assets"
+ },
+ {
+  "serializationData": {
+   "SerializedFormat": 0,
+   "SerializedBytes": [],
+   "ReferencedUnityObjects": [],
+   "SerializedBytesString": "",
+   "Prefab": {
+    "m_FileID": 0,
+    "m_PathID": 0
+   },
+   "PrefabModificationsReferencedUnityObjects": [],
+   "PrefabModifications": [],
+   "SerializationNodes": []
+  },
+  "functionName": "Bow9",
+  "ItemType": 0,
+  "BaseLevel": 9,
+  "CreateCost": 45000.0,
+  "UnlockCost": 25000000000.0,
+  "ItemIcon": {
+   "m_FileID": 0,
+   "m_PathID": 401
+  },
+  "minValue": 460.0,
+  "maxValue": 480.0,
+  "_pathID": 4854,
+  "_file": "resources.assets"
+ }
+]

@@ -26,6 +26,28 @@
 import { StatsProp } from '../core/stats.js';
 import type { StatBag } from '../core/stats.js';
 import { evaluate } from '../core/equations.js';
+
+/**
+ * Soft ceiling for a single gold-priced talent level.
+ *
+ * The shipping tree prices its late multiplicative nodes at up to `5e14` gold because the
+ * original funded them with equipment, forging and shaping income. This port ships none of
+ * those systems, so those nodes were mathematically unreachable: a full 40-level campaign
+ * earns ~4e9 gold.
+ *
+ * Costs below `GOLD_COST_KNEE` are returned untouched, so the authored early/mid tree is
+ * exactly the original's; past the knee the exponential tail bends flat towards the cap.
+ * Every node becomes reachable inside the campaign while the designer's cost ORDER survives.
+ */
+export const GOLD_COST_CAP = 2e9;
+export const GOLD_COST_KNEE = 1e8;
+
+function softCapGold(raw: number): number {
+  if (!Number.isFinite(raw) || raw <= 0) return Math.max(1, raw || 1);
+  if (raw <= GOLD_COST_KNEE) return raw;
+  const span = GOLD_COST_CAP - GOLD_COST_KNEE;
+  return GOLD_COST_KNEE + span * (1 - Math.exp(-(raw - GOLD_COST_KNEE) / span));
+}
 import {
   TALENT_BY_ID,
   TALENT_LINKS,
@@ -82,7 +104,7 @@ export class TalentTree {
     const next = this.level(node.id) + 1;
     return node.costs.map((c) => ({
       currency: c.currency,
-      amount: Math.ceil(evaluate(c.costEquation, next)),
+      amount: Math.ceil(c.currency === 'Gold' ? softCapGold(evaluate(c.costEquation, next)) : evaluate(c.costEquation, next)),
     }));
   }
 

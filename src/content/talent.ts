@@ -36,23 +36,32 @@ import type { TreeTemplateDef } from './treeData.js';
 export { TREE_TEMPLATES, TREE_TEXT };
 export type { TreeTemplateDef };
 
-/** Alias so callers can talk about the tree's text without knowing the export's name. */
-export const TALENT_TEXT = TREE_TEXT;
+/**
+ * The three family currencies that had no sink were deleted, but their tree nodes are
+ * structural: removing the nodes disconnects large branches of the graph (they sit on
+ * articulation points). Their drop-chance grants are therefore retargeted to a real stat -
+ * additive gold gain - and their tooltip text is replaced, so the nodes stay useful
+ * instead of becoming no-ops that promise a currency that no longer exists.
+ */
+const RETARGETED_GRANTS: Record<string, { stat: string; locKey: string }> = {
+  ArcherCurrencyChanceDrop: { stat: 'GoldGained', locKey: 'RemovedGemGoldGain' },
+  WarriorCurrencyChanceDrop: { stat: 'GoldGained', locKey: 'RemovedGemGoldGain' },
+  MageCurrencyChanceDrop: { stat: 'GoldGained', locKey: 'RemovedGemGoldGain' },
+};
+
+const PATCHED_TEXT: Record<string, { zh: string; en: string }> = {
+  RemovedGemGoldGain: { zh: '金币获取量 +#VALUE#%', en: 'Gold gain +#VALUE#%' },
+};
+
+/** Tree text with the retargeted nodes' descriptions replaced. */
+export const TALENT_TEXT = { ...TREE_TEXT, ...PATCHED_TEXT };
 
 /** Every value of `Currencies`, in the original's 1-based declaration order. */
 export type TalentCurrency =
   | 'Gold'
   | 'ClawCurrency'
-  | 'ArcherCurrency'
   | 'PortalCurrency'
-  | 'WarriorCurrency'
-  | 'MageCurrency'
-  | 'BatCurrency'
-  | 'MiningRock'
-  | 'MiningCopper'
-  | 'MiningSilver'
-  | 'MiningGold'
-  | 'GuardianCurrency';
+  | 'BatCurrency';
 
 export type TalentUnlock = 'start' | 'always' | 'requiresConnection';
 
@@ -132,6 +141,17 @@ export const TALENT_NODES: TalentNode[] = TREE_NODES.map((n) => ({
   icon: n.icon,
   conns: n.conns,
 }));
+
+// Retarget the orphaned currency-chance grants (see RETARGETED_GRANTS).
+for (const node of TALENT_NODES) {
+  for (const grant of node.grants) {
+    const patch = RETARGETED_GRANTS[grant.stat];
+    if (!patch) continue;
+    grant.stat = patch.stat;
+    grant.prop = StatsProp.Additive;
+    grant.locKey = patch.locKey;
+  }
+}
 
 export const TALENT_BY_ID: Record<string, TalentNode> = Object.fromEntries(
   TALENT_NODES.map((n) => [n.id, n]),

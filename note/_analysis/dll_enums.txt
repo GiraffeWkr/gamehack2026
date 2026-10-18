@@ -1,0 +1,366 @@
+ENUM Languages  (14)
+    English                                  = 0
+    Portuguese                               = 1
+    French                                   = 2
+    German                                   = 3
+    Russian                                  = 4
+    Chinese                                  = 5
+    Spanish                                  = 6
+    Japanese                                 = 7
+    Italian                                  = 8
+    Korean                                   = 9
+    Czech                                    = 10
+    Polish                                   = 11
+    Turkish                                  = 12
+    Ukrainian                                = 13
+
+ENUM ChestType  (5)
+    Currency                                 = 0
+    Item                                     = 1
+    Rune                                     = 2
+    Scroll                                   = 3
+    Legendary                                = 4
+
+ENUM EnemyType  (12)
+    Claw                                     = 0
+    Warrior                                  = 1
+    Archer                                   = 2
+    Mage                                     = 3
+    Bat                                      = 4
+    RunPortal                                = 5
+    Guardian_Claw                            = 6
+    Guardian_Warrior                         = 7
+    Guardian_Archer                          = 8
+    Guardian_Mage                            = 9
+    Guardian_Bat                             = 10
+    King                                     = 11
+
+ENUM Animations  (8)
+    Idle                                     = 0
+    Attack                                   = 1
+    Death                                    = 2
+    Hurt                                     = 3
+    Walk                                     = 4
+    Attack1                                  = 5
+    Attack2                                  = 6
+    Skill                                    = 7
+
+ENUM GeneralPlatform  (7)
+    Editor                                   = 0
+    PC                                       = 1
+    Console                                  = 2
+    Mobile                                   = 3
+    Server                                   = 4
+    Web                                      = 5
+    Cloud                                    = 6
+
+ENUM Rarity  (4)
+    Normal                                   = 0
+    Rare                                     = 1
+    Epic                                     = 2
+    Legendary                                = 3
+
+ENUM CraftingUnlockType  (10)
+    BowCrafting                              = 0
+    ArmorCrafting                            = 1
+    UnlockImprove                            = 2
+    NonNormalRarity                          = 3
+    StatValuesBonus                          = 4
+    RerollButton                             = 5
+    ForgingBonus                             = 6
+    CraftingLuckBonus                        = 7
+    RarityFloorRare                          = 8
+    CorruptButton                            = 9
+
+ENUM ItemType  (4)
+    Bow                                      = 0
+    Armor                                    = 1
+    Rune                                     = 2
+    Scroll                                   = 3
+
+ENUM ItemHome  (3)
+    Inventory                                = 0
+    Equipped                                 = 1
+    Shop                                     = 2
+
+ENUM ItemStatTarget  (3)
+    Both                                     = 0
+    Bow                                      = 1
+    Armor                                    = 2
+
+ENUM ScrollDropKind  (2)
+    Item                                     = 0
+    Rune                                     = 1
+
+ENUM PinnacleEffectType  (3)
+    MageScroll                               = 0
+    GoldenPack                               = 1
+    ArcherItem                               = 2
+
+ENUM MasteryRewardType  (10)
+    UnlockMastery1                           = 0
+    UnlockMastery2                           = 1
+    UnlockMastery3                           = 2
+    UnlockMastery4                           = 3
+    UnlockMastery5                           = 4
+    UnlockMastery6                           = 5
+    UnlockMastery7                           = 6
+    UnlockMastery8                           = 7
+    UnlockMastery9                           = 8
+    UnlockAwakening                          = 9
+
+ENUM OreType  (4)
+    Rock                                     = 0
+    Copper                                   = 1
+    Silver                                   = 2
+    Gold                                     = 3
+
+ENUM MiningPowerType  (4)
+    NumberOfAutoPickaxes                     = 0
+    AutoPickaxeSpeed                         = 1
+    OreValue                                 = 2
+    RareOreChance                            = 3
+
+ENUM MiningRewardType  (10)
+    UnlockMiningSite                         = 0
+    UnlockMiningPowers                       = 1
+    UnlockCopper                             = 2
+    IncreaseMaxSkillPowers                   = 3
+    BonusRockPerRareOre                      = 4
+    UnlockSilver                             = 5
+    ChanceToMineGems                         = 6
+    UnlockGold                               = 7
+    IncreaseSkillPowerMaxLevel               = 8
+    ChanceToDropAdditionalOre                = 9
+
+ENUM SoundScope  (3)
+    Always                                   = 0
+    Battle                                   = 1
+    Mining                                   = 2
+
+ENUM GeneralSounds  (31)
+    button_click                             = 0
+    button_hover                             = 1
+    card_activation                          = 2
+    card_click                               = 3
+    card_discard                             = 4
+    card_draw                                = 5
+    card_hover                               = 6
+    generic_ui_hover                         = 7
+    gold_gain_one                            = 8
+    purchase                                 = 9
+    relic_activation                         = 10
+    send_to_play                             = 11
+    card_declick                             = 12
+    gain_add                                 = 13
+    gain_mult                                = 14
+    calculation                              = 15
+    menu_whoosh                              = 16
+    calculation_show                         = 17
+    start_attack                             = 18
+    ascend_appear                            = 19
+    stat_winlose_tick                        = 20
+    reward_plate_appear                      = 21
+    lose                                     = 22
+    space_enter_tick                         = 23
+    DestroyItem                              = 24
+    EquipItem                                = 25
+    DropItem                                 = 26
+    CraftItem                                = 27
+    level_completed                          = 28
+    DropCurrency                             = 29
+    CollectCurrency                          = 30
+
+ENUM RunState  (4)
+    NotStarted                               = 0
+    Preparing                                = 1
+    Running                                  = 2
+    Ended                                    = 3
+
+ENUM PetAnimations  (5)
+    Idle                                     = 0
+    Attack                                   = 1
+    Death                                    = 2
+    Hurt                                     = 3
+    Run                                      = 4
+
+ENUM CharacterAnimations  (9)
+    Idle                                     = 0
+    Attack1                                  = 1
+    Attack2                                  = 2
+    Attack3                                  = 3
+    Attack_Mix                               = 4
+    Death                                    = 5
+    Hurt                                     = 6
+    Run                                      = 7
+    Buff                                     = 8
+
+ENUM Currencies  (12)
+    Gold                                     = 1
+    ClawCurrency                             = 2
+    ArcherCurrency                           = 3
+    PortalCurrency                           = 4
+    WarriorCurrency                          = 5
+    MageCurrency                             = 6
+    BatCurrency                              = 7
+    MiningRock                               = 8
+    MiningCopper                             = 9
+    MiningSilver                             = 10
+    MiningGold                               = 11
+    GuardianCurrency                         = 12
+
+ENUM SkillTags  (6)
+    Call                                     = 0
+    Fall                                     = 1
+    Single                                   = 2
+    Area                                     = 3
+    Duration                                 = 4
+    Chain                                    = 5
+
+ENUM ProjectileMotionBehaviour  (4)
+    Normal                                   = 0
+    Arc                                      = 1
+    Above                                    = 2
+    Circular                                 = 3
+
+ENUM MultipleProjectileFormation  (3)
+    Volley                                   = 0
+    GMP                                      = 1
+    Circular                                 = 2
+
+ENUM RuneSlotKind  (2)
+    Inventory                                = 0
+    Socket                                   = 1
+
+ENUM RuneStatKind  (2)
+    Implicit                                 = 0
+    Explicit                                 = 1
+
+ENUM RuneStatTarget  (3)
+    Attack                                   = 0
+    Buff                                     = 1
+    All                                      = 2
+
+ENUM WeaponType  (6)
+    Sword                                    = 0
+    Hammer                                   = 1
+    Lightning                                = 2
+    Fire                                     = 3
+    Shield                                   = 4
+    Banner                                   = 5
+
+ENUM WeaponCategory  (3)
+    Melee                                    = 0
+    Caster                                   = 1
+    Buff                                     = 2
+
+ENUM ShapingRewardType  (10)
+    UnlockWeapons                            = 0
+    UnlockSockets                            = 1
+    UnlockCaster                             = 2
+    UnlockSlot2                              = 3
+    UnlockSocket2                            = 4
+    SecondImplicit                           = 5
+    RunesForEquippedOnly                     = 6
+    UnlockBuffs                              = 7
+    UnlockSocket3                            = 8
+    UnlockSlot3                              = 9
+
+ENUM GuardianType  (5)
+    Claw                                     = 0
+    Archer                                   = 1
+    Warrior                                  = 2
+    Mage                                     = 3
+    Bat                                      = 4
+
+ENUM ValueNumberTypes  (4)
+    Int                                      = 0
+    Float                                    = 1
+    Double                                   = 2
+    Bool                                     = 3
+
+ENUM StatsProperties  (7)
+    Flat                                     = 0
+    Additive                                 = 1
+    Multiplicative                           = 2
+    SetFlat_And_ResetAddMulti                = 3
+    SetFlatOnly                              = 4
+    SetAdditiveOnly                          = 5
+    SetMultiplicativeOnly                    = 6
+
+ENUM InaccessibleNodeDisplayMode  (2)
+    Hide                                     = 0
+    Show                                     = 1
+
+ENUM NodeUnlockBehavior  (3)
+    StartUnlocked                            = 0
+    AlwaysUnlockable                         = 1
+    RequiresConnection                       = 2
+
+ENUM BarTextFormat  (5)
+    Current_Max                              = 0
+    Current                                  = 1
+    Percentage                               = 2
+    MaxMinusCurrent                          = 3
+    Nothing                                  = 4
+
+ENUM LootType  (15)
+    Gold                                     = 0
+    ClawCurrency                             = 1
+    ArcherCurrency                           = 2
+    PortalCurrency                           = 3
+    WarriorCurrency                          = 4
+    MageCurrency                             = 5
+    BatCurrency                              = 6
+    MiningRock                               = 7
+    MiningCopper                             = 8
+    MiningSilver                             = 9
+    MiningGold                               = 10
+    GuardianCurrency                         = 11
+    HealthPotion                             = 100
+    Item                                     = 200
+    Rune                                     = 201
+
+ENUM UnlockableSystems  (7)
+    Tree                                     = 0
+    Jobs                                     = 1
+    Crafting                                 = 2
+    Mining                                   = 3
+    Shaping                                  = 4
+    Mastery                                  = 5
+    Star                                     = 6
+
+ENUM KingManager/KingSkill  (3)
+    Laser                                    = 0
+    Missiles                                 = 1
+    ExplosionOrb                             = 2
+
+ENUM SafeAreaManager/Edge  (4)
+    Right                                    = 0
+    Left                                     = 1
+    Top                                      = 2
+    Bottom                                   = 3
+
+ENUM SkillTooltipRows/ValueKind  (6)
+    Raw                                      = 0
+    EffectiveCooldown                        = 1
+    BuffDuration                             = 2
+    PetHealth                                = 3
+    SkillDamage                              = 4
+    BoolSwitch                               = 5
+
+ENUM MiningPickaxe/Phase  (4)
+    Hover                                    = 0
+    Approach                                 = 1
+    Chop                                     = 2
+    Recover                                  = 3
+
+ENUM SniperScopeSelfer/AttackState  (4)
+    None                                     = 0
+    WaitingForRange                          = 1
+    Attacking                                = 2
+    Cooldown                                 = 3
+
+ENUM ShapingWeapon/BuffPhase  (2)
+    Cooldown                                 = 0
+    Active                                   = 1

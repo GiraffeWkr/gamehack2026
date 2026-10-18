@@ -112,12 +112,85 @@ export interface ProgressionConfig {
 }
 
 export const PROGRESSION: ProgressionConfig = {
-  maxBattleLevel: 50,
-  lastAuthoredLevel: 30,
-  endgameHealthGrowthPerLevel: 1.5,
-  endgameGoldGrowthPerLevel: 1.22,
-  endgameDamageGrowthPerLevel: 1.25,
+  /**
+   * 40 levels, four boss gates (10/20/30/40).
+   *
+   * The shipping build's achievement list says `LevelMilestone = 40` / `ReachLevel40`
+   * even though its balance saves stop at 30; the design reference (`note/战锤40K_游戏策划案.md`
+   * §6.3) adopts 40 as the real cap, and the port follows it.
+   */
+  maxBattleLevel: 40,
+  lastAuthoredLevel: 40,
+  endgameHealthGrowthPerLevel: 1.55,
+  endgameGoldGrowthPerLevel: 1.45,
+  endgameDamageGrowthPerLevel: 1.3,
 };
+
+/**
+ * Wargear power curve: what the archer's gear is worth at a given battle level.
+ *
+ * The original's enemy table was funded by an equipment system (item level, affixes,
+ * forging, shaping) that this port does not have. Lifting the enemy curve without it is
+ * what made the old build unplayable past level 3: enemy HP grew x4 per level while the
+ * talent tree alone could not keep up.
+ *
+ * This curve restores the missing layer as a single, visible stat multiplier: gear is
+ * abstracted as battle-level-appropriate wargear, so `Damage` in the attribute panel
+ * grows every level, and the talent tree's additive/multiplicative nodes stack on top.
+ *
+ * Targets the new tables are solved against:
+ *   - player DPS growth  x1.45/level  (gear) x tree multipliers
+ *   - player HP growth   x1.32/level
+ *   - enemy HP growth    x1.55/level  -> TTK stays ~1-3s for a minion
+ *   - enemy damage       x1.30/level  -> 3-7 hits to die, all game
+ */
+export const POWER = {
+  damagePerLevel: 1.45,
+  healthPerLevel: 1.32,
+} as const;
+
+/**
+ * Enemy curve constants (levels 1..40).
+ *
+ * Kept as named constants instead of a hand-typed 40-row table so the shape is auditable;
+ * `npm run verify` asserts the resulting TTK window against the wargear curve.
+ */
+export const CURVE = {
+  /** Base body HP at level 1, before an archetype's `healthMultiplier`. */
+  healthBase: 4,
+  /** x1.42/level: just under gear growth, so a pack thins before it can swarm. */
+  healthGrowth: 1.42,
+  /** Base contact damage at level 1, before `damageMultiplier`. */
+  damageBase: 2,
+  /** x1.28/level, below the player's x1.32 HP: hits-to-die drifts from 5 to ~20. */
+  damageGrowth: 1.28,
+  /** Base gold per kill at level 1. x1.45/level keeps the tree affordable through L40. */
+  goldBase: 1,
+  goldGrowth: 1.45,
+  /** Kills needed to clear a level: 110 at L1 -> ~610 at L40. */
+  killsBase: 110,
+  killsGrowth: 1.045,
+} as const;
+
+/** Build a 40-level series, rounded, as a readonly table. */
+function series(base: number, growth: number, round: 'round' | 'ceil' | 'floor'): readonly number[] {
+  const out: number[] = [];
+  for (let i = 0; i < PROGRESSION.lastAuthoredLevel; i++) {
+    const v = base * Math.pow(growth, i);
+    out.push(round === 'ceil' ? Math.ceil(v) : round === 'floor' ? Math.floor(v) : Math.round(v));
+  }
+  return out;
+}
+
+/** Level-1 wargear multiplier for the player's damage. */
+export function wargearDamage(level: number): number {
+  return Math.pow(POWER.damagePerLevel, Math.max(0, level - 1));
+}
+
+/** Level-1 wargear multiplier for the player's health. */
+export function wargearHealth(level: number): number {
+  return Math.pow(POWER.healthPerLevel, Math.max(0, level - 1));
+}
 
 export interface SpawnConfig {
   firstPackPosition: number;
@@ -132,6 +205,8 @@ export interface SpawnConfig {
   packWidthBase: number;
   packWidthExponent: number;
   level1PackDistance: number;
+  /** Spawn the next pack this far ahead of the archer (distance-triggered spawning). */
+  spawnAheadDistance: number;
   minEnemySpacing: number;
 }
 
@@ -168,6 +243,17 @@ export const SPAWN: SpawnConfig = {
    * short enough not to feel like a chore. Levels 2+ use the authored 2400.
    */
   level1PackDistance: 650,
+  /**
+   * Distance-triggered spawning, exactly as the reference design insists
+   * (`SpawnPackEvery_Distance`, not a timer): the player's advance sets the pace and a
+   * stuck player is never buried by infinite reinforcements.
+   *
+   * The port used to spawn EVERY pack of a level on frame one. That is why higher levels
+   * were unsurvivable: thirty ranged enemies focused the archer from across the map
+   * before he had walked out of the first screen. Only the packs within this distance
+   * ahead are alive at any moment.
+   */
+  spawnAheadDistance: 1600,
   /** Two enemies closer than this are nudged apart / mirrored. */
   minEnemySpacing: 50,
 };
@@ -212,6 +298,47 @@ export interface CameraConfig {
   visibleWorldHeight: number;
 }
 
+/**
+ * Anti-gravity hover: the player glides above the ground instead of walking.
+ *
+ * The walk cycle never read well at this resolution, and the character is a space
+ * trooper - hovering is both cheaper and more coherent than a six-frame gait. The sprite
+ * is lifted by `height`, bobs on a sine, and leans forward while moving; a shadow blob and
+ * a flattened cyan ring sit on the ground underneath. Physics is untouched: `py` still
+ * means the ground contact point, only the drawn sprite is lifted.
+ */
+export const HOVER = {
+  /** World units the feet float above the ground. */
+  height: 20,
+  /** Vertical bob amplitude, world units. */
+  bob: 2.6,
+  /** Bob speed, radians per second. */
+  bobSpeed: 2.1,
+  /** Forward lean while moving, radians. */
+  tilt: 0.055,
+  /** Radius of the ground glow ring, world units. */
+  glow: 112,
+  /** Ground shadow width, world units. */
+  shadow: 86,
+} as const;
+
+/**
+ * Release point of the archer's bow, in world units relative to his feet.
+ *
+ * `Archer_1` is painted on a 25x30 cell grid over a 150x176 canvas and drawn 99 world
+ * units tall with a bottom-centre anchor, so one canvas pixel is `99 / 176 = 0.5625`
+ * world units. The string sits at cell (20, 12) = canvas (123, 73) and the grip at
+ * (132, 73):
+ *
+ *   x = (132 - 75) * 0.5625 = 32   (75 = half the canvas width)
+ *   y = (176 - 73) * 0.5625 = 58   (176 = the canvas height), plus the hover lift below.
+ *
+ * The previous values (46, 132) were that same measurement in CANVAS pixels used as
+ * world units: 132 is above the 99-unit-tall archer, so arrows visibly spawned a third
+ * of a character above his head and drifted down into the target.
+ */
+export const MUZZLE = { x: 30, y: 58 + HOVER.height } as const;
+
 /** Camera behaviour. */
 export const CAMERA: CameraConfig = {
   /**
@@ -239,17 +366,18 @@ export const CAMERA: CameraConfig = {
 };
 
 /**
- * The five monster-family currencies, from `DatabaseManager.MonsterCurrencyToEnemyType`
- * and the `Currencies` / `LootType` enums. Gold is separate: it drops from everything.
+ * Monster-family currencies that this slice ships **with a sink**.
+ *
+ * The original has five (Claw/Archer/Warrior/Mage/Bat). Only two of them are spendable
+ * here: ClawCurrency pays for jobs and skill levels, BatCurrency pays for masteries.
+ * Archer/Warrior/Mage had no sink at all, so they were removed rather than left as
+ * currencies that drop and can never be used. Gold is separate: it drops from everything
+ * and pays for the talent tree.
  */
-export type MonsterCurrency =
-  | 'ClawCurrency' | 'ArcherCurrency' | 'WarriorCurrency' | 'MageCurrency' | 'BatCurrency';
+export type MonsterCurrency = 'ClawCurrency' | 'BatCurrency';
 
 export const MONSTER_CURRENCY: Partial<Record<EnemyType, MonsterCurrency>> = {
   Claw: 'ClawCurrency',
-  Archer: 'ArcherCurrency',
-  Warrior: 'WarriorCurrency',
-  Mage: 'MageCurrency',
   Bat: 'BatCurrency',
 };
 
@@ -264,22 +392,19 @@ export const MONSTER_CURRENCY: Partial<Record<EnemyType, MonsterCurrency>> = {
  */
 export const ENEMY_CURRENCY_UNLOCK_LEVEL: Record<MonsterCurrency, number> = {
   ClawCurrency: 2,
-  ArcherCurrency: 3,
-  WarriorCurrency: 6,
-  MageCurrency: 10,
   BatCurrency: 16,
 };
 
 /**
- * `DatabaseManager.EnemyCurrencyPerRelativeLevel`, indexed 0..30. Indexed by
- * `battleLevel - unlockLevel`, so a level-3 Claw reads index 1 and a level-26 Bat reads
- * index 10.
+ * `DatabaseManager.EnemyCurrencyPerRelativeLevel`, indexed by `battleLevel - unlockLevel`.
+ * The shipping table covers 1..30; the port's 40-level campaign extends the same x1.35
+ * ramp for the last ten rows instead of silently dropping to 0.
  */
 export const ENEMY_CURRENCY_PER_RELATIVE_LEVEL: readonly number[] = [
   1, 1, 2, 2, 3, 4, 6, 8, 10, 14,
   18, 25, 33, 44, 59, 79, 110, 140, 190, 260,
   350, 480, 650, 870, 1200, 1600, 2100, 2100, 2100, 2100,
-  2100,
+  2835, 3827, 5166, 6974, 9415, 12710, 17159, 23165, 31272, 42217,
 ];
 
 /** `PlayerStatsData.Init`: `GoldCoinsToDrop` flat = 1, so every kill drops one coin. */
@@ -292,50 +417,56 @@ export const GOLD_CHANCE_TO_DROP = 0;
  */
 export const HEALTH_POTION_REGEN_PERCENT = 4;
 
-/** Authored enemy health per level (1..30). */
-export const ENEMY_HEALTH_PER_LEVEL: readonly number[] = [
-  3, 12, 40, 90, 135, 260, 500, 830, 1350, 2050,
-  3300, 4200, 6300, 8700, 10500, 14300, 20000, 27500, 36500, 52000,
-  64000, 93000, 110000, 170000, 350000, 600000, 790000, 1620000, 2700000, 3600000,
-];
+/**
+ * Enemy health per level (1..40), before archetype multipliers.
+ *
+ * Formula-driven (see `CURVE`) rather than transcribed: the shipping 30-row table was
+ * tuned against an equipment economy this port does not ship, and its x4 first steps made
+ * level 2 take longer than level 1 (see `note/数值体系重设计.md`).
+ */
+export const ENEMY_HEALTH_PER_LEVEL: readonly number[] = series(CURVE.healthBase, CURVE.healthGrowth, 'round');
 
-/** Authored enemy gold per level (1..30). */
-export const ENEMY_GOLD_PER_LEVEL: readonly number[] = [
-  1, 3, 7, 20, 52, 138, 285, 590, 1400, 2700,
-  5200, 10700, 19300, 27000, 48000, 80000, 135000, 175000, 245000, 360000,
-  535000, 700000, 1200000, 1800000, 2800000, 4300000, 6300000, 8500000, 12000000, 35000000,
-];
+/** Enemy gold per level (1..40). */
+export const ENEMY_GOLD_PER_LEVEL: readonly number[] = series(CURVE.goldBase, CURVE.goldGrowth, 'ceil');
 
-/** Authored enemy damage per level (1..30). */
-export const ENEMY_DAMAGE_PER_LEVEL: readonly number[] = [
-  2, 2, 3, 5, 8, 14, 19, 27, 33, 38,
-  42, 45, 55, 66, 75, 90, 150, 165, 212, 245,
-  280, 355, 390, 430, 600, 890, 1280, 1450, 1970, 2500,
-];
+/** Base enemy damage per level (1..40), before archetype multipliers. */
+export const ENEMY_DAMAGE_PER_LEVEL: readonly number[] = series(CURVE.damageBase, CURVE.damageGrowth, 'floor');
 
-/** Enemies per regular pack, levels 1..30. */
-export const ENEMIES_PER_PACK: readonly number[] = [
-  9, 9, 11, 12, 14, 16, 17, 18, 18, 18,
-  20, 20, 21, 21, 22, 22, 22, 23, 23, 24,
-  25, 25, 26, 26, 26, 26, 27, 27, 27, 30,
-];
+/** How many enemies a full clear should contain, used to derive the pack tables below. */
+const KILLS_PER_LEVEL: readonly number[] = series(CURVE.killsBase, CURVE.killsGrowth, 'round');
 
-/** Enemies per portal pack, levels 1..30. */
-export const ENEMIES_PER_PORTAL_PACK: readonly number[] = [
-  4, 5, 5, 5, 6, 6, 6, 7, 7, 8,
-  8, 9, 10, 11, 12, 12, 12, 14, 15, 15,
-  16, 16, 17, 17, 17, 17, 17, 17, 17, 20,
-];
+/** Regular packs per level: 6 -> 12. Pack count grows slower than pack size. */
+export const PACKS_PER_LEVEL: readonly number[] = series(6, 1.018, 'round');
 
-/** Regular packs per level, levels 1..30. */
-export const PACKS_PER_LEVEL: readonly number[] = [
-  8, 9, 11, 11, 11, 12, 12, 13, 13, 13,
-  14, 14, 14, 15, 15, 15, 16, 16, 17, 18,
-  19, 20, 20, 20, 20, 20, 20, 20, 20, 24,
-];
+/** Enemies per portal wave: ~12% of the level's kills. */
+export const ENEMIES_PER_PORTAL_PACK: readonly number[] = KILLS_PER_LEVEL.map((k) =>
+  Math.max(4, Math.round(k * 0.12)),
+);
+
+/** Enemies per regular pack, derived so regular packs + portal wave hit the kill quota. */
+export const ENEMIES_PER_PACK: readonly number[] = KILLS_PER_LEVEL.map((k, i) =>
+  Math.max(4, Math.round((k - ENEMIES_PER_PORTAL_PACK[i]) / PACKS_PER_LEVEL[i])),
+);
+
+/** Total bodies a level throws at the player, for balance checks and the HUD. */
+export function killsPerLevel(level: number): number {
+  const i = Math.min(level, PROGRESSION.lastAuthoredLevel) - 1;
+  return PACKS_PER_LEVEL[i] * ENEMIES_PER_PACK[i] + ENEMIES_PER_PORTAL_PACK[i];
+}
 
 export type EnemyType =
-  | 'Claw' | 'Warrior' | 'Archer' | 'Mage' | 'Bat' | 'RunPortal'
+  | 'Claw' | 'Warrior' | 'Archer' | 'Mage' | 'Bat'
+  /**
+   * One elite variant per family. They share a family sprite recoloured by the renderer
+   * tint and scaled by `CHARACTERS`, but each has its own stat line and mechanic:
+   *   Skitter  - fast, fragile rusher           (Claw)
+   *   Bulwark  - armoured wall                  (Warrior, damage reduction)
+   *   Bomber   - slow, heavy artillery round    (Archer, oversized projectile)
+   *   Summoner - spawns Bat swarms              (Mage)
+   *   Leech    - drains health per hit          (Bat)
+   */
+  | 'Skitter' | 'Bulwark' | 'Bomber' | 'Summoner' | 'Leech'
+  | 'RunPortal'
   // The five Guardian variants and the King. The original keeps them apart — each Guardian
   // has its own `EnemyInfo` with its own health, damage, range and attack speed, and the
   // King is a separate archetype again. The port used to fold all five into one `Guardian`
@@ -369,6 +500,14 @@ export interface EnemyDef {
   color: number;
   /** Relative spawn weight inside a pack. */
   weight: number;
+  /** Fraction of incoming damage ignored, 0..1. */
+  armor?: number;
+  /** Fraction of the damage it deals that heals it, 0..1. */
+  leech?: number;
+  /** Periodically spawns a minion of `type` while it is alive. */
+  summon?: { type: EnemyType; every: number };
+  /** Elite variants are tinted, tougher and worth more. */
+  elite?: boolean;
 }
 
 /**
@@ -436,12 +575,72 @@ function enemyFrom(id: string, type: EnemyType, look: string): EnemyDef {
   };
 }
 
+/** Build an elite variant from a family archetype, scaling its family identity. */
+function variantFrom(
+  baseId: string,
+  type: EnemyType,
+  mod: {
+    health: number;
+    damage: number;
+    speed: number;
+    cooldown?: number;
+    range?: number;
+    radius: number;
+    color: number;
+    weight: number;
+    armor?: number;
+    leech?: number;
+    summon?: { type: EnemyType; every: number };
+  },
+): EnemyDef {
+  const base = enemyFrom(baseId, type, baseId);
+  return {
+    ...base,
+    type,
+    name: type,
+    healthMultiplier: base.healthMultiplier * mod.health,
+    damageMultiplier: base.damageMultiplier * mod.damage,
+    speed: base.speed * mod.speed,
+    attackRange: base.attackRange * (mod.range ?? 1),
+    attackCooldown: base.attackCooldown * (mod.cooldown ?? 1),
+    radius: base.radius * mod.radius,
+    color: mod.color,
+    weight: mod.weight,
+    armor: mod.armor,
+    leech: mod.leech,
+    summon: mod.summon,
+    elite: true,
+  };
+}
+
 export const ENEMIES: Record<EnemyType, EnemyDef> = {
   Claw: enemyFrom('Claw', 'Claw', 'Claw'),
   Warrior: enemyFrom('Warrior', 'Warrior', 'Warrior'),
   Archer: enemyFrom('Archer', 'Archer', 'Archer'),
   Mage: enemyFrom('Mage', 'Mage', 'Mage'),
   Bat: enemyFrom('Bat', 'Bat', 'Bat'),
+  // Elite variants: same family data, different stat line and mechanic.
+  Skitter: variantFrom('Claw', 'Skitter', {
+    health: 0.55, damage: 0.7, speed: 1.65, range: 0.9, cooldown: 1.25,
+    radius: 0.72, color: 0x6fe0b4, weight: 16,
+  }),
+  Bulwark: variantFrom('Warrior', 'Bulwark', {
+    health: 1.45, damage: 0.8, speed: 0.72, cooldown: 1.35,
+    radius: 1.18, color: 0x6b8ad4, weight: 11, armor: 0.25,
+  }),
+  Bomber: variantFrom('Archer', 'Bomber', {
+    health: 1.3, damage: 1.6, speed: 0.78, range: 1.2, cooldown: 2.3,
+    radius: 1.05, color: 0xe0873a, weight: 10,
+  }),
+  Summoner: variantFrom('Mage', 'Summoner', {
+    health: 1.4, damage: 0.75, speed: 0.9, range: 1.15, cooldown: 1.5,
+    radius: 1.05, color: 0x9a6bff, weight: 7,
+    summon: { type: 'Bat', every: 6 },
+  }),
+  Leech: variantFrom('Bat', 'Leech', {
+    health: 1.15, damage: 1.2, speed: 1.2, range: 1.05, cooldown: 0.9,
+    radius: 1.08, color: 0xd85a7a, weight: 9, leech: 0.3,
+  }),
   RunPortal: enemyFrom('RunPortal', 'RunPortal', 'RunPortal'),
   // Each Guardian keeps its own asset: GuardianMage has 45x health against GuardianClaw's
   // 25x, and only the ranged two shoot. Folding them into one bucket threw that away.
@@ -461,6 +660,16 @@ export function enemyWeightsForLevel(level: number): Array<[EnemyType, number]> 
   if (level >= 3) out.push(['Bat', ENEMIES.Bat.weight]);
   if (level >= 4) out.push(['Warrior', ENEMIES.Warrior.weight]);
   if (level >= 5) out.push(['Mage', ENEMIES.Mage.weight]);
+  /*
+   * Elite variants enter one per band, each on a level the difficulty curve is FLAT
+   * relative to its neighbours (the reference design warns about stacking an unlock on a
+   * health spike). Levels 6/9/13/18/22 sit between the boss gates at 10/20/30/40.
+   */
+  if (level >= 6) out.push(['Skitter', ENEMIES.Skitter.weight]);
+  if (level >= 9) out.push(['Bulwark', ENEMIES.Bulwark.weight]);
+  if (level >= 13) out.push(['Bomber', ENEMIES.Bomber.weight]);
+  if (level >= 18) out.push(['Leech', ENEMIES.Leech.weight]);
+  if (level >= 22) out.push(['Summoner', ENEMIES.Summoner.weight]);
   return out;
 }
 
@@ -642,16 +851,13 @@ export const PLAYER_BASE_STATS: Record<string, number> = {
    * exactly one guaranteed drop, 250 means two guaranteed plus a 50% roll for a third.
    * See `rollOver100`.
    *
-   * **All five base at 0.** `PlayerStatsData` DECLARES these fields but never seeds them
+   * **Both base at 0.** `PlayerStatsData` DECLARES these fields but never seeds them
    * in `InitData`, so they default to 0 — a family currency does not drop until the tree
    * raises its chance. The port shipped 100 across the board, which made every low-level
    * kill drop a family currency whose row was still locked, i.e. worth 0: a ball the
    * player could pick up that changed nothing.
    */
   ClawCurrencyChanceDrop: 0,
-  ArcherCurrencyChanceDrop: 0,
-  WarriorCurrencyChanceDrop: 0,
-  MageCurrencyChanceDrop: 0,
   BatCurrencyChanceDrop: 0,
 };
 
@@ -675,9 +881,6 @@ export const MULTIPLICATIVE_STATS: readonly string[] = [
 /** Maps a monster-family currency to its `*CurrencyChanceDrop` stat. */
 export const CURRENCY_CHANCE_STAT: Record<MonsterCurrency, string> = {
   ClawCurrency: 'ClawCurrencyChanceDrop',
-  ArcherCurrency: 'ArcherCurrencyChanceDrop',
-  WarriorCurrency: 'WarriorCurrencyChanceDrop',
-  MageCurrency: 'MageCurrencyChanceDrop',
   BatCurrency: 'BatCurrencyChanceDrop',
 };
 

@@ -1,0 +1,1088 @@
+[
+ {
+  "functionName": "BombArrow",
+  "skillNameInStatsData": "BombArrow",
+  "icon": {
+   "m_FileID": 2,
+   "m_PathID": 919
+  },
+  "cost": [
+   70.0,
+   130.0,
+   160.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4931
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 4932
+  },
+  "cooldowns": [
+   33.0,
+   33.0,
+   33.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   3.299999952316284,
+   3.4000000953674316,
+   3.5
+  ],
+  "numberOfHitsList": [
+   2,
+   2,
+   3
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4875,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Multishot",
+  "skillNameInStatsData": "Multishot",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 440
+  },
+  "cost": [
+   5.0,
+   50.0,
+   100.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 2,
+   "m_PathID": 3128
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 4936
+  },
+  "cooldowns": [
+   19.0,
+   19.0,
+   17.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   1.7999999523162842,
+   1.899999976158142,
+   2.0
+  ],
+  "numberOfHitsList": [
+   1,
+   2,
+   2
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4876,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "RapidFire",
+  "skillNameInStatsData": "RapidFire",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 397
+  },
+  "cost": [
+   45.0,
+   85.0,
+   110.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 1,
+  "buffStat": {
+   "m_FileID": 2,
+   "m_PathID": 3148
+  },
+  "buffEffectLabelKey": "AttackSpeed_Text",
+  "buffEffectSuffix": "%",
+  "buffValues": [
+   450.0,
+   475.0,
+   500.0
+  ],
+  "buffDurations": [
+   3.5,
+   3.700000047683716,
+   4.0
+  ],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4939
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   47.0,
+   47.0,
+   45.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [],
+  "numberOfHitsList": [],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4877,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Bear",
+  "skillNameInStatsData": "Bear",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 416
+  },
+  "cost": [
+   320.0,
+   700.0,
+   1500.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 1,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1622
+  },
+  "petHealthMultipliers": [
+   1.600000023841858,
+   1.7999999523162842,
+   2.0999999046325684
+  ],
+  "petAttackChances": [],
+  "petAttackRange": 100.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 0.5,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   45.0,
+   45.0,
+   45.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [
+   2.0,
+   2.5,
+   3.0
+  ],
+  "numberOfHitsList": [
+   1,
+   1,
+   2
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4878,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Falcon",
+  "skillNameInStatsData": "Falcon",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 451
+  },
+  "cost": [
+   700.0,
+   1400.0,
+   2800.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 1,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1621
+  },
+  "petHealthMultipliers": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "petAttackChances": [
+   4.0,
+   4.300000190734863,
+   4.5
+  ],
+  "petAttackRange": 1800.0,
+  "petAttackRadius": 3.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   40.0,
+   40.0,
+   40.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [
+   4.5,
+   4.699999809265137,
+   5.0
+  ],
+  "numberOfHitsList": [
+   3,
+   3,
+   4
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4879,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Wolf",
+  "skillNameInStatsData": "Wolf",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 439
+  },
+  "cost": [
+   180.0,
+   350.0,
+   800.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 1,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1620
+  },
+  "petHealthMultipliers": [
+   1.0,
+   1.100000023841858,
+   1.2000000476837158
+  ],
+  "petAttackChances": [],
+  "petAttackRange": 100.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   45.0,
+   45.0,
+   45.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [
+   3.0,
+   3.299999952316284,
+   3.5
+  ],
+  "numberOfHitsList": [
+   1,
+   1,
+   2
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4880,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "PiercingShot",
+  "skillNameInStatsData": "PiercingShot",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 424
+  },
+  "cost": [
+   2500.0,
+   5500.0,
+   11000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4937
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 4938
+  },
+  "cooldowns": [
+   40.0,
+   38.0,
+   36.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   0.8999999761581421,
+   1.0,
+   1.100000023841858
+  ],
+  "numberOfHitsList": [
+   1,
+   2,
+   2
+  ],
+  "pierceCounts": [
+   5,
+   6,
+   6
+  ],
+  "numberOfTurnsList": [
+   1,
+   1,
+   2
+  ],
+  "durations": [],
+  "_pathID": 4881,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "SharpShooter",
+  "skillNameInStatsData": "SharpShooter",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 406
+  },
+  "cost": [
+   5000.0,
+   13000.0,
+   25000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 1,
+  "buffStat": {
+   "m_FileID": 2,
+   "m_PathID": 3177
+  },
+  "buffEffectLabelKey": "CriticalChance_Text",
+  "buffEffectSuffix": "%",
+  "buffValues": [
+   12.0,
+   14.0,
+   16.0
+  ],
+  "buffDurations": [
+   5.0,
+   6.0,
+   7.0
+  ],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4940
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   45.0,
+   43.0,
+   40.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [],
+  "numberOfHitsList": [],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4882,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "SniperScope",
+  "skillNameInStatsData": "SniperScope",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 395
+  },
+  "cost": [
+   1000.0,
+   2400.0,
+   4700.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4941
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   35.0,
+   32.0,
+   30.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [
+   5.5,
+   5.699999809265137,
+   6.0
+  ],
+  "numberOfHitsList": [
+   8,
+   8,
+   9
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4883,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "Blizzard",
+  "skillNameInStatsData": "Blizzard",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 450
+  },
+  "cost": [
+   85000.0,
+   140000.0,
+   300000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 1,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5284
+  },
+  "passiveEffectValueEquation": "[0.4,0.1,0.1]",
+  "passiveEffectLabelKey": "Chance_Text",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4930
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   3.0,
+   3.200000047683716,
+   3.5
+  ],
+  "numberOfHitsList": [
+   3,
+   3,
+   4
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [
+   4.699999809265137,
+   4.900000095367432,
+   5.0
+  ],
+  "_pathID": 4884,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "FireArea",
+  "skillNameInStatsData": "FireArea",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 417
+  },
+  "cost": [
+   12000.0,
+   40000.0,
+   95000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 1,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5285
+  },
+  "passiveEffectValueEquation": "[2.0,0.1,0.1]",
+  "passiveEffectLabelKey": "Chance_Text",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4934
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   3.200000047683716,
+   3.299999952316284,
+   3.5
+  ],
+  "numberOfHitsList": [
+   1,
+   1,
+   1
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [
+   3.5,
+   3.700000047683716,
+   4.0
+  ],
+  "_pathID": 4885,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "LightningStrike",
+  "skillNameInStatsData": "LightningStrike",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 405
+  },
+  "cost": [
+   35000.0,
+   85000.0,
+   135000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 1,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5286
+  },
+  "passiveEffectValueEquation": "[3.6,0.2,0.2]",
+  "passiveEffectLabelKey": "Chance_Text",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4935
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   7.0,
+   7.199999809265137,
+   7.5
+  ],
+  "numberOfHitsList": [
+   4,
+   4,
+   5
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4886,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "BatSwarm",
+  "skillNameInStatsData": "BatSwarm",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 457
+  },
+  "cost": [
+   200000.0,
+   600000.0,
+   1500000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4929
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   55.0,
+   53.0,
+   50.0
+  ],
+  "isShotByArcher": 0,
+  "damageMultipliers": [
+   3.5,
+   3.700000047683716,
+   4.0
+  ],
+  "numberOfHitsList": [
+   3,
+   3,
+   3
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [
+   4.0,
+   4.5,
+   5.0
+  ],
+  "_pathID": 4887,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "DarkMatter",
+  "skillNameInStatsData": "DarkMatter",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 419
+  },
+  "cost": [
+   300000.0,
+   900000.0,
+   2000000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4933
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   25.0,
+   23.0,
+   20.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   2.0,
+   2.200000047683716,
+   2.5
+  ],
+  "numberOfHitsList": [
+   2,
+   2,
+   3
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4888,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "SuperNova",
+  "skillNameInStatsData": "SuperNova",
+  "icon": {
+   "m_FileID": 0,
+   "m_PathID": 408
+  },
+  "cost": [
+   500000.0,
+   2000000.0,
+   4000000.0
+  ],
+  "maxLevel": 3,
+  "isPassive": 0,
+  "passiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "passiveEffectValueEquation": "",
+  "passiveEffectLabelKey": "",
+  "passiveEffectSuffix": "%",
+  "isBuff": 0,
+  "buffStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "buffEffectLabelKey": "",
+  "buffEffectSuffix": "%",
+  "buffValues": [],
+  "buffDurations": [],
+  "isPet": 0,
+  "petPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "petHealthMultipliers": [],
+  "petAttackChances": [],
+  "petAttackRange": 200.0,
+  "petAttackRadius": 0.0,
+  "petAttackSpeed": 1.0,
+  "projectileInfo": {
+   "m_FileID": 0,
+   "m_PathID": 4942
+  },
+  "projectileInfo_Mouse": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "cooldowns": [
+   150.0,
+   145.0,
+   140.0
+  ],
+  "isShotByArcher": 1,
+  "damageMultipliers": [
+   5.0,
+   5.5,
+   6.0
+  ],
+  "numberOfHitsList": [
+   10,
+   10,
+   10
+  ],
+  "pierceCounts": [],
+  "numberOfTurnsList": [],
+  "durations": [],
+  "_pathID": 4889,
+  "_file": "resources.assets"
+ }
+]

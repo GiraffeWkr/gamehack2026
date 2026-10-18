@@ -1,0 +1,127 @@
+[
+ {
+  "JobIndex": 0,
+  "UnlockCost": 0.0,
+  "Skills": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 4876
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4877
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4875
+   }
+  ],
+  "PassiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 0
+  },
+  "PassiveValue": 0.0,
+  "_pathID": 4870,
+  "_file": "resources.assets"
+ },
+ {
+  "JobIndex": 1,
+  "UnlockCost": 200.0,
+  "Skills": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 4880
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4878
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4879
+   }
+  ],
+  "PassiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5290
+  },
+  "PassiveValue": 7.0,
+  "_pathID": 4871,
+  "_file": "resources.assets"
+ },
+ {
+  "JobIndex": 2,
+  "UnlockCost": 1500.0,
+  "Skills": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 4883
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4881
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4882
+   }
+  ],
+  "PassiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5311
+  },
+  "PassiveValue": 20.0,
+  "_pathID": 4872,
+  "_file": "resources.assets"
+ },
+ {
+  "JobIndex": 3,
+  "UnlockCost": 20000.0,
+  "Skills": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 4885
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4886
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4884
+   }
+  ],
+  "PassiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5328
+  },
+  "PassiveValue": 25.0,
+  "_pathID": 4873,
+  "_file": "resources.assets"
+ },
+ {
+  "JobIndex": 4,
+  "UnlockCost": 300000.0,
+  "Skills": [
+   {
+    "m_FileID": 0,
+    "m_PathID": 4887
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4888
+   },
+   {
+    "m_FileID": 0,
+    "m_PathID": 4889
+   }
+  ],
+  "PassiveStat": {
+   "m_FileID": 0,
+   "m_PathID": 5438
+  },
+  "PassiveValue": 5.0,
+  "_pathID": 4874,
+  "_file": "resources.assets"
+ }
+]

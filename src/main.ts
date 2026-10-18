@@ -8,7 +8,8 @@
  */
 
 import './styles.css';
-import { setLang, t } from './core/i18n.js';
+import { setLang, t, getLang } from './core/i18n.js';
+import { reskinText } from './core/lexicon.js';
 import { Game, type InputState } from './game/game.js';
 import { SKILLS } from './game/skills.js';
 import type { DamageNumber } from './game/types.js';
@@ -20,9 +21,9 @@ import { MasteryPanel } from './ui/mastery.js';
 import { MASTERIES } from './content/masteryData.js';
 import { JOBS } from './content/jobData.js';
 import { AimInput } from './ui/input.js';
-import type { EnemyType } from './content/data.js';
-
-const SAVE_KEY = 'zad-archery-web/save/v1';
+import { Sfx, type SfxName } from './audio/sfx.js';
+import { emptySave, normalizeSave, SAVE_KEY } from './core/save.js';
+import type { SaveData } from './core/save.js';
 
 /**
  * The drawable area in CSS pixels.
@@ -40,63 +41,13 @@ function viewportSize(): { w: number; h: number } {
   return { w, h };
 }
 
-interface SaveData {
-  level: number;
-  gold: number;
-  kills: number;
-  defeatedGuardians: EnemyType[];
-  /** Purchased talent node levels, keyed by node id. */
-  talent?: Record<string, number>;
-  /** Player level, experience and the premium currency. */
-  progression: { level: number; exp: number; gems: number };
-  /**
-   * Monster-family currencies, matching `playerData.PlayerClawCurrency` etc. and the
-   * `WasCurrencyShownBefore` visibility flags.
-   */
-  currencies?: Record<string, number>;
-  currencySeen?: Record<string, boolean>;
-  /**
-   * `playerData.PlayerPortalCurrency`, and the `PortalCurrencyPaid` map of which battle
-   * levels have already handed theirs over. The map is what makes the currency finite:
-   * without it, replaying a level would farm it.
-   */
-  portalCurrency?: number;
-  portalCurrencySeen?: boolean;
-  portalCurrencyPaid?: number[];
-  /** `playerData.IsUnlockedJobs` + `SkillsLevels`: which jobs are bought and how far each
-   *  of their skills is levelled. */
-  jobs?: { jobs: number[]; skills: Record<string, number> };
-  /** `playerData.MasteryLevel` / `MasteryLevels` / `MasteryAwakened` / `MasteryPinnacleCharges`. */
-  mastery?: {
-    npcLevel: number;
-    levels: Record<string, number>;
-    awakened: string[];
-    charges: Record<string, number>;
-  };
-}
-
 function loadSave(): SaveData {
   try {
     const raw = localStorage.getItem(SAVE_KEY);
-    if (!raw) return { level: 1, gold: 0, kills: 0, defeatedGuardians: [], progression: { level: 1, exp: 0, gems: 0 } };
-    const parsed = JSON.parse(raw) as Partial<SaveData>;
-    return {
-      level: Math.max(1, Math.floor(parsed.level ?? 1)),
-      gold: Math.max(0, parsed.gold ?? 0),
-      kills: Math.max(0, parsed.kills ?? 0),
-      defeatedGuardians: (parsed.defeatedGuardians ?? []) as EnemyType[],
-      progression: parsed.progression ?? { level: 1, exp: 0, gems: 0 },
-      currencies: parsed.currencies ?? {},
-      currencySeen: parsed.currencySeen ?? {},
-      portalCurrency: Math.max(0, Math.round(parsed.portalCurrency ?? 0)),
-      portalCurrencySeen: parsed.portalCurrencySeen ?? false,
-      portalCurrencyPaid: (parsed.portalCurrencyPaid ?? []).filter((n) => Number.isFinite(n)),
-    };
+    if (!raw) return emptySave();
+    return normalizeSave(JSON.parse(raw));
   } catch {
-    return {
-      level: 1, gold: 0, kills: 0, defeatedGuardians: [],
-      progression: { level: 1, exp: 0, gems: 0 },
-    };
+    return emptySave();
   }
 }
 
@@ -104,10 +55,9 @@ function writeSave(data: SaveData): void {
   try {
     localStorage.setItem(SAVE_KEY, JSON.stringify(data));
   } catch {
-    /* storage disabled (private mode) — the run still works, just not persisted */
+    /* storage disabled (private mode) - the run still works, just not persisted */
   }
 }
-
 async function boot(): Promise<void> {
   setLang('zh');
   const app = document.getElementById('app');
@@ -206,6 +156,9 @@ async function boot(): Promise<void> {
       }
       game.tick(1 / 60, scripted);
       scripted.taps = 0;
+      // Fast-forward runs before the audio graph exists; drop the cues instead of
+      // replaying a whole level's worth of sounds at once.
+      game.sfx.length = 0;
     }
     // The camera only advances inside `render`, so after a fast-forward it is
     // still sitting at the level start while the character has walked thousands
@@ -255,6 +208,51 @@ async function boot(): Promise<void> {
   // per currency - otherwise the gold drop (a purple orb texture) flies to the counter
   // purple.
   void hud.preloadDropIcons();
+
+  // --- audio -------------------------------------------------------------
+  // The simulation only emits cue names (`game.sfx`); this is the one place that owns an
+  // AudioContext. Browsers require a gesture before audio may start, so the graph is built
+  // on the first pointer/key event and every cue before that is silently dropped.
+  const sfx = new Sfx();
+  const unlockAudio = (): void => {
+    const first = !sfx.ready;
+    sfx.unlock();
+    if (first) sfx.play('ready');
+  };
+  window.addEventListener('pointerdown', unlockAudio, { passive: true });
+  window.addEventListener('keydown', unlockAudio);
+  // Hidden tabs drop the music (not the whole context: the game may still be running).
+  document.addEventListener('visibilitychange', () => sfx.setMusicPaused(document.hidden));
+  const soundBtn = document.querySelector<HTMLButtonElement>('.sound-btn');
+  const paintSound = (): void => {
+    if (!soundBtn) return;
+    soundBtn.textContent = '♪';
+    soundBtn.classList.toggle('muted', sfx.muted);
+    soundBtn.title = sfx.muted ? '声音：关' : '声音：开';
+  };
+  paintSound();
+  // A save may have been muted earlier; say so instead of leaving the player guessing
+  // why the game is silent.
+  if (sfx.muted) hud.showToast('音效已关闭 · 点右上角 ♪ 开启', 2400);
+  soundBtn?.addEventListener('click', () => {
+    sfx.unlock();
+    sfx.toggle();
+    paintSound();
+  // A save may have been muted earlier; say so instead of leaving the player guessing
+  // why the game is silent.
+  if (sfx.muted) hud.showToast('音效已关闭 · 点右上角 ♪ 开启', 2400);
+  });
+  // Any button in the shell gets a soft click, including the panels' buy buttons.
+  document.addEventListener('click', (ev) => {
+    const el = (ev.target as HTMLElement | null)?.closest('button');
+    if (el) sfx.play('ui');
+  }, { capture: true });
+
+  const drainSfx = (): void => {
+    if (game.sfx.length === 0) return;
+    for (const cue of game.sfx) sfx.play(cue as SfxName);
+    game.sfx.length = 0;
+  };
 
   /**
    * The talent tree. Buying rebuilds the stat bag from its bases plus every node level,
@@ -314,7 +312,7 @@ async function boot(): Promise<void> {
       // `CharacterManager.ChangeSkin`: the outfit follows the HIGHEST unlocked job.
       renderer.setPlayerSkin(game.jobs.skinIndex());
       const job = JOBS[index];
-      hud.announceSkill(`解锁 ${job.titleZh}`, true);
+      hud.announceSkill(`解锁 ${reskinText(job.titleZh, getLang())}`, true);
       return true;
     },
     onLevelUpSkill: (job, slot) => {
@@ -324,7 +322,7 @@ async function boot(): Promise<void> {
       if (spent === null) return false;
       game.currencies.ClawCurrency -= spent;
       game.refreshStats();
-      hud.announceSkill(`${SKILLS[id].titleZh} Lv${game.jobs.level(id)}`, true);
+      hud.announceSkill(`${reskinText(SKILLS[id].titleZh, getLang())} Lv${game.jobs.level(id)}`, true);
       void price;
       return true;
     },
@@ -343,7 +341,7 @@ async function boot(): Promise<void> {
       if (!res) return false;
       game.currencies.BatCurrency -= res.spent;
       game.refreshStats();
-      if (res.reward) hud.announceSkill(res.reward.textZh, true);
+      if (res.reward) hud.announceSkill(reskinText(res.reward.textZh, getLang()), true);
       return true;
     },
     onLevelMastery: (index) => {
@@ -362,7 +360,7 @@ async function boot(): Promise<void> {
       if (spent === null) return false;
       game.currencies.BatCurrency -= spent;
       game.refreshStats();
-      hud.announceSkill(`${def.nameZh} ${'已觉醒'}`, true);
+      hud.announceSkill(`${reskinText(def.nameZh, getLang())} ${'已觉醒'}`, true);
       return true;
     },
     onPrime: () => false,
@@ -562,6 +560,8 @@ async function boot(): Promise<void> {
     const state: InputState = input.getState();
     const blockedBefore = game.shotsBlocked;
     game.tick(dt, state);
+    drainSfx();
+    sfx.setThruster(game.isArcherSpawned && game.isMoving());
 
     // A tap refused for lack of arrows must say so. The magazine regenerates at
     // 0.4s per arrow while a player can tap far faster, so refusals are the norm,
@@ -637,8 +637,7 @@ async function boot(): Promise<void> {
     // mid-run must light up the nodes it just made affordable. The signature guard keeps
     // 40-odd class toggles off the per-frame path.
     const talentSig = `${Math.floor(game.gold)}|${game.talent.totalLevels()}`
-      + `|${game.currencies.ClawCurrency}|${game.currencies.ArcherCurrency}`
-      + `|${game.currencies.WarriorCurrency}|${game.currencies.MageCurrency}`
+      + `|${game.currencies.ClawCurrency}|${game.currencies.BatCurrency}`
       + `|${game.currencies.BatCurrency}|${game.portalCurrency}`;
     if (talentSig !== lastTalentSig) {
       lastTalentSig = talentSig;
@@ -662,7 +661,12 @@ async function boot(): Promise<void> {
         saveNow(true);
       }
       clearedTimer += dt;
-      if (clearedTimer > 1.4) {
+      // Wait until the character has actually walked off the right edge (the camera holds
+      // at the level's end while he does). The timer is only a safety net for extreme
+      // viewports; 6s is far longer than the exit sprint needs.
+      const exitScreenX = renderer.toScreen(game.px, game.py).x;
+      const offscreen = exitScreenX > viewportSize().w + 80;
+      if (clearedTimer > 0.6 && (offscreen || clearedTimer > 6)) {
         levelCleared = false;
         game.advanceLevel();
         hud.showToast(`LEVEL ${game.level}`, 1200);
@@ -711,10 +715,17 @@ async function boot(): Promise<void> {
     if (document.hidden) saveNow();
   });
   window.addEventListener('beforeunload', () => saveNow());
+  // Mobile Safari and some Android WebViews skip `beforeunload`; `pagehide` is the event
+  // that actually fires when the tab is closed or the app is backgrounded.
+  window.addEventListener('pagehide', () => saveNow());
+  // A hard process kill (Task Manager, crash, "stop server") runs no unload handler at
+  // all, so a run in progress would roll back to the last cleared level. A cheap periodic
+  // snapshot bounds that loss to a few seconds.
+  window.setInterval(() => saveNow(), 5000);
 
   // Expose for quick console poking during development.
   Object.assign(window as unknown as Record<string, unknown>, {
-    __zad: { game, renderer, hud, talentPanel, jobsPanel, masteryPanel },
+    __zad: { game, renderer, hud, talentPanel, jobsPanel, masteryPanel, sfx },
   });
 
   // ?measure=1 overlays the internal geometry on the game, so framing problems can

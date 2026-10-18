@@ -1,0 +1,29 @@
+﻿session_idx,level,status,total_elapsed,total_elapsed_s,game_s,real_s,speed,played_s,deaths_run,deaths_total,killed_run,killed_total,currencies_flat
+0,1,COMPLETED,5m 5s,305.0,305.0,306.0,0.99,311.0,0,0,128,128,Gold=207.0
+0,2,INCOMPLETE,8m 10s,490.0,185.0,185.0,1.0,502.0,1,1,96,224,Gold=576.0; ClawCurrency=63.0
+1,2,INCOMPLETE,8m 31s,511.0,20.0,20.0,0.97,527.0,1,2,2,226,Gold=12.0; ClawCurrency=2.0
+2,2,COMPLETED,12m 35s,755.0,244.0,245.0,1.0,774.0,2,4,110,336,Gold=693.0; ClawCurrency=84.0
+2,3,COMPLETED,16m 53s,1013.0,258.0,258.0,1.0,1037.0,4,8,160,496,Gold=2492.0; ClawCurrency=111.0
+2,4,COMPLETED,20m 58s,1258.0,244.0,245.0,1.0,1287.0,2,10,166,662,Gold=9000.0; ClawCurrency=256.0; ArcherCurrency=22.0
+2,5,COMPLETED,25m 40s,1540.0,281.0,281.0,1.0,1574.0,0,10,178,840,Gold=27100.0; ClawCurrency=218.0; ArcherCurrency=84.0
+2,6,COMPLETED,30m 36s,1836.0,296.0,296.0,1.0,1880.0,1,11,216,1056,Gold=83000.0; ClawCurrency=435.0; ArcherCurrency=94.0
+2,7,INCOMPLETE,31m 38s,1898.0,61.0,61.0,1.0,1951.0,2,13,27,1083,Gold=21900.0; ClawCurrency=92.0; ArcherCurrency=6.0; WarriorCurrency=2.0; MiningRock=7.0
+3,7,INCOMPLETE,32m 35s,1955.0,56.0,57.0,0.99,2013.0,1,14,20,1103,Gold=15300.0; ClawCurrency=56.0; ArcherCurrency=9.0; WarriorCurrency=3.0; MiningRock=11.0
+4,7,INCOMPLETE,33m 35s,2015.0,60.0,61.0,0.99,2077.0,2,16,24,1127,Gold=19300.0; ClawCurrency=88.0; ArcherCurrency=3.0; WarriorCurrency=1.0; MiningRock=0.0
+5,7,COMPLETED,36m 16s,2176.0,160.0,161.0,0.99,2240.0,0,16,210,1337,Gold=268000.0; ClawCurrency=613.0; ArcherCurrency=126.0; WarriorCurrency=34.0; MiningRock=0.0
+5,8,INCOMPLETE,37m 22s,2242.0,66.0,66.0,1.0,2312.0,0,16,127,1464,Gold=383000.0; ClawCurrency=558.0; ArcherCurrency=96.0; WarriorCurrency=36.0; MiningRock=0.0
+6,8,COMPLETED,38m 52s,2332.0,90.0,91.0,0.99,2405.0,0,16,241,1705,Gold=712000.0; ClawCurrency=1046.0; ArcherCurrency=177.0; WarriorCurrency=86.0; MiningRock=0.0
+6,9,COMPLETED,40m 17s,2417.0,84.0,84.0,1.0,2594.0,0,16,241,2205,Gold=1550000.0; ClawCurrency=1438.0; ArcherCurrency=202.0; WarriorCurrency=68.0; MiningRock=0.0
+6,10,COMPLETED,40m 18s,2418.0,1.0,1.0,1.0,2599.0,0,16,0,2205,Gold=0.0; ClawCurrency=0.0; ArcherCurrency=0.0; WarriorCurrency=0.0; MiningRock=0.0
+6,11,COMPLETED,42m 29s,2549.0,130.0,130.0,1.0,2734.0,0,16,288,2493,Gold=7170000.0; ClawCurrency=2394.0; ArcherCurrency=400.0; WarriorCurrency=136.0; MageCurrency=39.0; MiningRock=0.0
+6,12,COMPLETED,44m 51s,2691.0,142.0,142.0,1.0,2890.0,0,16,289,2782,Gold=14500000.0; ClawCurrency=3096.0; ArcherCurrency=532.0; WarriorCurrency=222.0; MageCurrency=74.0; MiningRock=0.0
+6,13,COMPLETED,47m 42s,2862.0,170.0,170.0,1.0,3079.0,0,16,304,3086,Gold=29500000.0; ClawCurrency=4800.0; ArcherCurrency=756.0; WarriorCurrency=328.0; MageCurrency=78.0; MiningRock=0.0
+6,14,COMPLETED,51m 16s,3076.0,214.0,214.0,1.0,3297.0,0,16,326,3412,Gold=42500000.0; ClawCurrency=6633.0; ArcherCurrency=1125.0; WarriorCurrency=380.0; MageCurrency=135.0; MiningRock=0.0
+6,15,COMPLETED,55m 4s,3304.0,228.0,228.0,1.0,3583.0,0,16,342,3754,Gold=87600000.0; ClawCurrency=9709.0; ArcherCurrency=2081.0; WarriorCurrency=688.0; MageCurrency=218.0; MiningRock=0.0
+6,16,INCOMPLETE,56m 31s,3391.0,86.0,86.0,1.0,3675.0,0,16,87,3841,Gold=35700000.0; ClawCurrency=2419.0; ArcherCurrency=352.0; WarriorCurrency=126.0; MageCurrency=36.0; BatCurrency=15.0; MiningRock=0.0
+7,16,INCOMPLETE,58m 6s,3486.0,95.0,96.0,0.99,3773.0,0,16,121,3962,Gold=100000000.0; ClawCurrency=3860.0; ArcherCurrency=908.0; WarriorCurrency=238.0; MageCurrency=54.0; BatCurrency=32.0; MiningRock=0.0
+8,16,INCOMPLETE,59m 5s,3545.0,58.0,59.0,0.99,3835.0,0,16,66,4028,Gold=88900000.0; ClawCurrency=2419.0; ArcherCurrency=352.0; WarriorCurrency=180.0; MageCurrency=36.0; BatCurrency=12.0; MiningRock=0.0
+9,16,COMPLETED,1h 1m 9s,3669.0,123.0,124.0,0.99,3961.0,0,16,342,4370,Gold=331000000.0; ClawCurrency=11100.0; ArcherCurrency=2806.0; WarriorCurrency=1300.0; MageCurrency=364.0; BatCurrency=75.0; MiningRock=0.0
+9,17,INCOMPLETE,1h 1m 17s,3677.0,8.0,8.0,1.0,3973.0,0,16,34,4404,Gold=7570000.0; ClawCurrency=79.0; ArcherCurrency=0.0; WarriorCurrency=0.0; MageCurrency=0.0; BatCurrency=0.0; MiningRock=0.0
+10,29,COMPLETED,1h 7m 40s,4060.0,382.0,384.0,1.0,4359.0,9,25,668,5072,Gold=200000000000.0; ClawCurrency=1090000.0; ArcherCurrency=253000.0; WarriorCurrency=96900.0; MageCurrency=74800.0; BatCurrency=12200.0; MiningRock=0.0; GuardianCurrency=2.0
+10,30,INCOMPLETE,1h 8m 57s,4137.0,77.0,77.0,1.0,4446.0,0,25,369,5441,Gold=345000000000.0; ClawCurrency=931000.0; ArcherCurrency=141000.0; WarriorCurrency=82800.0; MageCurrency=17600.0; BatCurrency=6291.0; MiningRock=0.0; GuardianCurrency=0.0

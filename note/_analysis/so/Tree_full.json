@@ -1,0 +1,5998 @@
+[
+ {
+  "pathID": 3243,
+  "id": "Node 1_55cde9fa",
+  "nameKey": "Node 1",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 1,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_MouseMagazineSize"
+  ],
+  "linksTo": [
+   3310,
+   3389
+  ],
+  "pos": {
+   "x": -30.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 2_c99d287b",
+   "Node 7_0e34a05e"
+  ],
+  "linkedFrom": [
+   "Node 2_c99d287b",
+   "Node 7_0e34a05e"
+  ]
+ },
+ {
+  "pathID": 3310,
+  "id": "Node 2_c99d287b",
+  "nameKey": "Node 2",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1"
+  ],
+  "costEq": [
+   "2"
+  ],
+  "stats": [
+   "Flat_GoldCoinsToDrop"
+  ],
+  "linksTo": [
+   3353,
+   3243
+  ],
+  "pos": {
+   "x": -30.0,
+   "y": 150.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 3_5c99c930",
+   "Node 1_55cde9fa"
+  ],
+  "linkedFrom": [
+   "Node 1_55cde9fa",
+   "Node 3_5c99c930"
+  ]
+ },
+ {
+  "pathID": 3353,
+  "id": "Node 3_5c99c930",
+  "nameKey": "Node 3",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "6"
+  ],
+  "stats": [
+   "Additive_MouseMagazineRegenTime"
+  ],
+  "linksTo": [
+   3310,
+   3250
+  ],
+  "pos": {
+   "x": 50.0,
+   "y": 90.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 2_c99d287b",
+   "Node 11_bd6ad84f"
+  ],
+  "linkedFrom": [
+   "Node 11_bd6ad84f",
+   "Node 2_c99d287b"
+  ]
+ },
+ {
+  "pathID": 3389,
+  "id": "Node 7_0e34a05e",
+  "nameKey": "Node 7",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "4"
+  ],
+  "stats": [
+   "Flat_NumberOfMouseProjectiles"
+  ],
+  "linksTo": [
+   3406,
+   3243
+  ],
+  "pos": {
+   "x": -30.0,
+   "y": -190.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 9_fef6db06",
+   "Node 1_55cde9fa"
+  ],
+  "linkedFrom": [
+   "Node 1_55cde9fa",
+   "Node 9_fef6db06"
+  ]
+ },
+ {
+  "pathID": 3406,
+  "id": "Node 9_fef6db06",
+  "nameKey": "Node 9",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "10"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3389,
+   3250
+  ],
+  "pos": {
+   "x": 50.0,
+   "y": -130.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 7_0e34a05e",
+   "Node 11_bd6ad84f"
+  ],
+  "linkedFrom": [
+   "Node 11_bd6ad84f",
+   "Node 7_0e34a05e"
+  ]
+ },
+ {
+  "pathID": 3250,
+  "id": "Node 11_bd6ad84f",
+  "nameKey": "Node 11",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "18"
+  ],
+  "stats": [
+   "Flat_IsArcherSpawned"
+  ],
+  "linksTo": [
+   3256,
+   3353,
+   3406
+  ],
+  "pos": {
+   "x": 100.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 12_78b75855",
+   "Node 3_5c99c930",
+   "Node 9_fef6db06"
+  ],
+  "linkedFrom": [
+   "Node 12_78b75855",
+   "Node 3_5c99c930",
+   "Node 9_fef6db06"
+  ]
+ },
+ {
+  "pathID": 3256,
+  "id": "Node 12_78b75855",
+  "nameKey": "Node 12",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "10 + 10*x"
+  ],
+  "stats": [
+   "Flat_AttackRange"
+  ],
+  "linksTo": [
+   3250,
+   3261,
+   3271,
+   3284
+  ],
+  "pos": {
+   "x": 210.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 11_bd6ad84f",
+   "Node 13_62546288",
+   "Node 15_615ff926",
+   "Node 17_e179881d"
+  ],
+  "linkedFrom": [
+   "Node 11_bd6ad84f",
+   "Node 13_62546288",
+   "Node 15_615ff926",
+   "Node 17_e179881d"
+  ]
+ },
+ {
+  "pathID": 3261,
+  "id": "Node 13_62546288",
+  "nameKey": "Node 13",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "15 + 10*x"
+  ],
+  "stats": [
+   "Additive_PlayerAttackSpeed"
+  ],
+  "linksTo": [
+   3256,
+   3311,
+   3362
+  ],
+  "pos": {
+   "x": 210.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 12_78b75855",
+   "Node 20_da470919",
+   "Node 38_6dfde75e"
+  ],
+  "linkedFrom": [
+   "Node 12_78b75855",
+   "Node 20_da470919",
+   "Node 38_6dfde75e"
+  ]
+ },
+ {
+  "pathID": 3266,
+  "id": "Node 14_2efc347d",
+  "nameKey": "Node 14",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "12*x"
+  ],
+  "costEq": [
+   "100*x"
+  ],
+  "stats": [
+   "Additive_SkillsCooldownSpeed"
+  ],
+  "linksTo": [
+   3352,
+   3359
+  ],
+  "pos": {
+   "x": 390.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 29_0737fff4",
+   "Node 35_30cb4e4c"
+  ],
+  "linkedFrom": [
+   "Node 29_0737fff4",
+   "Node 35_30cb4e4c"
+  ]
+ },
+ {
+  "pathID": 3271,
+  "id": "Node 15_615ff926",
+  "nameKey": "Node 15",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "15*x"
+  ],
+  "stats": [
+   "Additive_PlayerMovementSpeed"
+  ],
+  "linksTo": [
+   3256,
+   3276,
+   3372,
+   3349
+  ],
+  "pos": {
+   "x": 210.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 12_78b75855",
+   "Node 16_110b44f3",
+   "Node 48_5e21c94a",
+   "Node 241_802736a7"
+  ],
+  "linkedFrom": [
+   "Node 12_78b75855",
+   "Node 16_110b44f3",
+   "Node 241_802736a7",
+   "Node 48_5e21c94a"
+  ]
+ },
+ {
+  "pathID": 3276,
+  "id": "Node 16_110b44f3",
+  "nameKey": "Node 16",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "25+15*x"
+  ],
+  "stats": [
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3271,
+   3365
+  ],
+  "pos": {
+   "x": 210.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 15_615ff926",
+   "Node 41_2ac6aa34"
+  ],
+  "linkedFrom": [
+   "Node 15_615ff926",
+   "Node 41_2ac6aa34"
+  ]
+ },
+ {
+  "pathID": 3284,
+  "id": "Node 17_e179881d",
+  "nameKey": "Node 17",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "50"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockSkills",
+   "Flat_ClawCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3256,
+   3352
+  ],
+  "pos": {
+   "x": 300.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 12_78b75855",
+   "Node 29_0737fff4"
+  ],
+  "linkedFrom": [
+   "Node 12_78b75855",
+   "Node 29_0737fff4"
+  ]
+ },
+ {
+  "pathID": 3289,
+  "id": "Node 18_6ab42e62",
+  "nameKey": "Node 18",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "8*x"
+  ],
+  "costEq": [
+   "500*x"
+  ],
+  "stats": [
+   "Flat_MouseChanceForAnotherHit"
+  ],
+  "linksTo": [
+   3354
+  ],
+  "pos": {
+   "x": 480.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 30_fdf84c5e"
+  ],
+  "linkedFrom": [
+   "Node 30_fdf84c5e"
+  ]
+ },
+ {
+  "pathID": 3311,
+  "id": "Node 20_da470919",
+  "nameKey": "Node 20",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "35+25*x"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3261,
+   3356
+  ],
+  "pos": {
+   "x": 130.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 13_62546288",
+   "Node 32_a6c39d94"
+  ],
+  "linkedFrom": [
+   "Node 13_62546288",
+   "Node 32_a6c39d94"
+  ]
+ },
+ {
+  "pathID": 3350,
+  "id": "Node 26_caf035e3",
+  "nameKey": "Node 26",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_MouseAutoMode"
+  ],
+  "linksTo": [
+   3354,
+   3352
+  ],
+  "pos": {
+   "x": 390.0,
+   "y": -120.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 30_fdf84c5e",
+   "Node 29_0737fff4"
+  ],
+  "linkedFrom": [
+   "Node 29_0737fff4",
+   "Node 30_fdf84c5e"
+  ]
+ },
+ {
+  "pathID": 3351,
+  "id": "Node 27_619159e7",
+  "nameKey": "Node 27",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "2000 "
+  ],
+  "stats": [
+   "Flat_MouseChanceToFireSkills"
+  ],
+  "linksTo": [
+   3354
+  ],
+  "pos": {
+   "x": 300.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 30_fdf84c5e"
+  ],
+  "linkedFrom": [
+   "Node 30_fdf84c5e"
+  ]
+ },
+ {
+  "pathID": 3352,
+  "id": "Node 29_0737fff4",
+  "nameKey": "Node 29",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "[40,200]"
+  ],
+  "stats": [
+   "Flat_ClawCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3284,
+   3266,
+   3350,
+   3368,
+   3364
+  ],
+  "pos": {
+   "x": 390.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 17_e179881d",
+   "Node 14_2efc347d",
+   "Node 26_caf035e3",
+   "Node 44_c28256e8",
+   "Node 40_4d8a6a0e"
+  ],
+  "linkedFrom": [
+   "Node 14_2efc347d",
+   "Node 17_e179881d",
+   "Node 26_caf035e3",
+   "Node 40_4d8a6a0e",
+   "Node 44_c28256e8"
+  ]
+ },
+ {
+  "pathID": 3354,
+  "id": "Node 30_fdf84c5e",
+  "nameKey": "Node 30",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "12*x"
+  ],
+  "costEq": [
+   "200*x"
+  ],
+  "stats": [
+   "Additive_MouseMagazineRegenTime"
+  ],
+  "linksTo": [
+   3350,
+   3289,
+   3351
+  ],
+  "pos": {
+   "x": 390.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 26_caf035e3",
+   "Node 18_6ab42e62",
+   "Node 27_619159e7"
+  ],
+  "linkedFrom": [
+   "Node 18_6ab42e62",
+   "Node 26_caf035e3",
+   "Node 27_619159e7"
+  ]
+ },
+ {
+  "pathID": 3355,
+  "id": "Node 31_5431c56a",
+  "nameKey": "Node 31",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "7000*x"
+  ],
+  "stats": [
+   "Additive_HealthPotionRegenPercentage"
+  ],
+  "linksTo": [
+   3384,
+   3370
+  ],
+  "pos": {
+   "x": 750.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 65_09fda8b6",
+   "Node 46_1086ce36"
+  ],
+  "linkedFrom": [
+   "Node 46_1086ce36",
+   "Node 65_09fda8b6"
+  ]
+ },
+ {
+  "pathID": 3356,
+  "id": "Node 32_a6c39d94",
+  "nameKey": "Node 32",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "70*x"
+  ],
+  "stats": [
+   "Flat_ChanceForDoubleDamage"
+  ],
+  "linksTo": [
+   3311,
+   3357,
+   3358
+  ],
+  "pos": {
+   "x": 130.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 20_da470919",
+   "Node 33_4192f73e",
+   "Node 34_8f5b38ee"
+  ],
+  "linkedFrom": [
+   "Node 20_da470919",
+   "Node 33_4192f73e",
+   "Node 34_8f5b38ee"
+  ]
+ },
+ {
+  "pathID": 3357,
+  "id": "Node 33_4192f73e",
+  "nameKey": "Node 33",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "100*x"
+  ],
+  "stats": [
+   "Additive_PlayerAttackSpeed"
+  ],
+  "linksTo": [
+   3356
+  ],
+  "pos": {
+   "x": 50.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 32_a6c39d94"
+  ],
+  "linkedFrom": [
+   "Node 32_a6c39d94"
+  ]
+ },
+ {
+  "pathID": 3358,
+  "id": "Node 34_8f5b38ee",
+  "nameKey": "Node 34",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "40*x"
+  ],
+  "costEq": [
+   "200*x"
+  ],
+  "stats": [
+   "Flat_AttackRange"
+  ],
+  "linksTo": [
+   3356
+  ],
+  "pos": {
+   "x": 210.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 32_a6c39d94"
+  ],
+  "linkedFrom": [
+   "Node 32_a6c39d94"
+  ]
+ },
+ {
+  "pathID": 3359,
+  "id": "Node 35_30cb4e4c",
+  "nameKey": "Node 35",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "400 + 1500*(x-1)"
+  ],
+  "stats": [
+   "Flat_Multishot_NumberOfProjectiles"
+  ],
+  "linksTo": [
+   3360,
+   3266,
+   3361
+  ],
+  "pos": {
+   "x": 390.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 36_6fb78576",
+   "Node 14_2efc347d",
+   "Node 37_d10dba38"
+  ],
+  "linkedFrom": [
+   "Node 14_2efc347d",
+   "Node 36_6fb78576",
+   "Node 37_d10dba38"
+  ]
+ },
+ {
+  "pathID": 3360,
+  "id": "Node 36_6fb78576",
+  "nameKey": "Node 36",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "0.5*x"
+  ],
+  "costEq": [
+   "700 + 2500*(x-1)"
+  ],
+  "stats": [
+   "Flat_RapidFire_Duration"
+  ],
+  "linksTo": [
+   3359
+  ],
+  "pos": {
+   "x": 300.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 35_30cb4e4c"
+  ],
+  "linkedFrom": [
+   "Node 35_30cb4e4c"
+  ]
+ },
+ {
+  "pathID": 3361,
+  "id": "Node 37_d10dba38",
+  "nameKey": "Node 37",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "1500 + 4500*(x-1)"
+  ],
+  "stats": [
+   "Additive_BombArrow_RadiusOfEffect"
+  ],
+  "linksTo": [
+   3359
+  ],
+  "pos": {
+   "x": 480.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 35_30cb4e4c"
+  ],
+  "linkedFrom": [
+   "Node 35_30cb4e4c"
+  ]
+ },
+ {
+  "pathID": 3362,
+  "id": "Node 38_6dfde75e",
+  "nameKey": "Node 38",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "150*x"
+  ],
+  "stats": [
+   "Flat_GoldChanceToDrop"
+  ],
+  "linksTo": [
+   3261
+  ],
+  "pos": {
+   "x": 300.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 13_62546288"
+  ],
+  "linkedFrom": [
+   "Node 13_62546288"
+  ]
+ },
+ {
+  "pathID": 3363,
+  "id": "Node 39_face46b2",
+  "nameKey": "Node 39",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "-5*x"
+  ],
+  "costEq": [
+   "900"
+  ],
+  "stats": [
+   "Additive_EnemyMovementSpeedMultiplier"
+  ],
+  "linksTo": [
+   3370,
+   3369
+  ],
+  "pos": {
+   "x": 570.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 46_1086ce36",
+   "Node 45_100c6de7"
+  ],
+  "linkedFrom": [
+   "Node 45_100c6de7",
+   "Node 46_1086ce36"
+  ]
+ },
+ {
+  "pathID": 3364,
+  "id": "Node 40_4d8a6a0e",
+  "nameKey": "Node 40",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "3*x"
+  ],
+  "costEq": [
+   "175+125*(x-1)"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3367,
+   3352
+  ],
+  "pos": {
+   "x": 480.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 43_2e5bdc80",
+   "Node 29_0737fff4"
+  ],
+  "linkedFrom": [
+   "Node 29_0737fff4",
+   "Node 43_2e5bdc80"
+  ]
+ },
+ {
+  "pathID": 3365,
+  "id": "Node 41_2ac6aa34",
+  "nameKey": "Node 41",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "100 + 300 *(x-1)"
+  ],
+  "stats": [
+   "Flat_HealthRegen"
+  ],
+  "linksTo": [
+   3276,
+   3366
+  ],
+  "pos": {
+   "x": 130.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 16_110b44f3",
+   "Node 42_3fd48016"
+  ],
+  "linkedFrom": [
+   "Node 16_110b44f3",
+   "Node 42_3fd48016"
+  ]
+ },
+ {
+  "pathID": 3366,
+  "id": "Node 42_3fd48016",
+  "nameKey": "Node 42",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "550"
+  ],
+  "stats": [
+   "Additive_Health"
+  ],
+  "linksTo": [
+   3365
+  ],
+  "pos": {
+   "x": 50.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 41_2ac6aa34"
+  ],
+  "linkedFrom": [
+   "Node 41_2ac6aa34"
+  ]
+ },
+ {
+  "pathID": 3367,
+  "id": "Node 43_2e5bdc80",
+  "nameKey": "Node 43",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "50"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockCrafting",
+   "Flat_ArcherCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3364,
+   3368,
+   3371,
+   3369,
+   3379
+  ],
+  "pos": {
+   "x": 480.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 40_4d8a6a0e",
+   "Node 44_c28256e8",
+   "Node 47_1f21ee14",
+   "Node 45_100c6de7",
+   "Node 57_6cec5e72"
+  ],
+  "linkedFrom": [
+   "Node 40_4d8a6a0e",
+   "Node 44_c28256e8",
+   "Node 45_100c6de7",
+   "Node 47_1f21ee14",
+   "Node 57_6cec5e72"
+  ]
+ },
+ {
+  "pathID": 3368,
+  "id": "Node 44_c28256e8",
+  "nameKey": "Node 44",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "6*x"
+  ],
+  "costEq": [
+   "175+125*(x-1)"
+  ],
+  "stats": [
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3352,
+   3367
+  ],
+  "pos": {
+   "x": 480.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 29_0737fff4",
+   "Node 43_2e5bdc80"
+  ],
+  "linkedFrom": [
+   "Node 29_0737fff4",
+   "Node 43_2e5bdc80"
+  ]
+ },
+ {
+  "pathID": 3369,
+  "id": "Node 45_100c6de7",
+  "nameKey": "Node 45",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "800*x"
+  ],
+  "stats": [
+   "Flat_HealthRegen"
+  ],
+  "linksTo": [
+   3367,
+   3363
+  ],
+  "pos": {
+   "x": 570.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 43_2e5bdc80",
+   "Node 39_face46b2"
+  ],
+  "linkedFrom": [
+   "Node 39_face46b2",
+   "Node 43_2e5bdc80"
+  ]
+ },
+ {
+  "pathID": 3370,
+  "id": "Node 46_1086ce36",
+  "nameKey": "Node 46",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "3",
+   "10"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_ChanceToDropHealthPotion",
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3363,
+   3355
+  ],
+  "pos": {
+   "x": 660.0,
+   "y": 180.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 39_face46b2",
+   "Node 31_5431c56a"
+  ],
+  "linkedFrom": [
+   "Node 31_5431c56a",
+   "Node 39_face46b2"
+  ]
+ },
+ {
+  "pathID": 3371,
+  "id": "Node 47_1f21ee14",
+  "nameKey": "Node 47",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "750*x"
+  ],
+  "stats": [
+   "Flat_ArcherCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3367,
+   3373
+  ],
+  "pos": {
+   "x": 570.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 43_2e5bdc80",
+   "Node 51_55a25e35"
+  ],
+  "linkedFrom": [
+   "Node 43_2e5bdc80",
+   "Node 51_55a25e35"
+  ]
+ },
+ {
+  "pathID": 3372,
+  "id": "Node 48_5e21c94a",
+  "nameKey": "Node 48",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1"
+  ],
+  "costEq": [
+   "100"
+  ],
+  "stats": [
+   "Flat_MouseMagazineSize"
+  ],
+  "linksTo": [
+   3271
+  ],
+  "pos": {
+   "x": 300.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 15_615ff926"
+  ],
+  "linkedFrom": [
+   "Node 15_615ff926"
+  ]
+ },
+ {
+  "pathID": 3373,
+  "id": "Node 51_55a25e35",
+  "nameKey": "Node 51",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "7*x"
+  ],
+  "costEq": [
+   "600*x"
+  ],
+  "stats": [
+   "Additive_CraftingLuck"
+  ],
+  "linksTo": [
+   3371,
+   3374,
+   3375
+  ],
+  "pos": {
+   "x": 660.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 47_1f21ee14",
+   "Node 52_1f2c2669",
+   "Node 53_d9519d9c"
+  ],
+  "linkedFrom": [
+   "Node 47_1f21ee14",
+   "Node 52_1f2c2669",
+   "Node 53_d9519d9c"
+  ]
+ },
+ {
+  "pathID": 3374,
+  "id": "Node 52_1f2c2669",
+  "nameKey": "Node 52",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "800*x"
+  ],
+  "stats": [
+   "Flat_BaseMaxValueAddition"
+  ],
+  "linksTo": [
+   3373,
+   3376
+  ],
+  "pos": {
+   "x": 660.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 51_55a25e35",
+   "Node 54_c2575cf3"
+  ],
+  "linkedFrom": [
+   "Node 51_55a25e35",
+   "Node 54_c2575cf3"
+  ]
+ },
+ {
+  "pathID": 3375,
+  "id": "Node 53_d9519d9c",
+  "nameKey": "Node 53",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "800*x"
+  ],
+  "stats": [
+   "Flat_BaseMinValueAddition"
+  ],
+  "linksTo": [
+   3373,
+   3377
+  ],
+  "pos": {
+   "x": 660.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 51_55a25e35",
+   "Node 55_14a0d4ee"
+  ],
+  "linkedFrom": [
+   "Node 51_55a25e35",
+   "Node 55_14a0d4ee"
+  ]
+ },
+ {
+  "pathID": 3376,
+  "id": "Node 54_c2575cf3",
+  "nameKey": "Node 54",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10"
+  ],
+  "costEq": [
+   "3500"
+  ],
+  "stats": [
+   "Additive_BaseMaxValueMultiplier"
+  ],
+  "linksTo": [
+   3374,
+   3378
+  ],
+  "pos": {
+   "x": 750.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 52_1f2c2669",
+   "Node 56_cec812d4"
+  ],
+  "linkedFrom": [
+   "Node 52_1f2c2669",
+   "Node 56_cec812d4"
+  ]
+ },
+ {
+  "pathID": 3377,
+  "id": "Node 55_14a0d4ee",
+  "nameKey": "Node 55",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10"
+  ],
+  "costEq": [
+   "3500"
+  ],
+  "stats": [
+   "Additive_BaseMinValueMultiplier"
+  ],
+  "linksTo": [
+   3375,
+   3378
+  ],
+  "pos": {
+   "x": 750.9434204101562,
+   "y": -120.00001525878906
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 53_d9519d9c",
+   "Node 56_cec812d4"
+  ],
+  "linkedFrom": [
+   "Node 53_d9519d9c",
+   "Node 56_cec812d4"
+  ]
+ },
+ {
+  "pathID": 3378,
+  "id": "Node 56_cec812d4",
+  "nameKey": "Node 56",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "[10000,10000,10000]"
+  ],
+  "stats": [
+   "Flat_ItemImprovment_StartingValue"
+  ],
+  "linksTo": [
+   3377,
+   3376,
+   3381,
+   3381
+  ],
+  "pos": {
+   "x": 750.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 55_14a0d4ee",
+   "Node 54_c2575cf3",
+   "Node 61_abbba1a2",
+   "Node 61_abbba1a2"
+  ],
+  "linkedFrom": [
+   "Node 54_c2575cf3",
+   "Node 55_14a0d4ee",
+   "Node 61_abbba1a2"
+  ]
+ },
+ {
+  "pathID": 3379,
+  "id": "Node 57_6cec5e72",
+  "nameKey": "Node 57",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "300*x "
+  ],
+  "stats": [
+   "Additive_PlayerAttackSpeed"
+  ],
+  "linksTo": [
+   3367,
+   3252
+  ],
+  "pos": {
+   "x": 570.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 43_2e5bdc80",
+   "Node 116_25fc8605"
+  ],
+  "linkedFrom": [
+   "Node 116_25fc8605",
+   "Node 43_2e5bdc80"
+  ]
+ },
+ {
+  "pathID": 3380,
+  "id": "Node 60_bf7ae488",
+  "nameKey": "Node 60",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "2000*x"
+  ],
+  "stats": [
+   "Flat_ChanceForDoubleDamage"
+  ],
+  "linksTo": [
+   3292,
+   3252
+  ],
+  "pos": {
+   "x": 660.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 182_ca5309e4",
+   "Node 116_25fc8605"
+  ],
+  "linkedFrom": [
+   "Node 116_25fc8605",
+   "Node 182_ca5309e4"
+  ]
+ },
+ {
+  "pathID": 3381,
+  "id": "Node 61_abbba1a2",
+  "nameKey": "Node 61",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockMining",
+   "Flat_WarriorCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3378,
+   3385
+  ],
+  "pos": {
+   "x": 840.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 56_cec812d4",
+   "Node 66_a2bb63a7"
+  ],
+  "linkedFrom": [
+   "Node 56_cec812d4",
+   "Node 66_a2bb63a7"
+  ]
+ },
+ {
+  "pathID": 3382,
+  "id": "Node 63_9af85935",
+  "nameKey": "Node 63",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "8*x"
+  ],
+  "costEq": [
+   "7000*x"
+  ],
+  "stats": [
+   "Flat_AttackChanceForAnotherHit"
+  ],
+  "linksTo": [
+   3293,
+   3292
+  ],
+  "pos": {
+   "x": 840.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 183_cf7f6a9c",
+   "Node 182_ca5309e4"
+  ],
+  "linkedFrom": [
+   "Node 182_ca5309e4",
+   "Node 183_cf7f6a9c"
+  ]
+ },
+ {
+  "pathID": 3383,
+  "id": "Node 64_929b02ca",
+  "nameKey": "Node 64",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "60000*x"
+  ],
+  "stats": [
+   "Additive_MiningPickaxeSpeed"
+  ],
+  "linksTo": [
+   3392
+  ],
+  "pos": {
+   "x": 1020.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 72_7bd2610f"
+  ],
+  "linkedFrom": [
+   "Node 72_7bd2610f"
+  ]
+ },
+ {
+  "pathID": 3384,
+  "id": "Node 65_09fda8b6",
+  "nameKey": "Node 65",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "3*x"
+  ],
+  "costEq": [
+   "10000*x"
+  ],
+  "stats": [
+   "Flat_DodgeChance"
+  ],
+  "linksTo": [
+   3355,
+   3294
+  ],
+  "pos": {
+   "x": 840.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 31_5431c56a",
+   "Node 184_cfb346b7"
+  ],
+  "linkedFrom": [
+   "Node 184_cfb346b7",
+   "Node 31_5431c56a"
+  ]
+ },
+ {
+  "pathID": 3385,
+  "id": "Node 66_a2bb63a7",
+  "nameKey": "Node 66",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "8000*x"
+  ],
+  "stats": [
+   "Flat_MiningClicksPerOreReduction"
+  ],
+  "linksTo": [
+   3386,
+   3388,
+   3381
+  ],
+  "pos": {
+   "x": 930.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 67_8b786ec8",
+   "Node 69_12c766fe",
+   "Node 61_abbba1a2"
+  ],
+  "linkedFrom": [
+   "Node 61_abbba1a2",
+   "Node 67_8b786ec8",
+   "Node 69_12c766fe"
+  ]
+ },
+ {
+  "pathID": 3386,
+  "id": "Node 67_8b786ec8",
+  "nameKey": "Node 67",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "8*x"
+  ],
+  "costEq": [
+   "15000*x"
+  ],
+  "stats": [
+   "Flat_MiningChanceToDropAdditionalOre"
+  ],
+  "linksTo": [
+   3385,
+   3387
+  ],
+  "pos": {
+   "x": 930.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 66_a2bb63a7",
+   "Node 68_ebf81390"
+  ],
+  "linkedFrom": [
+   "Node 66_a2bb63a7",
+   "Node 68_ebf81390"
+  ]
+ },
+ {
+  "pathID": 3387,
+  "id": "Node 68_ebf81390",
+  "nameKey": "Node 68",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "20000*x"
+  ],
+  "stats": [
+   "Additive_MiningPickaxeSpeed"
+  ],
+  "linksTo": [
+   3386,
+   3392
+  ],
+  "pos": {
+   "x": 930.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 67_8b786ec8",
+   "Node 72_7bd2610f"
+  ],
+  "linkedFrom": [
+   "Node 67_8b786ec8",
+   "Node 72_7bd2610f"
+  ]
+ },
+ {
+  "pathID": 3388,
+  "id": "Node 69_12c766fe",
+  "nameKey": "Node 69",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "30000*x"
+  ],
+  "stats": [
+   "Additive_GoldGained"
+  ],
+  "linksTo": [
+   3385,
+   3391
+  ],
+  "pos": {
+   "x": 930.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 66_a2bb63a7",
+   "Node 71_396a44ad"
+  ],
+  "linkedFrom": [
+   "Node 66_a2bb63a7",
+   "Node 71_396a44ad"
+  ]
+ },
+ {
+  "pathID": 3390,
+  "id": "Node 70_01b16b03",
+  "nameKey": "Node 70",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "70000*x"
+  ],
+  "stats": [
+   "Flat_ChestHealPercent"
+  ],
+  "linksTo": [
+   3394
+  ],
+  "pos": {
+   "x": 930.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 75_7989d66a"
+  ],
+  "linkedFrom": [
+   "Node 75_7989d66a"
+  ]
+ },
+ {
+  "pathID": 3391,
+  "id": "Node 71_396a44ad",
+  "nameKey": "Node 71",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockChests"
+  ],
+  "linksTo": [
+   3388,
+   3394,
+   3398
+  ],
+  "pos": {
+   "x": 1019.107177734375,
+   "y": 80.00000762939453
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 69_12c766fe",
+   "Node 75_7989d66a",
+   "Node 79_106913a3"
+  ],
+  "linkedFrom": [
+   "Node 69_12c766fe",
+   "Node 75_7989d66a",
+   "Node 79_106913a3"
+  ]
+ },
+ {
+  "pathID": 3392,
+  "id": "Node 72_7bd2610f",
+  "nameKey": "Node 72",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "40000*x"
+  ],
+  "stats": [
+   "Flat_MiningClicksPerOreReduction"
+  ],
+  "linksTo": [
+   3383,
+   3387
+  ],
+  "pos": {
+   "x": 1020.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 64_929b02ca",
+   "Node 68_ebf81390"
+  ],
+  "linkedFrom": [
+   "Node 64_929b02ca",
+   "Node 68_ebf81390"
+  ]
+ },
+ {
+  "pathID": 3393,
+  "id": "Node 74_c2313882",
+  "nameKey": "Node 74",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1.0*x"
+  ],
+  "costEq": [
+   "85000*x"
+  ],
+  "stats": [
+   "Flat_CriticalChance"
+  ],
+  "linksTo": [
+   3295
+  ],
+  "pos": {
+   "x": 1020.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 185_767632b3"
+  ],
+  "linkedFrom": [
+   "Node 185_767632b3"
+  ]
+ },
+ {
+  "pathID": 3394,
+  "id": "Node 75_7989d66a",
+  "nameKey": "Node 75",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1.5*x"
+  ],
+  "costEq": [
+   "50000*x"
+  ],
+  "stats": [
+   "Flat_ChanceToSpawnChest"
+  ],
+  "linksTo": [
+   3391,
+   3399,
+   3390
+  ],
+  "pos": {
+   "x": 1020.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 71_396a44ad",
+   "Node 80_355157d0",
+   "Node 70_01b16b03"
+  ],
+  "linkedFrom": [
+   "Node 70_01b16b03",
+   "Node 71_396a44ad",
+   "Node 80_355157d0"
+  ]
+ },
+ {
+  "pathID": 3395,
+  "id": "Node 76_b1d6e999",
+  "nameKey": "Node 76",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockShaping",
+   "Flat_MageCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3297,
+   3396,
+   3301
+  ],
+  "pos": {
+   "x": 1290.0,
+   "y": 80.91744232177734
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 187_f5057603",
+   "Node 77_393647a0",
+   "Node 191_5fa3f399"
+  ],
+  "linkedFrom": [
+   "Node 187_f5057603",
+   "Node 191_5fa3f399",
+   "Node 77_393647a0"
+  ]
+ },
+ {
+  "pathID": 3396,
+  "id": "Node 77_393647a0",
+  "nameKey": "Node 77",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "0.8e6*x"
+  ],
+  "stats": [
+   "Additive_ShapingCooldownSpeed"
+  ],
+  "linksTo": [
+   3395,
+   3299
+  ],
+  "pos": {
+   "x": 1290.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 76_b1d6e999",
+   "Node 189_cf0ed0a2"
+  ],
+  "linkedFrom": [
+   "Node 189_cf0ed0a2",
+   "Node 76_b1d6e999"
+  ]
+ },
+ {
+  "pathID": 3397,
+  "id": "Node 78_80dafccb",
+  "nameKey": "Node 78",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "60000*x"
+  ],
+  "stats": [
+   "Additive_AlliesAttackSpeedMultiplier"
+  ],
+  "linksTo": [
+   3296,
+   3409
+  ],
+  "pos": {
+   "x": 1200.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 186_765bf1e1",
+   "Node 96_e2daf1a9"
+  ],
+  "linkedFrom": [
+   "Node 186_765bf1e1",
+   "Node 96_e2daf1a9"
+  ]
+ },
+ {
+  "pathID": 3398,
+  "id": "Node 79_106913a3",
+  "nameKey": "Node 79",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "30000*x"
+  ],
+  "stats": [
+   "Flat_ChestCoinValueBonus"
+  ],
+  "linksTo": [
+   3399,
+   3295,
+   3391
+  ],
+  "pos": {
+   "x": 1110.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 80_355157d0",
+   "Node 185_767632b3",
+   "Node 71_396a44ad"
+  ],
+  "linkedFrom": [
+   "Node 185_767632b3",
+   "Node 71_396a44ad",
+   "Node 80_355157d0"
+  ]
+ },
+ {
+  "pathID": 3399,
+  "id": "Node 80_355157d0",
+  "nameKey": "Node 80",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "3"
+  ],
+  "costEq": [
+   "90000"
+  ],
+  "stats": [
+   "Flat_ChestExtraCoins"
+  ],
+  "linksTo": [
+   3394,
+   3398
+  ],
+  "pos": {
+   "x": 1110.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 75_7989d66a",
+   "Node 79_106913a3"
+  ],
+  "linkedFrom": [
+   "Node 75_7989d66a",
+   "Node 79_106913a3"
+  ]
+ },
+ {
+  "pathID": 3400,
+  "id": "Node 81_5062fbbd",
+  "nameKey": "Node 81",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "100000*x"
+  ],
+  "stats": [
+   "Flat_CriticalMultiplier"
+  ],
+  "linksTo": [
+   3295,
+   3297
+  ],
+  "pos": {
+   "x": 1200.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 185_767632b3",
+   "Node 187_f5057603"
+  ],
+  "linkedFrom": [
+   "Node 185_767632b3",
+   "Node 187_f5057603"
+  ]
+ },
+ {
+  "pathID": 3401,
+  "id": "Node 82_aa58f7c6",
+  "nameKey": "Node 82",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "300000*x"
+  ],
+  "stats": [
+   "Additive_PetHealthMultiplier"
+  ],
+  "linksTo": [
+   3409
+  ],
+  "pos": {
+   "x": 1110.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 96_e2daf1a9"
+  ],
+  "linkedFrom": [
+   "Node 96_e2daf1a9"
+  ]
+ },
+ {
+  "pathID": 3402,
+  "id": "Node 86_d8757936",
+  "nameKey": "Node 86",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockOrbs"
+  ],
+  "linksTo": [
+   3255,
+   3403
+  ],
+  "pos": {
+   "x": 2010.0,
+   "y": -120.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 119_6ececb21",
+   "Node 87_8e21aced"
+  ],
+  "linkedFrom": [
+   "Node 119_6ececb21",
+   "Node 87_8e21aced"
+  ]
+ },
+ {
+  "pathID": 3403,
+  "id": "Node 87_8e21aced",
+  "nameKey": "Node 87",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "80e6*x"
+  ],
+  "stats": [
+   "Additive_OrbDuration"
+  ],
+  "linksTo": [
+   3402,
+   3405,
+   3326
+  ],
+  "pos": {
+   "x": 2010.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 86_d8757936",
+   "Node 89_55339bb8",
+   "Node 216_0138c88c"
+  ],
+  "linkedFrom": [
+   "Node 216_0138c88c",
+   "Node 86_d8757936",
+   "Node 89_55339bb8"
+  ]
+ },
+ {
+  "pathID": 3404,
+  "id": "Node 88_3b8d9c77",
+  "nameKey": "Node 88",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "300000*x"
+  ],
+  "stats": [
+   "Additive_PetDamageMultiplier"
+  ],
+  "linksTo": [
+   3409
+  ],
+  "pos": {
+   "x": 1290.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 96_e2daf1a9"
+  ],
+  "linkedFrom": [
+   "Node 96_e2daf1a9"
+  ]
+ },
+ {
+  "pathID": 3405,
+  "id": "Node 89_55339bb8",
+  "nameKey": "Node 89",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "90e6*x"
+  ],
+  "stats": [
+   "Flat_ChanceToSpawnOrb"
+  ],
+  "linksTo": [
+   3403
+  ],
+  "pos": {
+   "x": 2100.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 87_8e21aced"
+  ],
+  "linkedFrom": [
+   "Node 87_8e21aced"
+  ]
+ },
+ {
+  "pathID": 3407,
+  "id": "Node 91_7810f59d",
+  "nameKey": "Node 91",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "4e6*x"
+  ],
+  "stats": [
+   "Additive_Health"
+  ],
+  "linksTo": [
+   3408,
+   3303
+  ],
+  "pos": {
+   "x": 1380.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 92_edebc9b0",
+   "Node 193_7c8bc56a"
+  ],
+  "linkedFrom": [
+   "Node 193_7c8bc56a",
+   "Node 92_edebc9b0"
+  ]
+ },
+ {
+  "pathID": 3408,
+  "id": "Node 92_edebc9b0",
+  "nameKey": "Node 92",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "2e6"
+  ],
+  "stats": [
+   "Additive_EnemyAttackSpeedMultiplier"
+  ],
+  "linksTo": [
+   3264,
+   3407
+  ],
+  "pos": {
+   "x": 1380.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 136_5bc73adb",
+   "Node 91_7810f59d"
+  ],
+  "linkedFrom": [
+   "Node 136_5bc73adb",
+   "Node 91_7810f59d"
+  ]
+ },
+ {
+  "pathID": 3409,
+  "id": "Node 96_e2daf1a9",
+  "nameKey": "Node 96",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2",
+   "100",
+   "30"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_MaxTames",
+   "Additive_TameDamageMultiplier",
+   "Additive_TameHealthMultiplier"
+  ],
+  "linksTo": [
+   3397,
+   3401,
+   3404
+  ],
+  "pos": {
+   "x": 1200.0,
+   "y": -220.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 78_80dafccb",
+   "Node 82_aa58f7c6",
+   "Node 88_3b8d9c77"
+  ],
+  "linkedFrom": [
+   "Node 78_80dafccb",
+   "Node 82_aa58f7c6",
+   "Node 88_3b8d9c77"
+  ]
+ },
+ {
+  "pathID": 3410,
+  "id": "Node 97_825c430b",
+  "nameKey": "Node 97",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "0.1*x"
+  ],
+  "costEq": [
+   "20e6"
+  ],
+  "stats": [
+   "Flat_EnemyItemDropChance"
+  ],
+  "linksTo": [
+   3314,
+   3247
+  ],
+  "pos": {
+   "x": 1740.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 203_f763c8bf",
+   "Node 106_dac93593"
+  ],
+  "linkedFrom": [
+   "Node 106_dac93593",
+   "Node 203_f763c8bf"
+  ]
+ },
+ {
+  "pathID": 3244,
+  "id": "Node 100_666c2e79",
+  "nameKey": "Node 100",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "5e6*x"
+  ],
+  "stats": [
+   "Additive_Skills_DamageMultiplier"
+  ],
+  "linksTo": [
+   3259
+  ],
+  "pos": {
+   "x": 1470.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 126_f9a10447"
+  ],
+  "linkedFrom": [
+   "Node 126_f9a10447"
+  ]
+ },
+ {
+  "pathID": 3245,
+  "id": "Node 104_4be89793",
+  "nameKey": "Node 104",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "35*x"
+  ],
+  "costEq": [
+   "2.5e6*x"
+  ],
+  "stats": [
+   "Flat_ItemsRarity"
+  ],
+  "linksTo": [
+   3264
+  ],
+  "pos": {
+   "x": 1470.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 136_5bc73adb"
+  ],
+  "linkedFrom": [
+   "Node 136_5bc73adb"
+  ]
+ },
+ {
+  "pathID": 3246,
+  "id": "Node 105_5880e008",
+  "nameKey": "Node 105",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "7e6*x"
+  ],
+  "stats": [
+   "Additive_PetDamageMultiplier"
+  ],
+  "linksTo": [
+   3259
+  ],
+  "pos": {
+   "x": 1560.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 126_f9a10447"
+  ],
+  "linkedFrom": [
+   "Node 126_f9a10447"
+  ]
+ },
+ {
+  "pathID": 3247,
+  "id": "Node 106_dac93593",
+  "nameKey": "Node 106",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockMastery",
+   "Flat_BatCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3263,
+   3410,
+   3324,
+   3315
+  ],
+  "pos": {
+   "x": 1830.0,
+   "y": -220.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 131_4abf4b16",
+   "Node 97_825c430b",
+   "Node 214_e8b50f59",
+   "Node 204_4dfbf057"
+  ],
+  "linkedFrom": [
+   "Node 131_4abf4b16",
+   "Node 204_4dfbf057",
+   "Node 214_e8b50f59",
+   "Node 97_825c430b"
+  ]
+ },
+ {
+  "pathID": 3248,
+  "id": "Node 107_4253fac3",
+  "nameKey": "Node 107",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "7*x"
+  ],
+  "costEq": [
+   "4e6*x"
+  ],
+  "stats": [
+   "Additive_PortalSummonTime"
+  ],
+  "linksTo": [
+   3259,
+   3309,
+   3291
+  ],
+  "pos": {
+   "x": 1560.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 126_f9a10447",
+   "Node 199_529b13cc",
+   "Node 181_6296962f"
+  ],
+  "linkedFrom": [
+   "Node 126_f9a10447",
+   "Node 181_6296962f",
+   "Node 199_529b13cc"
+  ]
+ },
+ {
+  "pathID": 3249,
+  "id": "Node 109_d2efb947",
+  "nameKey": "Node 109",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2"
+  ],
+  "costEq": [
+   "18e6"
+  ],
+  "stats": [
+   "Flat_ChanceToDropHealthPotion"
+  ],
+  "linksTo": [
+   3309
+  ],
+  "pos": {
+   "x": 1650.0,
+   "y": 80.00000762939453
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 199_529b13cc"
+  ],
+  "linkedFrom": [
+   "Node 199_529b13cc"
+  ]
+ },
+ {
+  "pathID": 3251,
+  "id": "Node 110_50761560",
+  "nameKey": "Node 110",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "9e6*x"
+  ],
+  "stats": [
+   "Additive_SkillsBuffDurationMultiplier"
+  ],
+  "linksTo": [
+   3259
+  ],
+  "pos": {
+   "x": 1650.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 126_f9a10447"
+  ],
+  "linkedFrom": [
+   "Node 126_f9a10447"
+  ]
+ },
+ {
+  "pathID": 3252,
+  "id": "Node 116_25fc8605",
+  "nameKey": "Node 116",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockGoldenEnemies"
+  ],
+  "linksTo": [
+   3379,
+   3380
+  ],
+  "pos": {
+   "x": 570.0,
+   "y": -220.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 57_6cec5e72",
+   "Node 60_bf7ae488"
+  ],
+  "linkedFrom": [
+   "Node 57_6cec5e72",
+   "Node 60_bf7ae488"
+  ]
+ },
+ {
+  "pathID": 3253,
+  "id": "Node 117_fab9c3ea",
+  "nameKey": "Node 117",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "0.3*x"
+  ],
+  "costEq": [
+   "100e6*x"
+  ],
+  "stats": [
+   "Flat_ChanceForGoldenEnemy"
+  ],
+  "linksTo": [
+   3329,
+   3327,
+   3254,
+   3332
+  ],
+  "pos": {
+   "x": 2190.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 219_8723175f",
+   "Node 217_8e751acf",
+   "Node 118_132a2677",
+   "Node 222_14a9ca40"
+  ],
+  "linkedFrom": [
+   "Node 118_132a2677",
+   "Node 217_8e751acf",
+   "Node 219_8723175f",
+   "Node 222_14a9ca40"
+  ]
+ },
+ {
+  "pathID": 3254,
+  "id": "Node 118_132a2677",
+  "nameKey": "Node 118",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "130e6*x"
+  ],
+  "stats": [
+   "Additive_GoldenRewardMultiplier"
+  ],
+  "linksTo": [
+   3332,
+   3253,
+   3334
+  ],
+  "pos": {
+   "x": 2190.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 222_14a9ca40",
+   "Node 117_fab9c3ea",
+   "Node 224_71e68c23"
+  ],
+  "linkedFrom": [
+   "Node 117_fab9c3ea",
+   "Node 222_14a9ca40",
+   "Node 224_71e68c23"
+  ]
+ },
+ {
+  "pathID": 3255,
+  "id": "Node 119_6ececb21",
+  "nameKey": "Node 119",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "35e6*x"
+  ],
+  "stats": [
+   "Additive_GoldGained"
+  ],
+  "linksTo": [
+   3402,
+   3272,
+   3328
+  ],
+  "pos": {
+   "x": 2010.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 86_d8757936",
+   "Node 150_7c186576",
+   "Node 218_5683c3e7"
+  ],
+  "linkedFrom": [
+   "Node 150_7c186576",
+   "Node 218_5683c3e7",
+   "Node 86_d8757936"
+  ]
+ },
+ {
+  "pathID": 3257,
+  "id": "Node 122_737262bf",
+  "nameKey": "Node 122",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "200e6*x"
+  ],
+  "stats": [
+   "Additive_TameHealthMultiplier"
+  ],
+  "linksTo": [
+   3282,
+   3337
+  ],
+  "pos": {
+   "x": 2460.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 166_36f8277b",
+   "Node 227_3248553a"
+  ],
+  "linkedFrom": [
+   "Node 166_36f8277b",
+   "Node 227_3248553a"
+  ]
+ },
+ {
+  "pathID": 3258,
+  "id": "Node 123_db00d244",
+  "nameKey": "Node 123",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "7*x"
+  ],
+  "costEq": [
+   "500e6*x"
+  ],
+  "stats": [
+   "Additive_PetHealthMultiplier"
+  ],
+  "linksTo": [
+   3282,
+   3336
+  ],
+  "pos": {
+   "x": 2370.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 166_36f8277b",
+   "Node 226_f357e0ba"
+  ],
+  "linkedFrom": [
+   "Node 166_36f8277b",
+   "Node 226_f357e0ba"
+  ]
+ },
+ {
+  "pathID": 3259,
+  "id": "Node 126_f9a10447",
+  "nameKey": "Node 126",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_PortalFightFreeCooldowns"
+  ],
+  "linksTo": [
+   3244,
+   3246,
+   3251,
+   3248,
+   3304
+  ],
+  "pos": {
+   "x": 1560.0,
+   "y": 80.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 100_666c2e79",
+   "Node 105_5880e008",
+   "Node 110_50761560",
+   "Node 107_4253fac3",
+   "Node 194_0a9cbb63"
+  ],
+  "linkedFrom": [
+   "Node 100_666c2e79",
+   "Node 105_5880e008",
+   "Node 107_4253fac3",
+   "Node 110_50761560",
+   "Node 194_0a9cbb63"
+  ]
+ },
+ {
+  "pathID": 3260,
+  "id": "Node 129_07bde7d6",
+  "nameKey": "Node 129",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "45e6"
+  ],
+  "stats": [
+   "Flat_HealthMultiplierPerMasteryLevel"
+  ],
+  "linksTo": [
+   3263,
+   3262,
+   3272
+  ],
+  "pos": {
+   "x": 1830.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 131_4abf4b16",
+   "Node 130_1e425da9",
+   "Node 150_7c186576"
+  ],
+  "linkedFrom": [
+   "Node 130_1e425da9",
+   "Node 131_4abf4b16",
+   "Node 150_7c186576"
+  ]
+ },
+ {
+  "pathID": 3262,
+  "id": "Node 130_1e425da9",
+  "nameKey": "Node 130",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "65e6"
+  ],
+  "stats": [
+   "Flat_DamageMultiplierPerMasteryLevel"
+  ],
+  "linksTo": [
+   3260
+  ],
+  "pos": {
+   "x": 1830.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 129_07bde7d6"
+  ],
+  "linkedFrom": [
+   "Node 129_07bde7d6"
+  ]
+ },
+ {
+  "pathID": 3263,
+  "id": "Node 131_4abf4b16",
+  "nameKey": "Node 131",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "35e6"
+  ],
+  "stats": [
+   "Flat_GoldGainedMultiplierPerUnlockedMastery"
+  ],
+  "linksTo": [
+   3260,
+   3247
+  ],
+  "pos": {
+   "x": 1830.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 129_07bde7d6",
+   "Node 106_dac93593"
+  ],
+  "linkedFrom": [
+   "Node 106_dac93593",
+   "Node 129_07bde7d6"
+  ]
+ },
+ {
+  "pathID": 3264,
+  "id": "Node 136_5bc73adb",
+  "nameKey": "Node 136",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockEnemyItemDrops"
+  ],
+  "linksTo": [
+   3408,
+   3245,
+   3267,
+   3299
+  ],
+  "pos": {
+   "x": 1378.0736083984375,
+   "y": -220.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 92_edebc9b0",
+   "Node 104_4be89793",
+   "Node 140_4aae71be",
+   "Node 189_cf0ed0a2"
+  ],
+  "linkedFrom": [
+   "Node 104_4be89793",
+   "Node 140_4aae71be",
+   "Node 189_cf0ed0a2",
+   "Node 92_edebc9b0"
+  ]
+ },
+ {
+  "pathID": 3265,
+  "id": "Node 137_f12a4591",
+  "nameKey": "Node 137",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x",
+   "1*x"
+  ],
+  "costEq": [
+   "25e9*x"
+  ],
+  "stats": [
+   "Flat_DamageMultiplierPerMasteryLevel",
+   "Flat_HealthMultiplierPerMasteryLevel"
+  ],
+  "linksTo": [
+   3277
+  ],
+  "pos": {
+   "x": 2730.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 161_56d71259"
+  ],
+  "linkedFrom": [
+   "Node 161_56d71259"
+  ]
+ },
+ {
+  "pathID": 3267,
+  "id": "Node 140_4aae71be",
+  "nameKey": "Node 140",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_EnemyDropRandomImprovement"
+  ],
+  "linksTo": [
+   3264
+  ],
+  "pos": {
+   "x": 1470.0,
+   "y": -120.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 136_5bc73adb"
+  ],
+  "linkedFrom": [
+   "Node 136_5bc73adb"
+  ]
+ },
+ {
+  "pathID": 3268,
+  "id": "Node 141_7a9e89ca",
+  "nameKey": "Node 141",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockScrolls"
+  ],
+  "linksTo": [
+   3314,
+   3316
+  ],
+  "pos": {
+   "x": 1740.0,
+   "y": 80.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 203_f763c8bf",
+   "Node 205_6185ecd2"
+  ],
+  "linkedFrom": [
+   "Node 203_f763c8bf",
+   "Node 205_6185ecd2"
+  ]
+ },
+ {
+  "pathID": 3269,
+  "id": "Node 144_072a6756",
+  "nameKey": "Node 144",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "-5*x"
+  ],
+  "costEq": [
+   "300e6*x"
+  ],
+  "stats": [
+   "Additive_EnemyHealthMultiplier"
+  ],
+  "linksTo": [
+   3332,
+   3270
+  ],
+  "pos": {
+   "x": 2280.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 222_14a9ca40",
+   "Node 145_9814cfce"
+  ],
+  "linkedFrom": [
+   "Node 145_9814cfce",
+   "Node 222_14a9ca40"
+  ]
+ },
+ {
+  "pathID": 3270,
+  "id": "Node 145_9814cfce",
+  "nameKey": "Node 145",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "-5*x"
+  ],
+  "costEq": [
+   "500e6*x"
+  ],
+  "stats": [
+   "Additive_EnemyDamageMultiplier"
+  ],
+  "linksTo": [
+   3269
+  ],
+  "pos": {
+   "x": 2280.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 144_072a6756"
+  ],
+  "linkedFrom": [
+   "Node 144_072a6756"
+  ]
+ },
+ {
+  "pathID": 3272,
+  "id": "Node 150_7c186576",
+  "nameKey": "Node 150",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_DeathBlowImmunityDuration"
+  ],
+  "linksTo": [
+   3315,
+   3322,
+   3260,
+   3255
+  ],
+  "pos": {
+   "x": 1920.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 204_4dfbf057",
+   "Node 212_5b2e827e",
+   "Node 129_07bde7d6",
+   "Node 119_6ececb21"
+  ],
+  "linkedFrom": [
+   "Node 119_6ececb21",
+   "Node 129_07bde7d6",
+   "Node 204_4dfbf057",
+   "Node 212_5b2e827e"
+  ]
+ },
+ {
+  "pathID": 3273,
+  "id": "Node 151_7517f5fd",
+  "nameKey": "Node 151",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockStar"
+  ],
+  "linksTo": [
+   3339,
+   3340,
+   3341,
+   3280,
+   3278,
+   3277
+  ],
+  "pos": {
+   "x": 2550.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 230_f8940d9c",
+   "Node 231_ebb60ce2",
+   "Node 232_6bd2f58e",
+   "Node 164_1d76ffeb",
+   "Node 162_58e0810f",
+   "Node 161_56d71259"
+  ],
+  "linkedFrom": [
+   "Node 161_56d71259",
+   "Node 162_58e0810f",
+   "Node 164_1d76ffeb",
+   "Node 230_f8940d9c",
+   "Node 231_ebb60ce2",
+   "Node 232_6bd2f58e"
+  ]
+ },
+ {
+  "pathID": 3274,
+  "id": "Node 156_e186059f",
+  "nameKey": "Node 156",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_GuardianFightFreeCooldowns"
+  ],
+  "linksTo": [
+   3288,
+   3277
+  ],
+  "pos": {
+   "x": 2730.0,
+   "y": 80.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 175_026556bb",
+   "Node 161_56d71259"
+  ],
+  "linkedFrom": [
+   "Node 161_56d71259",
+   "Node 175_026556bb"
+  ]
+ },
+ {
+  "pathID": 3275,
+  "id": "Node 158_9f33a425",
+  "nameKey": "Node 158",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "7e9*x"
+  ],
+  "stats": [
+   "Flat_ItemImprovment_StartingValue"
+  ],
+  "linksTo": [
+   3340
+  ],
+  "pos": {
+   "x": 2550.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 231_ebb60ce2"
+  ],
+  "linkedFrom": [
+   "Node 231_ebb60ce2"
+  ]
+ },
+ {
+  "pathID": 3277,
+  "id": "Node 161_56d71259",
+  "nameKey": "Node 161",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "1.0e9*x"
+  ],
+  "stats": [
+   "Flat_BatCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3273,
+   3265,
+   3344,
+   3274
+  ],
+  "pos": {
+   "x": 2640.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 151_7517f5fd",
+   "Node 137_f12a4591",
+   "Node 235_da0eb2b9",
+   "Node 156_e186059f"
+  ],
+  "linkedFrom": [
+   "Node 137_f12a4591",
+   "Node 151_7517f5fd",
+   "Node 156_e186059f",
+   "Node 235_da0eb2b9"
+  ]
+ },
+ {
+  "pathID": 3278,
+  "id": "Node 162_58e0810f",
+  "nameKey": "Node 162",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "6e9*x"
+  ],
+  "stats": [
+   "Flat_WarriorCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3273,
+   3279
+  ],
+  "pos": {
+   "x": 2640.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 151_7517f5fd",
+   "Node 163_3cd3493c"
+  ],
+  "linkedFrom": [
+   "Node 151_7517f5fd",
+   "Node 163_3cd3493c"
+  ]
+ },
+ {
+  "pathID": 3279,
+  "id": "Node 163_3cd3493c",
+  "nameKey": "Node 163",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "12e9*x"
+  ],
+  "stats": [
+   "Flat_MiningChanceToDropAdditionalOre"
+  ],
+  "linksTo": [
+   3278
+  ],
+  "pos": {
+   "x": 2640.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 162_58e0810f"
+  ],
+  "linkedFrom": [
+   "Node 162_58e0810f"
+  ]
+ },
+ {
+  "pathID": 3280,
+  "id": "Node 164_1d76ffeb",
+  "nameKey": "Node 164",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "10e9*x"
+  ],
+  "stats": [
+   "Flat_MageCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3273,
+   3281
+  ],
+  "pos": {
+   "x": 2640.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 151_7517f5fd",
+   "Node 165_c53a2b33"
+  ],
+  "linkedFrom": [
+   "Node 151_7517f5fd",
+   "Node 165_c53a2b33"
+  ]
+ },
+ {
+  "pathID": 3281,
+  "id": "Node 165_c53a2b33",
+  "nameKey": "Node 165",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "12*x"
+  ],
+  "costEq": [
+   "15e9*x"
+  ],
+  "stats": [
+   "Additive_ShapingCooldownSpeed"
+  ],
+  "linksTo": [
+   3280
+  ],
+  "pos": {
+   "x": 2640.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 164_1d76ffeb"
+  ],
+  "linkedFrom": [
+   "Node 164_1d76ffeb"
+  ]
+ },
+ {
+  "pathID": 3282,
+  "id": "Node 166_36f8277b",
+  "nameKey": "Node 166",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_SkillBuffsAffectAllies"
+  ],
+  "linksTo": [
+   3258,
+   3257,
+   3333,
+   3312
+  ],
+  "pos": {
+   "x": 2370.0,
+   "y": -120.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 123_db00d244",
+   "Node 122_737262bf",
+   "Node 223_f7f39a7f",
+   "Node 200_4dd2c66b"
+  ],
+  "linkedFrom": [
+   "Node 122_737262bf",
+   "Node 123_db00d244",
+   "Node 200_4dd2c66b",
+   "Node 223_f7f39a7f"
+  ]
+ },
+ {
+  "pathID": 3283,
+  "id": "Node 168_e2d1a70a",
+  "nameKey": "Node 168",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "35*x"
+  ],
+  "costEq": [
+   "50e9*x"
+  ],
+  "stats": [
+   "Flat_CriticalMultiplier"
+  ],
+  "linksTo": [
+   3287
+  ],
+  "pos": {
+   "x": 2730.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 173_b2f6a332"
+  ],
+  "linkedFrom": [
+   "Node 173_b2f6a332"
+  ]
+ },
+ {
+  "pathID": 3285,
+  "id": "Node 170_3a4ff39c",
+  "nameKey": "Node 170",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "50e9*x"
+  ],
+  "stats": [
+   "Flat_WormholeShotCount"
+  ],
+  "linksTo": [
+   3288
+  ],
+  "pos": {
+   "x": 2730.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 175_026556bb"
+  ],
+  "linkedFrom": [
+   "Node 175_026556bb"
+  ]
+ },
+ {
+  "pathID": 3286,
+  "id": "Node 172_839b5b7a",
+  "nameKey": "Node 172",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "40e9*x"
+  ],
+  "stats": [
+   "Additive_PlayerAttackSpeed"
+  ],
+  "linksTo": [
+   3320,
+   3287,
+   3346
+  ],
+  "pos": {
+   "x": 2820.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 210_78e82f5e",
+   "Node 173_b2f6a332",
+   "Node 238_ea7e429c"
+  ],
+  "linkedFrom": [
+   "Node 173_b2f6a332",
+   "Node 210_78e82f5e",
+   "Node 238_ea7e429c"
+  ]
+ },
+ {
+  "pathID": 3287,
+  "id": "Node 173_b2f6a332",
+  "nameKey": "Node 173",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "20e9*x"
+  ],
+  "stats": [
+   "Flat_CriticalChance"
+  ],
+  "linksTo": [
+   3320,
+   3286,
+   3283,
+   3344
+  ],
+  "pos": {
+   "x": 2820.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 210_78e82f5e",
+   "Node 172_839b5b7a",
+   "Node 168_e2d1a70a",
+   "Node 235_da0eb2b9"
+  ],
+  "linkedFrom": [
+   "Node 168_e2d1a70a",
+   "Node 172_839b5b7a",
+   "Node 210_78e82f5e",
+   "Node 235_da0eb2b9"
+  ]
+ },
+ {
+  "pathID": 3288,
+  "id": "Node 175_026556bb",
+  "nameKey": "Node 175",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "20e9*x"
+  ],
+  "stats": [
+   "Additive_Skills_DamageMultiplier"
+  ],
+  "linksTo": [
+   3319,
+   3285,
+   3274,
+   3347
+  ],
+  "pos": {
+   "x": 2820.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 209_7339f1a4",
+   "Node 170_3a4ff39c",
+   "Node 156_e186059f",
+   "Node 239_c85a1606"
+  ],
+  "linkedFrom": [
+   "Node 156_e186059f",
+   "Node 170_3a4ff39c",
+   "Node 209_7339f1a4",
+   "Node 239_c85a1606"
+  ]
+ },
+ {
+  "pathID": 3290,
+  "id": "Node 180_a0cd0280",
+  "nameKey": "Node 180",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_GuardianCurrencyGain"
+  ],
+  "linksTo": [
+   3342,
+   3343
+  ],
+  "pos": {
+   "x": 3040.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 233_96be8d08",
+   "Node 234_d303f043"
+  ],
+  "linkedFrom": [
+   "Node 233_96be8d08",
+   "Node 234_d303f043"
+  ]
+ },
+ {
+  "pathID": 3291,
+  "id": "Node 181_6296962f",
+  "nameKey": "Node 181",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_AttackWhileMoving"
+  ],
+  "linksTo": [
+   3314,
+   3248
+  ],
+  "pos": {
+   "x": 1650.0,
+   "y": -120.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 203_f763c8bf",
+   "Node 107_4253fac3"
+  ],
+  "linkedFrom": [
+   "Node 107_4253fac3",
+   "Node 203_f763c8bf"
+  ]
+ },
+ {
+  "pathID": 3292,
+  "id": "Node 182_ca5309e4",
+  "nameKey": "Node 182",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "6000*x"
+  ],
+  "stats": [
+   "Flat_AttackRange"
+  ],
+  "linksTo": [
+   3380,
+   3382
+  ],
+  "pos": {
+   "x": 750.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 60_bf7ae488",
+   "Node 63_9af85935"
+  ],
+  "linkedFrom": [
+   "Node 60_bf7ae488",
+   "Node 63_9af85935"
+  ]
+ },
+ {
+  "pathID": 3293,
+  "id": "Node 183_cf7f6a9c",
+  "nameKey": "Node 183",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "35000*x"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3382
+  ],
+  "pos": {
+   "x": 840.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 63_9af85935"
+  ],
+  "linkedFrom": [
+   "Node 63_9af85935"
+  ]
+ },
+ {
+  "pathID": 3294,
+  "id": "Node 184_cfb346b7",
+  "nameKey": "Node 184",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "35000*x"
+  ],
+  "stats": [
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3384
+  ],
+  "pos": {
+   "x": 840.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 65_09fda8b6"
+  ],
+  "linkedFrom": [
+   "Node 65_09fda8b6"
+  ]
+ },
+ {
+  "pathID": 3295,
+  "id": "Node 185_767632b3",
+  "nameKey": "Node 185",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5",
+   "70"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_CriticalChance",
+   "Flat_CriticalMultiplier"
+  ],
+  "linksTo": [
+   3398,
+   3393,
+   3400,
+   3296
+  ],
+  "pos": {
+   "x": 1110.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 79_106913a3",
+   "Node 74_c2313882",
+   "Node 81_5062fbbd",
+   "Node 186_765bf1e1"
+  ],
+  "linkedFrom": [
+   "Node 186_765bf1e1",
+   "Node 74_c2313882",
+   "Node 79_106913a3",
+   "Node 81_5062fbbd"
+  ]
+ },
+ {
+  "pathID": 3296,
+  "id": "Node 186_765bf1e1",
+  "nameKey": "Node 186",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "12*x"
+  ],
+  "costEq": [
+   "60000*x"
+  ],
+  "stats": [
+   "Additive_PlayerAttackSpeed"
+  ],
+  "linksTo": [
+   3295,
+   3397
+  ],
+  "pos": {
+   "x": 1110.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 185_767632b3",
+   "Node 78_80dafccb"
+  ],
+  "linkedFrom": [
+   "Node 185_767632b3",
+   "Node 78_80dafccb"
+  ]
+ },
+ {
+  "pathID": 3297,
+  "id": "Node 187_f5057603",
+  "nameKey": "Node 187",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "35"
+  ],
+  "costEq": [
+   "450000"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3298,
+   3400,
+   3395
+  ],
+  "pos": {
+   "x": 1200.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 188_221e7fd7",
+   "Node 81_5062fbbd",
+   "Node 76_b1d6e999"
+  ],
+  "linkedFrom": [
+   "Node 188_221e7fd7",
+   "Node 76_b1d6e999",
+   "Node 81_5062fbbd"
+  ]
+ },
+ {
+  "pathID": 3298,
+  "id": "Node 188_221e7fd7",
+  "nameKey": "Node 188",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "1000000*x"
+  ],
+  "stats": [
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3297,
+   3302
+  ],
+  "pos": {
+   "x": 1200.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 187_f5057603",
+   "Node 192_06b46c17"
+  ],
+  "linkedFrom": [
+   "Node 187_f5057603",
+   "Node 192_06b46c17"
+  ]
+ },
+ {
+  "pathID": 3299,
+  "id": "Node 189_cf0ed0a2",
+  "nameKey": "Node 189",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "1.0e6*x"
+  ],
+  "stats": [
+   "Flat_ShapingAttackDamageBonus"
+  ],
+  "linksTo": [
+   3396,
+   3264
+  ],
+  "pos": {
+   "x": 1290.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 77_393647a0",
+   "Node 136_5bc73adb"
+  ],
+  "linkedFrom": [
+   "Node 136_5bc73adb",
+   "Node 77_393647a0"
+  ]
+ },
+ {
+  "pathID": 3300,
+  "id": "Node 190_1508c5b1",
+  "nameKey": "Node 190",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "1500000"
+  ],
+  "stats": [
+   "Additive_PlayerMovementSpeed"
+  ],
+  "linksTo": [
+   3302
+  ],
+  "pos": {
+   "x": 1380.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 192_06b46c17"
+  ],
+  "linkedFrom": [
+   "Node 192_06b46c17"
+  ]
+ },
+ {
+  "pathID": 3301,
+  "id": "Node 191_5fa3f399",
+  "nameKey": "Node 191",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "1300000*x"
+  ],
+  "stats": [
+   "Flat_AttackRange"
+  ],
+  "linksTo": [
+   3395
+  ],
+  "pos": {
+   "x": 1380.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 76_b1d6e999"
+  ],
+  "linkedFrom": [
+   "Node 76_b1d6e999"
+  ]
+ },
+ {
+  "pathID": 3302,
+  "id": "Node 192_06b46c17",
+  "nameKey": "Node 192",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "900000*x"
+  ],
+  "stats": [
+   "Flat_HealthRegen"
+  ],
+  "linksTo": [
+   3298,
+   3300
+  ],
+  "pos": {
+   "x": 1290.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 188_221e7fd7",
+   "Node 190_1508c5b1"
+  ],
+  "linkedFrom": [
+   "Node 188_221e7fd7",
+   "Node 190_1508c5b1"
+  ]
+ },
+ {
+  "pathID": 3303,
+  "id": "Node 193_7c8bc56a",
+  "nameKey": "Node 193",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "5e6*x"
+  ],
+  "stats": [
+   "Additive_Damage"
+  ],
+  "linksTo": [
+   3407,
+   3304
+  ],
+  "pos": {
+   "x": 1470.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 91_7810f59d",
+   "Node 194_0a9cbb63"
+  ],
+  "linkedFrom": [
+   "Node 194_0a9cbb63",
+   "Node 91_7810f59d"
+  ]
+ },
+ {
+  "pathID": 3304,
+  "id": "Node 194_0a9cbb63",
+  "nameKey": "Node 194",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "7*x"
+  ],
+  "costEq": [
+   "5e6*x"
+  ],
+  "stats": [
+   "Additive_SkillsCooldownSpeed"
+  ],
+  "linksTo": [
+   3303,
+   3259
+  ],
+  "pos": {
+   "x": 1470.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 193_7c8bc56a",
+   "Node 126_f9a10447"
+  ],
+  "linkedFrom": [
+   "Node 126_f9a10447",
+   "Node 193_7c8bc56a"
+  ]
+ },
+ {
+  "pathID": 3305,
+  "id": "Node 195_6bcdf483",
+  "nameKey": "Node 195",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "1000e6"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3306,
+   3312
+  ],
+  "pos": {
+   "x": 2370.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 196_4886ce45",
+   "Node 200_4dd2c66b"
+  ],
+  "linkedFrom": [
+   "Node 196_4886ce45",
+   "Node 200_4dd2c66b"
+  ]
+ },
+ {
+  "pathID": 3306,
+  "id": "Node 196_4886ce45",
+  "nameKey": "Node 196",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "40*x"
+  ],
+  "costEq": [
+   "1300e6*x"
+  ],
+  "stats": [
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3308,
+   3305
+  ],
+  "pos": {
+   "x": 2370.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 198_185a4fb9",
+   "Node 195_6bcdf483"
+  ],
+  "linkedFrom": [
+   "Node 195_6bcdf483",
+   "Node 198_185a4fb9"
+  ]
+ },
+ {
+  "pathID": 3307,
+  "id": "Node 197_f4ef9ed0",
+  "nameKey": "Node 197",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "12*x"
+  ],
+  "costEq": [
+   "50e6*x"
+  ],
+  "stats": [
+   "Flat_GoldChanceToDrop"
+  ],
+  "linksTo": [
+   3348
+  ],
+  "pos": {
+   "x": 1560.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 240_cd00c13a"
+  ],
+  "linkedFrom": [
+   "Node 240_cd00c13a"
+  ]
+ },
+ {
+  "pathID": 3308,
+  "id": "Node 198_185a4fb9",
+  "nameKey": "Node 198",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "150*x"
+  ],
+  "costEq": [
+   "1800e6*x"
+  ],
+  "stats": [
+   "Flat_HealthRegen"
+  ],
+  "linksTo": [
+   3306
+  ],
+  "pos": {
+   "x": 2460.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 196_4886ce45"
+  ],
+  "linkedFrom": [
+   "Node 196_4886ce45"
+  ]
+ },
+ {
+  "pathID": 3309,
+  "id": "Node 199_529b13cc",
+  "nameKey": "Node 199",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "15e6*x"
+  ],
+  "stats": [
+   "Additive_HealthPotionRegenPercentage"
+  ],
+  "linksTo": [
+   3248,
+   3249
+  ],
+  "pos": {
+   "x": 1650.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 107_4253fac3",
+   "Node 109_d2efb947"
+  ],
+  "linkedFrom": [
+   "Node 107_4253fac3",
+   "Node 109_d2efb947"
+  ]
+ },
+ {
+  "pathID": 3312,
+  "id": "Node 200_4dd2c66b",
+  "nameKey": "Node 200",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "150e6*x"
+  ],
+  "stats": [
+   "Flat_AttackRange"
+  ],
+  "linksTo": [
+   3282,
+   3305,
+   3338
+  ],
+  "pos": {
+   "x": 2370.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 166_36f8277b",
+   "Node 195_6bcdf483",
+   "Node 229_ae1a5f60"
+  ],
+  "linkedFrom": [
+   "Node 166_36f8277b",
+   "Node 195_6bcdf483",
+   "Node 229_ae1a5f60"
+  ]
+ },
+ {
+  "pathID": 3313,
+  "id": "Node 202_da0f62be",
+  "nameKey": "Node 202",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "35*x"
+  ],
+  "costEq": [
+   "30e6*x"
+  ],
+  "stats": [
+   "Flat_ItemsRarity"
+  ],
+  "linksTo": [
+   3316
+  ],
+  "pos": {
+   "x": 1920.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 205_6185ecd2"
+  ],
+  "linkedFrom": [
+   "Node 205_6185ecd2"
+  ]
+ },
+ {
+  "pathID": 3314,
+  "id": "Node 203_f763c8bf",
+  "nameKey": "Node 203",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "8e6*x"
+  ],
+  "stats": [
+   "Flat_ChanceForDoubleDamage"
+  ],
+  "linksTo": [
+   3291,
+   3268,
+   3410
+  ],
+  "pos": {
+   "x": 1740.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 181_6296962f",
+   "Node 141_7a9e89ca",
+   "Node 97_825c430b"
+  ],
+  "linkedFrom": [
+   "Node 141_7a9e89ca",
+   "Node 181_6296962f",
+   "Node 97_825c430b"
+  ]
+ },
+ {
+  "pathID": 3315,
+  "id": "Node 204_4dfbf057",
+  "nameKey": "Node 204",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25"
+  ],
+  "costEq": [
+   "15e6"
+  ],
+  "stats": [
+   "Additive_Health"
+  ],
+  "linksTo": [
+   3272,
+   3247
+  ],
+  "pos": {
+   "x": 1920.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 150_7c186576",
+   "Node 106_dac93593"
+  ],
+  "linkedFrom": [
+   "Node 106_dac93593",
+   "Node 150_7c186576"
+  ]
+ },
+ {
+  "pathID": 3316,
+  "id": "Node 205_6185ecd2",
+  "nameKey": "Node 205",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25"
+  ],
+  "costEq": [
+   "60e6"
+  ],
+  "stats": [
+   "Additive_Damage"
+  ],
+  "linksTo": [
+   3313,
+   3268,
+   3345,
+   3322
+  ],
+  "pos": {
+   "x": 1830.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 202_da0f62be",
+   "Node 141_7a9e89ca",
+   "Node 236_8fbaa9fe",
+   "Node 212_5b2e827e"
+  ],
+  "linkedFrom": [
+   "Node 141_7a9e89ca",
+   "Node 202_da0f62be",
+   "Node 212_5b2e827e",
+   "Node 236_8fbaa9fe"
+  ]
+ },
+ {
+  "pathID": 3317,
+  "id": "Node 206_9a4774d7",
+  "nameKey": "Node 206",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "130e6*x"
+  ],
+  "stats": [
+   "Flat_ItemsRarity"
+  ],
+  "linksTo": [
+   3328
+  ],
+  "pos": {
+   "x": 2100.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 218_5683c3e7"
+  ],
+  "linkedFrom": [
+   "Node 218_5683c3e7"
+  ]
+ },
+ {
+  "pathID": 3318,
+  "id": "Node 208_5256ab11",
+  "nameKey": "Node 208",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "150e6*x"
+  ],
+  "stats": [
+   "Flat_ChestCoinValueBonus"
+  ],
+  "linksTo": [
+   3327,
+   3331
+  ],
+  "pos": {
+   "x": 2010.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 217_8e751acf",
+   "Node 221_23880ac6"
+  ],
+  "linkedFrom": [
+   "Node 217_8e751acf",
+   "Node 221_23880ac6"
+  ]
+ },
+ {
+  "pathID": 3319,
+  "id": "Node 209_7339f1a4",
+  "nameKey": "Node 209",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_SkillsChanceToNotConsumeCooldown"
+  ],
+  "linksTo": [
+   3321,
+   3288,
+   3342,
+   3347
+  ],
+  "pos": {
+   "x": 2910.0,
+   "y": 150.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 211_e164c133",
+   "Node 175_026556bb",
+   "Node 233_96be8d08",
+   "Node 239_c85a1606"
+  ],
+  "linkedFrom": [
+   "Node 175_026556bb",
+   "Node 211_e164c133",
+   "Node 233_96be8d08",
+   "Node 239_c85a1606"
+  ]
+ },
+ {
+  "pathID": 3320,
+  "id": "Node 210_78e82f5e",
+  "nameKey": "Node 210",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_PermanentOrbs"
+  ],
+  "linksTo": [
+   3321,
+   3286,
+   3287,
+   3343
+  ],
+  "pos": {
+   "x": 2910.0,
+   "y": -190.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 211_e164c133",
+   "Node 172_839b5b7a",
+   "Node 173_b2f6a332",
+   "Node 234_d303f043"
+  ],
+  "linkedFrom": [
+   "Node 172_839b5b7a",
+   "Node 173_b2f6a332",
+   "Node 211_e164c133",
+   "Node 234_d303f043"
+  ]
+ },
+ {
+  "pathID": 3321,
+  "id": "Node 211_e164c133",
+  "nameKey": "Node 211",
+  "descKey": "Description",
+  "maxLevel": 100,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "25*x"
+  ],
+  "costEq": [
+   "60e9*x"
+  ],
+  "stats": [
+   "Additive_GoldGained"
+  ],
+  "linksTo": [
+   3320,
+   3319
+  ],
+  "pos": {
+   "x": 2910.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 210_78e82f5e",
+   "Node 209_7339f1a4"
+  ],
+  "linkedFrom": [
+   "Node 209_7339f1a4",
+   "Node 210_78e82f5e"
+  ]
+ },
+ {
+  "pathID": 3322,
+  "id": "Node 212_5b2e827e",
+  "nameKey": "Node 212",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "60*x"
+  ],
+  "costEq": [
+   "30e6*x"
+  ],
+  "stats": [
+   "Flat_HealthRegen"
+  ],
+  "linksTo": [
+   3272,
+   3316
+  ],
+  "pos": {
+   "x": 1920.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 150_7c186576",
+   "Node 205_6185ecd2"
+  ],
+  "linkedFrom": [
+   "Node 150_7c186576",
+   "Node 205_6185ecd2"
+  ]
+ },
+ {
+  "pathID": 3323,
+  "id": "Node 213_c5b7ba7a",
+  "nameKey": "Node 213",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2*x"
+  ],
+  "costEq": [
+   "35e6*x"
+  ],
+  "stats": [
+   "Flat_CriticalChance"
+  ],
+  "linksTo": [
+   3324,
+   3348
+  ],
+  "pos": {
+   "x": 1650.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 214_e8b50f59",
+   "Node 240_cd00c13a"
+  ],
+  "linkedFrom": [
+   "Node 214_e8b50f59",
+   "Node 240_cd00c13a"
+  ]
+ },
+ {
+  "pathID": 3324,
+  "id": "Node 214_e8b50f59",
+  "nameKey": "Node 214",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "25e6*x"
+  ],
+  "stats": [
+   "Flat_AttackChanceForAnotherHit"
+  ],
+  "linksTo": [
+   3323,
+   3247
+  ],
+  "pos": {
+   "x": 1740.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 213_c5b7ba7a",
+   "Node 106_dac93593"
+  ],
+  "linkedFrom": [
+   "Node 106_dac93593",
+   "Node 213_c5b7ba7a"
+  ]
+ },
+ {
+  "pathID": 3325,
+  "id": "Node 215_a43e3ef4",
+  "nameKey": "Node 215",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "8*x"
+  ],
+  "costEq": [
+   "4e9*x"
+  ],
+  "stats": [
+   "Flat_JobPassiveBonus"
+  ],
+  "linksTo": [
+   3341
+  ],
+  "pos": {
+   "x": 2550.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 232_6bd2f58e"
+  ],
+  "linkedFrom": [
+   "Node 232_6bd2f58e"
+  ]
+ },
+ {
+  "pathID": 3326,
+  "id": "Node 216_0138c88c",
+  "nameKey": "Node 216",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "5*x"
+  ],
+  "costEq": [
+   "120e6*x"
+  ],
+  "stats": [
+   "Flat_MouseChanceForAnotherHit"
+  ],
+  "linksTo": [
+   3403
+  ],
+  "pos": {
+   "x": 1920.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 87_8e21aced"
+  ],
+  "linkedFrom": [
+   "Node 87_8e21aced"
+  ]
+ },
+ {
+  "pathID": 3327,
+  "id": "Node 217_8e751acf",
+  "nameKey": "Node 217",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "100",
+   "100",
+   "100"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_UnlockItemChests",
+   "Flat_UnlockRuneChests",
+   "Flat_UnlockScrollChests",
+   "Flat_UnlockLegendaryChests"
+  ],
+  "linksTo": [
+   3318,
+   3328,
+   3253,
+   3330,
+   3329
+  ],
+  "pos": {
+   "x": 2100.0,
+   "y": 80.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 208_5256ab11",
+   "Node 218_5683c3e7",
+   "Node 117_fab9c3ea",
+   "Node 220_627b6960",
+   "Node 219_8723175f"
+  ],
+  "linkedFrom": [
+   "Node 117_fab9c3ea",
+   "Node 208_5256ab11",
+   "Node 218_5683c3e7",
+   "Node 219_8723175f",
+   "Node 220_627b6960"
+  ]
+ },
+ {
+  "pathID": 3328,
+  "id": "Node 218_5683c3e7",
+  "nameKey": "Node 218",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "0.5*x"
+  ],
+  "costEq": [
+   "60e6*x"
+  ],
+  "stats": [
+   "Flat_ChanceToSpawnChest"
+  ],
+  "linksTo": [
+   3327,
+   3255,
+   3317
+  ],
+  "pos": {
+   "x": 2100.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 217_8e751acf",
+   "Node 119_6ececb21",
+   "Node 206_9a4774d7"
+  ],
+  "linkedFrom": [
+   "Node 119_6ececb21",
+   "Node 206_9a4774d7",
+   "Node 217_8e751acf"
+  ]
+ },
+ {
+  "pathID": 3329,
+  "id": "Node 219_8723175f",
+  "nameKey": "Node 219",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "2"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_LastPackInRunAlwaysContainChest",
+   "Flat_FirstPacksAlwaysContainGolden"
+  ],
+  "linksTo": [
+   3253,
+   3330,
+   3327
+  ],
+  "pos": {
+   "x": 2190.0,
+   "y": 180.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 117_fab9c3ea",
+   "Node 220_627b6960",
+   "Node 217_8e751acf"
+  ],
+  "linkedFrom": [
+   "Node 117_fab9c3ea",
+   "Node 217_8e751acf",
+   "Node 220_627b6960"
+  ]
+ },
+ {
+  "pathID": 3330,
+  "id": "Node 220_627b6960",
+  "nameKey": "Node 220",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "150*x"
+  ],
+  "costEq": [
+   "160e6*x"
+  ],
+  "stats": [
+   "Flat_ChestContentRarity"
+  ],
+  "linksTo": [
+   3331,
+   3329,
+   3327
+  ],
+  "pos": {
+   "x": 2100.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 221_23880ac6",
+   "Node 219_8723175f",
+   "Node 217_8e751acf"
+  ],
+  "linkedFrom": [
+   "Node 217_8e751acf",
+   "Node 219_8723175f",
+   "Node 221_23880ac6"
+  ]
+ },
+ {
+  "pathID": 3331,
+  "id": "Node 221_23880ac6",
+  "nameKey": "Node 221",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "200e6"
+  ],
+  "stats": [
+   "Flat_ChestRareTypeWeightBonus"
+  ],
+  "linksTo": [
+   3330,
+   3318
+  ],
+  "pos": {
+   "x": 2010.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 220_627b6960",
+   "Node 208_5256ab11"
+  ],
+  "linkedFrom": [
+   "Node 208_5256ab11",
+   "Node 220_627b6960"
+  ]
+ },
+ {
+  "pathID": 3332,
+  "id": "Node 222_14a9ca40",
+  "nameKey": "Node 222",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "100",
+   "-10"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_PortalPackCurrencyBonus",
+   "Additive_PortalHealthMultiplier"
+  ],
+  "linksTo": [
+   3333,
+   3269,
+   3254,
+   3253
+  ],
+  "pos": {
+   "x": 2280.0,
+   "y": -20.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 223_f7f39a7f",
+   "Node 144_072a6756",
+   "Node 118_132a2677",
+   "Node 117_fab9c3ea"
+  ],
+  "linkedFrom": [
+   "Node 117_fab9c3ea",
+   "Node 118_132a2677",
+   "Node 144_072a6756",
+   "Node 223_f7f39a7f"
+  ]
+ },
+ {
+  "pathID": 3333,
+  "id": "Node 223_f7f39a7f",
+  "nameKey": "Node 223",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "200e6*x"
+  ],
+  "stats": [
+   "Additive_PortalSummonTime"
+  ],
+  "linksTo": [
+   3332,
+   3282
+  ],
+  "pos": {
+   "x": 2280.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 222_14a9ca40",
+   "Node 166_36f8277b"
+  ],
+  "linkedFrom": [
+   "Node 166_36f8277b",
+   "Node 222_14a9ca40"
+  ]
+ },
+ {
+  "pathID": 3334,
+  "id": "Node 224_71e68c23",
+  "nameKey": "Node 224",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "30*x"
+  ],
+  "costEq": [
+   "180e6*x"
+  ],
+  "stats": [
+   "Flat_Damage"
+  ],
+  "linksTo": [
+   3335,
+   3254
+  ],
+  "pos": {
+   "x": 2190.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 225_502f21c3",
+   "Node 118_132a2677"
+  ],
+  "linkedFrom": [
+   "Node 118_132a2677",
+   "Node 225_502f21c3"
+  ]
+ },
+ {
+  "pathID": 3335,
+  "id": "Node 225_502f21c3",
+  "nameKey": "Node 225",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "40*x"
+  ],
+  "costEq": [
+   "180e6"
+  ],
+  "stats": [
+   "Flat_Health"
+  ],
+  "linksTo": [
+   3334
+  ],
+  "pos": {
+   "x": 2190.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 224_71e68c23"
+  ],
+  "linkedFrom": [
+   "Node 224_71e68c23"
+  ]
+ },
+ {
+  "pathID": 3336,
+  "id": "Node 226_f357e0ba",
+  "nameKey": "Node 226",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "35*x"
+  ],
+  "costEq": [
+   "400e6*x"
+  ],
+  "stats": [
+   "Additive_AlliesAttackSpeedMultiplier"
+  ],
+  "linksTo": [
+   3258
+  ],
+  "pos": {
+   "x": 2280.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 123_db00d244"
+  ],
+  "linkedFrom": [
+   "Node 123_db00d244"
+  ]
+ },
+ {
+  "pathID": 3337,
+  "id": "Node 227_3248553a",
+  "nameKey": "Node 227",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "50*x"
+  ],
+  "costEq": [
+   "400e6*x"
+  ],
+  "stats": [
+   "Additive_TameDamageMultiplier"
+  ],
+  "linksTo": [
+   3257
+  ],
+  "pos": {
+   "x": 2460.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 122_737262bf"
+  ],
+  "linkedFrom": [
+   "Node 122_737262bf"
+  ]
+ },
+ {
+  "pathID": 3338,
+  "id": "Node 229_ae1a5f60",
+  "nameKey": "Node 229",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "2"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_GoldPerSecond"
+  ],
+  "linksTo": [
+   3339,
+   3312
+  ],
+  "pos": {
+   "x": 2460.0,
+   "y": 80.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 230_f8940d9c",
+   "Node 200_4dd2c66b"
+  ],
+  "linkedFrom": [
+   "Node 200_4dd2c66b",
+   "Node 230_f8940d9c"
+  ]
+ },
+ {
+  "pathID": 3339,
+  "id": "Node 230_f8940d9c",
+  "nameKey": "Node 230",
+  "descKey": "Description",
+  "maxLevel": 2,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "300e6*x"
+  ],
+  "stats": [
+   "Flat_GoldChanceToDrop"
+  ],
+  "linksTo": [
+   3338,
+   3273
+  ],
+  "pos": {
+   "x": 2460.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 229_ae1a5f60",
+   "Node 151_7517f5fd"
+  ],
+  "linkedFrom": [
+   "Node 151_7517f5fd",
+   "Node 229_ae1a5f60"
+  ]
+ },
+ {
+  "pathID": 3340,
+  "id": "Node 231_ebb60ce2",
+  "nameKey": "Node 231",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "3e9*x"
+  ],
+  "stats": [
+   "Flat_ArcherCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3273,
+   3275
+  ],
+  "pos": {
+   "x": 2550.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 151_7517f5fd",
+   "Node 158_9f33a425"
+  ],
+  "linkedFrom": [
+   "Node 151_7517f5fd",
+   "Node 158_9f33a425"
+  ]
+ },
+ {
+  "pathID": 3341,
+  "id": "Node 232_6bd2f58e",
+  "nameKey": "Node 232",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "15*x"
+  ],
+  "costEq": [
+   "1.5e9*x"
+  ],
+  "stats": [
+   "Flat_ClawCurrencyChanceDrop"
+  ],
+  "linksTo": [
+   3273,
+   3325
+  ],
+  "pos": {
+   "x": 2550.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 151_7517f5fd",
+   "Node 215_a43e3ef4"
+  ],
+  "linkedFrom": [
+   "Node 151_7517f5fd",
+   "Node 215_a43e3ef4"
+  ]
+ },
+ {
+  "pathID": 3342,
+  "id": "Node 233_96be8d08",
+  "nameKey": "Node 233",
+  "descKey": "Description",
+  "maxLevel": 100,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "100e9*x"
+  ],
+  "stats": [
+   "Multiplicative_Damage"
+  ],
+  "linksTo": [
+   3290,
+   3319
+  ],
+  "pos": {
+   "x": 2990.0,
+   "y": 90.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 180_a0cd0280",
+   "Node 209_7339f1a4"
+  ],
+  "linkedFrom": [
+   "Node 180_a0cd0280",
+   "Node 209_7339f1a4"
+  ]
+ },
+ {
+  "pathID": 3343,
+  "id": "Node 234_d303f043",
+  "nameKey": "Node 234",
+  "descKey": "Description",
+  "maxLevel": 100,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "100e9*x"
+  ],
+  "stats": [
+   "Multiplicative_Health"
+  ],
+  "linksTo": [
+   3320,
+   3290
+  ],
+  "pos": {
+   "x": 2990.0,
+   "y": -130.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 210_78e82f5e",
+   "Node 180_a0cd0280"
+  ],
+  "linkedFrom": [
+   "Node 180_a0cd0280",
+   "Node 210_78e82f5e"
+  ]
+ },
+ {
+  "pathID": 3344,
+  "id": "Node 235_da0eb2b9",
+  "nameKey": "Node 235",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1"
+  ],
+  "costEq": [
+   "1"
+  ],
+  "stats": [
+   "Flat_ChanceToSummonOrbOnKill"
+  ],
+  "linksTo": [
+   3287,
+   3277
+  ],
+  "pos": {
+   "x": 2730.0,
+   "y": -120.0
+  },
+  "costCurrency": 4,
+  "linksToIDs": [
+   "Node 173_b2f6a332",
+   "Node 161_56d71259"
+  ],
+  "linkedFrom": [
+   "Node 161_56d71259",
+   "Node 173_b2f6a332"
+  ]
+ },
+ {
+  "pathID": 3345,
+  "id": "Node 236_8fbaa9fe",
+  "nameKey": "Node 236",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "12*x"
+  ],
+  "costEq": [
+   "50e6*x"
+  ],
+  "stats": [
+   "Additive_PlayerAttackSpeed"
+  ],
+  "linksTo": [
+   3316
+  ],
+  "pos": {
+   "x": 1740.0,
+   "y": 180.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 205_6185ecd2"
+  ],
+  "linkedFrom": [
+   "Node 205_6185ecd2"
+  ]
+ },
+ {
+  "pathID": 3346,
+  "id": "Node 238_ea7e429c",
+  "nameKey": "Node 238",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "300"
+  ],
+  "costEq": [
+   "50e9*x"
+  ],
+  "stats": [
+   "Flat_AttackRange"
+  ],
+  "linksTo": [
+   3286,
+   3347
+  ],
+  "pos": {
+   "x": 2820.0,
+   "y": -20.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 172_839b5b7a",
+   "Node 239_c85a1606"
+  ],
+  "linkedFrom": [
+   "Node 172_839b5b7a",
+   "Node 239_c85a1606"
+  ]
+ },
+ {
+  "pathID": 3347,
+  "id": "Node 239_c85a1606",
+  "nameKey": "Node 239",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "10*x"
+  ],
+  "costEq": [
+   "40e9*x"
+  ],
+  "stats": [
+   "Additive_SkillsCooldownSpeed"
+  ],
+  "linksTo": [
+   3346,
+   3319,
+   3288
+  ],
+  "pos": {
+   "x": 2820.0,
+   "y": 80.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 238_ea7e429c",
+   "Node 209_7339f1a4",
+   "Node 175_026556bb"
+  ],
+  "linkedFrom": [
+   "Node 175_026556bb",
+   "Node 209_7339f1a4",
+   "Node 238_ea7e429c"
+  ]
+ },
+ {
+  "pathID": 3348,
+  "id": "Node 240_cd00c13a",
+  "nameKey": "Node 240",
+  "descKey": "Description",
+  "maxLevel": 3,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "20*x"
+  ],
+  "costEq": [
+   "40e6*x"
+  ],
+  "stats": [
+   "Flat_CriticalMultiplier"
+  ],
+  "linksTo": [
+   3323,
+   3307
+  ],
+  "pos": {
+   "x": 1560.0,
+   "y": -220.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 213_c5b7ba7a",
+   "Node 197_f4ef9ed0"
+  ],
+  "linkedFrom": [
+   "Node 197_f4ef9ed0",
+   "Node 213_c5b7ba7a"
+  ]
+ },
+ {
+  "pathID": 3349,
+  "id": "Node 241_802736a7",
+  "nameKey": "Node 241",
+  "descKey": "Description",
+  "maxLevel": 1,
+  "unlockBehavior": 2,
+  "requiredMonsterLevel": -1,
+  "valueEq": [
+   "1*x"
+  ],
+  "costEq": [
+   "50"
+  ],
+  "stats": [
+   "Flat_NumberOfMouseProjectiles"
+  ],
+  "linksTo": [
+   3271
+  ],
+  "pos": {
+   "x": 130.0,
+   "y": -120.0
+  },
+  "costCurrency": 1,
+  "linksToIDs": [
+   "Node 15_615ff926"
+  ],
+  "linkedFrom": [
+   "Node 15_615ff926"
+  ]
+ }
+]

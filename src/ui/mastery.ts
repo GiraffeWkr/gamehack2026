@@ -26,6 +26,8 @@ import {
   awakenCost,
   levelUpCost,
 } from '../game/mastery.js';
+import { getLang } from '../core/i18n.js';
+import { reskinText } from '../core/lexicon.js';
 import type { Mastery } from '../game/mastery.js';
 
 const ART = 'art/mastery/';
@@ -143,7 +145,7 @@ export class MasteryPanel {
 
     this.npcLevelEl.textContent = `等级 ${m.npcLevel} / ${NPC_MAX_LEVEL}`;
     const npcCost = m.npcCost();
-    this.npcCostEl.textContent = m.npcMaxed ? '最大' : `蝠币 ${npcCost.toLocaleString('en-US')}`;
+    this.npcCostEl.textContent = m.npcMaxed ? '最大' : `蝠群宝石 ${npcCost.toLocaleString('en-US')}`;
     this.npcBtn.disabled = m.npcMaxed;
     this.npcBtn.classList.toggle('affordable', m.canLevelNpc(bat));
 
@@ -173,13 +175,13 @@ export class MasteryPanel {
       t.root.dataset.level = String(lvl);
       t.lock.hidden = unlocked;
       t.icon.hidden = !unlocked;
-      t.name.textContent = def.nameZh || def.nameEn;
+      t.name.textContent = reskinText(def.nameZh || def.nameEn, getLang());
       t.lv.textContent = unlocked ? `${lvl}/${m.maxLevel(def)}` : '';
       t.stat.textContent = def.isPinnacle
         ? (def.pinnacleDesc1Zh || '铭刻')
         : `${def.mainValueEquation}${def.mainSuffix}`;
       t.cost.textContent = !unlocked || def.isPinnacle || maxed
-        ? '' : `蝠币 ${cost.toLocaleString('en-US')}`;
+        ? '' : `蝠群宝石 ${cost.toLocaleString('en-US')}`;
 
       t.levelBtn.hidden = !unlocked || def.isPinnacle || maxed;
       t.levelBtn.classList.toggle('affordable', unlocked && m.canLevel(def, bat));

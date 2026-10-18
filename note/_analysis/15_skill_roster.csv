@@ -1,0 +1,16 @@
+﻿skill,save_level_lv30,appeared_in_logs,first_level_seen,levels_present,total_casts,total_damage
+Multishot,2,True,2,16,341,42126937.0
+BombArrow,1,True,3,16,206,117663699.0
+Wolf,1,True,5,13,366,4903471.0
+Bear,1,True,6,12,139,1144348.0
+DarkMatter,3,True,7,12,348,3648858990.0
+SuperNova,3,True,7,11,63,732090862.0
+BatSwarm,3,True,7,12,117,640482839.0
+RapidFire,2,False,,0,0,0
+Falcon,0,False,,0,0,0
+SniperScope,0,False,,0,0,0
+PiercingShot,0,False,,0,0,0
+SharpShooter,0,False,,0,0,0
+FireArea,0,False,,0,0,0
+LightningStrike,0,False,,0,0,0
+Blizzard,0,False,,0,0,0

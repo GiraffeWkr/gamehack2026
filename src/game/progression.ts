@@ -17,8 +17,9 @@
  *
  *  - **Level** rises on experience and grants a small permanent stat bonus, so it
  *    is a third progression axis next to gold upgrades and monster level.
- *  - **Gems** are the premium currency: dropped by guardians and first clears only,
- *    which keeps them scarce.
+ *
+ * The premium gem currency was removed: it was awarded by guardians/portals/first clears
+ * but had no HUD counter and no sink, so it was pure dead state in the save.
  */
 
 /** Exponential requirements, matching the original's cost-curve idiom. */
@@ -55,7 +56,6 @@ export function expForKill(level: number, healthMultiplier: number): number {
 export class Progression {
   level = 1;
   exp = 0;
-  gems = 0;
 
   /** Experience required to advance from the current level. */
   xpNeeded(): number {
@@ -87,25 +87,6 @@ export class Progression {
     return gained;
   }
 
-  addGems(amount: number): void {
-    if (amount > 0) this.gems += Math.floor(amount);
-  }
-
-  /** True when the gems cover a price. */
-  canAfford(price: number): boolean {
-    return this.gems >= price;
-  }
-
-  /**
-   * Spends gems, returning true on success. The only sink in the slice is
-   * instantly finishing an upgrade level, which is how the original treats its
-   * premium currency elsewhere.
-   */
-  spendGems(price: number): boolean {
-    if (price <= 0 || this.gems < price) return false;
-    this.gems -= price;
-    return true;
-  }
 
   /** Stat deltas granted by the current level, applied on top of the stat bases. */
   bonuses(): { damage: number; health: number; arrowDamagePercent: number } {
@@ -117,14 +98,13 @@ export class Progression {
     };
   }
 
-  serialize(): { level: number; exp: number; gems: number } {
-    return { level: this.level, exp: this.exp, gems: this.gems };
+  serialize(): { level: number; exp: number } {
+    return { level: this.level, exp: this.exp };
   }
 
-  load(data: { level?: number; exp?: number; gems?: number } | undefined): void {
+  load(data: { level?: number; exp?: number } | undefined): void {
     if (!data) return;
     if (typeof data.level === 'number') this.level = Math.max(1, Math.floor(data.level));
     if (typeof data.exp === 'number') this.exp = Math.max(0, data.exp);
-    if (typeof data.gems === 'number') this.gems = Math.max(0, Math.floor(data.gems));
   }
 }

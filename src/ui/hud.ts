@@ -58,16 +58,16 @@ const STAT_LABELS: Record<string, string> = {
   DodgeChance: '闪避率',
   ChanceForDoubleDamage: '双倍伤害概率',
   ChanceForTripleDamage: '三倍伤害概率',
-  MouseMagazineSize: '箭雨容量',
-  MouseMagazineRegenTime: '箭雨装填时间',
-  NumberOfMouseProjectiles: '箭雨箭矢数量',
-  MouseNumberOfHits: '箭雨命中次数',
-  MouseMaxNumberOfEnemies: '箭雨目标上限',
+  MouseMagazineSize: '轨道打击容量',
+  MouseMagazineRegenTime: '轨道打击装填时间',
+  NumberOfMouseProjectiles: '轨道打击弹数',
+  MouseNumberOfHits: '轨道打击命中次数',
+  MouseMaxNumberOfEnemies: '轨道打击目标上限',
   MouseChanceForAnotherHit: '额外命中概率',
-  Multishot_NumberOfProjectiles: '多重射击箭数',
+  Multishot_NumberOfProjectiles: '多重射击弹数',
   Multishot_NumberOfHits: '多重射击命中',
   Multishot_Cooldown: '多重射击冷却',
-  BombArrow_RadiusOfEffect: '爆裂箭范围',
+  BombArrow_RadiusOfEffect: '爆裂弹范围',
   SniperScope_RadiusOfEffect: '狙击范围',
   BatSwarm_RadiusOfEffect: '蝙蝠群范围',
   FireArea_RadiusOfEffect: '火海范围',
@@ -78,8 +78,8 @@ const STAT_LABELS: Record<string, string> = {
   EnemyDamageMultiplier: '敌方伤害倍率',
   EnemyMovementSpeedMultiplier: '敌方移速倍率',
   EnemyAttackSpeedMultiplier: '敌方攻速倍率',
-  ExplosiveArrows: '爆炸箭概率',
-  ExplosiveArrows_RadiusOfEffect: '爆炸箭范围',
+  ExplosiveArrows: '爆裂弹概率',
+  ExplosiveArrows_RadiusOfEffect: '爆裂弹范围',
   ChanceToDropHealthPotion: '血瓶掉落概率',
   HealthPotionRegenPercentage: '血瓶回复比例',
   GoldCoinsToDrop: '金币掉落数',
@@ -102,7 +102,7 @@ const STAT_LABELS: Record<string, string> = {
   ChanceToSpawnOrb: '法球生成概率',
   ChestLootBonus: '宝箱奖励加成',
   GuaranteeMonsterCurrencyDrop: '保底货币掉落',
-  MouseChanceToFireSkills: '箭雨触发技能概率',
+  MouseChanceToFireSkills: '轨道打击触发技能概率',
   SkillsCooldownSpeed: '技能冷却速度',
   Skills_DamageMultiplier: '技能伤害倍率',
   PortalSummonTime: '传送门召唤时间',
@@ -173,9 +173,7 @@ export class Hud {
           <div class="hud-res">
             <span class="res"><img class="res-icon" src="art/cur/Gold.png" alt="" /><span class="res-val gold-text">0</span></span>
             <span class="res cur" data-cur="ClawCurrency" hidden><img class="res-icon" src="art/cur/ClawCurrency.png" alt="" /><span class="res-val cur-claw">0</span></span>
-            <span class="res cur" data-cur="ArcherCurrency" hidden><img class="res-icon" src="art/cur/ArcherCurrency.png" alt="" /><span class="res-val cur-archer">0</span></span>
-            <span class="res cur" data-cur="WarriorCurrency" hidden><img class="res-icon" src="art/cur/WarriorCurrency.png" alt="" /><span class="res-val cur-warrior">0</span></span>
-            <span class="res cur" data-cur="MageCurrency" hidden><img class="res-icon" src="art/cur/MageCurrency.png" alt="" /><span class="res-val cur-mage">0</span></span>
+
             <span class="res cur" data-cur="BatCurrency" hidden><img class="res-icon" src="art/cur/BatCurrency.png" alt="" /><span class="res-val cur-bat">0</span></span>
             <span class="res cur cur-portal" data-cur="PortalCurrency" hidden><img class="res-icon" src="art/cur/PortalCurrency.png" alt="" /><span class="res-val cur-portal-val">0</span></span>
           </div>
@@ -190,6 +188,7 @@ export class Hud {
           <div class="progress hint-exp"><div class="progress-fill exp-fill"></div></div>
         </div>
         <div class="hud-right">
+          <button type="button" class="sound-btn" title="声音"></button>
           <button type="button" class="stats-btn" title="查看属性"></button>
           <button type="button" class="reset-btn" title="重置所有进度"></button>
         </div>

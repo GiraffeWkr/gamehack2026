@@ -127,23 +127,29 @@ export interface RunPlan {
  * only until it has been defeated once. Which guardians the player still owes
  * is persisted, so the slice accepts a set of already-cleared guardians.
  */
-export const GUARDIAN_START_LEVEL = 25;
-
 /**
- * The five Guardians, in the order the original sends them: one per level from
- * `GuardianStartLevel`, and only until that Guardian has been beaten once. Each is its own
- * `EnemyInfo` — GuardianMage carries 45x health against GuardianClaw's 25x, and the Archer
- * and Mage variants are the only two that shoot.
+ * Boss gates. Four of them, at the end of each ten-level act, matching the reference
+ * design (`note/战锤40K_游戏策划案.md` §6.3): a boss every ten levels, final boss at 40.
+ *
+ * The shipping build instead sent one Guardian per level from 25 to 29, which left the
+ * first twenty-four levels without a single set-piece and then stacked five bosses in a
+ * row. The port now spreads them across the whole campaign.
  */
-const GUARDIAN_ORDER: EnemyType[] = [
-  'GuardianClaw', 'GuardianWarrior', 'GuardianArcher', 'GuardianMage', 'GuardianBat',
-];
+export const BOSS_LEVELS: Readonly<Record<number, EnemyType>> = {
+  10: 'GuardianClaw',
+  20: 'GuardianWarrior',
+  30: 'GuardianMage',
+  40: 'King',
+};
+
+/** Boss that guards a level, or null. */
+export function bossForLevel(level: number): EnemyType | null {
+  return BOSS_LEVELS[level] ?? null;
+}
 
 export function guardianForLevel(level: number, defeated: ReadonlySet<EnemyType>): EnemyType | null {
-  const index = level - GUARDIAN_START_LEVEL;
-  if (index < 0 || index >= GUARDIAN_ORDER.length) return null;
-  const type = GUARDIAN_ORDER[index];
-  return defeated.has(type) ? null : type;
+  const boss = bossForLevel(level);
+  return boss && !defeated.has(boss) ? boss : null;
 }
 
 /**
@@ -165,19 +171,6 @@ export function planRun(
   let nextId = 0;
   let cursor = startX;
 
-  const guardianType = guardianForLevel(level, defeatedGuardians);
-  if (guardianType) {
-    packs.push({
-      packId: nextId++,
-      centerX: SPAWN.guardianPackPosition,
-      enemyCount: 1,
-      isPortalPack: false,
-      isGuardianPack: true,
-      guardianType,
-    });
-    cursor = SPAWN.guardianPackPosition + spacing;
-  }
-
   for (let i = 0; i < packCount; i++) {
     packs.push({
       packId: nextId++,
@@ -188,11 +181,28 @@ export function planRun(
     });
     cursor += spacing;
   }
-  cursor -= spacing;
 
+  /*
+   * The boss now sits at the END of the level, just before the portal: the act's packs
+   * are the approach, the boss is the gate. Previously the guardian spawned first at a
+   * fixed 1500 units, so the player met the hardest enemy before the tutorial packs.
+   */
+  const guardianType = guardianForLevel(level, defeatedGuardians);
+  if (guardianType) {
+    packs.push({
+      packId: nextId++,
+      centerX: cursor,
+      enemyCount: 1,
+      isPortalPack: false,
+      isGuardianPack: true,
+      guardianType,
+    });
+  }
+
+  const lastPackX = packs[packs.length - 1].centerX;
   const portalPackSize = enemiesPerPortalPack(level);
-  // `RunPortalXPosition = lastPackX + 80 * enemiesPerPack`
-  const portalX = cursor + 80 * perPack;
+  // `RunPortalXPosition = lastPackX + 80 * enemiesPerPack`, plus room for the boss body.
+  const portalX = lastPackX + 80 * perPack + (guardianType ? 260 : 0);
 
   return {
     level,

@@ -18,10 +18,10 @@
   --safe-right: env(safe-area-inset-right, 0px);
 
   --ink: #eef4ff;
-  --ink-dim: #9fb0c6;
-  --panel: rgba(12, 18, 28, 0.72);
-  --panel-line: rgba(150, 190, 255, 0.22);
-  --accent: #4fd2ff;
+  --ink-dim: #9aa8c8;
+  --panel: rgba(9, 14, 32, 0.88);
+  --panel-line: rgba(80, 200, 230, 0.28);
+  --accent: #45d7e8;
 }
 
 * {
@@ -35,7 +35,7 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background: #05080c;
+  background: #060810;
   color: var(--ink);
   font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', sans-serif;
   user-select: none;
@@ -145,8 +145,8 @@ body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
-.res-val.gold-text { color: #ffd166; }
-.res-val.gem-text { color: #7fe0a0; }
+.res-val.gold-text { color: #ffc45c; }
+.res-val.gem-text { color: #74e39a; }
 
 .hud-center {
   flex: 0 1 auto;
@@ -166,13 +166,15 @@ body {
 
 /* Top-right utility buttons (stats, reset). Small so they never compete with the action bar. */
 .stats-btn,
-.reset-btn {
+.reset-btn,
+.sound-btn {
+  pointer-events: auto;
   width: 28px;
   height: 28px;
   border-radius: 9px;
-  border: 1px solid rgba(120, 104, 88, 0.55);
-  background: rgba(26, 22, 19, 0.85);
-  color: rgba(226, 210, 188, 0.75);
+  border: 1px solid rgba(108, 124, 158, 0.55);
+  background: rgba(8, 12, 26, 0.85);
+  color: rgba(207, 228, 255, 0.75);
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -180,9 +182,10 @@ body {
 }
 
 .stats-btn:active,
-.reset-btn:active {
+.reset-btn:active,
+.sound-btn:active {
   transform: scale(0.92);
-  background: rgba(96, 42, 34, 0.9);
+  background: rgba(26, 36, 80, 0.9);
 }
 
 /* Floating stats panel: same plate as the lower-band panels. */
@@ -194,10 +197,10 @@ body {
   max-height: 60vh;
   display: flex;
   flex-direction: column;
-  background: #332822;
-  border: 1px solid #6c4439;
+  background: #0f1730;
+  border: 1px solid #243063;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(176, 138, 123, 0.22);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(108, 124, 158, 0.22);
   overflow: hidden;
   z-index: 20;
   /*
@@ -222,8 +225,8 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 8px 12px;
-  background: #6c4439;
-  color: #e8cbb8;
+  background: #243063;
+  color: #cfe4ff;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -251,12 +254,12 @@ body {
   gap: 12px;
   padding: 5px 12px;
   font-size: 12px;
-  color: #e6d3c2;
-  border-bottom: 1px solid rgba(176, 138, 123, 0.12);
+  color: #cfe4ff;
+  border-bottom: 1px solid rgba(108, 124, 158, 0.12);
 }
 
 .stats-row span:first-child {
-  color: #b08a7b;
+  color: #7f8ca8;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -270,7 +273,7 @@ body {
 .stats-empty {
   padding: 14px;
   text-align: center;
-  color: #b08a7b;
+  color: #7f8ca8;
   font-size: 12px;
 }
 
@@ -289,7 +292,7 @@ body {
   inset: 0;
   transform-origin: left center;
   transform: scaleX(1);
-  background: #5bd97a;
+  background: #74e39a;
   transition: background 160ms linear;
 }
 
@@ -339,7 +342,7 @@ body {
   inset: 0;
   transform-origin: left center;
   transform: scaleX(0);
-  background: linear-gradient(90deg, #a01818, #e8452f 60%, #ff7a4a);
+  background: linear-gradient(90deg, #8f4230, #e0722f 60%, #ffc45c);
   box-shadow: inset 0 0 8px rgba(255, 140, 80, 0.5);
   transition: transform 140ms linear;
 }
@@ -355,7 +358,7 @@ body {
   padding: 6px 12px 8px;
   border-radius: 12px;
   background: var(--panel);
-  border: 1px solid rgba(79, 210, 255, 0.4);
+  border: 1px solid rgba(69, 215, 232, 0.4);
   text-align: center;
 }
 
@@ -385,11 +388,11 @@ body {
   inset: 0;
   transform-origin: left center;
   transform: scaleX(1);
-  background: linear-gradient(90deg, #1d6f8c, var(--accent));
+  background: linear-gradient(90deg, #24a3bd, var(--accent));
 }
 
 .portal-fill.summoning {
-  background: linear-gradient(90deg, #6a4fa3, #b07bff);
+  background: linear-gradient(90deg, #6b4bb8, #9a6cf0);
   animation: summon-pulse 0.9s ease-in-out infinite;
 }
 
@@ -527,8 +530,8 @@ body {
 
 /* Colour states, matching the original's thresholds. */
 .mag-count.full { color: #d8f4ff; }
-.mag-count.low { color: #ffb35a; }
-.mag-count.empty { color: #ff6a5a; }
+.mag-count.low { color: #ffc45c; }
+.mag-count.empty { color: #e2564a; }
 
 /* Skill wheel — right thumb */
 .skills {
@@ -558,12 +561,12 @@ body {
 }
 
 .skill.ready {
-  border-color: rgba(79, 210, 255, 0.85);
-  box-shadow: 0 0 14px rgba(79, 210, 255, 0.4), inset 0 0 12px rgba(79, 210, 255, 0.18);
+  border-color: rgba(69, 215, 232, 0.85);
+  box-shadow: 0 0 14px rgba(69, 215, 232, 0.4), inset 0 0 12px rgba(69, 215, 232, 0.18);
 }
 
 .skill.buff {
-  border-color: #ffd166;
+  border-color: #ffc45c;
   box-shadow: 0 0 16px rgba(255, 209, 102, 0.55);
 }
 
@@ -611,7 +614,7 @@ body {
   top: 12%;
   font-size: 11px;
   font-weight: 800;
-  color: #ffd166;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
@@ -631,7 +634,7 @@ body {
   padding: 6px 18px;
   border-radius: 10px;
   background: rgba(8, 20, 32, 0.78);
-  border: 1px solid rgba(79, 210, 255, 0.65);
+  border: 1px solid rgba(69, 215, 232, 0.65);
   color: #d8f4ff;
   font-size: clamp(13px, 2.8vh, 19px);
   font-weight: 800;
@@ -706,8 +709,8 @@ body {
   overflow: hidden;
   /* The tree screen sits on the game's dark UI plate. */
   background:
-    radial-gradient(140% 90% at 50% 0%, rgba(46, 36, 28, 0.94), rgba(9, 8, 10, 0.985) 70%),
-    #09080a;
+    radial-gradient(140% 90% at 50% 0%, rgba(11, 16, 36, 0.94), rgba(9, 8, 10, 0.985) 70%),
+    #060810;
   z-index: 8;
 }
 
@@ -732,19 +735,19 @@ body {
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #f0e2cd;
+  color: #dbe8ff;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .talent-progress {
   font-weight: 700;
-  color: #c9995f;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
 .talent-hint {
   margin-left: auto;
-  color: rgba(226, 210, 188, 0.5);
+  color: rgba(207, 228, 255, 0.5);
 }
 
 .talent-close {
@@ -753,9 +756,9 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid rgba(201, 153, 95, 0.5);
-  background: rgba(201, 153, 95, 0.14);
-  color: #f0e2cd;
+  border: 1px solid rgba(255, 196, 92, 0.5);
+  background: rgba(255, 196, 92, 0.14);
+  color: #dbe8ff;
   font-family: inherit;
   font-size: 14px;
   line-height: 1;
@@ -854,12 +857,26 @@ body {
   opacity: 1;
 }
 
+/*
+ * The glyph and highlight ring are white+alpha art and the runtime tint is a colour:
+ * paint that colour through a mask of the art. `mix-blend-mode: multiply` on a white
+ * sprite over a coloured background is a no-op, which made every node a solid square.
+ */
+.tn-hi,
+.tn-icon {
+  -webkit-mask-image: var(--tn-art);
+  mask-image: var(--tn-art);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 .tn-hi img,
 .tn-icon img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  mix-blend-mode: multiply;
+  display: none;
 }
 
 /* `TreeNodeInfo.GetCurrentIconColor` tints the glyph: locked nodes go dark brown. */
@@ -932,8 +949,8 @@ body {
   transform: translateX(-50%);
   padding: 9px 11px;
   border-radius: 10px;
-  background: rgba(12, 10, 10, 0.97);
-  border: 1px solid rgba(201, 153, 95, 0.45);
+  background: rgba(6, 8, 20, 0.97);
+  border: 1px solid rgba(255, 196, 92, 0.45);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
   font-size: 11px;
   line-height: 1.55;
@@ -948,7 +965,7 @@ body {
 .tt-name {
   font-size: 13px;
   font-weight: 800;
-  color: #f3e6d2;
+  color: #dbe8ff;
 }
 
 .tt-lv {
@@ -967,15 +984,15 @@ body {
 
 .tt-cost {
   margin-top: 3px;
-  color: rgba(240, 226, 205, 0.8);
+  color: rgba(239, 246, 255, 0.8);
 }
 
-.tt-cost .ok { color: #ffd166; }
-.tt-cost .no { color: #ff7a66; }
+.tt-cost .ok { color: #ffc45c; }
+.tt-cost .no { color: #e2564a; }
 
 .tt-locked {
   margin-top: 3px;
-  color: #ff9a86;
+  color: #ffb0a0;
   font-weight: 700;
 }
 
@@ -984,8 +1001,8 @@ body {
   pointer-events: auto;
   padding: 4px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(79, 210, 255, 0.5);
-  background: rgba(79, 210, 255, 0.14);
+  border: 1px solid rgba(69, 215, 232, 0.5);
+  background: rgba(69, 215, 232, 0.14);
   color: #d8f4ff;
   font-family: inherit;
   font-size: 13px;
@@ -1054,7 +1071,7 @@ body {
   gap: 6px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
-  color: #ffd166;
+  color: #ffc45c;
 }
 
 .shop-gold .coin {
@@ -1135,7 +1152,7 @@ body {
   min-width: 62px;
   text-align: right;
   font-weight: 800;
-  color: #7fe0a0;
+  color: #74e39a;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1169,7 +1186,7 @@ body {
 
 .shop-buy-cost {
   font-variant-numeric: tabular-nums;
-  color: #ffd166;
+  color: #ffc45c;
 }
 
 .shop-buy-level {
@@ -1178,7 +1195,7 @@ body {
 }
 
 .shop-row.maxed .shop-buy-level {
-  color: #7fe0a0;
+  color: #74e39a;
 }
 
 .shop-hint {
@@ -1246,7 +1263,7 @@ body {
 }
 
 .floater.crit {
-  color: #ffd166;
+  color: #ffc45c;
   font-size: clamp(17px, 3.4vh, 24px);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 1), 0 0 14px rgba(255, 190, 60, 0.8);
 }
@@ -1308,8 +1325,8 @@ body {
   pointer-events: auto;
   overflow: hidden;
   background:
-    radial-gradient(140% 90% at 50% 0%, rgba(46, 36, 28, 0.94), rgba(9, 8, 10, 0.985) 70%),
-    #09080a;
+    radial-gradient(140% 90% at 50% 0%, rgba(11, 16, 36, 0.94), rgba(9, 8, 10, 0.985) 70%),
+    #060810;
   z-index: 8;
 }
 
@@ -1334,19 +1351,19 @@ body {
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #f0e2cd;
+  color: #dbe8ff;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .jobs-progress {
   font-weight: 700;
-  color: #c9995f;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
 .jobs-hint {
   margin-left: auto;
-  color: rgba(226, 210, 188, 0.5);
+  color: rgba(207, 228, 255, 0.5);
 }
 
 .jobs-close {
@@ -1355,9 +1372,9 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid rgba(201, 153, 95, 0.5);
-  background: rgba(201, 153, 95, 0.14);
-  color: #f0e2cd;
+  border: 1px solid rgba(255, 196, 92, 0.5);
+  background: rgba(255, 196, 92, 0.14);
+  color: #dbe8ff;
   font-family: inherit;
   font-size: 14px;
   line-height: 1;
@@ -1379,9 +1396,9 @@ body {
   min-width: 0;
   padding: 8px 6px;
   border-radius: 10px;
-  border: 1px solid rgba(120, 104, 88, 0.5);
-  background: rgba(26, 22, 19, 0.9);
-  color: rgba(226, 210, 188, 0.55);
+  border: 1px solid rgba(108, 124, 158, 0.5);
+  background: rgba(8, 12, 26, 0.9);
+  color: rgba(207, 228, 255, 0.55);
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -1392,14 +1409,14 @@ body {
 }
 
 .jobs-tab[data-state='unlocked'] {
-  color: #f0e2cd;
-  border-color: rgba(201, 153, 95, 0.55);
-  background: rgba(58, 44, 32, 0.92);
+  color: #dbe8ff;
+  border-color: rgba(255, 196, 92, 0.55);
+  background: rgba(15, 23, 50, 0.92);
 }
 
 /* `JobsUIManager` marks an unlockable job differently from one that is still gated. */
 .jobs-tab[data-state='unlockable'] {
-  color: #ffd166;
+  color: #ffc45c;
   border-color: rgba(255, 209, 102, 0.6);
 }
 
@@ -1421,15 +1438,15 @@ body {
 .jobs-bonus {
   padding: 8px 10px;
   border-radius: 10px;
-  background: rgba(20, 17, 14, 0.85);
-  border: 1px solid rgba(120, 104, 88, 0.4);
-  color: rgba(226, 210, 188, 0.8);
+  background: rgba(7, 10, 24, 0.85);
+  border: 1px solid rgba(108, 124, 158, 0.4);
+  color: rgba(207, 228, 255, 0.8);
   font-size: 12px;
   line-height: 1.5;
 }
 
 .jobs-bonus[data-state='on'] {
-  color: #cfe6b8;
+  color: #a8e0b8;
   border-color: rgba(143, 224, 164, 0.4);
 }
 
@@ -1451,9 +1468,9 @@ body {
   gap: 3px;
   padding: 10px 6px 8px;
   border-radius: 12px;
-  border: 2px solid rgba(120, 104, 88, 0.5);
-  background: rgba(26, 22, 19, 0.9);
-  color: #e8dcc8;
+  border: 2px solid rgba(108, 124, 158, 0.5);
+  background: rgba(8, 12, 26, 0.9);
+  color: #cfe4ff;
   font-family: inherit;
   cursor: pointer;
   touch-action: manipulation;
@@ -1470,7 +1487,7 @@ body {
 
 .job-skill.maxed {
   border-color: rgba(255, 209, 102, 0.8);
-  background: rgba(48, 38, 20, 0.92);
+  background: rgba(11, 16, 36, 0.92);
 }
 
 .job-skill.locked {
@@ -1501,7 +1518,7 @@ body {
 
 .js-cost {
   font-size: 10px;
-  color: #ffd166;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1523,9 +1540,9 @@ body {
   gap: 10px;
   padding: 12px;
   border-radius: 12px;
-  border: 2px solid rgba(120, 104, 88, 0.55);
-  background: rgba(26, 22, 19, 0.94);
-  color: #e8dcc8;
+  border: 2px solid rgba(108, 124, 158, 0.55);
+  background: rgba(8, 12, 26, 0.94);
+  color: #cfe4ff;
   font-family: inherit;
   font-size: 13px;
   font-weight: 800;
@@ -1542,7 +1559,7 @@ body {
 }
 
 .jobs-unlock-cost {
-  color: #ffd166;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1580,8 +1597,8 @@ body {
   pointer-events: auto;
   overflow: hidden;
   background:
-    radial-gradient(140% 90% at 50% 0%, rgba(46, 36, 28, 0.94), rgba(9, 8, 10, 0.985) 70%),
-    #09080a;
+    radial-gradient(140% 90% at 50% 0%, rgba(11, 16, 36, 0.94), rgba(9, 8, 10, 0.985) 70%),
+    #060810;
   z-index: 8;
 }
 
@@ -1606,19 +1623,19 @@ body {
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #f0e2cd;
+  color: #dbe8ff;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .mastery-progress {
   font-weight: 700;
-  color: #c9995f;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
 .mastery-hint {
   margin-left: auto;
-  color: rgba(226, 210, 188, 0.5);
+  color: rgba(207, 228, 255, 0.5);
 }
 
 .mastery-close {
@@ -1627,9 +1644,9 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid rgba(201, 153, 95, 0.5);
-  background: rgba(201, 153, 95, 0.14);
-  color: #f0e2cd;
+  border: 1px solid rgba(255, 196, 92, 0.5);
+  background: rgba(255, 196, 92, 0.14);
+  color: #dbe8ff;
   font-family: inherit;
   font-size: 14px;
   line-height: 1;
@@ -1646,10 +1663,10 @@ body {
   gap: 10px;
   padding: 8px 10px;
   border-radius: 10px;
-  background: rgba(26, 22, 19, 0.92);
-  border: 1px solid rgba(120, 104, 88, 0.5);
+  background: rgba(8, 12, 26, 0.92);
+  border: 1px solid rgba(108, 124, 158, 0.5);
   font-size: 12px;
-  color: #e8dcc8;
+  color: #cfe4ff;
 }
 
 .npc-level {
@@ -1665,9 +1682,9 @@ body {
   gap: 8px;
   padding: 6px 12px;
   border-radius: 8px;
-  border: 1px solid rgba(120, 104, 88, 0.6);
-  background: rgba(48, 40, 30, 0.9);
-  color: #e8dcc8;
+  border: 1px solid rgba(108, 124, 158, 0.6);
+  background: rgba(11, 16, 36, 0.9);
+  color: #cfe4ff;
   font-family: inherit;
   font-size: 12px;
   font-weight: 800;
@@ -1685,7 +1702,7 @@ body {
 }
 
 .npc-cost {
-  color: #ffd166;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1702,16 +1719,16 @@ body {
 .mr-chip {
   padding: 2px 7px;
   border-radius: 999px;
-  border: 1px solid rgba(120, 104, 88, 0.45);
-  background: rgba(24, 20, 17, 0.85);
-  color: rgba(226, 210, 188, 0.4);
+  border: 1px solid rgba(108, 124, 158, 0.45);
+  background: rgba(8, 12, 26, 0.85);
+  color: rgba(207, 228, 255, 0.4);
   font-size: 10px;
 }
 
 .mr-chip.got {
   border-color: rgba(143, 224, 164, 0.55);
-  background: rgba(30, 46, 32, 0.9);
-  color: #cfe6b8;
+  background: rgba(14, 38, 32, 0.9);
+  color: #a8e0b8;
 }
 
 .mastery-tiles {
@@ -1736,20 +1753,20 @@ body {
   gap: 3px;
   padding: 10px 6px 8px;
   border-radius: 12px;
-  border: 2px solid rgba(120, 104, 88, 0.5);
-  background: rgba(26, 22, 19, 0.9);
-  color: #e8dcc8;
+  border: 2px solid rgba(108, 124, 158, 0.5);
+  background: rgba(8, 12, 26, 0.9);
+  color: #cfe4ff;
   font-size: 11px;
 }
 
 .mastery-tile[data-state='pinnacle'] {
   border-color: rgba(196, 138, 220, 0.65);
-  background: rgba(38, 24, 44, 0.92);
+  background: rgba(30, 20, 48, 0.92);
 }
 
 .mastery-tile[data-state='maxed'] {
   border-color: rgba(255, 209, 102, 0.8);
-  background: rgba(48, 38, 20, 0.92);
+  background: rgba(11, 16, 36, 0.92);
 }
 
 .mastery-tile[data-state='locked'] {
@@ -1781,13 +1798,13 @@ body {
 }
 
 .mt-stat {
-  color: rgba(226, 210, 188, 0.6);
+  color: rgba(207, 228, 255, 0.6);
   font-size: 10px;
   text-align: center;
 }
 
 .mt-cost {
-  color: #ffd166;
+  color: #ffc45c;
   font-size: 10px;
   font-variant-numeric: tabular-nums;
 }
@@ -1798,9 +1815,9 @@ body {
   margin-top: 2px;
   padding: 4px 2px;
   border-radius: 7px;
-  border: 1px solid rgba(120, 104, 88, 0.6);
-  background: rgba(48, 40, 30, 0.9);
-  color: #e8dcc8;
+  border: 1px solid rgba(108, 124, 158, 0.6);
+  background: rgba(11, 16, 36, 0.9);
+  color: #cfe4ff;
   font-family: inherit;
   font-size: 10px;
   font-weight: 700;
@@ -1865,8 +1882,8 @@ body {
   /* Clear the control bar, which is ~96px tall at the bottom. */
   bottom: calc(var(--safe-bottom) + 96px);
   background:
-    linear-gradient(180deg, rgba(41, 24, 15, 0.97), rgba(18, 12, 9, 0.985));
-  border-top: 2px solid rgba(201, 153, 95, 0.55);
+    linear-gradient(180deg, rgba(9, 14, 32, 0.97), rgba(18, 12, 9, 0.985));
+  border-top: 2px solid rgba(255, 196, 92, 0.55);
 }
 
 /* The panel's own title row is now the tab strip's job; keep it slim. */
@@ -1911,10 +1928,10 @@ body {
   min-width: 0;
   padding: 5px 8px;
   border-radius: 9px 9px 0 0;
-  border: 1px solid rgba(120, 104, 88, 0.55);
+  border: 1px solid rgba(108, 124, 158, 0.55);
   border-bottom: none;
-  background: rgba(26, 22, 19, 0.92);
-  color: rgba(226, 210, 188, 0.6);
+  background: rgba(8, 12, 26, 0.92);
+  color: rgba(207, 228, 255, 0.6);
   font-family: inherit;
   font-size: 12px;
   font-weight: 800;
@@ -1929,15 +1946,15 @@ body {
 }
 
 .lower-tab.active {
-  background: rgba(58, 44, 32, 0.98);
+  background: rgba(15, 23, 50, 0.98);
   color: #ffedbf;
   border-color: rgba(255, 209, 102, 0.7);
 }
 
 /* A tab waiting on its unlock reads as a lock the player can still press to read about. */
 .lower-tab.locked {
-  color: rgba(226, 210, 188, 0.35);
-  border-color: rgba(120, 104, 88, 0.3);
+  color: rgba(207, 228, 255, 0.35);
+  border-color: rgba(108, 124, 158, 0.3);
 }
 
 .lower-tab:active {
@@ -2000,7 +2017,7 @@ body {
   flex: 0 0 auto;
   /* A rail button is a squarish chip, so the top-only rounding goes away. */
   border-radius: 10px;
-  border-bottom: 1px solid rgba(120, 104, 88, 0.55);
+  border-bottom: 1px solid rgba(108, 124, 158, 0.55);
   padding: 8px 4px;
   font-size: 11px;
   line-height: 1.25;
@@ -2101,8 +2118,8 @@ body {
   padding: 0;
   border-radius: 9px;
   overflow: hidden;
-  border: 1px solid rgba(140, 122, 96, 0.55);
-  background: rgba(18, 15, 12, 0.92);
+  border: 1px solid rgba(108, 124, 158, 0.55);
+  background: rgba(7, 10, 24, 0.92);
 }
 
 /* The icon's inset panel: the larger, lighter half. */
@@ -2113,7 +2130,7 @@ body {
   object-fit: contain;
   padding: 4px;
   box-sizing: border-box;
-  background: rgba(38, 33, 26, 0.95);
+  background: rgba(9, 14, 32, 0.95);
 }
 
 /* The price / cooldown bar underneath. */
@@ -2124,21 +2141,25 @@ body {
   gap: 5px;
   min-height: 20px;
   padding: 2px 4px;
-  background: rgba(58, 30, 26, 0.95);
-  border-top: 1px solid rgba(120, 100, 80, 0.5);
-  color: #f2e6d4;
+  background: rgba(15, 23, 48, 0.95);
+  border-top: 1px solid rgba(96, 112, 146, 0.5);
+  color: #dbe8ff;
   font-size: 11px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 
-/* The currency orb the original puts before the number. Green for ClawCurrency. */
+/*
+ * The price icon is the ACTUAL ClawCurrency drop art, not a hand-drawn green dot.
+ * The dot used to be a CSS gradient while the drop/HUD used `cur/ClawCurrency.png`,
+ * so the cost and the loot looked like two different resources.
+ */
 .job-skill .js-cost:not(:empty)::before {
   content: '';
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #b6f09a, #4e9b3a 70%);
+  width: 11px;
+  height: 11px;
+  background: url('/art/cur/ClawCurrency.png') center / contain no-repeat;
+  image-rendering: pixelated;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
   flex: 0 0 auto;
 }
@@ -2179,8 +2200,8 @@ body {
 }
 
 .job-skill.maxed .js-cost {
-  background: rgba(66, 52, 22, 0.95);
-  color: #ffd166;
+  background: rgba(20, 28, 58, 0.95);
+  color: #ffc45c;
 }
 
 .job-skill.maxed .js-cost::before {
@@ -2320,7 +2341,7 @@ body {
   display: grid;
   place-items: center;
   border-radius: 3px 10px 10px 3px;
-  background: rgba(30, 25, 20, 0.94);
+  background: rgba(8, 12, 28, 0.94);
   /* The original's tabs are a trapezoid: the right edge is cut back at the top. */
   clip-path: polygon(0 0, 78% 0, 100% 26%, 100% 100%, 0 100%);
   font-size: 0;
@@ -2335,7 +2356,7 @@ body {
 }
 
 .lower-tab.active {
-  background: rgba(196, 160, 108, 0.95);
+  background: rgba(255, 196, 92, 0.95);
 }
 
 .lower-tab.active .rail-icon {
@@ -2383,8 +2404,8 @@ body {
   gap: 2px;
   padding: 4px;
   border-radius: 8px;
-  border: 1px solid rgba(120, 104, 88, 0.5);
-  background: linear-gradient(180deg, rgba(60, 46, 32, 0.92), rgba(26, 20, 15, 0.95));
+  border: 1px solid rgba(108, 124, 158, 0.5);
+  background: linear-gradient(180deg, rgba(15, 23, 50, 0.92), rgba(8, 12, 26, 0.95));
   overflow: hidden;
 }
 
@@ -2394,7 +2415,7 @@ body {
 }
 
 .job-card[data-state='unlockable'] {
-  border-color: rgba(214, 178, 96, 0.7);
+  border-color: rgba(255, 196, 92, 0.7);
 }
 
 .job-card[data-state='locked'] {
@@ -2441,18 +2462,18 @@ body {
 .jc-passive {
   padding: 2px 4px;
   border-radius: 5px;
-  background: rgba(12, 10, 8, 0.7);
-  border: 1px solid rgba(120, 104, 88, 0.35);
+  background: rgba(6, 8, 20, 0.7);
+  border: 1px solid rgba(108, 124, 158, 0.35);
   font-size: 9px;
   line-height: 1.3;
   text-align: center;
-  color: rgba(226, 210, 188, 0.85);
+  color: rgba(207, 228, 255, 0.85);
   max-height: 24px;
   overflow: hidden;
 }
 
 .jc-passive[data-state='on'] {
-  color: #cfe6b8;
+  color: #a8e0b8;
 }
 
 .jc-skills {
@@ -2472,9 +2493,9 @@ body {
   gap: 5px;
   padding: 4px;
   border-radius: 6px;
-  border: 1px solid rgba(214, 178, 96, 0.6);
-  background: rgba(70, 40, 34, 0.95);
-  color: #f2e6d4;
+  border: 1px solid rgba(255, 196, 92, 0.6);
+  background: rgba(15, 23, 48, 0.95);
+  color: #dbe8ff;
   font-family: inherit;
   font-size: 11px;
   font-weight: 800;
@@ -2494,18 +2515,18 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #ffd166;
+  color: #ffc45c;
   font-variant-numeric: tabular-nums;
 }
 
-/* The currency orb, which the original draws before every price. */
+/* The price icon, shared with the drop and the HUD counter (single source of truth). */
 .jc-unlock-cost::before,
 .job-skill .js-cost:not(:empty)::before {
   content: '';
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #b6f09a, #4e9b3a 70%);
+  width: 11px;
+  height: 11px;
+  background: url('/art/cur/ClawCurrency.png') center / contain no-repeat;
+  image-rendering: pixelated;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
   flex: 0 0 auto;
 }
@@ -2518,15 +2539,15 @@ body {
   padding: 0;
   overflow: hidden;
   border-radius: 5px;
-  border: 1px solid rgba(140, 122, 96, 0.5);
-  background: rgba(16, 13, 10, 0.94);
+  border: 1px solid rgba(108, 124, 158, 0.5);
+  background: rgba(7, 10, 24, 0.94);
   cursor: pointer;
 }
 
 .js-icon-box {
   display: block;
   height: 24px;
-  background: rgba(40, 34, 26, 0.95);
+  background: rgba(9, 14, 32, 0.95);
 }
 
 .job-skill .js-icon {
@@ -2543,9 +2564,9 @@ body {
   justify-content: center;
   gap: 3px;
   min-height: 13px;
-  background: rgba(58, 30, 26, 0.95);
-  border-top: 1px solid rgba(120, 100, 80, 0.45);
-  color: #f2e6d4;
+  background: rgba(15, 23, 48, 0.95);
+  border-top: 1px solid rgba(96, 112, 146, 0.45);
+  color: #dbe8ff;
   font-size: 9px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
@@ -2588,8 +2609,8 @@ body {
 }
 
 .job-skill.maxed .js-cost {
-  background: rgba(66, 52, 22, 0.95);
-  color: #ffd166;
+  background: rgba(20, 28, 58, 0.95);
+  color: #ffc45c;
 }
 
 .job-skill.maxed .js-cost::before {
@@ -2882,10 +2903,10 @@ body {
  * Colours below are SAMPLED from the shipping game, not chosen. The source is the original
  * screenshot at 1914x1076:
  *
- *   plate interior   rgb(51,40,34)    #332822   (uniform - it does NOT fade)
- *   plate edge       rgb(24,8,0)      #180800
- *   title tab fill   rgb(108,68,57)   #6c4439
- *   title tab light  rgb(176,138,123) #b08a7b
+ *   plate interior   rgb(51,40,34)    #0f1730   (uniform - it does NOT fade)
+ *   plate edge       rgb(24,8,0)      #0a0c18
+ *   title tab fill   rgb(108,68,57)   #243063
+ *   title tab light  rgb(176,138,123) #7f8ca8
  *
  * The port used a radial gradient from rgb(46,36,28) down to near-black. The top of that
  * gradient was already right; the fade to black was not, and it is what made the tree look
@@ -2899,9 +2920,9 @@ body {
 
 .talent {
   overflow: visible;
-  background: #332822;
-  border-top: 3px solid #6c4439;
-  box-shadow: inset 0 0 0 2px rgba(176, 138, 123, 0.22);
+  background: #0f1730;
+  border-top: 3px solid #243063;
+  box-shadow: inset 0 0 0 2px rgba(108, 124, 158, 0.22);
 }
 
 .talent-head {
@@ -2914,21 +2935,21 @@ body {
   gap: 6px;
   padding: 3px 20px 4px;
   border-radius: 8px 8px 0 0;
-  background: #6c4439;
-  box-shadow: inset 0 1px 0 rgba(176, 138, 123, 0.55);
+  background: #243063;
+  box-shadow: inset 0 1px 0 rgba(108, 124, 158, 0.55);
   font-size: 12px;
   white-space: nowrap;
 }
 
 .talent-title {
   font-size: 12px;
-  color: #e8cbb8;
+  color: #cfe4ff;
   letter-spacing: 0.08em;
   text-shadow: none;
 }
 
 .talent-progress {
-  color: #b08a7b;
+  color: #7f8ca8;
 }
 
 /* The tab lives outside the plate now, so the tree gets the full panel height. */
@@ -2946,4 +2967,130 @@ body {
 .tn.unrevealed,
 .talent-links .unrevealed {
   display: none;
+}
+
+/* ========================================================================
+   PIXEL SKIN
+   ------------------------------------------------------------------------
+   The art pack is 16-bit pixel art (see tools/gen-art-pixel.mjs), so the DOM
+   layer stops imitating brushed metal: hard 2px borders, no rounded corners,
+   segmented energy bars and scanlines on the large plates. Colours come from
+   the generator's palette in tools/pixel-core.mjs.
+   ======================================================================== */
+
+/* Every <img> is a nearest-neighbour upscale of a small pixel canvas. */
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* ---- shared frame language ---- */
+.hp,
+.progress,
+.portal-bar,
+.mag-track {
+  border-radius: 0;
+  border: 2px solid #243063;
+  background: #060810;
+  box-shadow: inset 0 0 0 1px #0a0c18;
+}
+
+.hp-fill {
+  background:
+    repeating-linear-gradient(90deg, #8ff0b4 0 10px, #74e39a 10px 12px),
+    #74e39a;
+  box-shadow: inset 0 -2px 0 rgba(6, 8, 16, 0.35);
+}
+
+.exp-fill {
+  background:
+    repeating-linear-gradient(90deg, #ffd68a 0 10px, #ffc45c 10px 12px),
+    #ffc45c;
+  box-shadow: inset 0 -2px 0 rgba(6, 8, 16, 0.35);
+}
+
+.portal-fill {
+  background:
+    repeating-linear-gradient(90deg, #66e6f2 0 10px, #45d7e8 10px 12px),
+    #45d7e8;
+}
+
+.portal-fill.summoning {
+  background:
+    repeating-linear-gradient(90deg, #a884ff 0 10px, #9a6cf0 10px 12px),
+    #9a6cf0;
+}
+
+/* ---- panels and plates ---- */
+.hud-portal,
+.hud-toast,
+.attr-panel,
+.talent-head {
+  border-radius: 0;
+}
+
+.talent,
+.jobs,
+.mastery {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(6, 8, 16, 0.5) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, #101a36, #0b1024 40%, #080c1c);
+  border-top: 3px solid #45d7e8;
+  box-shadow:
+    inset 0 0 0 2px #1a2450,
+    inset 0 6px 0 rgba(69, 215, 232, 0.08);
+}
+
+.talent-head {
+  background: #1a2450;
+  border: 2px solid #45d7e8;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* ---- buttons: chunky keys, not pills ---- */
+.btn,
+.hud button,
+.rail-btn,
+.job-card,
+.mastery-tile,
+.mr-chip,
+.job-skill .js-icon-box,
+.js-cd,
+.attr-panel,
+.tn {
+  border-radius: 0;
+}
+
+.hud button,
+.btn {
+  border: 2px solid #243063;
+  background: #0f1730;
+  box-shadow: inset 0 0 0 1px #0a0c18;
+}
+
+.hud button:active,
+.btn:active {
+  background: #1a2450;
+  border-color: #45d7e8;
+}
+
+/* Tooltips and floaters get the same plate treatment. */
+.tooltip,
+.attr-panel {
+  border: 2px solid #243063;
+  background: rgba(9, 14, 32, 0.95);
+  box-shadow: inset 0 0 0 1px #0a0c18;
+}
+
+/* The talent node highlight ring reads better without the old glow blur. */
+.tn .tn-glow {
+  filter: none;
+}
+
+
+.sound-btn.muted {
+  opacity: 0.45;
+  text-decoration: line-through;
 }

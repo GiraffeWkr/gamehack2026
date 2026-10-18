@@ -31,7 +31,7 @@
  */
 
 import { Application, Container, Graphics, Sprite, Texture } from 'pixi.js';
-import { CAMERA } from '../content/data.js';
+import { CAMERA, HOVER, MUZZLE } from '../content/data.js';
 import { ParallaxBackground } from './parallax.js';
 import {
   ART_BASE,
@@ -52,10 +52,12 @@ import type { Game } from '../game/game.js';
 /** World units visible horizontally at the design aspect (1080 * 16/9). */
 export const VIEW_WIDTH = FRAME.width;
 
-/** Dark earth brown of the original's UI panel, sampled below its art band. */
-const PANEL_COLOR = 0x29180f;
-/** Warm top edge of that panel, rows 603..609 of the shipping screenshot. */
-const PANEL_EDGE_COLOR = 0x6c4439;
+/** Deep-space plate behind the UI band, sampled from the pixel palette (`space`). */
+const PANEL_COLOR = 0x0b1024;
+/** Steel lip above it (palette `indigo2`). */
+const PANEL_EDGE_COLOR = 0x243063;
+/** Cyan energy line that marks the art/UI boundary (palette `cyan`). */
+const PANEL_ACCENT_COLOR = 0x45d7e8;
 
 /** `BarSelfer.animationDuration`: the fill tween length on damage. */
 const FILL_SECONDS = 0.3;
@@ -140,6 +142,8 @@ export class Renderer {
   private scratchUsed = 0;
 
   private cameraX = 0;
+  /** Level the camera was last snapped to, so a new stage does not pan across the map. */
+  private cameraLevel = 0;
   private scale = 1;
   /**
    * Background scale. Identical to the world scale, because one art pixel is one world
@@ -217,7 +221,11 @@ export class Renderer {
       const texture = Texture.from(img);
       // Pixi v8 exposes filtering on the source's style object; `source.scaleMode`
       // is a getter-only alias and assigning to it throws in strict mode.
-      texture.source.style.scaleMode = 'linear';
+      //
+      // NEAREST is what makes the 16-bit art read: the pixel-art reskin is drawn on
+      // a coarse cell grid, and linear filtering would smear every block back into
+      // the soft vector look it replaced.
+      texture.source.style.scaleMode = 'nearest';
       this.sprites.set(name, {
         texture,
         scale: 1,
@@ -274,9 +282,20 @@ export class Renderer {
     const top = FRAME.height * this.bgScale;
     this.panel.clear();
     if (top >= this.viewH) return;
-    // Warm lip, then the dark body - the row sequence measured off the original.
-    this.panel.rect(0, top, this.viewW, 7).fill(PANEL_EDGE_COLOR);
+    // Energy lip -> steel band -> deep space plate. The scanlines are drawn once per
+    // resize (this Graphics is static), and give the big lower band the same CRT
+    // texture the pixel UI art uses.
+    this.panel.rect(0, top, this.viewW, 2).fill(PANEL_ACCENT_COLOR);
+    this.panel.rect(0, top + 2, this.viewW, 5).fill(PANEL_EDGE_COLOR);
     this.panel.rect(0, top + 7, this.viewW, this.viewH - top - 7).fill(PANEL_COLOR);
+    for (let y = top + 11; y < this.viewH; y += 4) {
+      this.panel.rect(0, y, this.viewW, 1).fill(0x000000, 0.16);
+    }
+    // Sparse data ticks down the left edge, so the plate reads as a machine face.
+    for (let y = top + 18; y < this.viewH - 8; y += 16) {
+      this.panel.rect(10, y, 6, 1).fill(PANEL_EDGE_COLOR);
+      this.panel.rect(10, y + 3, 3, 1).fill(PANEL_ACCENT_COLOR, 0.35);
+    }
   }
 
   /**
@@ -315,10 +334,24 @@ export class Renderer {
    * exactly the complaint that the framing was not centred.
    */
   private updateCamera(game: Game, dt: number): void {
+    // Level cleared: hold the camera at the level's end so the character can walk out of
+    // frame. Letting it keep following would pin him to the same screen spot forever, and
+    // cutting straight to the next level is what made the transition feel like a teleport.
     // World units visible horizontally.
     const visibleW = this.viewW / this.scale;
     // Character at `characterScreenX` => camera centre this far ahead of him.
     const lead = visibleW * (0.5 - CAMERA.characterScreenX);
+
+    // A new stage starts from a clean camera position; easing from the previous level's
+    // end would pan across the whole map in one second.
+    if (game.level !== this.cameraLevel) {
+      this.cameraLevel = game.level;
+      this.cameraX = game.px + lead;
+      return;
+    }
+
+    if (game.runState === 'cleared') return;
+
     let desired = game.px + lead;
 
     // Hard rule: never let him leave the frame.
@@ -506,25 +539,42 @@ export class Renderer {
     s.visible = game.isArcherSpawned;
     if (!s.visible) return;
 
-    // ONE skin, never a frame cycle: `Archer_1..5` are outfit skins chosen by unlocked
-    // jobs (see `PLAYER_SKINS`), not walk frames. Cycling them flashed the archer's
-    // clothes between leather, teal and purple. The original animates a Spine skeleton;
-    // this port stands in with the same procedural bob/squash the minions get.
-    //
-    // `CharacterManager.ChangeSkin` picks the HIGHEST unlocked job index, which the caller
-    // pushes in through `setPlayerSkin`.
+    // One outfit, NO walk cycle: the character hovers. The gait was the weakest part of
+    // the sprite at this resolution, and a space trooper gliding on anti-grav boots is
+    // both cheaper and more coherent. `py` remains the ground contact point; only the
+    // drawn sprite is lifted, bobs and leans.
     const skin = PLAYER_SKINS[this.playerSkinIndex] ?? PLAYER_SKIN;
     const loaded = this.sprites.get(skin) ?? this.sprites.get(PLAYER_SKIN);
     const def = CHARACTERS.player;
+    const bob = Math.sin(this.elapsed * HOVER.bobSpeed) * HOVER.bob;
     if (loaded) {
       s.texture = loaded.texture;
       const base = def.height / loaded.texture.height;
-      const phase = this.elapsed * (game.isMoving() ? 6.5 : 2.4);
-      const bob = Math.abs(Math.sin(phase)) * def.height * (game.isMoving() ? 0.03 : 0.012);
-      const squash = 1 + Math.sin(phase * 2) * 0.02;
-      s.scale.set(base, base * squash);
+      s.scale.set(base, base);
       s.x = game.px;
-      s.y = -(game.py + bob);
+      s.y = -(game.py + HOVER.height + bob);
+      s.rotation = game.isMoving() ? HOVER.tilt : 0;
+    }
+
+    // Ground shadow + hover glow, so the lift reads even on a busy background.
+    const shadow = this.sprites.get(FX.hoverShadow.file);
+    if (shadow) {
+      const t = this.scratchSprite(shadow.texture);
+      t.tint = 0x000000;
+      t.alpha = 0.46 - bob * 0.012;
+      t.scale.set(HOVER.shadow / shadow.texture.width, (HOVER.shadow * 0.32) / shadow.texture.height);
+      t.x = game.px;
+      t.y = -game.py;
+    }
+    const ring = this.sprites.get(FX.ring.file);
+    if (ring) {
+      const g = this.scratchSprite(ring.texture);
+      const r = HOVER.glow / ring.texture.width;
+      g.tint = 0x45d7e8;
+      g.alpha = 0.34 + Math.sin(this.elapsed * 3.1) * 0.08;
+      g.scale.set(r, r * 0.18);
+      g.x = game.px;
+      g.y = -game.py;
     }
   }
 
@@ -642,7 +692,7 @@ export class Renderer {
   }
 
   private drawArrows(game: Game): void {
-    const fx = FX.arrow;
+    const fx = FX.strike;
     const loaded = this.sprites.get(fx.file);
     if (!loaded) return;
     for (const a of game.getArrowList()) {
@@ -655,9 +705,10 @@ export class Renderer {
       s.scale.set(sc);
       s.x = x;
       s.y = -y;
-      // Arrow1 points straight up in its own space, so a half turn makes it
-      // point down at the impact point.
-      s.rotation = Math.PI;
+      // `Arrow1` paints its HEAD at the BOTTOM of the canvas, so an unrotated sprite
+      // already points down - which is the direction arrow rain travels. The old half
+      // turn pointed every falling arrow fletching-first.
+      s.rotation = 0;
       s.anchor.set(0.5, 0.5);
       if (t > 0.45) {
         const ring = this.sprites.get(FX.ring.file);
@@ -686,25 +737,42 @@ export class Renderer {
     const baseScale = FX.arrow.height / loaded.texture.height;
 
     // Bow muzzle flash, so a shot reads even when the arrow leaves the frame fast.
+    // It used to reuse the ARROW sprite at 1.5x with a fixed -0.5 rad rotation, which
+    // read as a second arrow diving into the ground on every shot. A small warm star
+    // at the release point reads as a flash and cannot be mistaken for a projectile.
     if (game.bowFlash > 0) {
-      const player = game;
-      const flash = this.scratchSprite(loaded.texture);
-      flash.x = player.px + 46;
-      flash.y = -(player.py + 132);
-      flash.rotation = -0.5;
-      flash.scale.set(baseScale * 1.5);
-      flash.alpha = Math.min(1, game.bowFlash / 0.12);
-      flash.tint = 0xfff0b0;
+      const starTex = this.sprites.get(FX.star.file)?.texture;
+      if (starTex) {
+        const flash = this.scratchSprite(starTex);
+        flash.x = game.px + MUZZLE.x;
+        flash.y = -(game.py + MUZZLE.y);
+        // A fixed ~20-unit puff at the muzzle; tying it to the (now short) bolt size made it vanish.
+        flash.scale.set(20 / starTex.height);
+        flash.rotation = 0;
+        flash.alpha = Math.min(1, game.bowFlash / 0.12) * 0.9;
+        flash.tint = 0xffd9a0;
+      }
     }
 
     let drawn = 0;
     for (const p of game.getProjectileList()) {
+      /*
+       * The bolt sprite paints its HEAD at the BOTTOM of the canvas, i.e. along local +Y, and
+       * Pixi's local Y grows DOWN while world Y grows UP. The screen-space velocity is
+       * therefore `(vx, -vy)`, and the rotation that lines the head up with it is
+       * `atan2(-vy, vx) - PI/2`.
+       *
+       * The previous formula used `atan2(vy, vx)`, which tilts every shot by twice its
+       * flight angle: a 24-degree descending shot was drawn at 24 degrees ABOVE the
+       * path, so arrows looked like they were flying backwards over the target.
+       */
+      const rot = Math.atan2(-p.vy, p.vx) - Math.PI / 2;
       // Motion tail: two faded copies trailing the arrow.
       for (let k = 1; k <= 2; k++) {
         const tail = this.scratchSprite(loaded.texture);
         tail.x = p.x - p.vx * 0.012 * k;
         tail.y = -(p.y - p.vy * 0.012 * k);
-        tail.rotation = Math.atan2(p.vy, p.vx) - Math.PI / 2;
+        tail.rotation = rot;
         tail.scale.set(baseScale * (1 - k * 0.18));
         tail.alpha = 0.28 / k;
         tail.tint = 0xffe9b0;
@@ -712,12 +780,7 @@ export class Renderer {
       const s = this.scratchSprite(loaded.texture);
       s.x = p.x;
       s.y = -p.y;
-      // `Arrow1`'s HEAD is at the BOTTOM of its canvas (measured: its top rows are
-      // the widest, ~24px, i.e. the fletching; the middle is the narrowest, ~9px,
-      // i.e. the shaft). So the art points DOWN in local space and needs a quarter
-      // turn CLOCKWISE to line up with the velocity vector. Using +PI/2 pointed the
-      // arrow backwards; a vision pass caught it and the pixel profile confirmed it.
-      s.rotation = Math.atan2(p.vy, p.vx) - Math.PI / 2;
+      s.rotation = rot;
       s.scale.set(baseScale);
       drawn++;
     }

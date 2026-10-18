@@ -1,0 +1,80 @@
+[
+ {
+  "functionName": "",
+  "speed": 2000.0,
+  "damageMultiplier": 1.0,
+  "DestroyAfter": 5.0,
+  "FullyDestroyWithTailAfter": 0.5,
+  "mainPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1024
+  },
+  "deathPrefab": {
+   "m_FileID": 2,
+   "m_PathID": 1414
+  },
+  "deathFXDuration": 1.5,
+  "FireSoundPrefab": {
+   "m_FileID": 2,
+   "m_PathID": 1606
+  },
+  "HitSoundPrefab": {
+   "m_FileID": 2,
+   "m_PathID": 1602
+  },
+  "_pathID": 4813,
+  "_file": "resources.assets"
+ },
+ {
+  "functionName": "",
+  "speed": 2000.0,
+  "damageMultiplier": 1.0,
+  "DestroyAfter": 5.0,
+  "FullyDestroyWithTailAfter": 0.5,
+  "mainPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1470
+  },
+  "deathPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1414
+  },
+  "deathFXDuration": 1.5,
+  "FireSoundPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1606
+  },
+  "HitSoundPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1602
+  },
+  "_pathID": 3121,
+  "_file": "sharedassets0.assets"
+ },
+ {
+  "functionName": "",
+  "speed": 2000.0,
+  "damageMultiplier": 1.0,
+  "DestroyAfter": 5.0,
+  "FullyDestroyWithTailAfter": 0.5,
+  "mainPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1467
+  },
+  "deathPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1395
+  },
+  "deathFXDuration": 1.5,
+  "FireSoundPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1606
+  },
+  "HitSoundPrefab": {
+   "m_FileID": 0,
+   "m_PathID": 1602
+  },
+  "_pathID": 3122,
+  "_file": "sharedassets0.assets"
+ }
+]

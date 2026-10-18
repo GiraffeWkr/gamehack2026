@@ -1,0 +1,170 @@
+﻿level,name,section,appearances,casts,hits,damage,share_pct,best_share,crit_pct
+1,Archer_Normal,nonskill,1,77,76,155.0,27.1,27.1,0.0
+2,Archer_Normal,nonskill,3,271,269,939.0,110.0,60.0,0.0
+2,Multishot,skill,3,21,59,380.0,60.1,40.0,0.0
+3,Archer_Normal,nonskill,1,201,197,1432.0,14.3,14.3,0.0
+3,Multishot,skill,1,15,46,663.0,6.6,6.6,0.0
+3,BombArrow,skill,1,8,29,702.0,7.0,7.0,0.0
+4,Archer_Normal,nonskill,1,243,242,3368.0,15.3,15.3,0.0
+4,Multishot,skill,1,15,78,2045.0,9.3,9.3,0.0
+4,BombArrow,skill,1,9,47,1971.0,9.0,9.0,0.0
+4,Tamed_Claw,nonskill,1,0,4,80.0,0.4,0.4,0.0
+5,Archer_Normal,nonskill,1,328,325,5808.0,12.7,12.7,0.0
+5,Multishot,skill,1,19,106,3796.0,8.3,8.3,0.0
+5,BombArrow,skill,1,11,60,4028.0,8.8,8.8,0.0
+5,Tamed_Claw,nonskill,1,0,7,140.0,0.3,0.3,0.0
+5,Wolf (pet),skill,1,24,21,1200.0,2.6,2.6,0.0
+5,Tamed_Archer,nonskill,1,0,3,87.0,0.2,0.2,0.0
+5,Tamed_Warrior,nonskill,1,0,3,87.0,0.2,0.2,0.0
+6,Archer_Normal,nonskill,1,324,317,11600.0,11.5,11.5,0.0
+6,Multishot,skill,1,19,93,6838.0,6.8,6.8,0.0
+6,BombArrow,skill,1,12,102,10850.0,10.8,10.8,0.0
+6,Tamed_Claw,nonskill,1,0,20,880.0,0.9,0.9,0.0
+6,Wolf (pet),skill,1,40,36,3603.0,3.6,3.6,0.0
+6,Tamed_Archer,nonskill,1,0,5,145.0,0.1,0.1,0.0
+6,Bear (pet),skill,1,18,17,1254.0,1.2,1.2,0.0
+7,Archer_Normal,nonskill,4,204,211,8646.0,36.400000000000006,14.4,0.0
+7,Multishot,skill,4,21,121,15149.0,33.6,10.6,0.0
+7,BombArrow,skill,4,13,82,20290.0,42.8,14.2,33.0
+7,Tamed_Claw,nonskill,4,0,19,3023.0,3.4000000000000004,1.3,0.0
+7,Wolf (pet),skill,4,72,65,15594.0,21.5,9.2,0.0
+7,Tamed_Archer,nonskill,1,0,46,16980.0,8.4,8.4,0.0
+7,Bear (pet),skill,4,29,26,4394.0,4.7,1.8,0.0
+7,DarkMatter,skill,1,8,158,38700.0,19.1,19.1,0.0
+7,BatSwarm,skill,1,4,20,5719.0,2.8,2.8,0.0
+7,SuperNova,skill,1,2,5,2202.0,1.1,1.1,0.0
+7,Archer_Elementa.,nonskill,1,119,319,17200.0,8.5,8.5,4.0
+7,Sword,nonskill,1,0,24,11420.0,5.6,5.6,0.0
+8,Multishot,skill,2,10,43,16656.0,4.6,2.4,0.0
+8,BombArrow,skill,2,7,27,21168.0,6.0,3.2,0.0
+8,Tamed_Claw,nonskill,2,0,11,3756.0,1.3,1.0,0.0
+8,Wolf (pet),skill,2,28,23,13593.0,4.8,3.6,0.0
+8,Tamed_Archer,nonskill,1,0,22,8242.0,4.2,4.2,0.0
+8,Tamed_Warrior,nonskill,1,0,2,1664.0,0.3,0.3,0.0
+8,Bear (pet),skill,1,10,8,1907.0,1.0,1.0,0.0
+8,DarkMatter,skill,2,11,361,161920.0,46.5,25.7,11.0
+8,BatSwarm,skill,2,6,72,61100.0,14.7,9.4,0.0
+8,SuperNova,skill,1,2,24,17610.0,3.3,3.3,0.0
+8,Archer_Elementa.,nonskill,2,186,529,70840.0,18.5,10.1,27.0
+8,Sword,nonskill,2,0,118,39400.0,10.9,5.5,0.0
+8,Meteor_Projecti.,nonskill,2,0,43,214220.0,52.2,32.9,13.0
+9,Multishot,skill,1,8,38,26070.0,3.0,3.0,13.0
+9,BombArrow,skill,1,5,16,21400.0,2.4,2.4,0.0
+9,Tamed_Claw,nonskill,1,0,2,926.0,0.1,0.1,0.0
+9,Wolf (pet),skill,1,3,2,2831.0,0.3,0.3,0.0
+9,Tamed_Warrior,nonskill,1,0,1,694.0,0.1,0.1,0.0
+9,Bear (pet),skill,1,4,3,2965.0,0.3,0.3,0.0
+9,DarkMatter,skill,1,8,243,211990.0,24.1,24.1,0.0
+9,BatSwarm,skill,1,4,49,70000.0,8.0,8.0,0.0
+9,SuperNova,skill,1,2,18,35800.0,4.1,4.1,0.0
+9,Archer_Elementa.,nonskill,1,142,358,65300.0,7.4,7.4,13.0
+9,Sword,nonskill,1,0,57,160830.0,18.3,18.3,0.0
+9,Meteor_Projecti.,nonskill,1,0,22,218650.0,24.9,24.9,9.0
+10,BatSwarm,skill,1,0,45,52100.0,100.0,100.0,0.0
+11,Multishot,skill,1,11,73,56460.0,3.0,3.0,7.0
+11,BombArrow,skill,1,6,39,40540.0,2.1,2.1,0.0
+11,Tamed_Claw,nonskill,1,0,18,11190.0,0.6,0.6,0.0
+11,Wolf (pet),skill,1,14,10,12330.0,0.7,0.7,0.0
+11,Tamed_Warrior,nonskill,1,0,10,7907.0,0.4,0.4,0.0
+11,Bear (pet),skill,1,8,6,4582.0,0.2,0.2,0.0
+11,DarkMatter,skill,1,11,596,644630.0,34.1,34.1,21.0
+11,BatSwarm,skill,1,5,144,193930.0,10.3,10.3,0.0
+11,SuperNova,skill,1,2,17,31670.0,1.7,1.7,0.0
+11,Archer_Elementa.,nonskill,1,236,713,147710.0,7.8,7.8,28.0
+11,Sword,nonskill,1,0,97,264640.0,14.0,14.0,0.0
+11,Meteor_Projecti.,nonskill,1,0,34,325150.0,17.2,17.2,6.0
+12,Multishot,skill,1,12,69,47420.0,2.0,2.0,0.0
+12,BombArrow,skill,1,7,45,55300.0,2.4,2.4,0.0
+12,Tamed_Claw,nonskill,1,0,35,17670.0,0.8,0.8,0.0
+12,Wolf (pet),skill,1,13,13,17190.0,0.7,0.7,0.0
+12,Bear (pet),skill,1,5,4,2696.0,0.1,0.1,0.0
+12,DarkMatter,skill,1,12,933,844150.0,36.3,36.3,4.0
+12,BatSwarm,skill,1,5,128,190040.0,8.2,8.2,2.0
+12,SuperNova,skill,1,2,36,75740.0,3.3,3.3,0.0
+12,Archer_Elementa.,nonskill,1,268,871,186870.0,8.0,8.0,35.0
+12,Sword,nonskill,1,0,111,305180.0,13.1,13.1,0.0
+12,Meteor_Projecti.,nonskill,1,0,38,380140.0,16.4,16.4,13.0
+12,Tamed_Mage,nonskill,1,0,24,32340.000000000004,1.4,1.4,0.0
+13,Multishot,skill,1,15,116,97340.0,2.9,2.9,15.0
+13,BombArrow,skill,1,9,64,110070.0,3.3,3.3,13.0
+13,Wolf (pet),skill,1,15,10,11930.0,0.4,0.4,0.0
+13,Tamed_Archer,nonskill,1,0,13,10270.0,0.3,0.3,0.0
+13,Bear (pet),skill,1,7,6,6066.0,0.2,0.2,0.0
+13,DarkMatter,skill,1,14,1444,1230000.0,37.0,37.0,0.0
+13,BatSwarm,skill,1,6,252,417290.0,12.6,12.6,13.0
+13,SuperNova,skill,1,3,76,152500.0,4.6,4.6,0.0
+13,Archer_Elementa.,nonskill,1,301,1005,213560.0,6.4,6.4,32.0
+13,Sword,nonskill,1,0,131,369780.0,11.1,11.1,0.0
+13,Meteor_Projecti.,nonskill,1,0,44,387570.0,11.7,11.7,7.0
+13,Tamed_Mage,nonskill,1,0,91,118370.0,3.6,3.6,0.0
+14,Multishot,skill,1,18,119,78480.0,1.7,1.7,0.0
+14,BombArrow,skill,1,11,69,85620.0,1.8,1.8,7.0
+14,Tamed_Claw,nonskill,1,0,2,1665.0,0.0,0.0,0.0
+14,Wolf (pet),skill,1,18,15,20620.0,0.4,0.4,0.0
+14,Tamed_Archer,nonskill,1,0,7,5549.0,0.1,0.1,0.0
+14,Tamed_Warrior,nonskill,1,0,2,1664.0,0.0,0.0,0.0
+14,Bear (pet),skill,1,9,7,6199.0,0.1,0.1,0.0
+14,DarkMatter,skill,1,17,2121,1780000.0,38.0,38.0,2.0
+14,BatSwarm,skill,1,7,355,622650.0,13.3,13.3,15.0
+14,SuperNova,skill,1,3,206,403120.0,8.6,8.6,0.0
+14,Archer_Elementa.,nonskill,1,380,1039,200720.0,4.3,4.3,20.0
+14,Sword,nonskill,1,0,165,447750.0,9.6,9.6,0.0
+14,Meteor_Projecti.,nonskill,1,0,59,585620.0,12.5,12.5,14.0
+14,Tamed_Mage,nonskill,1,0,118,167780.0,3.6,3.6,0.0
+15,Multishot,skill,1,21,165,112510.0,1.9,1.9,6.0
+15,BombArrow,skill,1,13,80,153470.0,2.7,2.7,23.0
+15,Tamed_Claw,nonskill,1,0,11,5920.0,0.1,0.1,0.0
+15,Wolf (pet),skill,1,30,30,35790.0,0.6,0.6,0.0
+15,Tamed_Archer,nonskill,1,0,53,46880.0,0.8,0.8,0.0
+15,Tamed_Warrior,nonskill,1,0,1,694.0,0.0,0.0,0.0
+15,Bear (pet),skill,1,13,11,10650.0,0.2,0.2,0.0
+15,DarkMatter,skill,1,19,3448,2910000.0,50.2,50.2,1.0
+15,BatSwarm,skill,1,8,434,753580.0,13.0,13.0,13.0
+15,SuperNova,skill,1,4,116,192520.0,3.3,3.3,0.0
+15,Archer_Elementa.,nonskill,1,391,1082,207700.0,3.6,3.6,20.0
+15,Sword,nonskill,1,0,180,495860.0,8.6,8.6,0.0
+15,Meteor_Projecti.,nonskill,1,0,64,557070.0,9.6,9.6,9.0
+15,Tamed_Mage,nonskill,1,0,8,10370.0,0.2,0.2,0.0
+16,Multishot,skill,4,31,192,613130.0,8.3,3.0,0.0
+16,BombArrow,skill,4,17,102,381210.0,8.4,2.7,56.0
+16,Tamed_Claw,nonskill,4,0,55,46319.0,1.8,1.0,0.0
+16,Wolf (pet),skill,4,36,35,85500.0,2.2,0.8,0.0
+16,Tamed_Archer,nonskill,2,0,13,68234.0,0.7,0.4,0.0
+16,Bear (pet),skill,4,17,16,16925.0,0.5,0.2,0.0
+16,DarkMatter,skill,4,33,4086,9617600.0,165.6,51.8,0.0
+16,BatSwarm,skill,4,11,735,1856430.0,54.3,23.2,0.0
+16,SuperNova,skill,3,4,186,769700.0,10.3,4.1,0.0
+16,Archer_Elementa.,nonskill,4,649,1887,1647190.0,20.700000000000003,6.9,31.0
+16,Sword,nonskill,4,0,282,4113230.0,44.599999999999994,18.2,0.0
+16,Meteor_Projecti.,nonskill,4,0,101,5637000.0,60.9,25.1,8.0
+16,Tamed_Mage,nonskill,1,0,8,7528.0,0.3,0.3,0.0
+16,Tamed_Bat,nonskill,1,0,3,27400.0,0.1,0.1,0.0
+17,BombArrow,skill,1,1,8,377080.0,12.6,12.6,0.0
+17,DarkMatter,skill,1,1,22,1420000.0,47.6,47.6,0.0
+17,Archer_Elementa.,nonskill,1,5,15,56380.0,1.9,1.9,0.0
+17,Sword,nonskill,1,0,5,355780.0,11.9,11.9,0.0
+17,Meteor_Projecti.,nonskill,1,0,2,692410.0,23.2,23.2,0.0
+29,Multishot,skill,1,85,331,30390000.0,0.7,0.7,5.0
+29,BombArrow,skill,1,66,558,88830000.0,2.1,2.1,2.0
+29,Tamed_Claw,nonskill,1,0,14,1870000.0,0.0,0.0,0.0
+29,Wolf (pet),skill,1,67,59,3690000.0,0.1,0.1,0.0
+29,Bear (pet),skill,1,16,14,777970.0,0.0,0.0,0.0
+29,DarkMatter,skill,1,181,11244,2280000000.0,54.2,54.2,3.0
+29,BatSwarm,skill,1,53,3561,508240000.0,12.1,12.1,5.0
+29,SuperNova,skill,1,35,1729,626800000.0,14.9,14.9,3.0
+29,Archer_Elementa.,nonskill,1,1438,3986,79770000.0,1.9,1.9,8.0
+29,Sword,nonskill,1,0,672,206690000.0,4.9,4.9,0.0
+29,Meteor_Projecti.,nonskill,1,0,143,350580000.0,8.3,8.3,14.0
+29,Tamed_Bat,nonskill,1,0,52,8450000.0,0.2,0.2,0.0
+30,Multishot,skill,1,20,62,10660000.0,0.5,0.5,0.0
+30,BombArrow,skill,1,11,71,27550000.0,1.3,1.3,17.0
+30,Tamed_Claw,nonskill,1,0,6,817780.0,0.0,0.0,0.0
+30,Wolf (pet),skill,1,6,4,993290.0,0.0,0.0,0.0
+30,Bear (pet),skill,1,3,3,308740.0,0.0,0.0,0.0
+30,DarkMatter,skill,1,33,2624,1350000000.0,64.4,64.4,4.0
+30,BatSwarm,skill,1,8,236,128020000.00000001,6.1,6.1,13.0
+30,SuperNova,skill,1,4,114,103610000.0,5.0,5.0,0.0
+30,Archer_Elementa.,nonskill,1,424,1516,69930000.0,3.3,3.3,27.0
+30,Sword,nonskill,1,0,286,158210000.0,7.6,7.6,0.0
+30,Meteor_Projecti.,nonskill,1,0,55,230030000.0,11.0,11.0,13.0
+30,Tamed_Bat,nonskill,1,0,13,2800000.0,0.1,0.1,0.0

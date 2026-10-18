@@ -1,0 +1,1446 @@
+CLASS LDataForJson : System.Object
+    protected internal string                                       TheKey
+    protected internal string                                       English_Value
+    protected internal string                                       PORTUGUESE_Value
+    protected internal string                                       FRENCH_Value
+    protected internal string                                       GERMAN_Value
+    protected internal string                                       RUSSIAN_Value
+    protected internal string                                       CHINESE_Value
+    protected internal string                                       SPANISH_Value
+    protected internal string                                       JAPANESE_Value
+    protected internal string                                       ITALIAN_Value
+    protected internal string                                       KOREAN_Value
+    protected internal string                                       CZECH_Value
+    protected internal string                                       POLISH_Value
+    protected internal string                                       TURKISH_Value
+    protected internal string                                       UKRAINIAN_Value
+
+CLASS LocalizedInformation : System.Object
+    protected internal string                                       ENGLISH_Value
+    protected internal string                                       PORTUGUESE_Value
+    protected internal string                                       FRENCH_Value
+    protected internal string                                       GERMAN_Value
+    protected internal string                                       RUSSIAN_Value
+    protected internal string                                       CHINESE_Value
+    protected internal string                                       SPANISH_Value
+    protected internal string                                       JAPANESE_Value
+    protected internal string                                       ITALIAN_Value
+    protected internal string                                       KOREAN_Value
+    protected internal string                                       CZECH_Value
+    protected internal string                                       POLISH_Value
+    protected internal string                                       TURKISH_Value
+    protected internal string                                       UKRAINIAN_Value
+
+CLASS LocalizationDataList : System.Object
+    protected internal System.Collections.Generic.List`1<LDataForJson> LDataForJson
+
+CLASS EnemyInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal UnityEngine.GameObject                       prefab
+    protected internal EnemyType                                    enemyType
+    protected internal float                                        AttackRange
+    protected internal float                                        AttackSpeed
+    protected internal float                                        MovementSpeed
+    protected internal float                                        DamageMultiplier
+    protected internal float                                        HealthMultiplier
+    protected internal float                                        baseMovementSpeedForAnimation
+    protected internal bool                                         IsRanged
+    protected internal EnemyProjectileInfo                          projectileInfo
+    protected internal string                                       HitTargetGFXName
+    protected internal float                                        HitTargetGFXDuration
+    protected internal string                                       HitTargetSFXName
+    protected internal float                                        LifestealPercentOfMaxHealth
+    protected internal bool                                         IsTameable
+    protected internal UnityEngine.GameObject                       tamedPetPrefab
+
+CLASS DatabaseManager : UnityEngine.MonoBehaviour
+    protected internal System.Collections.Generic.List`1<UnityEngine.Color> RaritiesColors_Light
+    protected internal System.Collections.Generic.List`1<UnityEngine.Color> RaritiesColors_Dark
+    protected internal System.Collections.Generic.List`1<UnityEngine.Sprite> RuneIcons_Normal
+    protected internal System.Collections.Generic.List`1<UnityEngine.Sprite> RuneIcons_Rare
+    protected internal System.Collections.Generic.List`1<UnityEngine.Sprite> RuneIcons_Epic
+    protected internal System.Collections.Generic.List`1<UnityEngine.Sprite> RuneIcons_Legendary
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, System.Collections.Generic.List`1<UnityEngine.Sprite>> RuneIconsByRarity
+    protected internal UnityEngine.Sprite                           WeaponSilhouette_Sword
+    protected internal UnityEngine.Sprite                           WeaponSilhouette_Hammer
+    protected internal UnityEngine.Sprite                           WeaponSilhouette_Lightning
+    protected internal UnityEngine.Sprite                           WeaponSilhouette_Fire
+    protected internal UnityEngine.Sprite                           WeaponSilhouette_Shield
+    protected internal UnityEngine.Sprite                           WeaponSilhouette_Banner
+    protected internal Static System.Collections.Generic.Dictionary`2<WeaponType, UnityEngine.Sprite> WeaponSilhouettes
+    protected internal System.Collections.Generic.List`1<UnityEngine.Sprite> RuneScrollIcons
+    protected internal System.Collections.Generic.List`1<UnityEngine.Sprite> ItemScrollIcons
+    private Static System.Collections.Generic.List`1<UnityEngine.Sprite> s_RuneScrollIcons
+    private Static System.Collections.Generic.List`1<UnityEngine.Sprite> s_ItemScrollIcons
+    protected internal TreeInfo                                     MainTree
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, float> RarityChanceToDrop
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, UnityEngine.Color> RarityColors_Light
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, UnityEngine.Color> RarityColors_Dark
+    protected internal Static System.Collections.Generic.Dictionary`2<string, StatInfo> StatsDict
+    protected internal Static System.Collections.Generic.List`1<EnemyInfo> EnemyList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, EnemyInfo> EnemyDict
+    protected internal Static System.Collections.Generic.List`1<ProjectileInfo> ProjectileList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, ProjectileInfo> ProjectileDict
+    protected internal Static System.Collections.Generic.List`1<SkillDetailInfo> SkillDetailList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, SkillDetailInfo> SkillDetailDict
+    protected internal Static System.Collections.Generic.List`1<JobInfo>   JobList
+    protected internal Static System.Collections.Generic.Dictionary`2<int, JobInfo> JobDict
+    protected internal Static System.Collections.Generic.List`1<JobSkillInfo> JobSkillList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, JobSkillInfo> JobSkillDict
+    protected internal Static System.Collections.Generic.Dictionary`2<string, JobSkillInfo> ProjectileToJobSkill
+    protected internal Static System.Collections.Generic.List`1<ItemInfo>  ItemList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, ItemInfo> ItemDict
+    protected internal Static System.Collections.Generic.Dictionary`2<ItemType, System.Collections.Generic.Dictionary`2<int, ItemInfo>> ItemDictByType
+    protected internal Static System.Collections.Generic.List`1<ItemStatsInfo> ItemStatsList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, ItemStatsInfo> ItemStatsDict
+    protected internal Static System.Collections.Generic.List`1<SkillPowerInfo> SkillPowerList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, SkillPowerInfo> SkillPowerDict
+    protected internal Static System.Collections.Generic.List`1<ShapingWeaponInfo> ShapingWeaponList
+    protected internal Static System.Collections.Generic.Dictionary`2<WeaponType, ShapingWeaponInfo> ShapingWeaponDict
+    protected internal Static System.Collections.Generic.List`1<RuneStatInfo> RuneStatList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, RuneStatInfo> RuneStatDict
+    protected internal Static System.Collections.Generic.Dictionary`2<WeaponType, System.Collections.Generic.List`1<RuneStatInfo>> RuneImplicitsByWeapon
+    protected internal Static System.Collections.Generic.List`1<RuneStatInfo> RuneExplicitList
+    protected internal Static System.Collections.Generic.List`1<MasteryInfo> MasteryList
+    protected internal Static System.Collections.Generic.Dictionary`2<string, MasteryInfo> MasteryDict
+    protected internal Static System.Collections.Generic.Dictionary`2<int, MasteryInfo> MasteryByIndex
+    protected internal Static System.Collections.Generic.List`1<GuardianPerkInfo> GuardianPerkList
+    protected internal Static System.Collections.Generic.Dictionary`2<GuardianType, System.Collections.Generic.List`1<GuardianPerkInfo>> GuardianPerksByType
+    protected internal Static MinMax                                       CriticalChanceMinMax
+    protected internal Static MinMax                                       CriticalMultiMinMax
+    protected internal Static MinMax                                       DamageTakenMinMax
+    protected internal Static float                                        OneGameUnitToUnityUnit
+    protected internal Static float                                        BaseCriticalMultiplier
+    protected internal Static double                                       ClawCurrencyPerStack
+    protected internal Static double                                       BaseDamage
+    protected internal Static double                                       BaseHealth
+    protected internal Static float                                        BaseAttackRange
+    protected internal Static float                                        MaxAttackRange
+    protected internal Static double                                       HealthRegenEverySecond
+    protected internal Static float                                        BaseHealthPotionRegenPercentage
+    protected internal Static float                                        BaseMouseRadius
+    protected internal Static float                                        BaseMouseMagazineRegenTime
+    protected internal Static float                                        BaseMouseAttackSpeed
+    protected internal Static float                                        BasePortalSummonTime
+    protected internal Static float                                        BasePlayerAttackSpeed
+    protected internal Static float                                        BasePlayerMovementSpeed
+    protected internal Static int                                          BaseMaximumSkillPowers
+    protected internal Static float                                        RapidFire_MaxExtensionSeconds
+    protected internal Static float                                        BaseFireArea_RadiusOfEffect
+    protected internal Static float                                        FireArea_TickTime
+    protected internal Static float                                        FireArea_GroundYPos
+    protected internal Static float                                        BaseBlizzard_RadiusOfEffect
+    protected internal Static float                                        Blizzard_GroundYPos
+    protected internal Static float                                        BaseBlizzard_SlowPercent
+    protected internal Static float                                        Blizzard_SlowDuration
+    protected internal Static float                                        BaseDarkMatter_RadiusOfEffect
+    protected internal Static float                                        SuperNova_TargetY
+    protected internal Static float                                        SuperNova_ExplodeDelay
+    protected internal Static float                                        BaseSharpShooterCooldownReductionOnCrit
+    protected internal Static float                                        ChainDistance
+    protected internal Static int                                          CriticalPierce_FirstTasteAttacks
+    protected internal Static float                                        WormholeShot_SpawnDistance
+    protected internal Static int                                          WormholeShotCopies
+    protected internal Static float                                        WormholeShot_DiveSpeedMultiplier
+    protected internal Static float                                        WormholeShot_RiftSize
+    protected internal Static float                                        WormholeShot_RiftOpenSeconds
+    protected internal Static float                                        WormholeShot_CopyStagger
+    protected internal Static float                                        WormholeShot_StreakWidth
+    protected internal Static float                                        ExplosiveArrows_Radius
+    protected internal Static int                                          Multishot_MultiplyProjectilesFactor
+    protected internal Static int                                          BombArrow_ClusterBombCount
+    protected internal Static float                                        BombArrow_ClusterRadiusFraction
+    protected internal Static float                                        BombArrow_ClusterDamageFraction
+    protected internal Static float                                        BombArrow_ClusterSpreadMin
+    protected internal Static float                                        BombArrow_ClusterSpreadMax
+    protected internal Static int                                          FireArea_MaxSpreadDepth
+    protected internal Static float                                        Improvment_CostMultiplierOfCreateCost
+    protected internal Static float                                        Craft_RerollCostMultiplierOfCreateCost
+    protected internal Static float                                        Craft_CorruptCostMultiplierOfCreateCost
+    protected internal Static float                                        BaseItemImprovment_StartingValue
+    protected internal Static float                                        BaseItemImprovment_DecreasePerImprovement
+    protected internal Static float                                        BaseItemImprovment_MinimumValue
+    protected internal Static int                                          Improvment_MaximumCount
+    protected internal Static System.Collections.Generic.List`1<System.ValueTuple`2<int, float>> ImprovementTiers
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, int> ItemNumberOfStats
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, double> SellPerRarityMultiplier
+    protected internal Static int                                          MaxBattleLevel
+    protected internal Static int                                          LastAuthoredLevel
+    protected internal Static double                                       EndgameHealthGrowthPerLevel
+    protected internal Static double                                       EndgameGoldGrowthPerLevel
+    protected internal Static double                                       EndgameDamageGrowthPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> EnemyHealthPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> EnemyGoldPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, int> EnemyDamagePerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, int> NumberOfEnemiesInPackPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, int> NumberOfEnemiesInPack_SpawnedByPortal_PerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, int> NumberOfPacksInLevelPerLevel
+    protected internal Static double                                       FarmRunRewardMultiplier
+    protected internal Static double                                       MiningResetGoldCostMultiplier
+    protected internal Static double                                       StarResetGoldCostMultiplier
+    protected internal Static System.Collections.Generic.Dictionary`2<EnemyType, System.ValueTuple`2<int, int>> GuaranteedEnemyCounts
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> EnemyCurrencyPerRelativeLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<EnemyType, EnemyCurrencyData> EnemyCurrencyPerType
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> CraftingNPCLevelCostPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> MiningNPCLevelCostPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> ShapingNPCLevelCostPerLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<int, double> MasteryNPCLevelCostPerLevel
+    protected internal Static int                                          ShapingWeaponSlots
+    protected internal Static int                                          ShapingRuneInventorySize
+    protected internal Static int                                          ShapingMaxSockets
+    protected internal Static int                                          ShapingHammerMaxTargets
+    protected internal Static int                                          ShapingHammerDamagePerEnemyMaxStacks
+    protected internal Static float                                        ShapingRepeatCooldownSkip
+    protected internal Static int                                          ShapingWeaponMaxLevel
+    protected internal Static string                                       ShapingRuneCreateCostEquation
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, int> ShapingRuneRarityUnlockLevel
+    protected internal Static string                                       ShapingFirstRuneStat
+    protected internal Static double                                       ShapingFirstRuneStatValue
+    protected internal Static int                                          ShapingSwordOnlyRunesUpToNPCLevel
+    protected internal Static System.Collections.Generic.Dictionary`2<Rarity, int> RuneNumberOfExplicits
+    protected internal Static System.Collections.Generic.Dictionary`2<WeaponType, WeaponCategory> WeaponTypeToCategory
+    protected internal Static System.Collections.Generic.Dictionary`2<int, MasteryRewardType> MasteryIndexToReward
+    protected internal Static float                                        ChestChanceMultiplierPerSpawn
+    protected internal Static System.Collections.Generic.Dictionary`2<ChestType, float> ChestTypeWeights
+    protected internal Static int                                          BaseChestCoins_CurrencyChest
+    protected internal Static double                                       BaseChestCoinMultiplier_CurrencyChest
+    protected internal Static int                                          BaseChestCoins_StandardChest
+    protected internal Static double                                       BaseChestCoinMultiplier_StandardChest
+    protected internal Static int                                          BaseChestCoins_LegendaryChest
+    protected internal Static double                                       BaseChestCoinMultiplier_LegendaryChest
+    protected internal Static int                                          BaseChestContentCount_Item
+    protected internal Static int                                          BaseChestContentCount_Rune
+    protected internal Static int                                          BaseChestContentCount_Scroll
+    protected internal Static int                                          BaseChestContentCount_Legendary
+    protected internal Static float                                        BaseChestContentRarity
+    protected internal Static float                                        BaseChanceToSpawnChest
+    protected internal Static float                                        BaseChanceToSpawnOrb
+    protected internal Static float                                        BaseEnemyItemDropChance
+    protected internal Static System.Collections.Generic.Dictionary`2<ChestType, float> MonsterDropTypeWeights
+    protected internal Static int                                          EnemyDropImprovementMin
+    protected internal Static int                                          EnemyDropImprovementMax
+    protected internal Static Rarity                                       FirstScrollDropRarity
+    protected internal Static Rarity                                       FirstBowDropRarity
+    protected internal Static int                                          ChestGuarantee_ItemsCrafted
+    protected internal Static int                                          ChestGuarantee_RunesCreated
+    protected internal Static int                                          ChestGuarantee_ScrollAtLevel
+    protected internal Static int                                          ChestGuarantee_LegendaryAtLevel
+    protected internal Static float                                        BaseChanceForGoldenEnemy
+    protected internal Static int                                          BaseGoldenRewardMultiplier
+    protected internal Static int                                          GildedChampionRewardMultiplier
+    protected internal Static float                                        BaseChanceToTameEnemiesOnDeath
+    protected internal Static float                                        BaseTameHealthMultiplier
+    protected internal Static float                                        BaseTameDamageMultiplier
+    protected internal Static int                                          BaseMaxTames
+    protected internal Static float                                        TameChanceFalloffPerActive
+    protected internal Static float                                        AllyDamageReductionFraction
+    protected internal Static double                                       GuardianPerkCost
+    protected internal Static int                                          GuardianStartLevel
+    protected internal Static int                                          GuardianSummonCountAtStart
+    protected internal Static int                                          GuardianSummonCountAtHalfHealth
+    protected internal Static System.Collections.Generic.Dictionary`2<EnemyType, float> GuardianSignatureCooldowns
+    protected internal Static float                                        GuardianClaw_PounceTriggerDistance
+    protected internal Static float                                        GuardianClaw_PounceMaxWait
+    protected internal Static float                                        GuardianClaw_PounceDamageMultiplier
+    protected internal Static float                                        GuardianClaw_PounceDuration
+    protected internal Static float                                        GuardianClaw_PounceJumpPower
+    protected internal Static float                                        GuardianClaw_FrenzyAttackSpeedMultiplier
+    protected internal Static float                                        GuardianClaw_FrenzyDuration
+    protected internal Static int                                          GuardianArcher_VolleyCount
+    protected internal Static float                                        GuardianArcher_VolleyInterval
+    protected internal Static float                                        GuardianArcher_VolleyDamageMultiplier
+    protected internal Static float                                        GuardianArcher_VolleyDropHeight
+    protected internal Static float                                        GuardianArcher_VolleyAoERadius
+    protected internal Static float                                        GuardianWarrior_SlamDamageMultiplier
+    protected internal Static float                                        GuardianWarrior_SlamRadius
+    protected internal Static float                                        GuardianWarrior_SlamWindup
+    protected internal Static float                                        GuardianMage_ToxinDamageMultiplier
+    protected internal Static float                                        GuardianMage_ToxinRadius
+    protected internal Static float                                        GuardianMage_ToxinDuration
+    protected internal Static float                                        GuardianMage_ToxinTickTime
+    protected internal Static float                                        GuardianMage_ToxinCloudSpeed
+    protected internal Static int                                          GuardianBat_BoltCount
+    protected internal Static float                                        GuardianBat_BoltDamageMultiplier
+    protected internal Static float                                        GuardianBat_BoltSpeed
+    protected internal Static float                                        GuardianBat_BoltCurve
+    protected internal Static float                                        GuardianBat_BoltInterval
+    protected internal Static float                                        GuardianBat_BoltLifestealPercent
+    protected internal Static int                                          GuardianCurrencyFirstKill
+    protected internal Static int                                          GuardianMonsterCurrencyCoins
+    protected internal Static int                                          GuardianGoldCoins
+    protected internal Static int                                          GuardianItemDropCount
+    protected internal Static int                                          GuardianWarriorCopperCoins
+    protected internal Static int                                          GuardianWarriorSilverCoins
+    protected internal Static int                                          GuardianWarriorGoldOreCoins
+    protected internal Static double                                       GuardianOreCoinValue
+    protected internal Static double                                       KingAreaHealthBase
+    protected internal Static double                                       KingAreaDamageBase
+    protected internal Static float                                        KingGuardianSummonHealthStep
+    protected internal Static EnemyType[]                                  KingGuardianSummonOrder
+    protected internal Static float                                        KingSummonCastDelay
+    protected internal Static float                                        KingSummonGap
+    protected internal Static float                                        KingGuardianSpawnDistance
+    protected internal Static float                                        KingGuardianSpawnJitter
+    protected internal Static float                                        KingLaserCooldown
+    protected internal Static float                                        KingMissilesCooldown
+    protected internal Static float                                        KingExplosionOrbCooldown
+    protected internal Static float                                        KingLaser_InitialDelay
+    protected internal Static float                                        KingMissiles_InitialDelay
+    protected internal Static float                                        KingExplosionOrb_InitialDelay
+    protected internal Static float                                        KingSkillCastDelay
+    protected internal Static float                                        KingAttackAnimReleaseSeconds
+    protected internal Static float                                        KingLaser_DamageMultiplier
+    protected internal Static int                                          KingLaser_HitCount
+    protected internal Static float                                        KingLaser_Duration
+    protected internal Static float                                        KingLaser_FadeDuration
+    protected internal Static float                                        KingLaser_CurveHeight
+    protected internal Static float                                        KingMissiles_DamageMultiplier
+    protected internal Static int                                          KingMissiles_Count
+    protected internal Static float                                        KingMissiles_SpawnHeight
+    protected internal Static float                                        KingMissiles_Interval
+    protected internal Static float                                        KingMissiles_Speed
+    protected internal Static float                                        KingMissiles_Curve
+    protected internal Static float                                        KingExplosionOrb_DamageMultiplier
+    protected internal Static float                                        KingExplosionOrb_Speed
+    protected internal Static float                                        KingExplosionOrb_AoERadius
+    protected internal Static System.Collections.Generic.Dictionary`2<MiningRewardType, OreType> MiningRewardToOre
+    protected internal Static int                                          MiningMaxSkillPowersBonus
+    protected internal Static int                                          MiningBonusRockPerRareOre
+    protected internal Static float                                        MiningAdditionalOreChance
+    protected internal Static float                                        MiningMonsterGemChance
+    protected internal Static int                                          MiningSkillPowerMaxLevelBonus
+    protected internal Static double                                       MiningSkillPowerExtraLevelCostMultiplier
+    protected internal Static System.Collections.Generic.List`1<Currencies> MonsterCurrencies
+    protected internal Static System.Collections.Generic.Dictionary`2<Currencies, EnemyType> MonsterCurrencyToEnemyType
+    protected internal Static System.Collections.Generic.Dictionary`2<OreType, Currencies> OreToCurrency
+    protected internal Static System.Collections.Generic.Dictionary`2<OreType, float> OreBaseWeight
+    protected internal Static System.Collections.Generic.Dictionary`2<MiningPowerType, MiningPowerConfig> MiningPowerConfigs
+    PROP  ShapingRuneCreateCostCap
+
+CLASS MiningPowerConfig : System.Object
+    protected internal System.Collections.Generic.List`1<double>    Values
+    protected internal System.Collections.Generic.List`1<double>    Costs
+
+CLASS EnemyCurrencyData : System.Object
+    protected internal int                                          UnlockAtLevel
+
+CLASS DamageData : System.Object
+    protected internal double                                       baseDamageAmount
+    protected internal double                                       DamageAmount
+    protected internal bool                                         IsCritical
+    protected internal string                                       additionalInfo
+
+CLASS RecorderCursor : UnityEngine.MonoBehaviour
+    protected internal bool                                         enableWhileRecording
+    protected internal float                                        sizeMultiplier
+
+CLASS SaveLoadManager : UnityEngine.MonoBehaviour
+    protected internal Static SaveLoadManager                              instance
+    private Static Literal HasDefault string                                       Key
+    private        string                                       SaveName
+    protected internal Static int                                          CurrentVersion_Expansion
+    protected internal Static int                                          CurrentVersion_Major
+    protected internal Static int                                          CurrentVersion_Minor
+    protected internal Static bool                                         WipeAllDataOnBoot
+    protected internal Static bool                                         IsHardResetting
+    protected internal TreeInfo                                     MainTree
+    protected internal bool                                         isLoadCurrentCustomSave
+    private Static Literal HasDefault string                                       TmpSuffix
+    private Static Literal HasDefault string                                       BakSuffix
+    private Static InitOnly System.Collections.Generic.Dictionary`2<string, string> RenamedEnumKeys
+    PROP  CustomSaveName_Level
+    PROP  CustomSaveName_Seed
+
+CLASS StateOfTheGameManager : System.Object
+
+CLASS playerData : System.Object
+    protected internal Static playerData                                   instance
+    protected internal bool                                         IsNewPlayer
+    protected internal bool                                         IsSoundsOn
+    protected internal bool                                         isScientific
+    protected internal float                                        SoundVolume_Effects
+    protected internal float                                        SoundVolume_UI
+    protected internal float                                        SoundVolume_Music
+    protected internal float                                        ScreenShake
+    protected internal int                                          ResolutionChoice
+    protected internal bool                                         IsFullScreen
+    protected internal bool                                         IsResolutionInitialized
+    protected internal bool                                         isGainedWishlistReward
+    protected internal bool                                         isDamageFloatingShown
+    protected internal float                                        EffectsAmount
+    protected internal float                                        FloatingNumbersAmount
+    protected internal Languages                                    ChoosenLanguage
+    protected internal string                                       version
+    protected internal int                                          randomSeed
+    protected internal PlayerStatsData                              stats
+    protected internal float                                        SecondsPlayed_FullGame
+    protected internal CurrenciesBool                               WasCurrencyShownBefore
+    protected internal int                                          PlayerLevel
+    protected internal double                                       PlayerExp
+    private        double                                       playerGold
+    private        double                                       playerClawCurrency
+    private        double                                       playerArcherCurrency
+    private        double                                       playerWarriorCurrency
+    private        double                                       playerMageCurrency
+    private        double                                       playerBatCurrency
+    private        double                                       playerPortalCurrency
+    private        double                                       playerMiningRock
+    private        double                                       playerMiningCopper
+    private        double                                       playerMiningSilver
+    private        double                                       playerMiningGold
+    private        double                                       playerGuardianCurrency
+    protected internal IntBool                                      GuardiansDefeated
+    protected internal StringBool                                   StarPerksPurchased
+    protected internal int                                          StarPerksLastResetLevel
+    protected internal int                                          MonstersLevel
+    protected internal IntBool                                      PortalCurrencyPaid
+    protected internal UnlockableSystemsBool                        UnlockedSystems
+    protected internal UnlockableSystemsBool                        IsJustUnlockedSystem
+    protected internal RarityBool                                   IsUnlockedRarity
+    protected internal RarityBool                                   IsJustUnlockedRarity
+    protected internal Rarity                                       HighestRarityUnlocked
+    protected internal IntBool                                      IsUnlockedJobs
+    protected internal StringInt                                    SkillsLevels
+    protected internal StringDouble                                 SkillsCooldowns
+    protected internal IntItemSavedData                             Inventory
+    protected internal ItemTypeItemSavedData                        Equipment
+    protected internal int                                          CraftingLevel
+    protected internal bool                                         isJustUnlockedImprovement
+    protected internal ItemTypeListInt                              PendingFirstCraftRarityBases
+    protected internal ItemTypeListInt                              PendingFirstImproveBases
+    protected internal int                                          MiningLevel
+    protected internal OreTypeBool                                  MiningUnlockedOres
+    protected internal MiningPowerTypeInt                           MiningPowerLevels
+    protected internal StringInt                                    MiningSkillPowerLevels
+    protected internal int                                          MiningSkillPowersLastResetLevel
+    protected internal bool                                         IsMiningTutorialDone
+    protected internal int                                          ShapingLevel
+    protected internal System.Collections.Generic.List`1<ShapingSlotSavedData> ShapingSlots
+    protected internal IntRuneSavedData                             ShapingRunes
+    protected internal RarityBool                                   ShapingRuneRarityGranted
+    protected internal int                                          MasteryLevel
+    protected internal StringInt                                    MasteryLevels
+    protected internal StringBool                                   MasteryAwakened
+    protected internal StringInt                                    MasteryPinnacleCharges
+    protected internal RarityBool                                   ActiveRuneScrolls
+    protected internal RarityBool                                   ActiveItemScrolls
+    protected internal ItemSavedData                                CurrentCraftedItem
+    protected internal bool                                         HasDroppedLegendary
+    protected internal bool                                         FirstChestGranted
+    protected internal bool                                         FirstOrbGranted
+    protected internal bool                                         FirstGoldenGranted
+    protected internal bool                                         FirstScrollDropGranted
+    protected internal bool                                         FirstBowDropGranted
+    protected internal bool                                         CriticalPierceFirstTasteGranted
+    protected internal int                                          CriticalPierceGuaranteedAttacks
+    protected internal bool                                         ItemChestUnlockGranted
+    protected internal bool                                         RuneChestUnlockGranted
+    protected internal bool                                         ScrollChestUnlockGranted
+    protected internal bool                                         LegendaryChestUnlockGranted
+    protected internal int                                          TotalItemsCrafted
+    protected internal int                                          TotalRunesCreated
+    protected internal bool                                         FirstItemChestGranted
+    protected internal bool                                         FirstRuneChestGranted
+    protected internal bool                                         FirstScrollChestGranted
+    protected internal bool                                         FirstLegendaryChestGranted
+    protected internal bool                                         isBoughtDLC
+    protected internal IntBool                                      ArrowSkinUnlocked
+    protected internal IntBool                                      ArrowSkinEnabled
+    protected internal StringInt                                    TreeNodeLevels
+    protected internal float                                        TotalTimePlayed
+    protected internal float                                        TotalLevelGameTime
+    protected internal int                                          TotalDeaths_FullGame
+    protected internal int                                          TotalMonstersKilled_FullGame
+    protected internal CurrenciesDouble                             TotalCurrencyGained_FullGame
+    private        int                                          criticalPierceChargedVolley
+    PROP  PlayerGold
+    PROP  PlayerClawCurrency
+    PROP  PlayerArcherCurrency
+    PROP  PlayerWarriorCurrency
+    PROP  PlayerMageCurrency
+    PROP  PlayerBatCurrency
+    PROP  PlayerPortalCurrency
+    PROP  PlayerMiningRock
+    PROP  PlayerMiningCopper
+    PROP  PlayerMiningSilver
+    PROP  PlayerMiningGold
+    PROP  PlayerGuardianCurrency
+
+CLASS StringStatsFloat : <typespec>
+
+CLASS ItemTypeItemSavedData : <typespec>
+
+CLASS IntItemSavedData : <typespec>
+
+CLASS IntRuneSavedData : <typespec>
+
+CLASS ItemInfo : Sirenix.OdinInspector.SerializedScriptableObject
+    protected internal string                                       functionName
+    protected internal ItemType                                     ItemType
+    protected internal int                                          BaseLevel
+    protected internal double                                       CreateCost
+    protected internal double                                       UnlockCost
+    protected internal UnityEngine.Sprite                           ItemIcon
+    protected internal double                                       minValue
+    protected internal double                                       maxValue
+
+CLASS ItemSavedData : System.Object
+    protected internal ItemType                                     ItemType
+    protected internal int                                          BaseLevel
+    protected internal double                                       BaseValue
+    protected internal double                                       MinValue
+    protected internal double                                       MaxValue
+    protected internal Rarity                                       ItemRarity
+    protected internal int                                          Improvements
+    protected internal bool                                         ImprovementFailed
+    protected internal int                                          ImprovementChanceExemption
+    protected internal bool                                         DoubleImproveChance
+    protected internal int                                          ExtraStatsFromScroll
+    protected internal double                                       ScrollStatValuesMultiplier
+    protected internal int                                          CorruptAddedStats
+    protected internal bool                                         IsCorrupted
+    protected internal bool                                         isNew
+    protected internal double                                       SellPrice
+    protected internal System.Collections.Generic.List`1<ItemStatsSavedData> Stats
+
+CLASS ItemStatsInfo : Sirenix.OdinInspector.SerializedScriptableObject
+    protected internal string                                       functionName
+    protected internal StatInfo                                     stat
+    protected internal double                                       minValue
+    protected internal double                                       maxValue
+    protected internal bool                                         isStackable
+    protected internal ItemStatTarget                               AppearsOn
+    protected internal System.Collections.Generic.List`1<Condition> Conditions
+    protected internal float                                        Chance
+
+CLASS ItemStatsSavedData : System.Object
+    protected internal string                                       StatInfoFunctionName
+    protected internal double                                       Value
+
+CLASS ItemTooltipData : System.Object
+    protected internal System.Collections.Generic.List`1<string>    Stats
+    protected internal System.Collections.Generic.List`1<string>    Ranges
+    protected internal Rarity                                       Rarity
+    protected internal UnityEngine.Sprite                           Icon
+    protected internal string                                       Name
+    protected internal string                                       Desc
+    protected internal UnityEngine.Sprite                           WeaponSilhouette
+
+CLASS JobInfo : UnityEngine.ScriptableObject
+    protected internal int                                          JobIndex
+    protected internal double                                       UnlockCost
+    protected internal System.Collections.Generic.List`1<JobSkillInfo> Skills
+    protected internal StatInfo                                     PassiveStat
+    protected internal double                                       PassiveValue
+
+CLASS JobSkillInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal string                                       skillNameInStatsData
+    protected internal UnityEngine.Sprite                           icon
+    protected internal System.Collections.Generic.List`1<double>    cost
+    protected internal int                                          maxLevel
+    protected internal bool                                         isPassive
+    protected internal StatInfo                                     passiveStat
+    protected internal string                                       passiveEffectValueEquation
+    protected internal string                                       passiveEffectLabelKey
+    protected internal string                                       passiveEffectSuffix
+    protected internal bool                                         isBuff
+    protected internal StatInfo                                     buffStat
+    protected internal string                                       buffEffectLabelKey
+    protected internal string                                       buffEffectSuffix
+    protected internal System.Collections.Generic.List`1<float>     buffValues
+    protected internal System.Collections.Generic.List`1<float>     buffDurations
+    protected internal bool                                         isPet
+    protected internal UnityEngine.GameObject                       petPrefab
+    protected internal System.Collections.Generic.List`1<float>     petHealthMultipliers
+    protected internal System.Collections.Generic.List`1<float>     petAttackChances
+    protected internal float                                        petAttackRange
+    protected internal float                                        petAttackRadius
+    protected internal float                                        petAttackSpeed
+    protected internal ProjectileInfo                               projectileInfo
+    protected internal ProjectileInfo                               projectileInfo_Mouse
+    protected internal System.Collections.Generic.List`1<float>     cooldowns
+    protected internal bool                                         isShotByArcher
+    protected internal System.Collections.Generic.List`1<float>     damageMultipliers
+    protected internal System.Collections.Generic.List`1<int>       numberOfHitsList
+    protected internal System.Collections.Generic.List`1<int>       pierceCounts
+    protected internal System.Collections.Generic.List`1<int>       numberOfTurnsList
+    protected internal System.Collections.Generic.List`1<float>     durations
+
+CLASS MasteryInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal int                                          MasteryIndex
+    protected internal UnityEngine.Sprite                           Icon
+    protected internal UnityEngine.Color                            IconColor
+    protected internal bool                                         IsPinnacle
+    protected internal PinnacleEffectType                           PinnacleEffect
+    protected internal int                                          MaxLevel
+    protected internal string                                       LevelUpCostEquation
+    protected internal StatInfo                                     MainStat
+    protected internal string                                       MainValueEquation
+    protected internal string                                       MainSuffix
+    protected internal int                                          MainDecimals
+    protected internal StatInfo                                     AwakenStat
+    protected internal double                                       AwakenValue
+    protected internal string                                       AwakenSuffix
+    protected internal int                                          AwakenDecimals
+    protected internal bool                                         AwakenShowValue
+    protected internal int                                          AwakenRequiredLevel
+    protected internal string                                       AwakenCostEquation
+
+CLASS SkillPowerInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal JobSkillInfo                                 RelatedSkill
+    protected internal StatInfo[]                                   Stats
+    protected internal double[]                                     Values
+    protected internal string[]                                     CostEquations
+    protected internal int[]                                        MaxLevels
+    protected internal string[]                                     DescKeys
+    protected internal string[]                                     Suffixes
+    protected internal int[]                                        DecimalPlaces
+
+CLASS GroundEffectSelfer : UnityEngine.MonoBehaviour
+    private        bool                                         isStart
+    private        float                                        radius
+    private        float                                        duration
+    private        float                                        tickTime
+    private        DamageData                                   damage
+    private        UnityEngine.GameObject                       GFXGO
+    protected internal float                                        ScaleMultiplier
+    protected internal string                                       prefabName
+    private        bool                                         isInit
+    private        System.Collections.Generic.List`1<UnityEngine.ParticleSystem> AllChildPS
+    private        float                                        currentTime
+    private        float                                        currentDuration
+
+CLASS GroundEffectsManager : UnityEngine.MonoBehaviour
+    protected internal Static GroundEffectsManager                         instance
+    private        System.Collections.Generic.Dictionary`2<int, GroundEffectSelfer> AllGroundEffects
+    private        System.Collections.Generic.Dictionary`2<string, System.Collections.Generic.List`1<CustomFloatAndGO>> ChainEffects
+
+CLASS EnemyProjectileInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal float                                        speed
+    protected internal float                                        damageMultiplier
+    protected internal float                                        DestroyAfter
+    protected internal float                                        FullyDestroyWithTailAfter
+    protected internal UnityEngine.GameObject                       mainPrefab
+    protected internal UnityEngine.GameObject                       deathPrefab
+    protected internal float                                        deathFXDuration
+    protected internal UnityEngine.GameObject                       FireSoundPrefab
+    protected internal UnityEngine.GameObject                       HitSoundPrefab
+
+CLASS ProjectileInfo : Sirenix.OdinInspector.SerializedScriptableObject
+    protected internal string                                       functionName
+    protected internal bool                                         isTriggeredBySkill
+    protected internal ProjectileInfo                               Caller
+    protected internal UnityEngine.Sprite                           Icon_Large
+    protected internal UnityEngine.Sprite                           Icon_Small
+    protected internal UnityEngine.Color                            Icon_Color
+    protected internal UnityEngine.Sprite                           Icon_BG
+    protected internal int                                          BaseProjectileCount
+    protected internal System.Collections.Generic.List`1<SkillTags> tags
+    protected internal System.Collections.Generic.Dictionary`2<string, double> Parameters
+    protected internal bool                                         isArcherProjectile
+    protected internal bool                                         IgnoreEffectsAmount
+    protected internal bool                                         CanUseArrowSkin
+    protected internal bool                                         CanBeCriticalPierce
+    protected internal bool                                         CanBeWormholed
+    protected internal ProjectileInfo                               ExplosiveArrowVariant
+    protected internal bool                                         IsExplosiveArrow
+    protected internal float                                        speed
+    protected internal UnityEngine.GameObject                       mainPrefab
+    protected internal UnityEngine.GameObject                       deathPrefab
+    protected internal bool                                         isSpawnDeathOnlyOnDeath
+    protected internal UnityEngine.GameObject                       FireSoundPrefab
+    protected internal UnityEngine.GameObject                       HitSoundPrefab
+    protected internal float                                        deafFXDuration
+    protected internal float                                        DestroyAfter
+    protected internal float                                        FullyDestroyWithTailAfter
+    protected internal float                                        angleIncrement
+    protected internal ProjectileMotionBehaviour                    MotionBehaviour
+    protected internal UnityEngine.Vector2                          AngleRange
+    protected internal bool                                         Above_ChecksForColliders
+    protected internal bool                                         isTheSkillAPorjectile
+    protected internal ProjectileInfo                               triggeredProjectileInfo
+    protected internal UnityEngine.GameObject                       skill_mainPrefab
+    protected internal UnityEngine.GameObject                       skill_deathPrefab
+    protected internal UnityEngine.GameObject                       skill_chainEffectPrefab
+    protected internal UnityEngine.GameObject                       skill_FireSoundPrefab
+    protected internal UnityEngine.GameObject                       skill_HitSoundPrefab
+    protected internal float                                        skill_deafFXDuration
+    protected internal float                                        skill_DestroyAfter
+    protected internal float                                        BaseArea_ToDivideOn
+
+CLASS SkillDetailInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal UnityEngine.Sprite                           icon
+    protected internal UnityEngine.Color                            iconColor
+    protected internal ProjectileInfo                               Projectile
+    protected internal ProjectileInfo                               SpecialProjectile
+    protected internal int                                          OrderOfAppearance
+    protected internal System.Collections.Generic.List`1<StatValueCostEquations> StatValueCostEquations
+    protected internal int                                          UnlockCost
+    protected internal int                                          UnlockLevel
+
+CLASS StatValueCostEquations : System.Object
+    protected internal StatInfo                                     stat
+    protected internal string                                       valueEquation
+    protected internal string                                       costEquation
+
+CLASS SkillInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal System.Collections.Generic.List`1<SkillTags> tags
+    protected internal bool                                         isProjectileSkill
+    protected internal ProjectileInfo                               projectileInfo
+    protected internal UnityEngine.GameObject                       mainPrefab
+    protected internal UnityEngine.GameObject                       deathPrefab
+    protected internal UnityEngine.GameObject                       FireSoundPrefab
+    protected internal UnityEngine.GameObject                       HitSoundPrefab
+    protected internal float                                        DamagePercentage
+    protected internal float                                        ActivateAfter
+    protected internal float                                        deafFXDuration
+    protected internal float                                        DestroyAfter
+
+CLASS SuperNovaFadeFX : UnityEngine.MonoBehaviour
+    private        float                                        startScaleFactor
+    private        float                                        expandDuration
+    private        UnityEngine.AnimationCurve                   expandEase
+    private        float                                        fadeDuration
+    private        float                                        holdAlpha
+    private        UnityEngine.SpriteRenderer                   sr
+    private        UnityEngine.Vector3                          fullScale
+    private        UnityEngine.Coroutine                        routine
+
+CLASS RuneSavedData : System.Object
+    protected internal WeaponType                                   WeaponType
+    protected internal Rarity                                       Rarity
+    protected internal int                                          IconIndex
+    protected internal double                                       SellPrice
+    protected internal bool                                         isNew
+    protected internal bool                                         IsScroll
+    protected internal System.Collections.Generic.List`1<ItemStatsSavedData> Implicits
+    protected internal System.Collections.Generic.List`1<ItemStatsSavedData> Explicits
+
+CLASS RuneStatInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal RuneStatKind                                 Kind
+    protected internal WeaponType                                   WeaponType
+    protected internal RuneStatTarget                               Target
+    protected internal double                                       minValue
+    protected internal double                                       maxValue
+    protected internal ValueNumberTypes                             ValueNumberType
+    protected internal int                                          RoundToNearest
+    protected internal float                                        Chance
+    protected internal string                                       DescriptionFormat
+    protected internal bool                                         isNormalyStartsWithSign
+
+CLASS RuneStatNames : System.Object
+    protected internal Static Literal HasDefault string                                       AttackCooldownSpeed
+    protected internal Static Literal HasDefault string                                       AttackDamage
+    protected internal Static Literal HasDefault string                                       DoubleDamageChance
+    protected internal Static Literal HasDefault string                                       KillGoldBonus
+    protected internal Static Literal HasDefault string                                       RepeatAttackChance
+    protected internal Static Literal HasDefault string                                       FifthHitDamage
+    protected internal Static Literal HasDefault string                                       BuffStrength
+    protected internal Static Literal HasDefault string                                       BuffDuration
+    protected internal Static Literal HasDefault string                                       BuffCooldownSpeed
+    protected internal Static Literal HasDefault string                                       BuffKillExtend
+    protected internal Static Literal HasDefault string                                       DoubleStrengthChance
+    protected internal Static Literal HasDefault string                                       ResetCooldownChance
+    protected internal Static Literal HasDefault string                                       DoubleDurationChance
+    protected internal Static Literal HasDefault string                                       SwordTwinSlashChance
+    protected internal Static Literal HasDefault string                                       SwordComboDamage
+    protected internal Static Literal HasDefault string                                       SwordCleaveDamage
+    protected internal Static Literal HasDefault string                                       SwordFirstHitDamage
+    protected internal Static Literal HasDefault string                                       HammerAoERadius
+    protected internal Static Literal HasDefault string                                       HammerDamagePerEnemyHit
+    protected internal Static Literal HasDefault string                                       HammerAftershockDamage
+    protected internal Static Literal HasDefault string                                       HammerShatterDamage
+    protected internal Static Literal HasDefault string                                       LightningExtraChains
+    protected internal Static Literal HasDefault string                                       LightningForkChance
+    protected internal Static Literal HasDefault string                                       LightningDamagePerChain
+    protected internal Static Literal HasDefault string                                       LightningFirstTargetDamage
+    protected internal Static Literal HasDefault string                                       FireTwinFallChance
+    protected internal Static Literal HasDefault string                                       FireMeteorBarrageChance
+    protected internal Static Literal HasDefault string                                       FireEliteDamage
+    protected internal Static Literal HasDefault string                                       FireExecuteDamage
+    protected internal Static Literal HasDefault string                                       ShieldActiveRegen
+    protected internal Static Literal HasDefault string                                       ShieldExpireHeal
+    protected internal Static Literal HasDefault string                                       ShieldEnemyAttackSlow
+    protected internal Static Literal HasDefault string                                       ShieldWeaponDamageAura
+    protected internal Static Literal HasDefault string                                       BannerAttackSpeedBonus
+    protected internal Static Literal HasDefault string                                       BannerWeaponHaste
+    protected internal Static Literal HasDefault string                                       BannerTripleDamageChance
+    protected internal Static Literal HasDefault string                                       BannerMagazineRefillChance
+
+CLASS ShapingSlotSavedData : System.Object
+    protected internal WeaponType                                   Weapon
+    protected internal int                                          Level
+    protected internal System.Collections.Generic.List`1<RuneSavedData> SocketedRunes
+
+CLASS ShapingWeaponInfo : Sirenix.OdinInspector.SerializedScriptableObject
+    protected internal string                                       functionName
+    protected internal WeaponType                                   WeaponType
+    protected internal WeaponCategory                               Category
+    protected internal UnityEngine.Sprite                           Icon
+    protected internal UnityEngine.Color                            IconColor
+    protected internal float                                        SpriteForwardOffsetDegrees
+    protected internal UnityEngine.GameObject                       WeaponPrefab
+    protected internal string                                       DamageMultiplierEquation
+    protected internal double                                       Cooldown
+    protected internal float                                        SeekRange
+    protected internal System.Collections.Generic.Dictionary`2<string, double> Parameters
+    protected internal ProjectileInfo                               CasterSkillProjectile
+    protected internal StatInfo                                     BuffStat
+    protected internal double                                       BuffValue
+    protected internal string                                       BuffDurationEquation
+
+CLASS GuardianPerkInfo : UnityEngine.ScriptableObject
+    protected internal string                                       functionName
+    protected internal GuardianType                                 GuardianType
+    protected internal int                                          OrderId
+    protected internal UnityEngine.Sprite                           Icon
+    protected internal System.Collections.Generic.List`1<StatInfo>  Stats
+    protected internal System.Collections.Generic.List`1<double>    Values
+
+CLASS EnemyStatsData : StatsData
+    protected internal StatsDouble                                  Health
+    protected internal StatsFloat                                   DamageTaken
+    private        double                                       _CurrentHealth
+    private        System.Action                                OnStatsUpgrade
+    private        System.Action                                OnHealthChange
+    PROP  CurrentHealth
+
+CLASS PlayerStatsData : StatsData
+    protected internal StatsDouble                                  Damage
+    protected internal StatsFloat                                   ChanceForDoubleDamage
+    protected internal StatsFloat                                   ChanceForTripleDamage
+    protected internal StatsFloat                                   AttackChanceForAnotherHit
+    protected internal StatsFloat                                   CriticalChance
+    protected internal StatsFloat                                   CriticalMultiplier
+    protected internal StatsFloat                                   AlliesAttackSpeedMultiplier
+    protected internal StatsFloat                                   AlliesCriticalChance
+    protected internal StatsFloat                                   AlliesCriticalMultiplier
+    protected internal StatsFloat                                   CriticalPierceChance
+    protected internal StatsFloat                                   WormholeShotChance
+    protected internal StatsInt                                     WormholeShotCount
+    protected internal StatsFloat                                   ExplosiveArrows
+    protected internal StatsFloat                                   ExplosiveArrows_RadiusOfEffect
+    protected internal StatsDouble                                  Health
+    private        double                                       _CurrentHealth
+    protected internal StatsDouble                                  HealthRegen
+    protected internal StatsFloat                                   DamageReduction
+    protected internal StatsFloat                                   DodgeChance
+    protected internal StatsFloat                                   DeathBlowImmunityDuration
+    protected internal StatsFloat                                   ChanceToDropHealthPotion
+    protected internal StatsFloat                                   HealthPotionRegenPercentage
+    protected internal StatsFloat                                   AttackRange
+    protected internal StatsInt                                     NumberOfMouseProjectiles
+    protected internal StatsFloat                                   MouseMagazineRegenTime
+    protected internal StatsInt                                     MouseMagazineSize
+    protected internal StatsInt                                     MouseAutoMode
+    protected internal StatsInt                                     MouseNumberOfHits
+    protected internal StatsInt                                     MouseMaxNumberOfEnemies
+    protected internal StatsFloat                                   MouseChanceForAnotherHit
+    protected internal StatsFloat                                   MouseChanceToFireSkills
+    protected internal StatsFloat                                   GoldGained
+    protected internal StatsFloat                                   ExpGained
+    protected internal StatsFloat                                   GoldChanceToDrop
+    protected internal StatsInt                                     GoldCoinsToDrop
+    protected internal StatsFloat                                   GoldPerSecond
+    protected internal StatsFloat                                   PlayerMovementSpeed
+    protected internal StatsFloat                                   EnemyMovementSpeedMultiplier
+    protected internal StatsFloat                                   EnemyAttackSpeedMultiplier
+    protected internal StatsFloat                                   EnemyHealthMultiplier
+    protected internal StatsFloat                                   EnemyDamageMultiplier
+    protected internal StatsFloat                                   PlayerAttackSpeed
+    protected internal StatsFloat                                   ShapingCooldownSpeed
+    protected internal StatsFloat                                   ItemsRarity
+    protected internal StatsInt                                     AttackWhileMoving
+    protected internal StatsInt                                     IsArcherSpawned
+    protected internal StatsInt                                     UnlockSkills
+    protected internal StatsInt                                     UnlockCrafting
+    protected internal StatsInt                                     UnlockMining
+    protected internal StatsInt                                     UnlockShaping
+    protected internal StatsInt                                     UnlockMastery
+    protected internal StatsInt                                     UnlockStar
+    protected internal StatsInt                                     UnlockChests
+    protected internal StatsInt                                     UnlockOrbs
+    protected internal StatsInt                                     UnlockGoldenEnemies
+    protected internal StatsInt                                     FirstPacksAlwaysContainGolden
+    protected internal StatsFloat                                   ChanceForGoldenEnemy
+    protected internal StatsFloat                                   ChanceToSpawnChest
+    protected internal StatsFloat                                   ChanceToSpawnOrb
+    protected internal StatsFloat                                   OrbDuration
+    protected internal StatsFloat                                   ChanceToSummonOrbOnKill
+    protected internal StatsInt                                     ChestCoins_CurrencyChest
+    protected internal StatsFloat                                   ChestCoinMultiplier_CurrencyChest
+    protected internal StatsInt                                     ChestCoins_StandardChest
+    protected internal StatsFloat                                   ChestCoinMultiplier_StandardChest
+    protected internal StatsInt                                     ChestCoins_LegendaryChest
+    protected internal StatsFloat                                   ChestCoinMultiplier_LegendaryChest
+    protected internal StatsInt                                     ChestContentCount_Item
+    protected internal StatsInt                                     ChestContentCount_Rune
+    protected internal StatsInt                                     ChestContentCount_Scroll
+    protected internal StatsInt                                     ChestContentCount_Legendary
+    protected internal StatsInt                                     GoldenRewardMultiplier
+    protected internal StatsInt                                     ChestExtraCoins
+    protected internal StatsFloat                                   ChestCoinValueBonus
+    protected internal StatsInt                                     ChestExtraContent
+    protected internal StatsFloat                                   ChestContentRarity
+    protected internal StatsInt                                     ChestContentImprovements
+    protected internal StatsFloat                                   ChestHealPercent
+    protected internal StatsFloat                                   ChestRareTypeWeightBonus
+    protected internal StatsInt                                     UnlockItemChests
+    protected internal StatsInt                                     UnlockRuneChests
+    protected internal StatsInt                                     UnlockScrollChests
+    protected internal StatsInt                                     UnlockLegendaryChests
+    protected internal StatsInt                                     LastPackInRunAlwaysContainChest
+    protected internal StatsInt                                     PermanentOrbs
+    protected internal StatsInt                                     UnlockEnemyItemDrops
+    protected internal StatsFloat                                   EnemyItemDropChance
+    protected internal StatsInt                                     EnemyDropRandomImprovement
+    protected internal StatsInt                                     UnlockScrolls
+    protected internal StatsInt                                     GuardianCurrencyGain
+    protected internal StatsInt                                     PortalFightFreeCooldowns
+    protected internal StatsInt                                     GuardianFightFreeCooldowns
+    protected internal StatsInt                                     SkillBuffsAffectAllies
+    protected internal StatsFloat                                   DamageMultiplierPerMasteryLevel
+    protected internal StatsFloat                                   HealthMultiplierPerMasteryLevel
+    protected internal StatsFloat                                   GoldGainedMultiplierPerUnlockedMastery
+    protected internal StatsInt                                     RuneImplicitsCount
+    protected internal StatsFloat                                   ChanceToFreeSkillFromCooldown
+    protected internal StatsFloat                                   ChanceToFreeAllSkillsFromCooldown
+    protected internal StatsFloat                                   HealthRestorePercentOnKill
+    protected internal StatsFloat                                   ChanceEnemyHitHeals
+    protected internal StatsFloat                                   ChestLootBonus
+    protected internal StatsInt                                     ExtraOrbsPerSpawn
+    protected internal StatsInt                                     GuaranteeMonsterCurrencyDrop
+    protected internal StatsInt                                     MasteryMaxLevelBonus
+    protected internal StatsInt                                     MaximumSkillPowers
+    protected internal StatsFloat                                   MonsterGemChance
+    protected internal StatsFloat                                   MiningPickaxeSpeed
+    protected internal StatsInt                                     MiningClicksPerOreReduction
+    protected internal StatsFloat                                   MiningChanceToDropAdditionalOre
+    protected internal StatsInt                                     BowBaseLevel
+    protected internal StatsInt                                     ArmorBaseLevel
+    protected internal StatsFloat                                   BaseMaxValueMultiplier
+    protected internal StatsFloat                                   BaseMinValueMultiplier
+    protected internal StatsDouble                                  BaseMaxValueAddition
+    protected internal StatsDouble                                  BaseMinValueAddition
+    protected internal StatsFloat                                   CraftingLuck
+    protected internal StatsFloat                                   ItemStatValuesMultiplier
+    protected internal StatsFloat                                   CraftCostReduction
+    protected internal StatsFloat                                   ItemImprovment_StartingValue
+    protected internal StatsFloat                                   ItemImprovment_DecreasePerImprovement
+    protected internal StatsFloat                                   ItemImprovment_MinimumValue
+    protected internal StatsFloat                                   WarriorChanceToSpawn
+    protected internal StatsFloat                                   ArcherChanceToSpawn
+    protected internal StatsFloat                                   MageChanceToSpawn
+    protected internal StatsFloat                                   BatChanceToSpawn
+    protected internal StatsFloat                                   PortalSummonTime
+    protected internal StatsFloat                                   PortalHealthMultiplier
+    protected internal StatsFloat                                   PortalPackCurrencyBonus
+    protected internal StatsFloat                                   WarriorCurrencyChanceDrop
+    protected internal StatsFloat                                   ArcherCurrencyChanceDrop
+    protected internal StatsFloat                                   MageCurrencyChanceDrop
+    protected internal StatsFloat                                   BatCurrencyChanceDrop
+    protected internal StatsFloat                                   ClawCurrencyChanceDrop
+    protected internal StatsFloat                                   SkillsCooldownSpeed
+    protected internal StatsFloat                                   SkillsBuffDurationMultiplier
+    protected internal StatsFloat                                   SkillsChanceToNotConsumeCooldown
+    protected internal StatsInt                                     Multishot_NumberOfProjectiles
+    protected internal StatsInt                                     Multishot_NumberOfHits
+    protected internal StatsFloat                                   Multishot_Cooldown
+    protected internal StatsFloat                                   Multishot_ChanceForMultiplyProjectiles
+    protected internal StatsFloat                                   BombArrow_RadiusOfEffect
+    protected internal StatsInt                                     BombArrow_NumberOfHits
+    protected internal StatsFloat                                   BombArrow_Cooldown
+    protected internal StatsFloat                                   BombArrow_ChanceForClusterBombs
+    protected internal StatsInt                                     SniperScope_NumberOfAttacks
+    protected internal StatsFloat                                   SniperScope_Cooldown
+    protected internal StatsInt                                     SniperScope_NumberOfHits
+    protected internal StatsFloat                                   SniperScope_RadiusOfEffect
+    protected internal StatsFloat                                   ChanceForLightningStrike
+    protected internal StatsInt                                     LightningStrike_NumberOfHits
+    protected internal StatsFloat                                   LightningStrike_ChanceToPierce
+    protected internal StatsFloat                                   LightningStrike_ChanceToDealTripleDamage
+    protected internal StatsFloat                                   ChanceForFireArea
+    protected internal StatsFloat                                   FireArea_Duration
+    protected internal StatsFloat                                   FireArea_RadiusOfEffect
+    protected internal StatsInt                                     FireArea_NumberOfHits
+    protected internal StatsFloat                                   FireArea_ChanceToSpreadOnKill
+    protected internal StatsFloat                                   ChanceForBlizzard
+    protected internal StatsFloat                                   Blizzard_Duration
+    protected internal StatsFloat                                   Blizzard_RadiusOfEffect
+    protected internal StatsFloat                                   Blizzard_SlowPercent
+    protected internal StatsFloat                                   Blizzard_IceAmountMultiplier
+    protected internal StatsInt                                     Blizzard_NumberOfHits
+    protected internal StatsFloat                                   Blizzard_DamageVsChilled
+    protected internal StatsFloat                                   BatSwarm_Duration
+    protected internal StatsFloat                                   BatSwarm_Cooldown
+    protected internal StatsInt                                     BatSwarm_NumberOfHits
+    protected internal StatsFloat                                   BatSwarm_RadiusOfEffect
+    protected internal StatsFloat                                   BatSwarm_BatsAmountMultiplier
+    protected internal StatsFloat                                   BatSwarm_LifestealPercent
+    protected internal StatsFloat                                   RapidFire_Cooldown
+    protected internal StatsFloat                                   RapidFire_Duration
+    protected internal StatsFloat                                   RapidFire_BuffValue
+    protected internal StatsFloat                                   RapidFire_ExtensionPerKill
+    protected internal StatsInt                                     RapidFire_ResetCooldownOnBossFirstHit
+    protected internal StatsFloat                                   SharpShooter_Cooldown
+    protected internal StatsFloat                                   SharpShooter_Duration
+    protected internal StatsFloat                                   SharpShooter_BuffValue
+    protected internal StatsFloat                                   SharpShooter_CooldownReductionOnCrit
+    protected internal StatsInt                                     SharpShooter_ActivateWithRapidFire
+    protected internal StatsFloat                                   SharpShooter_CritMultiplierBonus
+    protected internal StatsFloat                                   PiercingShot_Cooldown
+    protected internal StatsInt                                     PiercingShot_PierceCount
+    protected internal StatsInt                                     PiercingShot_NumberOfHits
+    protected internal StatsFloat                                   DarkMatter_Cooldown
+    protected internal StatsFloat                                   DarkMatter_RadiusOfEffect
+    protected internal StatsInt                                     DarkMatter_NumberOfHits
+    protected internal StatsFloat                                   DarkMatter_DamagePerAbsorb
+    protected internal StatsFloat                                   DarkMatter_DamageMultiplier
+    protected internal StatsFloat                                   SuperNova_Cooldown
+    protected internal StatsInt                                     SuperNova_NumberOfHits
+    protected internal StatsFloat                                   SuperNova_ExecuteThreshold
+    protected internal StatsFloat                                   SuperNova_BossDamageBonus
+    protected internal StatsFloat                                   SuperNova_HealPerEnemyHit
+    protected internal StatsInt                                     PiercingShot_NumberOfTurns
+    protected internal StatsFloat                                   PiercingShot_DamagePerTurn
+    protected internal StatsFloat                                   PiercingShot_MirrorImageChance
+    protected internal StatsFloat                                   Wolf_Cooldown
+    protected internal StatsFloat                                   Wolf_HealthMultiplier
+    protected internal StatsFloat                                   Wolf_AttackRange
+    protected internal StatsFloat                                   Wolf_AttackSpeed
+    protected internal StatsInt                                     Wolf_NumberOfHits
+    protected internal StatsFloat                                   Bear_Cooldown
+    protected internal StatsFloat                                   Bear_HealthMultiplier
+    protected internal StatsFloat                                   Bear_AttackRange
+    protected internal StatsFloat                                   Bear_AttackSpeed
+    protected internal StatsInt                                     Bear_NumberOfHits
+    protected internal StatsFloat                                   Falcon_Cooldown
+    protected internal StatsFloat                                   Falcon_AttackRange
+    protected internal StatsFloat                                   Falcon_AttackSpeed
+    protected internal StatsInt                                     Falcon_NumberOfHits
+    protected internal StatsFloat                                   Falcon_AttackChance
+    protected internal StatsFloat                                   Falcon_AttackRadius
+    protected internal StatsFloat                                   Wolf_LifestealPercent
+    protected internal StatsFloat                                   Wolf_ExecuteThreshold
+    protected internal StatsFloat                                   Bear_RegenPercent
+    protected internal StatsFloat                                   Bear_Intimidation
+    protected internal StatsFloat                                   Bear_DodgeChance
+    protected internal StatsInt                                     Falcon_BlitzBond
+    protected internal StatsFloat                                   PetHealthMultiplier
+    protected internal StatsFloat                                   PetDamageMultiplier
+    protected internal StatsFloat                                   ChanceToTameEnemiesOnDeath
+    protected internal StatsFloat                                   TameHealthMultiplier
+    protected internal StatsFloat                                   TameDamageMultiplier
+    protected internal StatsInt                                     MaxTames
+    protected internal StatsFloat                                   SkillsChanceToTriggerOnMonsterDeath
+    protected internal StatsFloat                                   Skills_DamageMultiplier
+    protected internal StatsInt                                     RoA_CallCount
+    protected internal StatsFloat                                   RoA_DamageIncreaseForEachCallCount
+    protected internal StatsFloat                                   RoA_ChanceForTwinFall
+    protected internal StatsFloat                                   Dragon_Time
+    protected internal StatsFloat                                   Dragon_DamageIncreasedGainedEachSecond
+    protected internal StatsFloat                                   Dragon_ChanceToResetAfterFinishing
+    protected internal StatsFloat                                   Dragon_RadiusOfEffect
+    protected internal StatsInt                                     Knight_CallCount
+    protected internal StatsFloat                                   Knight_DamageIncreaseForEachCallCount
+    protected internal StatsFloat                                   Knight_RadiusOfEffect
+    protected internal StatsFloat                                   Knight_ChanceForSpear
+    protected internal StatsInt                                     Spear_ChainCount
+    protected internal StatsFloat                                   Spear_ChanceToForkAfterEachChain
+    protected internal StatsFloat                                   Spear_DamageIncreasePerChain
+    protected internal StatsFloat                                   Spear_ChanceForTwinFall
+    protected internal StatsInt                                     LC_ChainCount
+    protected internal StatsFloat                                   LC_ChanceToForkAfterEachChain
+    protected internal StatsFloat                                   LC_DamageIncreasePerChain
+    protected internal StatsInt                                     Vampire_CallCount
+    protected internal StatsFloat                                   Vampire_DamageIncreaseForEachCallCount
+    protected internal StatsFloat                                   Vampire_RadiusOfEffect
+    protected internal StatsInt                                     BloodDrain_ChainCount
+    protected internal StatsFloat                                   BloodDrain_ChanceToForkAfterEachChain
+    protected internal StatsFloat                                   BloodDrain_DamageIncreasePerChain
+    protected internal StatsFloat                                   BloodDrain_Time
+    protected internal StatsFloat                                   BloodDrain_DamageIncreasedGainedEachSecond
+    protected internal StatsFloat                                   BloodDrain_ChanceToResetAfterFinishing
+    protected internal StatsFloat                                   ClawCurrencyDamageBonus
+    protected internal StatsFloat                                   ClawCurrencyHealthBonus
+    protected internal StatsFloat                                   JobPassiveBonus
+    protected internal StatsInt                                     CraftingRarityFloorEpic
+    protected internal StatsInt                                     CraftingImproveNeverStops
+    protected internal StatsInt                                     CorruptExtraStats
+    protected internal StatsInt                                     DoubleMiningPickaxes
+    protected internal StatsInt                                     OreValueBonus
+    protected internal StatsFloat                                   SkillPowerValueBonus
+    protected internal StatsInt                                     ShapingCopyFirstWeapon
+    protected internal StatsFloat                                   SecondSlotRuneBonus
+    protected internal StatsFloat                                   ShapingAttackDamageBonus
+    protected internal StatsFloat                                   ShapingBuffStrengthBonus
+    protected internal StatsFloat                                   MasteryMainStatBonus
+    protected internal StatsFloat                                   MasteryAwakenStatBonus
+    protected internal StatsInt                                     PinnacleExtraCharges
+    protected internal StatsInt                                     PinnacleAwakenExtraCharges
+    private        System.Action                                OnStatsUpgrade
+    private        System.Action                                OnAttackSpeedUpgrade
+    private        System.Action                                OnHealthChange
+    private        System.Collections.Generic.List`1<string>    DPSStats
+    private Static InitOnly System.Collections.Generic.HashSet`1<string> BasicAttackSources
+    PROP  CurrentHealth
+
+CLASS StatInfo : UnityEngine.ScriptableObject
+    protected internal string                                       VariableName
+    protected internal StatsProperties                              StatsProp
+    protected internal ValueNumberTypes                             ValueNumberType
+    protected internal int                                          RoundToNearest
+    protected internal bool                                         isNormalyStartsWithSign
+    protected internal bool                                         isList
+    protected internal bool                                         isHasTotalVersion
+    PROP  functionName
+
+CLASS StatsData : System.Object
+    protected internal System.Collections.Generic.Dictionary`2<string, object> StatsDict
+    protected internal System.Collections.Generic.Dictionary`2<string, int> ListsNamesAndCount
+
+CLASS StatsValueInt : System.Object
+    private        int                                          _Value
+    private        int                                          <RealValue>k__BackingField
+    private        int                                          <Max>k__BackingField
+    private        int                                          <Min>k__BackingField
+    PROP  SetOnlyValue
+    PROP  RealValue
+    PROP  Max
+    PROP  Min
+
+CLASS StatsValueFloat : System.Object
+    protected internal float                                        _Value
+    protected internal float                                        RealValue
+    protected internal float                                        Max
+    protected internal float                                        Min
+    PROP  SetOnlyValue
+
+CLASS StatsValueDouble : System.Object
+    private        double                                       _Value
+    private        double                                       <RealValue>k__BackingField
+    private        double                                       <Max>k__BackingField
+    private        double                                       <Min>k__BackingField
+    PROP  SetOnlyValue
+    PROP  RealValue
+    PROP  Max
+    PROP  Min
+
+CLASS StatsInt : System.Object
+    private        int                                          <MinTotal>k__BackingField
+    private        int                                          <MaxTotal>k__BackingField
+    private        int                                          <MinFlat>k__BackingField
+    private        int                                          <MaxFlat>k__BackingField
+    private        float                                        <MinAddi>k__BackingField
+    private        float                                        <MaxAddi>k__BackingField
+    private        StatsValueInt                                <Total>k__BackingField
+    private        StatsValueInt                                <Flat>k__BackingField
+    private        StatsValueFloat                              <AdditiveIncreases>k__BackingField
+    private        StatsValueFloat                              <MultiplicativeIncreases>k__BackingField
+    PROP  MinTotal
+    PROP  MaxTotal
+    PROP  MinFlat
+    PROP  MaxFlat
+    PROP  MinAddi
+    PROP  MaxAddi
+    PROP  Total
+    PROP  Flat
+    PROP  AdditiveIncreases
+    PROP  MultiplicativeIncreases
+
+CLASS StatsFloat : System.Object
+    private        float                                        <MinTotal>k__BackingField
+    private        float                                        <MaxTotal>k__BackingField
+    private        float                                        <MinFlat>k__BackingField
+    private        float                                        <MaxFlat>k__BackingField
+    private        float                                        <MinAddi>k__BackingField
+    private        float                                        <MaxAddi>k__BackingField
+    private        StatsValueFloat                              <Flat>k__BackingField
+    private        StatsValueFloat                              <Total>k__BackingField
+    private        StatsValueFloat                              <AdditiveIncreases>k__BackingField
+    private        StatsValueFloat                              <MultiplicativeIncreases>k__BackingField
+    PROP  MinTotal
+    PROP  MaxTotal
+    PROP  MinFlat
+    PROP  MaxFlat
+    PROP  MinAddi
+    PROP  MaxAddi
+    PROP  Flat
+    PROP  Total
+    PROP  AdditiveIncreases
+    PROP  MultiplicativeIncreases
+
+CLASS StatsDouble : System.Object
+    private        double                                       <MinTotal>k__BackingField
+    private        double                                       <MaxTotal>k__BackingField
+    private        double                                       <MinFlat>k__BackingField
+    private        double                                       <MaxFlat>k__BackingField
+    private        double                                       <MinAddi>k__BackingField
+    private        double                                       <MaxAddi>k__BackingField
+    private        StatsValueDouble                             <Flat>k__BackingField
+    private        StatsValueDouble                             <Total>k__BackingField
+    private        StatsValueDouble                             <AdditiveIncreases>k__BackingField
+    private        StatsValueDouble                             <MultiplicativeIncreases>k__BackingField
+    PROP  MinTotal
+    PROP  MaxTotal
+    PROP  MinFlat
+    PROP  MaxFlat
+    PROP  MinAddi
+    PROP  MaxAddi
+    PROP  Flat
+    PROP  Total
+    PROP  AdditiveIncreases
+    PROP  MultiplicativeIncreases
+
+CLASS StatsBool : System.Object
+    protected internal bool                                         Value
+
+CLASS StatsIntToFloatConverter : <typespec>
+    PROP  CanWrite
+
+CLASS NewSkillStatsTester : Sirenix.OdinInspector.SerializedMonoBehaviour
+    protected internal float                                        Multishot_ChanceForMultiplyProjectiles
+    protected internal float                                        BombArrow_ChanceForClusterBombs
+    protected internal float                                        FireArea_ChanceToSpreadOnKill
+    protected internal float                                        Blizzard_DamageVsChilled
+    protected internal float                                        BatSwarm_LifestealPercent
+    protected internal float                                        SuperNova_ExecuteThreshold
+    protected internal float                                        SuperNova_BossDamageBonus
+    protected internal float                                        SuperNova_HealPerEnemyHit
+    protected internal float                                        DarkMatter_DamagePerAbsorb
+    PROP  Values
+    PROP  CurrentTotals
+
+CLASS TreeInfo : UnityEngine.ScriptableObject
+    protected internal string                                       TreeName
+    protected internal System.Collections.Generic.List`1<TreeNodeInfo> TreeNodes
+    protected internal UnityEngine.Vector2                          FirstNodePosition
+    private        int                                          totalNodesCreated
+    private Static System.Action`1<TreeInfo>                    OnTreeChanged
+    private Static System.Action`2<TreeInfo, TreeNodeInfo>      OnNodeAdded
+    private Static System.Action`2<TreeInfo, TreeNodeInfo>      OnNodeRemoved
+    private Static System.Action`1<TreeInfo>                    OnTreeStructureChanged
+    private        bool                                         _eventsEnabled
+
+CLASS TreeNodeInfo : UnityEngine.ScriptableObject
+    private        string                                       nodeID
+    protected internal string                                       NodeName
+    protected internal string                                       NodeDescription
+    protected internal System.Collections.Generic.List`1<string>    NodeValueEquation
+    protected internal System.Collections.Generic.List`1<string>    NodeCostEquation
+    protected internal TreeNodeTemplate                             Template
+    protected internal bool                                         OverrideCostCurrencies
+    protected internal bool                                         OverrideNodeShape
+    protected internal bool                                         OverrideShapeSize
+    protected internal bool                                         OverrideIconSize
+    protected internal bool                                         OverrideColors
+    private        System.Collections.Generic.List`1<Currencies> _nodeCostCurrencies
+    private        UnityEngine.Sprite                           _nonleveledNodeShape
+    private        UnityEngine.Sprite                           _leveledNodeShape
+    private        float                                        _shapeSize
+    private        UnityEngine.Vector2                          _nonleveledShapeOffset
+    private        UnityEngine.Vector2                          _leveledShapeOffset
+    protected internal UnityEngine.Sprite                           NodeIcon
+    private        float                                        _nodeIconSize
+    private        UnityEngine.Vector2                          _nodeIconOffset
+    protected internal int                                          NodeMaxLevel
+    protected internal NodeUnlockBehavior                           UnlockBehavior
+    protected internal int                                          RequiredMonsterLevel
+    protected internal UnlockableSystems                            RequiredUnlockableSystem
+    private        System.Collections.Generic.List`1<StatInfo>  NodeStat
+    private        UnityEngine.Sprite                           _highlighterShape
+    private        float                                        _highlighterShapeSize
+    private        UnityEngine.Vector2                          _highlighterOffset
+    private        UnityEngine.Color                            _defaultHighlighterColor
+    private        UnityEngine.Color                            _purchasableHighlighterColor
+    private        UnityEngine.Color                            _insufficientCurrencyHighlighterColor
+    private        UnityEngine.Color                            _unlockedIconColor
+    private        UnityEngine.Color                            _lockedIconColor
+    private        UnityEngine.Color                            _unlockedLinkColor
+    private        UnityEngine.Color                            _lockedLinkColor
+    protected internal System.Collections.Generic.List`1<NodeConnection> NodeConnections
+    protected internal UnityEngine.Vector2                          Position
+    private Static System.Action`1<TreeNodeInfo>                OnNodePropertyChanged
+    private Static System.Action`1<TreeNodeInfo>                OnNodePositionChanged
+    private Static System.Action`1<TreeNodeInfo>                OnNodeConnectionsChanged
+    private        bool                                         _eventsEnabled
+    PROP  NodeID
+    PROP  NodeCostCurrencies
+    PROP  NonleveledNodeShape
+    PROP  LeveledNodeShape
+    PROP  ShapeSize
+    PROP  NonleveledShapeOffset
+    PROP  LeveledShapeOffset
+    PROP  NodeIconSize
+    PROP  NodeIconOffset
+    PROP  HighlighterShape
+    PROP  HighlighterShapeSize
+    PROP  HighlighterOffset
+    PROP  DefaultHighlighterColor
+    PROP  PurchasableHighlighterColor
+    PROP  InsufficientCurrencyHighlighterColor
+    PROP  UnlockedIconColor
+    PROP  LockedIconColor
+    PROP  UnlockedLinkColor
+    PROP  LockedLinkColor
+
+CLASS TreeState : UnityEngine.MonoBehaviour
+    private        TreeCreator                                  treeCreator
+    protected internal System.Action`2<TreeNodeInfo, int>           OnNodeLevelChanged
+    protected internal System.Action`1<TreeNodeInfo>                OnNodeUnlocked
+    PROP  TreeCreator
+
+CLASS ArrowSkinEntry : System.Object
+    protected internal UnityEngine.Sprite                           UIIcon
+    protected internal UnityEngine.Sprite                           ArrowSprite
+    protected internal int                                          KillsRequired
+
+CLASS LootAnimationEntry : System.Object
+    protected internal LootType                                     lootType
+    protected internal UnityEngine.RectTransform                    targetUI
+    protected internal UnityEngine.GameObject                       spritePrefab
+    protected internal UnityEngine.GameObject                       worldDropPrefab
+
+CLASS SettingsManager : UnityEngine.MonoBehaviour
+    protected internal Static SettingsManager                              instance
+    protected internal TMPro.TMP_Dropdown                           ResolutionDD
+    protected internal UnityEngine.Audio.AudioMixer                 mixer
+    protected internal UnityEngine.GameObject                       FullScreenCheckmark
+    protected internal UnityEngine.GameObject                       DesktopCheckmark
+    protected internal UnityEngine.GameObject                       MinimalCheckmark
+    protected internal UnityEngine.UI.Slider                        EffectsSoundSlider
+    protected internal UnityEngine.UI.Slider                        UISoundSlider
+    protected internal UnityEngine.UI.Slider                        MusicSoundSlider
+    protected internal UnityEngine.UI.Slider                        DesktopSizeSlider
+    protected internal TMPro.TextMeshProUGUI                        DesktopSizeSliderValue
+    protected internal UnityEngine.GameObject                       ApplyDesktopSizeButton
+    protected internal TMPro.TextMeshProUGUI                        EffectsSoundSliderValue
+    protected internal TMPro.TextMeshProUGUI                        UISoundSliderValue
+    protected internal TMPro.TextMeshProUGUI                        MusicSoundSliderValue
+    protected internal TMPro.TextMeshProUGUI                        VersionText
+    protected internal UnityEngine.Transform                        SettingsUI
+    protected internal UnityEngine.UI.Slider                        EffectsAmountSlider
+    protected internal TMPro.TextMeshProUGUI                        EffectsAmountSliderValue
+    protected internal UnityEngine.UI.Slider                        FloatingNumbersAmountSlider
+    protected internal TMPro.TextMeshProUGUI                        FloatingNumbersAmountSliderValue
+    protected internal UnityEngine.GameObject                       DamageFloatingShowButton
+    protected internal UnityEngine.GameObject                       DamageFloatingHideButton
+    protected internal UnityEngine.UI.Button                        HardResetButton
+    private        int                                          hardResetClicksRequired
+    private        float                                        hardResetClickTimeout
+    private        int                                          hardResetClickCount
+    private        float                                        lastHardResetClickTime
+    protected internal bool                                         isSettingsShown
+    protected internal UnityEngine.Transform                        MainMenuSettingsButtonTransform
+    protected internal int                                          WhichButtonCalledShowSettings
+    protected internal UnityEngine.Transform                        LanguagesMenu
+    protected internal UnityEngine.Transform                        LanguagesMenuButtonTransform
+    protected internal bool                                         isLanguagesMenuShown
+    protected internal TMPro.TextMeshProUGUI                        CurrentLanguageText
+    private        System.Collections.Generic.Dictionary`2<Languages, string> Languages_DisplayNames
+    private        Languages                                    LanguageStartedWithTheGame
+    protected internal LocalizedTextObject                          LaunchGameLocalizedObject
+    private        UnityEngine.GameObject                       LaunchGameTextGo
+    protected internal UnityEngine.Vector2                          LanguagesMenuOriginalPosition
+    private        int                                          nativeWidth
+    private        int                                          nativeHeight
+    private        DG.Tweening.Ease                             easeType
+    private        float                                        duration
+    protected internal UnityEngine.Vector2                          SettingsUI_Position
+    protected internal float                                        maxBoostDb
+
+CLASS StatsViewManager : UnityEngine.MonoBehaviour
+    protected internal Static StatsViewManager                             instance
+    protected internal TMPro.TextMeshProUGUI                        StatsText
+    protected internal UnityEngine.RectTransform                    ContentParent
+    protected internal UnityEngine.Transform                        StatsViewPanel
+    protected internal UnityEngine.Transform                        ShowHideStatsViewButton
+    protected internal UnityEngine.Vector2                          ShowPosition
+    private        bool                                         isStatsViewShown
+    private Static Literal HasDefault string                                       LabelColor
+    private Static Literal HasDefault string                                       ValueColor
+    private Static Literal HasDefault string                                       SectionColor
+    private        string                                       lastBuiltText
+    private Static InitOnly System.Collections.Generic.HashSet`1<string> loggedMissingKeys
+
+CLASS ChestsManager/ChestVisualEntry : System.Object
+    protected internal ChestType                                    chestType
+    protected internal UnityEngine.Sprite                           closedSprite
+    protected internal UnityEngine.Sprite                           openSprite
+
+CLASS ChestsManager/PackChestRecord : System.Object
+    protected internal bool                                         hasChest
+    protected internal ChestType                                    chestType
+    protected internal bool                                         collected
+
+CLASS EnemiesManager/PackGoldenRecord : System.Object
+    protected internal bool                                         hasGolden
+    protected internal bool                                         killed
+    protected internal bool                                         championGolden
+
+CLASS GuardiansManager/GuardianEncounterState : System.Object
+    protected internal bool                                         skillsArmed
+    protected internal bool                                         firstHitSummonDone
+    protected internal bool                                         halfHealthSummonDone
+    protected internal bool                                         pounceUsed
+    protected internal float                                        pounceArmTime
+    protected internal float                                        nextSignatureSkillTime
+    protected internal UnityEngine.Coroutine                        skillCo
+    protected internal bool                                         isKingRoom
+    protected internal UnityEngine.Vector3                          bodyBaseScale
+    protected internal DG.Tweening.Tween                            bodyPunch
+
+CLASS MiningUIManager/PowerEntry : System.ValueType
+    protected internal UnityEngine.GameObject                       root
+    protected internal TMPro.TextMeshProUGUI                        nameText
+    protected internal UnityEngine.UI.Button                        button
+    protected internal TMPro.TextMeshProUGUI                        costText
+    protected internal UnityEngine.Color                            nameColor
+
+CLASS MiningUIManager/CurrencyEntry : System.ValueType
+    protected internal UnityEngine.UI.Button                        button
+    protected internal UnityEngine.GameObject                       highlighter
+    protected internal TMPro.TextMeshProUGUI                        text
+    protected internal UnityEngine.GameObject                       lockedIcon
+    protected internal UnityEngine.Vector2                          textHomePos
+
+CLASS MiningUIManager/SkillPowerEntry : System.ValueType
+    protected internal SkillPowerInfo                               info
+    protected internal UnityEngine.GameObject                       root
+    protected internal UnityEngine.GameObject[]                     bgObjects
+    protected internal UnityEngine.CanvasGroup[]                    bgCanvasGroups
+    protected internal UnityEngine.GameObject                       costHighlighter
+    protected internal UnityEngine.UI.Image                         costHighlighterImage
+    protected internal UnityEngine.UI.Image                         skillIcon
+    protected internal UnityEngine.GameObject                       lockedIcon
+    protected internal TMPro.TextMeshProUGUI                        levelText
+
+CLASS OrbsManager/PackOrbRecord : System.Object
+    protected internal bool                                         hasOrb
+    protected internal bool                                         collected
+
+CLASS UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData : System.ValueType
+    protected internal byte[]                                       FilePathsData
+    protected internal byte[]                                       TypesData
+    protected internal int                                          TotalTypes
+    protected internal int                                          TotalFiles
+    protected internal bool                                         IsEditorOnly
+
+CLASS <PrivateImplementationDetails>/__StaticArrayInitTypeSize=12 : System.ValueType
+
+CLASS <PrivateImplementationDetails>/__StaticArrayInitTypeSize=16 : System.ValueType
+
+CLASS <PrivateImplementationDetails>/__StaticArrayInitTypeSize=20 : System.ValueType
+
+CLASS <PrivateImplementationDetails>/__StaticArrayInitTypeSize=288 : System.ValueType
+
+CLASS <PrivateImplementationDetails>/__StaticArrayInitTypeSize=5748 : System.ValueType
+
+CLASS <PrivateImplementationDetails>/__StaticArrayInitTypeSize=8116 : System.ValueType

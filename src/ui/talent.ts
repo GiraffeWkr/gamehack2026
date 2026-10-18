@@ -30,6 +30,8 @@ import {
 } from '../content/talent.js';
 import type { TalentCurrency, TalentNode } from '../content/talent.js';
 import type { Purses, TalentTree } from '../game/talent.js';
+import { getLang } from '../core/i18n.js';
+import { reskinText } from '../core/lexicon.js';
 
 const ART = 'art/tree/';
 
@@ -83,22 +85,14 @@ export function statText(node: TalentNode, index: number, value: number): string
   if (abs >= 10000) body = readable(abs);
   else body = abs.toFixed(Math.max(0, Math.min(3, gr.round)));
   const sign = gr.signed ? (value < 0 ? '-' : '+') : value < 0 ? '-' : '';
-  return template.replace(/#VALUE(\d*)#/g, `${sign}${body}`);
+  return reskinText(template.replace(/#VALUE(\d*)#/g, `${sign}${body}`), getLang());
 }
 
 const CURRENCY_LABEL: Record<TalentCurrency, string> = {
   Gold: '金币',
-  ClawCurrency: '爪币',
-  ArcherCurrency: '弓币',
-  PortalCurrency: '传送门币',
-  WarriorCurrency: '战币',
-  MageCurrency: '法币',
-  BatCurrency: '蝠币',
-  MiningRock: '岩石',
-  MiningCopper: '铜矿',
-  MiningSilver: '银矿',
-  MiningGold: '金矿',
-  GuardianCurrency: '守护币',
+  ClawCurrency: '爪兽宝石',
+  PortalCurrency: '传送门信标',
+  BatCurrency: '蝠群宝石',
 };
 
 export interface TalentCallbacks {
@@ -230,6 +224,20 @@ export class TalentPanel {
       const iconImg = icon.querySelector('img') as HTMLImageElement;
       hiImg.src = ART + def.highlighter;
       iconImg.src = ART + def.icon;
+      /*
+       * The glyph and the highlight ring are WHITE+alpha art, tinted per node state
+       * (`GetHighlighterColor` / `GetCurrentIconColor`). A white sprite can only show a
+       * tint through a CSS mask: painting the tint as the element's background and
+       * multiplying the white sprite over it (the previous approach) makes the sprite
+       * exactly the background colour, so every node icon and highlight rendered as a
+       * solid square. Masking paints the tint in the shape of the art instead.
+       *
+       * Absolute URLs: a custom property's url() resolves against the stylesheet, not
+       * the document, and the stylesheet lives under /src in dev.
+       */
+      const url = (f: string) => `url("${new URL(ART + f, document.baseURI).href}")`;
+      hi.style.setProperty('--tn-art', url(def.highlighter));
+      icon.style.setProperty('--tn-art', url(def.icon));
       icon.style.width = `${def.iconSize}px`;
       icon.style.height = `${def.iconSize}px`;
       // The highlighter is 71/100 units on a 50/75 node, centred, nudged +0.3 on x.

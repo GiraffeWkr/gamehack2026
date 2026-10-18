@@ -1,0 +1,506 @@
+[
+ {
+  "stat": "Damage",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseDamage"
+ },
+ {
+  "stat": "Health",
+  "prop": "Flat",
+  "value": 10,
+  "from": "BaseHealth"
+ },
+ {
+  "stat": "AttackRange",
+  "prop": "Flat",
+  "value": 450,
+  "from": "BaseAttackRange"
+ },
+ {
+  "stat": "NumberOfMouseProjectiles",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "MouseMagazineRegenTime",
+  "prop": "Flat",
+  "value": 0.4,
+  "from": "BaseMouseMagazineRegenTime"
+ },
+ {
+  "stat": "MouseMagazineSize",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "MouseNumberOfHits",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "MouseMaxNumberOfEnemies",
+  "prop": "Flat",
+  "value": 2.0,
+  "from": null
+ },
+ {
+  "stat": "HealthPotionRegenPercentage",
+  "prop": "Flat",
+  "value": 4,
+  "from": "BaseHealthPotionRegenPercentage"
+ },
+ {
+  "stat": "WarriorChanceToSpawn",
+  "prop": "Flat",
+  "value": 4.0,
+  "from": null
+ },
+ {
+  "stat": "ArcherChanceToSpawn",
+  "prop": "Flat",
+  "value": 5.0,
+  "from": null
+ },
+ {
+  "stat": "MageChanceToSpawn",
+  "prop": "Flat",
+  "value": 4.0,
+  "from": null
+ },
+ {
+  "stat": "BatChanceToSpawn",
+  "prop": "Flat",
+  "value": 4.0,
+  "from": null
+ },
+ {
+  "stat": "PortalSummonTime",
+  "prop": "Flat",
+  "value": 20,
+  "from": "BasePortalSummonTime"
+ },
+ {
+  "stat": "PortalHealthMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "OrbDuration",
+  "prop": "Flat",
+  "value": 15.0,
+  "from": null
+ },
+ {
+  "stat": "ChestCoins_CurrencyChest",
+  "prop": "Flat",
+  "value": 8,
+  "from": "BaseChestCoins_CurrencyChest"
+ },
+ {
+  "stat": "ChestCoinMultiplier_CurrencyChest",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseChestCoinMultiplier_CurrencyChest"
+ },
+ {
+  "stat": "ChestCoins_StandardChest",
+  "prop": "Flat",
+  "value": 2,
+  "from": "BaseChestCoins_StandardChest"
+ },
+ {
+  "stat": "ChestCoinMultiplier_StandardChest",
+  "prop": "Flat",
+  "value": 2,
+  "from": "BaseChestCoinMultiplier_StandardChest"
+ },
+ {
+  "stat": "ChestCoins_LegendaryChest",
+  "prop": "Flat",
+  "value": 8,
+  "from": "BaseChestCoins_LegendaryChest"
+ },
+ {
+  "stat": "ChestCoinMultiplier_LegendaryChest",
+  "prop": "Flat",
+  "value": 3,
+  "from": "BaseChestCoinMultiplier_LegendaryChest"
+ },
+ {
+  "stat": "ChestContentCount_Item",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseChestContentCount_Item"
+ },
+ {
+  "stat": "ChestContentCount_Rune",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseChestContentCount_Rune"
+ },
+ {
+  "stat": "ChestContentCount_Scroll",
+  "prop": "Flat",
+  "value": 2,
+  "from": "BaseChestContentCount_Scroll"
+ },
+ {
+  "stat": "ChestContentCount_Legendary",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseChestContentCount_Legendary"
+ },
+ {
+  "stat": "ChestContentRarity",
+  "prop": "Flat",
+  "value": 200,
+  "from": "BaseChestContentRarity"
+ },
+ {
+  "stat": "GoldenRewardMultiplier",
+  "prop": "Flat",
+  "value": 5,
+  "from": "BaseGoldenRewardMultiplier"
+ },
+ {
+  "stat": "GoldGained",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "ExpGained",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "GoldCoinsToDrop",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "RoA_CallCount",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "PlayerMovementSpeed",
+  "prop": "Flat",
+  "value": 140,
+  "from": "BasePlayerMovementSpeed"
+ },
+ {
+  "stat": "EnemyMovementSpeedMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "EnemyAttackSpeedMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "EnemyHealthMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "EnemyDamageMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "PlayerAttackSpeed",
+  "prop": "Flat",
+  "value": 0.7,
+  "from": "BasePlayerAttackSpeed"
+ },
+ {
+  "stat": "ShapingCooldownSpeed",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "MaximumSkillPowers",
+  "prop": "Flat",
+  "value": 5,
+  "from": "BaseMaximumSkillPowers"
+ },
+ {
+  "stat": "MiningPickaxeSpeed",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "WormholeShotCount",
+  "prop": "Flat",
+  "value": 3,
+  "from": "WormholeShotCopies"
+ },
+ {
+  "stat": "ExplosiveArrows_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 4,
+  "from": "ExplosiveArrows_Radius"
+ },
+ {
+  "stat": "RuneImplicitsCount",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "BaseMaxValueMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "BaseMinValueMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "CraftingLuck",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "ItemStatValuesMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "ItemImprovment_StartingValue",
+  "prop": "Flat",
+  "value": 60,
+  "from": "BaseItemImprovment_StartingValue"
+ },
+ {
+  "stat": "ItemImprovment_DecreasePerImprovement",
+  "prop": "Flat",
+  "value": 10,
+  "from": "BaseItemImprovment_DecreasePerImprovement"
+ },
+ {
+  "stat": "ItemImprovment_MinimumValue",
+  "prop": "Flat",
+  "value": 10,
+  "from": "BaseItemImprovment_MinimumValue"
+ },
+ {
+  "stat": "Multishot_NumberOfProjectiles",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "BombArrow_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 9.0,
+  "from": null
+ },
+ {
+  "stat": "SniperScope_NumberOfAttacks",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "BatSwarm_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 15.0,
+  "from": null
+ },
+ {
+  "stat": "BatSwarm_BatsAmountMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "SharpShooter_CooldownReductionOnCrit",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseSharpShooterCooldownReductionOnCrit"
+ },
+ {
+  "stat": "DarkMatter_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 8,
+  "from": "BaseDarkMatter_RadiusOfEffect"
+ },
+ {
+  "stat": "DarkMatter_DamageMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "CriticalMultiplier",
+  "prop": "Flat",
+  "value": 50,
+  "from": "BaseCriticalMultiplier"
+ },
+ {
+  "stat": "AlliesAttackSpeedMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "FireArea_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 6,
+  "from": "BaseFireArea_RadiusOfEffect"
+ },
+ {
+  "stat": "Blizzard_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 4,
+  "from": "BaseBlizzard_RadiusOfEffect"
+ },
+ {
+  "stat": "Blizzard_SlowPercent",
+  "prop": "Flat",
+  "value": 25,
+  "from": "BaseBlizzard_SlowPercent"
+ },
+ {
+  "stat": "Blizzard_IceAmountMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "Dragon_Time",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "Dragon_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 11.0,
+  "from": null
+ },
+ {
+  "stat": "Knight_CallCount",
+  "prop": "Flat",
+  "value": 2.0,
+  "from": null
+ },
+ {
+  "stat": "Knight_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 11.0,
+  "from": null
+ },
+ {
+  "stat": "Spear_ChainCount",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "LC_ChainCount",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "Vampire_CallCount",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "Vampire_RadiusOfEffect",
+  "prop": "Flat",
+  "value": 11.0,
+  "from": null
+ },
+ {
+  "stat": "BloodDrain_ChainCount",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "BloodDrain_Time",
+  "prop": "Flat",
+  "value": 3.0,
+  "from": null
+ },
+ {
+  "stat": "Skills_DamageMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "SkillsCooldownSpeed",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "SkillsBuffDurationMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "PetHealthMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "PetDamageMultiplier",
+  "prop": "Flat",
+  "value": 1.0,
+  "from": null
+ },
+ {
+  "stat": "ChanceToTameEnemiesOnDeath",
+  "prop": "Flat",
+  "value": 0,
+  "from": "BaseChanceToTameEnemiesOnDeath"
+ },
+ {
+  "stat": "TameHealthMultiplier",
+  "prop": "Flat",
+  "value": 0.7,
+  "from": "BaseTameHealthMultiplier"
+ },
+ {
+  "stat": "TameDamageMultiplier",
+  "prop": "Flat",
+  "value": 1.2,
+  "from": "BaseTameDamageMultiplier"
+ },
+ {
+  "stat": "MaxTames",
+  "prop": "Flat",
+  "value": 1,
+  "from": "BaseMaxTames"
+ }
+]

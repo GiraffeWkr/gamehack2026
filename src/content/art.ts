@@ -174,6 +174,13 @@ export const CHARACTERS: Record<string, SpriteDef> = {
   Archer: { file: 'Guardian_Archer_0', height: 53 },
   Mage: { file: 'Guardian_Mage_0', height: 56 },
   Bat: { file: 'bat_swarm_0', height: 41 },
+  // Elite variants: same family sprite, recoloured and sized differently. The mechanic
+  // difference lives in `data.ts` (armour / leech / summon).
+  Skitter: { file: 'Claw_Skitter', height: 40 },
+  Bulwark: { file: 'Warrior_Bulwark', height: 78 },
+  Bomber: { file: 'Archer_Bomber', height: 62 },
+  Summoner: { file: 'Mage_Summoner', height: 70 },
+  Leech: { file: 'Bat_Leech', height: 48 },
   /**
    * The five Guardians. Each ships its own `Guardian_*_0` sheet, and they are drawn taller
    * than their family counterparts — the original scales them up as boss variants.
@@ -244,6 +251,7 @@ export const PLAYER_SKINS: string[] = [
  */
 export const PLAYER_SKIN = PLAYER_SKINS[0];
 
+
 /**
  * The health-bar pieces, exported from the shipping build by
  * `analysis/export_ui_bars.py`.
@@ -273,8 +281,8 @@ export const BAR = {
    * quantity a stretchable frame actually needs.
    */
   frameBorder: 10,
-  frameTint: 0x0c0605,
-  fillTint: 0xb75757,
+  frameTint: 0x0a0c18,
+  fillTint: 0xe2564a,
 } as const;
 
 /** UI sprites drawn at explicit sizes rather than scaled by a world height. */
@@ -310,21 +318,16 @@ export const DROP_ART: Record<string, { file: string; height: number; tint: numb
    */
   Gold: { file: 'cur/Gold', height: 34, tint: 0xffffff },
   ClawCurrency: { file: 'cur/ClawCurrency', height: 34, tint: 0xffffff },
-  ArcherCurrency: { file: 'cur/ArcherCurrency', height: 34, tint: 0xffffff },
-  WarriorCurrency: { file: 'cur/WarriorCurrency', height: 34, tint: 0xffffff },
-  MageCurrency: { file: 'cur/MageCurrency', height: 34, tint: 0xffffff },
   BatCurrency: { file: 'cur/BatCurrency', height: 34, tint: 0xffffff },
   PortalCurrency: { file: 'cur/PortalCurrency', height: 34, tint: 0xffffff },
 };
 
 /** FX sprites. */
 export const FX: Record<string, SpriteDef> = {
-  /**
-   * The falling arrow uses `Arrow1` (22x146, a clean vertical arrow) rather than
-   * `T_Arrow`: that texture is a padded VFX canvas (817x244 holding a 813x240
-   * glow), so sizing it by height made the projectile nearly invisible.
-   */
-  arrow: { file: 'Arrow1', height: 62 },
+  /** Carbine round: a SHORT bolt, not the old 146px arrow. */
+  arrow: { file: 'Bolt', height: 30 },
+  /** Orbital strike round for the tapped attack. */
+  strike: { file: 'OrbitalLance', height: 150 },
   shot: { file: 'Circle', height: 34 },
   ember: { file: 'FX_TX_Ember_AB', height: 120 },
   star: { file: 'FX_TX_Star_AA', height: 140 },
@@ -332,6 +335,8 @@ export const FX: Record<string, SpriteDef> = {
   shockwave: { file: 'shockwave', height: 150 },
   coin: { file: 'orb', height: 30 },
   trail: { file: 'Trail1', height: 70 },
+  /** Ground blob under the hovering player (tinted black at draw time). */
+  hoverShadow: { file: 'HoverShadow', height: 30 },
 };
 
 /** Every unique file the client needs to fetch, for preloading. */
@@ -347,5 +352,6 @@ export function allArtFiles(): string[] {
   for (const d of Object.values(DROP_ART)) files.add(d.file);
   return [...files];
 }
+
 
 export const ART_BASE = 'art/';

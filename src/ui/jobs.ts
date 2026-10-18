@@ -22,6 +22,8 @@ import { JOBS, JOB_SKILLS } from '../content/jobData.js';
 import type { JobDef, JobSkillDef } from '../content/jobData.js';
 import type { Jobs } from '../game/jobs.js';
 import type { Skills } from '../game/skills.js';
+import { getLang } from '../core/i18n.js';
+import { reskinText } from '../core/lexicon.js';
 
 const ART = 'art/skills/';
 
@@ -177,13 +179,13 @@ export class JobsPanel {
       view.root.dataset.state = unlocked ? 'unlocked' : unlockable ? 'unlockable' : 'locked';
 
       // `? ? ?` while locked, exactly as `JobsUIManager` writes it.
-      view.title.textContent = unlocked ? job.titleZh : '? ? ?';
+      view.title.textContent = unlocked ? reskinText(job.titleZh, getLang()) : '? ? ?';
       view.portrait.style.filter = unlocked ? 'none' : 'brightness(0.25) grayscale(1)';
       view.portrait.style.opacity = unlocked ? '1' : '0.75';
       view.lock.hidden = unlocked || unlockable;
 
       if (unlocked) {
-        view.passive.textContent = `${job.passiveTitleZh}：${job.passiveDescZh}`;
+        view.passive.textContent = reskinText(`${job.passiveTitleZh}：${job.passiveDescZh}`, getLang());
         view.passive.dataset.state = 'on';
       } else if (unlockable) {
         view.passive.textContent = '解锁后获得该职业的被动与技能';

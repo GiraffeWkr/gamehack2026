@@ -46,8 +46,8 @@ export interface Snapshot {
   level: number;
   gold: number;
   /**
-   * The five monster-family currencies, from `PlayerManager.MonsterDiedGiveRewards`.
-   * Killing a Warrior yields WarriorCurrency rather than extra gold.
+   * The spendable monster-family currencies, from `PlayerManager.MonsterDiedGiveRewards`:
+   * Claw (jobs/skills) and Bat (masteries).
    */
   currencies: Record<string, number>;
   /**
@@ -63,8 +63,7 @@ export interface Snapshot {
   portalCurrency: number;
   /** `playerData.WasCurrencyShownBefore[Currencies.PortalCurrency]`. */
   portalCurrencySeen: boolean;
-  /** Premium currency, dropped by guardians and portals only. */
-  gems: number;
+
   /** Player level, raised by experience from kills. */
   playerLevel: number;
   playerExp: number;
@@ -72,6 +71,8 @@ export interface Snapshot {
   /** Progress toward the next player level, 0..1. Drives the HUD bar. */
   playerExpFraction: number;
   kills: number;
+  /** Arrows the auto-attack fired (not taps). */
+  autoShots: number;
   packsCleared: number;
   packsTotal: number;
   magazine: number;

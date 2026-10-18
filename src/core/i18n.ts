@@ -9,6 +9,8 @@
  * Chinese is the default, per the project brief.
  */
 
+import { reskinText } from './lexicon.js';
+
 export type Lang = 'zh' | 'en';
 
 interface Entry {
@@ -17,14 +19,14 @@ interface Entry {
 }
 
 const TABLE: Record<string, Entry> = {
-  gameTitle: { zh: '扎德弓箭手', en: 'Zad Archery' },
+  gameTitle: { zh: '扎德：轨道射手', en: 'Zad: Orbital Marksman' },
 
   // HUD
   hp: { zh: '生命', en: 'HP' },
   level: { zh: '第 {n} 关', en: 'Stage {n}' },
   playerLevel: { zh: '等级 {n}', en: 'Level {n}' },
   packs: { zh: '{done}/{total} 波', en: '{done}/{total} packs' },
-  arrows: { zh: '箭矢', en: 'ARROWS' },
+  arrows: { zh: '能量弹', en: 'BOLTS' },
   gold: { zh: '金币', en: 'gold' },
 
   // Portal
@@ -45,16 +47,16 @@ const TABLE: Record<string, Entry> = {
   // Rotate prompt
   rotateTitle: { zh: '请横屏游玩', en: 'Rotate to landscape' },
   rotateBody: {
-    zh: '《扎德弓箭手》是横版推进玩法：角色自动前进，你只需点击屏幕决定箭雨落点。需要横屏才能游玩。',
-    en: 'Zad Archery is a side-scrolling run: the character advances on his own and you aim by tapping. It needs a landscape screen.',
+    zh: '《扎德：轨道射手》是横版推进玩法：角色自动前进，你只需点击屏幕决定轨道打击的落点。需要横屏才能游玩。',
+    en: 'Zad: Orbital Marksman is a side-scrolling run: the character advances on his own and you aim by tapping. It needs a landscape screen.',
   },
 
   // Hints
-  hintTap: { zh: '点击屏幕砸下箭雨', en: 'Tap to drop arrows' },
-  hintHold: { zh: '按住可连续落箭', en: 'Hold to keep firing' },
+  hintTap: { zh: '点击屏幕呼叫轨道打击', en: 'Tap to call an orbital strike' },
+  hintHold: { zh: '按住可连续打击', en: 'Hold to keep striking' },
 
   // Magazine feedback
-  noArrows: { zh: '箭矢不足', en: 'NO ARROWS' },
+  noArrows: { zh: '能量弹不足', en: 'NO BOLTS' },
 
   // Shop / upgrades
   shopTitle: { zh: '强化', en: 'UPGRADES' },
@@ -66,20 +68,20 @@ const TABLE: Record<string, Entry> = {
   jobsOpen: { zh: '职业', en: 'JOBS' },
   masteryOpen: { zh: '精通', en: 'MASTERY' },
 
-  upDamage: { zh: '箭矢伤害', en: 'Arrow Damage' },
+  upDamage: { zh: '弹丸伤害', en: 'Bolt Damage' },
   upDamageDesc: { zh: '提高基础伤害', en: 'Raises base damage' },
   upHealth: { zh: '生命上限', en: 'Max Health' },
   upHealthDesc: { zh: '提高最大生命值', en: 'Raises maximum health' },
   upAttackSpeed: { zh: '攻击速度', en: 'Attack Speed' },
-  upAttackSpeedDesc: { zh: '角色自动射击更快', en: 'The archer shoots faster' },
+  upAttackSpeedDesc: { zh: '角色自动射击更快', en: 'The marksman shoots faster' },
   upMagazineSize: { zh: '弹匣容量', en: 'Magazine Size' },
-  upMagazineSizeDesc: { zh: '一次可连砸更多箭雨', en: 'More arrow-falls before reloading' },
+  upMagazineSizeDesc: { zh: '一次可连砸更多次轨道打击', en: 'More strikes before reloading' },
   upMagazineRegen: { zh: '弹匣回复', en: 'Magazine Regen' },
-  upMagazineRegenDesc: { zh: '箭矢回复更快', en: 'Arrows come back faster' },
+  upMagazineRegenDesc: { zh: '能量弹回复更快', en: 'Bolts come back faster' },
   upCritChance: { zh: '暴击率', en: 'Crit Chance' },
   upCritChanceDesc: { zh: '提高暴击概率', en: 'Chance to crit' },
-  upArrowDamage: { zh: '箭雨威力', en: 'Arrow Fall Power' },
-  upArrowDamageDesc: { zh: '提高点击箭雨的伤害', en: 'Raises the tapped arrow-fall damage' },
+  upArrowDamage: { zh: '轨道打击威力', en: 'Orbital Strike Power' },
+  upArrowDamageDesc: { zh: '提高点击轨道打击的伤害', en: 'Raises the tapped orbital strike damage' },
 };
 
 let current: Lang = 'zh';
@@ -104,7 +106,7 @@ export function t(key: string, params?: Record<string, string | number>): string
       text = text.replaceAll(`{${k}}`, String(v));
     }
   }
-  return text;
+  return reskinText(text, current);
 }
 
 /** Every key, for the verify suite to assert coverage. */
